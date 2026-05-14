@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Germán Baher — Growth Brands</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --red:    #ed2450;
+      --black:  #080808;
+      --black2: #0d0d0d;
+      --black3: #141414;
+      --white:  #ffffff;
+      --grey:   rgba(255,255,255,0.5);
+      --border: rgba(255,255,255,0.07);
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
+
+    /* ── Diagonal streaks ── */
+    .bg-lines {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .bg-lines::before {
+      content: '';
+      position: absolute; top: -30%; left: -10%; width: 140%; height: 160%;
+      background:
+        linear-gradient(115deg,
+          transparent 0%, transparent 28%,
+          rgba(255,255,255,0.022) 28.4%, rgba(255,255,255,0.022) 28.8%,
+          transparent 29.2%, transparent 48%,
+          rgba(255,255,255,0.016) 48.3%, rgba(255,255,255,0.016) 48.6%,
+          transparent 49%, transparent 65%,
+          rgba(255,255,255,0.012) 65.3%, rgba(255,255,255,0.012) 65.6%,
+          transparent 66%, transparent 100%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5vw;
+      background: rgba(8,8,8,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto; display: block; }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.45); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── Language switcher ── */
+    .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+    .lang-switcher { display: flex; align-items: center; gap: 0.4rem; }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.3);
+      padding: 0.2rem 0.1rem; transition: color 0.2s;
+    }
+    .lang-btn:hover { color: rgba(255,255,255,0.7); }
+    .lang-btn.active { color: var(--white); }
+    .lang-sep { font-size: 0.55rem; color: rgba(255,255,255,0.15); }
+
+    .btn-nav {
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.6rem 1.4rem; background: var(--red); color: var(--white);
+      border: none; border-radius: 2px; cursor: pointer; text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ══ DIAGNOSTIC HERO ══ */
+    #hero {
+      position: relative; z-index: 1; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: url('assets/images/hero-01.webp') center 50% / cover no-repeat;
+      will-change: background-position; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(160deg, rgba(8,8,8,0.96) 0%, rgba(8,8,8,0.88) 60%, rgba(8,8,8,0.97) 100%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(ellipse at 50% 50%, rgba(237,36,80,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    #diagShell {
+      position: relative; z-index: 2; width: 100%;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 6rem 2rem 4rem;
+    }
+
+    /* ── Step panel ── */
+    .diag-step {
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center; width: 100%; max-width: 700px;
+      animation: stepIn 0.5s cubic-bezier(.4,0,.2,1) both;
+    }
+
+    /* ── Progress dots ── */
+    .diag-progress {
+      position: absolute; top: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px; z-index: 2;
+    }
+    .diag-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(255,255,255,0.18); transition: all 0.4s ease;
+    }
+    .diag-dot.done { background: var(--red); transform: scale(1.1); }
+    .diag-dot.active { background: var(--white); width: 20px; border-radius: 3px; }
+
+    /* ── Phase label ── */
+    .diag-phase {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 1.8rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .diag-phase::before, .diag-phase::after {
+      content: ''; display: block; width: 28px; height: 1px;
+      background: var(--red); opacity: 0.5;
+    }
+
+    /* ── Headline ── */
+    .diag-h {
+      font-size: clamp(1.55rem, 3.8vw, 2.4rem); font-weight: 800;
+      line-height: 1.15; letter-spacing: -0.025em;
+      color: var(--white); margin-bottom: 0.9rem;
+    }
+    .diag-h em { font-style: normal; color: var(--red); }
+
+    /* ── Subtext ── */
+    .diag-sub {
+      font-size: 0.92rem; color: rgba(255,255,255,0.45);
+      line-height: 1.65; max-width: 420px; margin: 0 auto 2.5rem;
+    }
+
+    /* ── Name input ── */
+    .diag-name-wrap {
+      width: 100%; max-width: 380px; margin: 0 auto 1.2rem;
+      position: relative;
+    }
+    .diag-name-input {
+      width: 100%; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 1.1rem 1.4rem;
+      color: var(--white); font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem; font-weight: 500; outline: none;
+      text-align: center; letter-spacing: 0.02em;
+      transition: border-color 0.25s, background 0.25s;
+      backdrop-filter: blur(8px);
+    }
+    .diag-name-input::placeholder { color: rgba(255,255,255,0.22); }
+    .diag-name-input:focus {
+      border-color: rgba(237,36,80,0.5);
+      background: rgba(255,255,255,0.07);
+    }
+
+    /* ── Primary CTA button ── */
+    .diag-cta {
+      font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 0.88rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: var(--red); color: var(--white); border: none;
+      padding: 1rem 2.4rem; border-radius: 8px; cursor: pointer;
+      transition: all 0.25s; display: inline-flex; align-items: center; gap: 0.6rem;
+      box-shadow: 0 0 28px rgba(237,36,80,0.28);
+    }
+    .diag-cta:hover {
+      transform: translateY(-2px); box-shadow: 0 4px 36px rgba(237,36,80,0.45);
+    }
+    .diag-cta:active { transform: translateY(0); }
+
+    /* ── Profile cards ── */
+    .diag-cards {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1rem; width: 100%; max-width: 680px; margin: 0 auto;
+    }
+    .diag-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px; padding: 1.6rem 1.2rem 1.4rem;
+      cursor: pointer; text-align: left;
+      transition: all 0.3s cubic-bezier(.4,0,.2,1);
+      backdrop-filter: blur(12px);
+      position: relative; overflow: hidden;
+    }
+    .diag-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, rgba(237,36,80,0.08) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .diag-card:hover {
+      border-color: rgba(237,36,80,0.35);
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-3px);
+    }
+    .diag-card:hover::before { opacity: 1; }
+    .diag-card.selected {
+      border-color: var(--red);
+      background: rgba(237,36,80,0.08);
+      box-shadow: 0 0 28px rgba(237,36,80,0.2);
+    }
+    .card-phase {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.7rem;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 800; color: var(--white);
+      text-transform: uppercase; letter-spacing: -0.01em;
+      line-height: 1.15; margin-bottom: 0.6rem;
+    }
+    .card-desc {
+      font-size: 0.78rem; color: rgba(255,255,255,0.45);
+      line-height: 1.55; margin-bottom: 1.1rem;
+    }
+    .card-btn {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--white);
+      background: rgba(237,36,80,0.18); border: 1px solid rgba(237,36,80,0.3);
+      border-radius: 5px; padding: 0.45rem 0.9rem; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+      width: 100%;
+    }
+    .card-btn:hover { background: var(--red); border-color: var(--red); }
+
+    /* ── Confirmation banner ── */
+    .diag-confirm {
+      background: rgba(237,36,80,0.1); border: 1px solid rgba(237,36,80,0.25);
+      border-radius: 10px; padding: 1rem 1.5rem;
+      font-size: 0.82rem; color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem; letter-spacing: 0.02em;
+      animation: fadeSlideUp 0.5s ease forwards;
+    }
+    .diag-confirm strong { color: var(--white); }
+
+    /* ── Diagnostic options ── */
+    .diag-options {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      width: 100%; max-width: 480px; margin: 0 auto;
+    }
+    .diag-opt {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px; padding: 1.05rem 1.4rem;
+      cursor: pointer; text-align: left;
+      font-size: 0.92rem; color: rgba(255,255,255,0.75);
+      font-family: 'DM Sans', sans-serif; font-weight: 500; line-height: 1.45;
+      transition: all 0.25s; display: flex; align-items: center; gap: 1rem;
+      backdrop-filter: blur(8px);
+    }
+    .diag-opt::before {
+      content: ''; flex-shrink: 0; width: 10px; height: 10px;
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 50%;
+      transition: all 0.25s;
+    }
+    .diag-opt:hover {
+      border-color: rgba(237,36,80,0.4); color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+    .diag-opt:hover::before { border-color: var(--red); background: var(--red); }
+    .diag-opt.chosen {
+      border-color: var(--red); background: rgba(237,36,80,0.09);
+      color: var(--white);
+    }
+    .diag-opt.chosen::before { background: var(--red); border-color: var(--red); }
+
+    /* ── Unlock flash ── */
+    .unlock-msg {
+      font-size: 0.8rem; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em; margin-top: 1.5rem;
+      animation: fadeSlideUp 0.5s ease forwards;
+    }
+    .unlock-msg .emoji { font-size: 1rem; }
+
+    /* ── Score result ── */
+    .score-rings {
+      display: flex; gap: 1.8rem; justify-content: center;
+      margin: 2.2rem auto 1.5rem; flex-wrap: wrap;
+    }
+    .score-ring-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 0.55rem;
+      width: 110px;
+    }
+    .score-ring {
+      width: 104px; height: 104px; position: relative;
+    }
+    .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .score-ring circle { fill: none; stroke-linecap: round; }
+    .score-ring .bg { stroke: rgba(255,255,255,0.06); stroke-width: 6; }
+    .score-ring .fill {
+      stroke-width: 6;
+      stroke-dasharray: 264; stroke-dashoffset: 264;
+      transition: stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1) 0.4s;
+    }
+    .score-ring .fill.glow {
+      filter: drop-shadow(0 0 7px rgba(237,36,80,0.75));
+    }
+    .score-ring-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+    }
+    .score-ring-phrase {
+      font-size: 0.7rem; color: rgba(255,255,255,0.28); line-height: 1.45;
+      text-align: center; font-style: italic;
+    }
+    .score-ring-val {
+      position: absolute; inset: 0; display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem; font-weight: 800;
+      color: var(--white);
+    }
+
+    .score-badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.4rem 1.1rem; border-radius: 30px; margin-bottom: 1.4rem;
+    }
+    .score-badge.green { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+    .score-badge.yellow { background: rgba(234,179,8,0.12); color: #fbbf24; border: 1px solid rgba(234,179,8,0.3); }
+    .score-badge.red-badge { background: rgba(237,36,80,0.12); color: #f87171; border: 1px solid rgba(237,36,80,0.3); }
+
+    .score-insight {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 1.4rem 1.6rem; text-align: left;
+      font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.7;
+      margin-bottom: 2rem; max-width: 480px; width: 100%;
+    }
+    .score-insight strong { color: var(--white); }
+
+    .diag-scarcity {
+      font-size: 0.7rem; color: rgba(255,255,255,0.3); letter-spacing: 0.06em;
+      margin-top: 1rem;
+    }
+    .diag-scarcity span { color: var(--red); }
+
+    /* ── Cal.com booking button ── */
+    .btn-cal {
+      display: inline-flex; align-items: center; gap: 0.65rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.88rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.18); border-radius: 8px;
+      padding: 0.9rem 1.6rem; cursor: pointer;
+      transition: all 0.25s; margin-top: 2rem;
+    }
+    .btn-cal:hover {
+      background: rgba(237,36,80,0.12); border-color: var(--red);
+      color: var(--white); transform: translateY(-2px);
+    }
+    .btn-cal svg { flex-shrink: 0; opacity: 0.7; }
+
+    /* ── Keyframes ── */
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseRed {
+      0%, 100% { box-shadow: 0 0 28px rgba(237,36,80,0.28); }
+      50%       { box-shadow: 0 0 48px rgba(237,36,80,0.55); }
+    }
+    .pulse { animation: pulseRed 2.2s ease infinite; }
+
+    @media (max-width: 600px) {
+      .diag-cards { grid-template-columns: 1fr; }
+      .diag-h { font-size: 1.45rem; }
+    }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; padding: 7rem 5vw; }
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    .s-tag {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 1rem;
+      display: block;
+    }
+    .s-title {
+      font-size: clamp(2.4rem, 5.5vw, 5rem); font-weight: 900;
+      letter-spacing: -0.03em; line-height: 0.93; text-transform: uppercase;
+      color: var(--white); margin-bottom: 1.5rem;
+    }
+    .s-body {
+      color: var(--grey); font-size: 1rem; line-height: 1.75;
+      max-width: 520px; font-weight: 400;
+    }
+
+    /* ── SOBRE MÍ ── */
+    #sobre { background: var(--black); border-top: 1px solid var(--border); }
+
+    .sobre-grid {
+      display: grid; grid-template-columns: auto 1fr; gap: 5rem; align-items: start;
+    }
+
+    .sobre-img {
+      width: 200px; height: 200px; flex-shrink: 0;
+      border-radius: 50%; overflow: hidden;
+      border: 2px solid rgba(237,36,80,0.35);
+      box-shadow: 0 0 0 6px rgba(237,36,80,0.06), 0 0 40px rgba(0,0,0,0.5);
+      margin-top: 2.8rem;
+    }
+    .sobre-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+    .sobre-text .s-body { margin-bottom: 1.5rem; }
+
+    .stats { display: flex; gap: 3rem; margin-top: 3rem; }
+    .stat-item dt {
+      font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1; color: var(--white);
+    }
+    .stat-item dt em { color: var(--red); font-style: normal; }
+    .stat-item dd {
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-top: 0.3rem;
+    }
+
+    /* ── METODOLOGÍA ── */
+    #metodologia { background: var(--black2); border-top: 1px solid var(--border); }
+
+    .met-header { margin-bottom: 5rem; }
+
+    .met-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: var(--border);
+    }
+    .met-card {
+      background: var(--black); padding: 3rem 2.5rem;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+    }
+    .met-card:hover { background: var(--black3); }
+    .met-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: transparent; transition: background 0.3s;
+    }
+    .met-card:hover::after { background: var(--red); }
+
+    .met-icon { width: 72px; height: 72px; margin-bottom: 2rem; }
+    .met-icon svg { width: 100%; height: 100%; }
+    /* Recolor methodology icons to red */
+    .met-icon svg path { fill: var(--red) !important; }
+
+    .met-label {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      border: 1px solid var(--red); color: var(--red);
+      padding: 0.25rem 0.7rem; margin-bottom: 1.2rem;
+    }
+    .met-card h3 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900;
+      text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.95;
+      color: var(--white); margin-bottom: 1rem;
+    }
+    .met-card p { color: var(--grey); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ── SERVICIOS ── */
+    #servicios { background: var(--black); border-top: 1px solid var(--border); }
+
+    .serv-grid {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 1px; background: var(--border);
+    }
+    .serv-item {
+      background: var(--black); padding: 2.5rem;
+      display: flex; gap: 1.8rem; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .serv-item:hover { background: var(--black3); }
+    .serv-num {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      color: var(--red); padding-top: 0.3rem; min-width: 24px;
+    }
+    .serv-item h3 {
+      font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em;
+      text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .serv-item p { color: var(--grey); font-size: 0.875rem; line-height: 1.7; }
+
+    /* ── CASOS ── */
+    #casos { background: var(--black2); border-top: 1px solid var(--border); }
+
+    .casos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+
+    .caso-card {
+      display: flex; flex-direction: column; cursor: pointer;
+      border: 1px solid var(--border); transition: border-color 0.2s;
+    }
+    .caso-card:hover { border-color: rgba(237,36,80,0.35); }
+    .caso-card:hover .caso-img-bw { opacity: 0; }
+
+    .caso-img-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+    .caso-img-wrap img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; transition: opacity 0.4s;
+    }
+    .caso-img-bw { z-index: 1; }
+    .caso-img-color { z-index: 0; }
+
+    .caso-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; gap: 0.8rem; }
+    .caso-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+      border-top: 1px solid var(--red); padding-top: 0.5rem;
+      display: inline-block;
+    }
+    .caso-body h3 {
+      font-size: 1.25rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: -0.01em; line-height: 1.05;
+    }
+    .caso-body p { color: var(--grey); font-size: 0.85rem; line-height: 1.65; flex: 1; }
+    .caso-link {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--white); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .caso-link:hover { gap: 0.8rem; color: var(--red); }
+
+    /* ── MARCAS / SOCIAL PROOF ── */
+    #marcas {
+      background: var(--black); border-top: 1px solid var(--border);
+      padding-top: 4rem; padding-bottom: 4rem;
+    }
+    .marcas-label {
+      text-align: center; font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2); margin-bottom: 2.5rem;
+    }
+    .marcas-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 4.5rem; flex-wrap: wrap;
+    }
+    .marca-logo { height: 52px; opacity: 0.3; transition: opacity 0.2s; }
+    .marca-logo:hover { opacity: 0.75; }
+    .marca-logo img, .marca-logo svg { height: 100%; width: auto; filter: brightness(0) invert(1); }
+
+    /* ── TESTIMONIOS ── */
+    #testimonios { background: var(--black2); border-top: 1px solid var(--border); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem;
+      margin-top: 3.5rem;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 2rem 1.8rem 1.8rem;
+      display: flex; flex-direction: column; gap: 1.4rem;
+      transition: border-color 0.3s, background 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .testi-card::before {
+      content: '\201C';
+      position: absolute; top: 1rem; right: 1.6rem;
+      font-size: 5rem; line-height: 1; font-family: Georgia, serif;
+      color: rgba(237,36,80,0.12); pointer-events: none;
+    }
+    .testi-card:hover {
+      border-color: rgba(237,36,80,0.2);
+      background: rgba(255,255,255,0.05);
+    }
+    .testi-quote {
+      font-size: 0.93rem; color: rgba(255,255,255,0.7);
+      line-height: 1.75; font-style: italic; flex: 1;
+    }
+    .testi-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1.2rem;
+    }
+    .testi-author { display: flex; flex-direction: column; gap: 0.2rem; }
+    .testi-name {
+      font-size: 0.85rem; font-weight: 700; color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .testi-role {
+      font-size: 0.68rem; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .testi-logo { height: 28px; width: auto; opacity: 0.45;
+      filter: brightness(0) invert(1); flex-shrink: 0;
+    }
+    @media (max-width: 900px) {
+      .testi-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CTA BAND ── */
+    #cta-band {
+      position: relative; z-index: 1; overflow: hidden;
+      background: url('assets/images/cta-bg.webp') center/cover no-repeat;
+      padding: 7rem 5vw; text-align: center;
+    }
+    #cta-band::before {
+      content: ''; position: absolute; inset: 0; background: rgba(237,36,80,0.88);
+    }
+    /* diagonal streak on band */
+    #cta-band::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent 40%,
+        rgba(255,255,255,0.04) 40.3%, rgba(255,255,255,0.04) 40.6%, transparent 41%);
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    #cta-band h2 {
+      font-size: clamp(2.6rem, 6vw, 5.5rem); font-weight: 900;
+      text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.92;
+      color: var(--white); margin-bottom: 2.5rem;
+    }
+    .btn-cta {
+      font-family: 'DM Sans', sans-serif; font-weight: 800;
+      font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 1.1rem 2.8rem; background: var(--white); color: var(--red);
+      border: none; border-radius: 2px; cursor: pointer; text-decoration: none;
+      display: inline-block; transition: transform 0.15s, opacity 0.2s;
+    }
+    .btn-cta:hover { transform: translateY(-2px); opacity: 0.92; }
+
+    /* ── CONTACTO ── */
+    #contacto { background: var(--black); border-top: 1px solid var(--border); }
+
+    .contacto-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+    }
+    .contacto-left .s-body { max-width: 380px; margin-bottom: 3rem; }
+    .contact-list { display: flex; flex-direction: column; gap: 1.8rem; }
+    .contact-list dt {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem;
+    }
+    .contact-list dd { font-size: 0.95rem; color: var(--white); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    .field input, .field textarea {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 2px; padding: 0.85rem 1rem; color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      outline: none; transition: border-color 0.2s; resize: none;
+    }
+    .field input:focus, .field textarea:focus { border-color: rgba(255,255,255,0.22); }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+    .btn-submit {
+      font-family: 'DM Sans', sans-serif; font-weight: 800;
+      font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 1rem; background: var(--red); color: var(--white);
+      border: none; border-radius: 2px; cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s; margin-top: 0.5rem;
+    }
+    .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black); border-top: 1px solid var(--border);
+      padding: 2.5rem 5vw 2rem; position: relative; z-index: 1;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.4rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-name {
+      font-size: 0.9rem; font-weight: 800; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 1.2rem;
+      display: flex; flex-direction: column; gap: 0.55rem;
+    }
+    .footer-disclaimer {
+      font-size: 0.68rem; color: rgba(255,255,255,0.22); line-height: 1.6;
+    }
+    .footer-legal {
+      font-size: 0.68rem; color: rgba(255,255,255,0.22);
+    }
+    .footer-legal a {
+      color: rgba(255,255,255,0.35); text-decoration: underline;
+      text-underline-offset: 3px; transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: var(--white); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; justify-items: center; }
+      .sobre-img { width: 160px; height: 160px; }
+      .met-grid { grid-template-columns: 1fr; }
+      .serv-grid { grid-template-columns: 1fr; }
+      .casos-grid { grid-template-columns: 1fr; }
+      .contacto-grid { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+    @media (max-width: 580px) {
+      .hero-form { flex-direction: column; }
+      .hero-input { border-right: 1px solid rgba(255,255,255,0.14); border-radius: 3px; }
+      .hero-btn { border-radius: 3px; }
+      .stats { gap: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-lines" aria-hidden="true"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="assets/brand/logo-full.svg" alt="Germán Baher — Growth Brands" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre"      data-i18n="nav_about">Sobre mí</a></li>
+    <li><a href="#metodologia" data-i18n="nav_method">Metodología</a></li>
+    <li><a href="#servicios"  data-i18n="nav_services">Servicios</a></li>
+    <li><a href="#casos"      data-i18n="nav_cases">Casos</a></li>
+    <li><a href="#contacto"   data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <span class="lang-sep">·</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <span class="lang-sep">·</span>
+      <button class="lang-btn" data-lang="fr">FR</button>
+    </div>
+    <a href="#contacto" class="btn-nav" data-i18n="nav_cta">Hablemos</a>
+  </div>
+</nav>
+
+<!-- ── HERO DIAGNÓSTICO ── -->
+<section id="hero">
+  <div id="diagShell">
+
+    <!-- Progress dots -->
+    <div class="diag-progress" id="diagProgress">
+      <div class="diag-dot" id="dot0"></div>
+      <div class="diag-dot" id="dot1"></div>
+      <div class="diag-dot" id="dot2"></div>
+      <div class="diag-dot" id="dot3"></div>
+      <div class="diag-dot" id="dot4"></div>
+      <div class="diag-dot" id="dot5"></div>
+    </div>
+
+    <!-- Steps rendered here by JS -->
+    <div id="diagContent"></div>
+
+  </div>
+</section>
+
+<!-- ── SOBRE MÍ ── -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-img reveal">
+        <img src="assets/images/german-portrait-main.webp" alt="Germán Baher" />
+      </div>
+      <div class="sobre-text">
+        <span class="s-tag reveal" data-i18n="about_tag">Sobre mí</span>
+        <h2 class="s-title reveal" data-i18n="about_title">Construyo<br />marcas que<br />perduran.</h2>
+        <p class="s-body reveal" data-i18n="about_p1">Soy Germán Baher, estratega de marca y crecimiento. Ayudo a emprendedores y empresas a clarificar su identidad, diferenciarse con propósito y crecer de forma consistente.</p>
+        <p class="s-body reveal" data-i18n="about_p2">Mi trabajo combina pensamiento estratégico profundo, intuición de mercado y ejecución orientada a resultados. No construyo logos. Construyo posicionamiento.</p>
+        <dl class="stats">
+          <div class="stat-item reveal">
+            <dt>+<em class="count-up" data-target="50">0</em></dt>
+            <dd data-i18n="stat_brands">Marcas trabajadas</dd>
+          </div>
+          <div class="stat-item reveal">
+            <dt>+<em class="count-up" data-target="20">0</em></dt>
+            <dd data-i18n="stat_years">Años de experiencia</dd>
+          </div>
+          <div class="stat-item reveal">
+            <dt><em class="count-up" data-target="3">0</em></dt>
+            <dd data-i18n="stat_countries">Países</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── METODOLOGÍA ── -->
+<section id="metodologia">
+  <div class="container">
+    <div class="met-header">
+      <span class="s-tag reveal" data-i18n="method_tag">Método</span>
+      <h2 class="s-title reveal" data-i18n="method_title">La metodología FDT</h2>
+      <p class="s-body reveal" data-i18n="method_sub">Tres dimensiones que toda marca debe integrar para generar movimiento real en el mercado.</p>
+    </div>
+    <div class="met-grid">
+
+      <div class="met-card reveal">
+        <div class="met-icon">
+          <!-- FDT Feeling icon inline -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550.14 612">
+            <path fill="#ed2450" d="M498.01,258.45c0,124.49-100.95,225.4-225.48,225.4S47.05,382.94,47.05,258.45,148,33.04,272.53,33.04s225.48,100.92,225.48,225.4ZM491.47,258.5c0-120.9-98.04-218.91-218.98-218.91S53.52,137.6,53.52,258.5s98.04,218.91,218.98,218.91,218.98-98.01,218.98-218.91Z"/>
+            <path fill="#ed2450" d="M168.64,296.79c30.02,33.05,64.34,62.41,94.07,95.84,1.19,2.83-5.32,6.29-6.69,2.25-24.54-23.88-48.2-48.69-71.78-73.39-19.94-20.89-43.14-37.17-50.37-66.92-20.66-85.03,83.31-137.82,139.05-70.13,72.49-83.83,187.68,19.08,120.94,103.33l-106.52,109.04c-4.5,1.22-6.48-3.42-3.49-6.45l100.55-101.79c65.65-76.66-28.01-168.21-96.09-110.72-3.39,2.86-14.65,17.4-16.8,16.88-31.98-49.21-106.54-44.82-128.02,11.35-14.76,38.59.32,63.39,25.14,90.72Z"/>
+            <path fill="#ed2450" d="M170.59,586.45c-.94,0-1.62-.13-2.03-.39-.41-.26-.61-.6-.61-1.03v-41.87c0-1.29.67-1.93,2-1.93h19.78c.81,0,1.22.64,1.22,1.93v1.03c0,1.29-.41,1.93-1.22,1.93h-15.98v16.3h14.95c.86,0,1.29.64,1.29,1.93v1.03c0,1.29-.43,1.93-1.29,1.93h-14.95v17.71c0,.43-.19.77-.58,1.03-.39.26-1.07.39-2.06.39h-.52Z"/>
+          </svg>
+        </div>
+        <span class="met-label">Feeling</span>
+        <h3 data-i18n="fdt_f_title">Sentir<br />la marca</h3>
+        <p data-i18n="fdt_f_body">Exploramos la emoción, los valores y el propósito que mueven a tu audiencia. Donde la marca conecta con el ser humano, no solo con el consumidor.</p>
+      </div>
+
+      <div class="met-card reveal">
+        <div class="met-icon">
+          <!-- FDT Doing icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 522.23 612">
+            <path fill="#ed2450" d="M487.35,258.45c0,124.03-100.58,224.58-224.65,224.58S38.04,382.48,38.04,258.45,138.62,33.87,262.7,33.87s224.65,100.55,224.65,224.58ZM480.86,258.46c0-120.46-97.68-218.1-218.17-218.1S44.51,138,44.51,258.46s97.68,218.1,218.17,218.1,218.17-97.65,218.17-218.1Z"/>
+            <path fill="#ed2450" d="M177.86,394.23c-3.6-1.11-1.81-14.91-2.52-19.26-3.63-22-59.11-53.7-67.52-82.07-5.81-19.59-4.92-77.75-3.37-99.85,1.86-26.59,25.33-22.21,34.17.81,9.45,24.61-2.7,64.38,5.99,84.04,5.63,12.75,34.42,33.25,44.14,45.17.34-21.51-20.02-31.53-30.48-45.75-7.53-10.24-6.57-26.58,8.14-28.21,9.04-1,14.37,4.25,21.36,8.88,19.35,12.81,57.65,40.49,57.65,65.8v68.25l-2.18,2.18h-65.37ZM182.94,386.97h55.2v-63.17c0-20.09-23.68-37.02-37.92-47.77-5.79-4.37-35.98-30.96-39.05-14.61-2.13,11.36,10.27,17.77,16.71,25.33,10.04,11.78,21.89,25.89,16.8,42.61-3.57,5.65-11.97-2.14-15.33-4.88-7.89-6.43-38.9-37.45-41.78-45.36-8.33-22.93,3.11-55.35-4.43-79.8-4.09-13.26-19.51-27.98-21.45-6.28-1.65,18.42-2.13,80.53,2.51,96.37,6.79,23.14,43.98,47.38,59.17,67.18,6.99,9.11,10.56,18.69,9.56,30.37Z"/>
+            <path fill="#ed2450" d="M278.81,323.81c3.4-28.69,30.01-46.28,51.83-61.45,4.66-3.24,14.61-11.4,19.29-12.65,18.93-5.07,26.37,13.54,16.02,27.62-10.45,14.22-28.78,22.72-30.49,44.29l11.57-9.41c9.24-11.98,32.26-27.05,34.53-42.51,3.81-26.04-7.59-67.15,10.77-87.97,9.58-10.87,24.57-8.44,25.99,6.97,2.18,23.7,2.04,70.69-.02,94.51-3.22,37.22-64.52,66.06-69.45,90.31-1.4,6.88,1.96,15.42-2.51,20.73h-65.37l-2.18-2.18c1.86-21.58-2.5-47.18,0-68.25ZM286.08,323.81c-2.31,19.51,1.71,43.19,0,63.17h55.2c-.92-10.73,1.23-19.43,7.51-28.07,15.22-20.92,54.17-45.45,61.22-69.49,4.76-16.23,4.11-78.87,2.5-97.81-1.76-20.71-18.27-4.08-21.76,8.86-5.18,19.2-1.3,45.6-1.49,65.18-.06,5.83-2.41,14.2-5.87,18.94-5.18,7.1-37.28,39.28-44.31,44.3-6.17,4.41-11.16.82-10.95-6.45.73-25.14,21-33.51,32.03-49.46,6.23-9.01,3.91-19.48-8.76-16.01-5.11,1.4-47.45,33.86-52.28,39.22-6.25,6.92-11.95,18.37-13.04,27.62Z"/>
+          </svg>
+        </div>
+        <span class="met-label">Doing</span>
+        <h3 data-i18n="fdt_d_title">Hacer<br />la marca</h3>
+        <p data-i18n="fdt_d_body">Diseñamos la estrategia, el posicionamiento y los activos que materializan la marca en el mundo real. Del concepto a la ejecución sin perder el norte.</p>
+      </div>
+
+      <div class="met-card reveal">
+        <div class="met-icon">
+          <!-- Thinking simplified circle icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.71 245.48">
+            <circle cx="112" cy="122" r="100" stroke="#ed2450" stroke-width="6" fill="none"/>
+            <path fill="#ed2450" d="M80,85 Q112,60 144,85 Q165,105 155,130 Q145,155 112,155 Q79,155 69,130 Q59,105 80,85Z" opacity="0.15"/>
+            <path fill="none" stroke="#ed2450" stroke-width="4" stroke-linecap="round" d="M90,100 Q112,80 134,100 Q148,115 140,135 Q132,155 112,155 Q92,155 84,135 Q76,115 90,100Z"/>
+            <line x1="112" y1="155" x2="112" y2="185" stroke="#ed2450" stroke-width="4" stroke-linecap="round"/>
+            <line x1="98" y1="180" x2="126" y2="180" stroke="#ed2450" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="met-label">Thinking</span>
+        <h3 data-i18n="fdt_t_title">Pensar<br />la marca</h3>
+        <p data-i18n="fdt_t_body">Analizamos datos, comportamientos y tendencias para tomar decisiones estratégicas informadas. La inteligencia que guía el crecimiento sostenible.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICIOS ── -->
+<section id="servicios">
+  <div class="container">
+    <span class="s-tag reveal" data-i18n="serv_tag">Lo que hago</span>
+    <h2 class="s-title reveal" data-i18n="serv_title">Servicios</h2>
+    <p class="s-body reveal" data-i18n="serv_sub" style="margin-bottom:3.5rem">Soluciones estratégicas para marcas que quieren crecer con claridad.</p>
+    <div class="serv-grid">
+      <div class="serv-item reveal"><span class="serv-num">01</span><div><h3 data-i18n="s1_title">Brand Strategy</h3><p data-i18n="s1_body">Definimos el posicionamiento, la voz y la identidad de tu marca para que se diferencie de forma auténtica y memorable en su mercado.</p></div></div>
+      <div class="serv-item reveal"><span class="serv-num">02</span><div><h3 data-i18n="s2_title">Diagnóstico de Claridad</h3><p data-i18n="s2_body">Un proceso profundo para identificar las brechas entre dónde está tu marca hoy y dónde necesita estar para crecer. Tu hoja de ruta estratégica.</p></div></div>
+      <div class="serv-item reveal"><span class="serv-num">03</span><div><h3 data-i18n="s3_title">Growth Consulting</h3><p data-i18n="s3_body">Acompañamiento estratégico continuo para ejecutar, medir y ajustar el crecimiento de tu marca con datos reales y visión de largo plazo.</p></div></div>
+      <div class="serv-item reveal"><span class="serv-num">04</span><div><h3 data-i18n="s4_title">Workshops & Formación</h3><p data-i18n="s4_body">Sesiones intensivas para equipos y fundadores que quieren dominar el pensamiento estratégico de marca y aplicarlo en su negocio.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASOS ── -->
+<section id="casos">
+  <div class="container">
+    <span class="s-tag reveal" data-i18n="cases_tag">Portafolio</span>
+    <h2 class="s-title reveal" data-i18n="cases_title">Casos de éxito</h2>
+    <p class="s-body reveal" data-i18n="cases_sub" style="margin-bottom:3.5rem">Marcas que ayudé a clarificar, reposicionar y crecer.</p>
+    <div class="casos-grid">
+
+      <div class="caso-card reveal">
+        <div class="caso-img-wrap">
+          <img class="caso-img-color" src="assets/images/case-1-color.webp" alt="Sofía Al Paso" />
+          <img class="caso-img-bw" src="assets/images/case-1-bw.webp" alt="Sofía Al Paso BW" />
+        </div>
+        <div class="caso-body">
+          <span class="caso-tag">Brand Strategy · Retail</span>
+          <h3>Sofía Al Paso</h3>
+          <p>Modelo de transformación de marca para una de las empresas de alimentos más reconocidas de Bolivia. De la ejecución reactiva a la expansión estructurada.</p>
+          <a href="case-sofia.html" class="caso-link">Ver caso →</a>
+        </div>
+      </div>
+
+      <div class="caso-card reveal">
+        <div class="caso-img-wrap">
+          <img class="caso-img-color" src="assets/images/case-2-color.webp" alt="Alalay" />
+          <img class="caso-img-bw" src="assets/images/case-2-bw.webp" alt="Alalay BW" />
+        </div>
+        <div class="caso-body">
+          <span class="caso-tag">Nonprofit · FDT Method</span>
+          <h3>Alalay</h3>
+          <p>Transformación de identidad para una organización con 35 años apoyando a niños en Bolivia. Resultado: +95% de incremento en engagement.</p>
+          <a href="case-alalay.html" class="caso-link">Ver caso →</a>
+        </div>
+      </div>
+
+      <div class="caso-card reveal">
+        <div class="caso-img-wrap">
+          <img class="caso-img-color" src="assets/images/case-3-color.webp" alt="Bodega PIL" />
+          <img class="caso-img-bw" src="assets/images/case-3-bw.webp" alt="Bodega PIL BW" />
+        </div>
+        <div class="caso-body">
+          <span class="caso-tag">Retail Branding · Shopper</span>
+          <h3>Bodega PIL</h3>
+          <p>Rediseño shopper-centric de la experiencia retail para una bodega láctea de barrio. Ventas incrementaron más del 35% en tiendas adoptantes.</p>
+          <a href="case-bodega.html" class="caso-link">Ver caso →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MARCAS ── -->
+<section id="marcas">
+  <div class="container">
+    <p class="marcas-label reveal" data-i18n="brands_label">Marcas con las que he trabajado</p>
+    <div class="marcas-row">
+      <div class="marca-logo reveal"><img src="assets/logos/sofia_al_paso.svg" alt="Sofía Al Paso" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/alalay.svg" alt="Alalay" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/Bodega.svg" alt="Bodega" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/greenfield.svg" alt="Greenfield" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/irradia.svg" alt="Irradia" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/becycle.svg" alt="Becycle" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIOS ── -->
+<section id="testimonios">
+  <div class="container">
+    <span class="s-tag reveal">Clientes</span>
+    <h2 class="s-title reveal">Lo que dicen<br />quienes lo vivieron.</h2>
+    <div class="testi-grid">
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">"Germán tiene una visión estratégica que va más allá del diseño. Sabe construir marcas con propósito y traducir esa profundidad en un lenguaje que la gente siente como propio. Trabajar con él transformó por completo la manera en que Sofía al Paso comunica quién es."</p>
+        <div class="testi-footer">
+          <div class="testi-author">
+            <span class="testi-name">Daniela Téllez</span>
+            <span class="testi-role">Sofía al Paso</span>
+          </div>
+          <img class="testi-logo" src="assets/logos/sofia_al_paso.svg" alt="Sofía al Paso" />
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">"La metodología FDT de Germán nos ayudó a entender un camino distinto que nunca nos imaginamos y que hoy se refleja en un símbolo humano que representa Alalay."</p>
+        <div class="testi-footer">
+          <div class="testi-author">
+            <span class="testi-name">Claudia González</span>
+            <span class="testi-role">Fundación Alalay</span>
+          </div>
+          <img class="testi-logo" src="assets/logos/alalay.svg" alt="Alalay" />
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">"La capacidad de Germán de tener esa visión de Shopper Marketing nos ayudó a estructurar categorías y humanizar la marca. Eso se reflejó directamente en las ventas."</p>
+        <div class="testi-footer">
+          <div class="testi-author">
+            <span class="testi-name">Laura Lozano</span>
+            <span class="testi-role">Bodega PIL</span>
+          </div>
+          <img class="testi-logo" src="assets/logos/Bodega.svg" alt="Bodega PIL" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section id="cta-band">
+  <div class="cta-inner">
+    <h2 class="reveal" data-i18n="cta_title">¿Tu marca tiene<br />una voz clara?</h2>
+    <a href="#hero" class="btn-cta reveal" data-i18n="cta_btn" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});">Empezar el diagnóstico</a>
+  </div>
+</section>
+
+<!-- ── CONTACTO ── -->
+<section id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="contacto-left">
+        <span class="s-tag reveal" data-i18n="contact_tag">Contacto</span>
+        <h2 class="s-title reveal" data-i18n="contact_title">Hablemos<br />de tu marca.</h2>
+        <p class="s-body reveal" data-i18n="contact_sub">Si tienes un proyecto, una pregunta o simplemente quieres explorar si podemos trabajar juntos, escríbeme.</p>
+        <dl class="contact-list">
+          <div class="reveal"><dt>Email</dt><dd>gbaher03@gmail.com</dd></div>
+          <div class="reveal"><dt>Instagram</dt><dd>@germanbahergb</dd></div>
+          <div class="reveal"><dt>LinkedIn</dt><dd>Germán Baher</dd></div>
+        </dl>
+        <button class="btn-cal reveal" type="button"
+          data-cal-link="german-baher-njlkqp"
+          data-cal-config='{"layout":"month_view"}'>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Agendar sesión estratégica
+        </button>
+      </div>
+      <form class="contact-form reveal" onsubmit="handleForm(event)">
+        <div class="field"><label>Nombre</label><input type="text" placeholder="Tu nombre" required /></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="tu@email.com" required /></div>
+        <div class="field"><label>Mensaje</label><textarea rows="5" placeholder="Cuéntame sobre tu marca y qué necesitas..." required></textarea></div>
+        <button type="submit" class="btn-submit">Enviar mensaje →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <span class="footer-name">Germán Baher LLC</span>
+    <span class="footer-copy">© 2026 Germán Baher LLC — Todos los derechos reservados</span>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-disclaimer">Este sitio web es una plataforma profesional independiente. No está afiliado, patrocinado ni asociado con Meta, Facebook, Instagram ni ninguna otra red social o plataforma de terceros. El contenido publicado aquí representa exclusivamente el trabajo, opiniones y servicios de Germán Baher LLC. Germán Baher LLC no se hace responsable por el uso indebido de la información presentada en este sitio, ni por decisiones tomadas con base en su contenido sin asesoramiento profesional directo.</p>
+    <p class="footer-legal">Se aplica la <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">Política de privacidad</a> y los <a href="https://policies.google.com/terms?hl=es" target="_blank" rel="noopener">Términos de servicio</a>.</p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('on'), 0);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${Math.min((i % 5) * 0.07, 0.28)}s`;
+    obs.observe(el);
+  });
+
+  /* ═══════════════════════════════════
+     DIAGNOSTIC ENGINE — global functions
+  ═══════════════════════════════════ */
+  var _diagName = '';
+  var _diagAnswers = [0, 0, 0];
+  var _diagStep = 0;
+  var _diagProfiles = ['El Visionario', 'El Ejecutor', 'El Estratega'];
+
+  function _diagRender(html) {
+    var c = document.getElementById('diagContent');
+    c.innerHTML = html;
+    // dots
+    for (var i = 0; i < 6; i++) {
+      var d = document.getElementById('dot' + i);
+      if (!d) continue;
+      d.className = 'diag-dot' + (i < _diagStep ? ' done' : '') + (i === _diagStep ? ' active' : '');
+    }
+    // enter key on name input
+    var inp = document.getElementById('diagName');
+    if (inp) inp.addEventListener('keydown', function(e){ if(e.key==='Enter') diagSubmitName(); });
+  }
+
+  function diagSubmitName() {
+    var v = (document.getElementById('diagName').value || '').trim();
+    if (!v) { document.getElementById('diagName').style.borderColor = 'rgba(237,36,80,0.8)'; return; }
+    _diagName = v;
+    _diagStep = 1;
+    _diagRender(
+      '<div class="diag-step">' +
+        '<div class="diag-confirm">🔓 Identidad confirmada, <strong>' + _diagName + '</strong>. Desbloqueando tu perfil…</div>' +
+        '<p class="diag-phase">Fase 01 — Perfil</p>' +
+        '<h2 class="diag-h">Hola <em>' + _diagName + '</em>. Para trazar tu Hoja de Ruta,<br/>dime: <em>¿con cuál te identificas más hoy?</em></h2>' +
+        '<div class="diag-cards" style="margin-top:2rem;">' +
+          '<div class="diag-card" onclick="diagSelectProfile(0)">' +
+            '<div class="card-phase">Fase 01 · Feeling</div>' +
+            '<div class="card-title">El Visionario</div>' +
+            '<p class="card-desc">"Tengo la visión, pero mi marca es invisible."</p>' +
+            '<p style="font-size:.73rem;color:rgba(255,255,255,.32);margin-bottom:1rem;line-height:1.45;">No logras conectar emocionalmente con tu audiencia.</p>' +
+            '<button class="card-btn" type="button">Este soy yo</button>' +
+          '</div>' +
+          '<div class="diag-card" onclick="diagSelectProfile(1)">' +
+            '<div class="card-phase">Fase 02 · Doing</div>' +
+            '<div class="card-title">El Ejecutor</div>' +
+            '<p class="card-desc">"Hago de todo, pero no logro convertir ventas."</p>' +
+            '<p style="font-size:.73rem;color:rgba(255,255,255,.32);margin-bottom:1rem;line-height:1.45;">Tus sistemas no están cerrando el ciclo.</p>' +
+            '<button class="card-btn" type="button">Este soy yo</button>' +
+          '</div>' +
+          '<div class="diag-card" onclick="diagSelectProfile(2)">' +
+            '<div class="card-phase">Fase 03 · Thinking</div>' +
+            '<div class="card-title">El Estratega</div>' +
+            '<p class="card-desc">"Quiero escalar, pero no tengo una ruta clara."</p>' +
+            '<p style="font-size:.73rem;color:rgba(255,255,255,.32);margin-bottom:1rem;line-height:1.45;">Te falta arquitectura lógica para crecer sin caos.</p>' +
+            '<button class="card-btn" type="button">Este soy yo</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function diagSelectProfile(i) {
+    _diagStep = 2;
+    var prof = _diagProfiles[i];
+    _diagRender(
+      '<div class="diag-step">' +
+        '<div class="diag-confirm">🔓 Desbloqueando validador de <strong>' + prof + '</strong>…</div>' +
+        '<p class="diag-phase">Fase 01 — Feeling</p>' +
+        '<h2 class="diag-h"><em>' + _diagName + '</em>, si tu marca fuera una persona<br/>en una habitación llena de extraños…<br/><em>¿qué pasaría?</em></h2>' +
+        '<p class="diag-sub">Piensa en la primera impresión que genera tu marca.</p>' +
+        '<div class="diag-options">' +
+          '<button class="diag-opt" type="button" onclick="diagAnswer(0,0)">Nadie notaría que entré.</button>' +
+          '<button class="diag-opt" type="button" onclick="diagAnswer(0,1)">Me escucharían, pero me olvidarían rápido.</button>' +
+          '<button class="diag-opt" type="button" onclick="diagAnswer(0,2)">Conectaría de inmediato con la gente correcta.</button>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function diagAnswer(q, val) {
+    _diagAnswers[q] = val;
+    if (q === 0) {
+      _diagStep = 3;
+      _diagRender(
+        '<div class="diag-step">' +
+          '<div class="diag-confirm">🔓 Nivel de Conexión analizado. Bajando al motor de ejecución…</div>' +
+          '<p class="diag-phase">Fase 02 — Doing</p>' +
+          '<h2 class="diag-h">Cuando un cliente potencial te encuentra,<br/><em>¿qué tan fácil es para él decirte que SÍ?</em></h2>' +
+          '<p class="diag-sub">Evalúa la fluidez de tu proceso de conversión.</p>' +
+          '<div class="diag-options">' +
+            '<button class="diag-opt" type="button" onclick="diagAnswer(1,0)">Es un laberinto técnico, muchos se pierden.</button>' +
+            '<button class="diag-opt" type="button" onclick="diagAnswer(1,1)">Tengo pasos claros, pero me falta automatización.</button>' +
+            '<button class="diag-opt" type="button" onclick="diagAnswer(1,2)">Es una línea recta, mi embudo funciona solo.</button>' +
+          '</div>' +
+        '</div>'
+      );
+    } else if (q === 1) {
+      _diagStep = 4;
+      _diagRender(
+        '<div class="diag-step">' +
+          '<div class="diag-confirm">🔓 Capacidad Técnica validada. Desbloqueando Arquitectura Estratégica…</div>' +
+          '<p class="diag-phase">Fase 03 — Thinking</p>' +
+          '<h2 class="diag-h">¿Tienes una Hoja de Ruta para<br/>los próximos 90 días…<br/><em>o estás improvisando cada semana?</em></h2>' +
+          '<p class="diag-sub">Piensa en tu plan estratégico a mediano plazo.</p>' +
+          '<div class="diag-options">' +
+            '<button class="diag-opt" type="button" onclick="diagAnswer(2,0)">Improviso según el día.</button>' +
+            '<button class="diag-opt" type="button" onclick="diagAnswer(2,1)">Tengo metas, pero no una estrategia clara.</button>' +
+            '<button class="diag-opt" type="button" onclick="diagAnswer(2,2)">Tengo un plan maestro validado.</button>' +
+          '</div>' +
+        '</div>'
+      );
+    } else {
+      _diagStep = 5;
+      diagBuildResult();
+    }
+  }
+
+  function diagBuildResult() {
+    var total = _diagAnswers[0] + _diagAnswers[1] + _diagAnswers[2];
+    var level, badge, title, insight;
+    if (total >= 5) {
+      level = 'green'; badge = '✦ Marca lista para escalar';
+      title = 'Tu marca tiene una base <em>sólida</em>.';
+      insight = '<strong>' + _diagName + '</strong>, tu sistema tiene claridad emocional, ejecución funcional y visión estratégica. El siguiente paso es acelerar: optimizar, automatizar y expandir con intención.';
+    } else if (total >= 2) {
+      level = 'yellow'; badge = '◈ Marca con potencial bloqueado';
+      title = 'Tienes potencial. Te faltan <em>los puentes</em>.';
+      insight = '<strong>' + _diagName + '</strong>, hay energía en tu marca, pero existen brechas entre lo que sientes, ejecutas y planeas. Una arquitectura estratégica clara puede desbloquearlo.';
+    } else {
+      level = 'red-badge'; badge = '⚠ Bloqueos estructurales urgentes';
+      title = 'Tu marca necesita <em>reestructuración</em>.';
+      insight = '<strong>' + _diagName + '</strong>, los fundamentos requieren atención inmediata. Sin claridad emocional, sistemas funcionales y hoja de ruta, cada esfuerzo consume energía sin resultados sostenibles.';
+    }
+
+    var ringPhrases = [
+      ['Tu marca no genera conexión emocional', 'Tu conexión emocional es intermitente', 'Resonancia emocional sólida con tu audiencia'],
+      ['Sin sistemas, tu energía se dispersa', 'Tu ejecución necesita más estructura', 'Ejecución funcional y consistente'],
+      ['Sin hoja de ruta, improvisas cada semana', 'Tu estrategia no se traduce en acción', 'Visión estratégica clara y ejecutable']
+    ];
+    var ringColors = _diagAnswers.map(function(a){
+      if (a === 0) return 'rgba(237,36,80,0.28)';
+      if (a === 1) return 'rgba(237,36,80,0.72)';
+      return '#ed2450';
+    });
+    var pcts = [Math.round(_diagAnswers[0]/2*100), Math.round(_diagAnswers[1]/2*100), Math.round(_diagAnswers[2]/2*100)];
+    var labels = ['Feeling','Doing','Thinking'];
+    var rings = labels.map(function(l,i){
+      var glowCls = _diagAnswers[i] === 2 ? ' glow' : '';
+      return '<div class="score-ring-wrap">' +
+        '<div class="score-ring">' +
+          '<svg viewBox="0 0 100 100">' +
+            '<circle class="bg" cx="50" cy="50" r="42"/>' +
+            '<circle class="fill'+glowCls+'" id="ring'+i+'" cx="50" cy="50" r="42" stroke="'+ringColors[i]+'" style="stroke-dashoffset:264"/>' +
+          '</svg>' +
+          '<div class="score-ring-val" id="ringval'+i+'">0%</div>' +
+        '</div>' +
+        '<div class="score-ring-label">'+l+'</div>' +
+        '<div class="score-ring-phrase">'+ringPhrases[i][_diagAnswers[i]]+'</div>' +
+      '</div>';
+    }).join('');
+
+    _diagRender(
+      '<div class="diag-step">' +
+        '<div class="diag-confirm">🔓 Mapa estratégico registrado. Diagnóstico completo.</div>' +
+        '<div class="score-badge ' + level + '">' + badge + '</div>' +
+        '<h2 class="diag-h" style="margin-bottom:1.5rem;">' + title + '</h2>' +
+        '<div class="score-rings">' + rings + '</div>' +
+        '<div class="score-insight">' + insight + '</div>' +
+        '<p class="diag-h" style="font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:.6rem;">No necesitas trabajar más.<br/>Necesitas una <em>estructura que conecte</em><br/>emoción, ejecución y estrategia.</p>' +
+        '<p class="diag-sub" style="margin-bottom:1.8rem;">Tu diagnóstico ya reveló dónde está el bloqueo.</p>' +
+        '<button type="button" class="diag-cta pulse" data-cal-link="german-baher-njlkqp" data-cal-config=\'{"layout":"month_view"}\'>' +
+          'Agendar mi sesión estratégica ' +
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+        '</button>' +
+        '<p class="diag-scarcity">Solo acepto <span>un número limitado</span> de proyectos por mes.</p>' +
+      '</div>'
+    );
+    setTimeout(function(){
+      pcts.forEach(function(p,i){
+        var c = document.getElementById('ring'+i);
+        if(c) c.style.strokeDashoffset = String(264 - (264*p/100));
+        var valEl = document.getElementById('ringval'+i);
+        if(valEl) {
+          var start = performance.now(), dur = 1500;
+          (function countUp(now){
+            var prog = Math.min((now-start)/dur, 1);
+            var ease = 1 - Math.pow(1-prog, 3);
+            valEl.textContent = Math.round(ease*p) + '%';
+            if(prog < 1) requestAnimationFrame(countUp);
+          })(performance.now());
+        }
+      });
+    }, 400);
+  }
+
+  // Init step 0
+  _diagRender(
+    '<div class="diag-step">' +
+      '<p class="diag-phase">Diagnóstico Estratégico</p>' +
+      '<h1 class="diag-h">Antes de construir una marca<br/>que venda… necesitamos descubrir<br/><em>dónde se está rompiendo.</em></h1>' +
+      '<p class="diag-sub">Tu hoja de ruta comienza con una sola pregunta.</p>' +
+      '<div class="diag-name-wrap">' +
+        '<input class="diag-name-input" id="diagName" type="text" placeholder="¿Cómo te llamas?" autocomplete="off"/>' +
+      '</div>' +
+      '<button class="diag-cta pulse" type="button" onclick="diagSubmitName()">' +
+        'Comenzar diagnóstico ' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+      '</button>' +
+      '<p style="font-size:.68rem;color:rgba(255,255,255,.2);margin-top:1.2rem;letter-spacing:.08em;">BASADO EN LA METODOLOGÍA · FEELING · DOING · THINKING</p>' +
+    '</div>'
+  );
+
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ Mensaje enviado';
+    btn.style.background = '#1a7a1a';
+    setTimeout(() => { btn.textContent = 'Enviar mensaje →'; btn.style.background = ''; e.target.reset(); }, 3000);
+  }
+
+  // Active nav + Parallax
+  const secs  = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  const heroEl   = document.getElementById('hero');
+  const bgLines  = document.querySelector('.bg-lines');
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+
+    // Parallax: hero background drifts upward slowly
+    if (heroEl) {
+      heroEl.style.backgroundPositionY = `calc(50% + ${y * 0.38}px)`;
+    }
+
+    // Diagonal streaks shift subtly as you scroll
+    if (bgLines) {
+      bgLines.style.transform = `translateY(${y * 0.08}px)`;
+    }
+
+    // Active nav link highlight
+    let cur = '';
+    secs.forEach(s => { if (y >= s.offsetTop - 130) cur = s.id; });
+    links.forEach(a => { a.style.color = a.getAttribute('href') === `#${cur}` ? 'var(--white)' : ''; });
+  }, { passive: true });
+
+  /* ═══════════════════════════════════
+     i18n — Translations
+  ═══════════════════════════════════ */
+  var _lang = 'es';
+
+  var _t = {
+    es: {
+      nav_about:'Sobre mí', nav_method:'Metodología', nav_services:'Servicios',
+      nav_cases:'Casos', nav_contact:'Contacto', nav_cta:'Hablemos',
+      about_tag:'Sobre mí',
+      about_title:'Construyo<br/>marcas que<br/>perduran.',
+      about_p1:'Soy Germán Baher, estratega de marca y crecimiento. Ayudo a emprendedores y empresas a clarificar su identidad, diferenciarse con propósito y crecer de forma consistente.',
+      about_p2:'Mi trabajo combina pensamiento estratégico profundo, intuición de mercado y ejecución orientada a resultados. No construyo logos. Construyo posicionamiento.',
+      stat_brands:'Marcas trabajadas', stat_years:'Años de experiencia', stat_countries:'Países',
+      method_tag:'Método', method_title:'La metodología FDT',
+      method_sub:'Tres dimensiones que toda marca debe integrar para generar movimiento real en el mercado.',
+      fdt_f_title:'Sentir<br/>la marca', fdt_f_body:'Exploramos la emoción, los valores y el propósito que mueven a tu audiencia. Donde la marca conecta con el ser humano, no solo con el consumidor.',
+      fdt_d_title:'Hacer<br/>la marca', fdt_d_body:'Diseñamos la estrategia, el posicionamiento y los activos que materializan la marca en el mundo real. Del concepto a la ejecución sin perder el norte.',
+      fdt_t_title:'Pensar<br/>la marca', fdt_t_body:'Analizamos datos, comportamientos y tendencias para tomar decisiones estratégicas informadas. La inteligencia que guía el crecimiento sostenible.',
+      serv_tag:'Lo que hago', serv_title:'Servicios', serv_sub:'Soluciones estratégicas para marcas que quieren crecer con claridad.',
+      s1_title:'Brand Strategy', s1_body:'Definimos el posicionamiento, la voz y la identidad de tu marca para que se diferencie de forma auténtica y memorable en su mercado.',
+      s2_title:'Diagnóstico de Claridad', s2_body:'Un proceso profundo para identificar las brechas entre dónde está tu marca hoy y dónde necesita estar para crecer.',
+      s3_title:'Growth Consulting', s3_body:'Acompañamiento estratégico continuo para ejecutar, medir y ajustar el crecimiento de tu marca con datos reales y visión de largo plazo.',
+      s4_title:'Workshops & Formación', s4_body:'Sesiones intensivas para equipos y fundadores que quieren dominar el pensamiento estratégico de marca.',
+      cases_tag:'Portafolio', cases_title:'Casos de éxito', cases_sub:'Marcas que ayudé a clarificar, reposicionar y crecer.',
+      brands_label:'Marcas con las que he trabajado',
+      cta_title:'¿Tu marca tiene<br/>una voz clara?', cta_btn:'Empezar el diagnóstico',
+      contact_tag:'Contacto', contact_title:'Hablemos<br/>de tu marca.',
+      contact_sub:'Si tienes un proyecto, una pregunta o simplemente quieres explorar si podemos trabajar juntos, escríbeme.',
+      // Diagnostic
+      diag_tag:'Diagnóstico Estratégico',
+      diag_h:'Antes de construir una marca<br/>que venda… necesitamos descubrir<br/><em>dónde se está rompiendo.</em>',
+      diag_sub:'Tu hoja de ruta comienza con una sola pregunta.',
+      diag_placeholder:'¿Cómo te llamas?',
+      diag_cta_btn:'Comenzar diagnóstico',
+      diag_fdt_tag:'BASADO EN LA METODOLOGÍA · FEELING · DOING · THINKING',
+      confirmed:'🔓 Identidad confirmada, ', unlocking:'. Desbloqueando tu perfil…',
+      profile_tag:'Fase 01 — Perfil',
+      profile_h:'Para trazar tu Hoja de Ruta,<br/>dime: <em>¿con cuál te identificas más hoy?</em>',
+      profile_h_greeting: 'Hola <em>{{name}}</em>. ',
+      p0_phase:'Fase 01 · Feeling', p0_title:'El Visionario', p0_quote:'"Tengo la visión, pero mi marca es invisible."', p0_desc:'No logras conectar emocionalmente con tu audiencia.', p_btn:'Este soy yo',
+      p1_phase:'Fase 02 · Doing', p1_title:'El Ejecutor', p1_quote:'"Hago de todo, pero no logro convertir ventas."', p1_desc:'Tus sistemas no están cerrando el ciclo.',
+      p2_phase:'Fase 03 · Thinking', p2_title:'El Estratega', p2_quote:'"Quiero escalar, pero no tengo una ruta clara."', p2_desc:'Te falta arquitectura lógica para crecer sin caos.',
+      unlock_prof:'Desbloqueando validador de ',
+      f_phase:'Fase 01 — Feeling', f_h:'<em>{{name}}</em>, si tu marca fuera una persona<br/>en una habitación llena de extraños…<br/><em>¿qué pasaría?</em>', f_sub:'Piensa en la primera impresión que genera tu marca.',
+      f_o0:'Nadie notaría que entré.', f_o1:'Me escucharían, pero me olvidarían rápido.', f_o2:'Conectaría de inmediato con la gente correcta.',
+      unlock_f:'🔓 Nivel de Conexión analizado. Bajando al motor de ejecución…',
+      d_phase:'Fase 02 — Doing', d_h:'Cuando un cliente potencial te encuentra,<br/><em>¿qué tan fácil es para él decirte que SÍ?</em>', d_sub:'Evalúa la fluidez de tu proceso de conversión.',
+      d_o0:'Es un laberinto técnico, muchos se pierden.', d_o1:'Tengo pasos claros, pero me falta automatización.', d_o2:'Es una línea recta, mi embudo funciona solo.',
+      unlock_d:'🔓 Capacidad Técnica validada. Desbloqueando Arquitectura Estratégica…',
+      th_phase:'Fase 03 — Thinking', th_h:'¿Tienes una Hoja de Ruta para<br/>los próximos 90 días…<br/><em>o estás improvisando cada semana?</em>', th_sub:'Piensa en tu plan estratégico a mediano plazo.',
+      th_o0:'Improviso según el día.', th_o1:'Tengo metas, pero no una estrategia clara.', th_o2:'Tengo un plan maestro validado.',
+      unlock_th:'🔓 Mapa estratégico registrado. Diagnóstico completo.',
+      r_green_badge:'✦ Marca lista para escalar', r_green_title:'Tu marca tiene una base <em>sólida</em>.', r_green_insight:'<strong>{{name}}</strong>, tu sistema tiene claridad emocional, ejecución funcional y visión estratégica. El siguiente paso es acelerar: optimizar, automatizar y expandir.',
+      r_yellow_badge:'◈ Marca con potencial bloqueado', r_yellow_title:'Tienes potencial. Te faltan <em>los puentes</em>.', r_yellow_insight:'<strong>{{name}}</strong>, hay energía en tu marca, pero existen brechas entre lo que sientes, ejecutas y planeas. Una arquitectura estratégica clara puede desbloquearlo.',
+      r_red_badge:'⚠ Bloqueos estructurales urgentes', r_red_title:'Tu marca necesita <em>reestructuración</em>.', r_red_insight:'<strong>{{name}}</strong>, los fundamentos requieren atención inmediata. Sin claridad emocional y hoja de ruta, cada esfuerzo consume energía sin resultados sostenibles.',
+      r_close:'No necesitas trabajar más.<br/>Necesitas una <em>estructura que conecte</em><br/>emoción, ejecución y estrategia.',
+      r_close_sub:'Tu diagnóstico ya reveló dónde está el bloqueo.',
+      r_cta_btn:'Agendar mi sesión estratégica',
+      r_scarcity:'Solo acepto <span>un número limitado</span> de proyectos por mes.',
+      ring_phrases:[
+        ['Tu marca no genera conexión emocional','Tu conexión emocional es intermitente','Resonancia emocional sólida con tu audiencia'],
+        ['Sin sistemas, tu energía se dispersa','Tu ejecución necesita más estructura','Ejecución funcional y consistente'],
+        ['Sin hoja de ruta, improvisas cada semana','Tu estrategia no se traduce en acción','Visión estratégica clara y ejecutable']
+      ]
+    },
+    en: {
+      nav_about:'About', nav_method:'Methodology', nav_services:'Services',
+      nav_cases:'Cases', nav_contact:'Contact', nav_cta:"Let's Talk",
+      about_tag:'About Me',
+      about_title:'I build brands<br/>that last.',
+      about_p1:"I'm Germán Baher, brand and growth strategist. I help entrepreneurs and companies clarify their identity, differentiate with purpose, and grow consistently.",
+      about_p2:'My work combines deep strategic thinking, market intuition, and results-driven execution. I don\'t build logos. I build positioning.',
+      stat_brands:'Brands worked with', stat_years:'Years of experience', stat_countries:'Countries',
+      method_tag:'Method', method_title:'The FDT Methodology',
+      method_sub:'Three dimensions every brand must integrate to generate real movement in the market.',
+      fdt_f_title:'Feel<br/>the brand', fdt_f_body:'We explore the emotion, values, and purpose that move your audience. Where the brand connects with the human being, not just the consumer.',
+      fdt_d_title:'Do<br/>the brand', fdt_d_body:'We design the strategy, positioning, and assets that materialize the brand in the real world. From concept to execution without losing direction.',
+      fdt_t_title:'Think<br/>the brand', fdt_t_body:'We analyze data, behaviors, and trends to make informed strategic decisions. The intelligence that guides sustainable growth.',
+      serv_tag:'What I Do', serv_title:'Services', serv_sub:'Strategic solutions for brands that want to grow with clarity.',
+      s1_title:'Brand Strategy', s1_body:'We define the positioning, voice, and identity of your brand so it stands out authentically and memorably in its market.',
+      s2_title:'Clarity Diagnosis', s2_body:'A deep process to identify the gaps between where your brand is today and where it needs to be to grow. Your strategic roadmap.',
+      s3_title:'Growth Consulting', s3_body:'Continuous strategic support to execute, measure, and adjust your brand\'s growth with real data and long-term vision.',
+      s4_title:'Workshops & Training', s4_body:'Intensive sessions for teams and founders who want to master brand strategic thinking and apply it to their business.',
+      cases_tag:'Portfolio', cases_title:'Success Cases', cases_sub:'Brands I helped clarify, reposition, and grow.',
+      brands_label:'Brands I\'ve worked with',
+      cta_title:'Does your brand<br/>have a clear voice?', cta_btn:'Start the diagnosis',
+      contact_tag:'Contact', contact_title:"Let's talk<br/>about your brand.",
+      contact_sub:'If you have a project, a question, or simply want to explore if we can work together, write to me.',
+      diag_tag:'Strategic Diagnosis',
+      diag_h:'Before building a brand<br/>that sells… we need to discover<br/><em>where it\'s breaking.</em>',
+      diag_sub:'Your roadmap starts with a single question.',
+      diag_placeholder:'What\'s your name?',
+      diag_cta_btn:'Start diagnosis',
+      diag_fdt_tag:'BASED ON THE METHODOLOGY · FEELING · DOING · THINKING',
+      confirmed:'🔓 Identity confirmed, ', unlocking:'. Unlocking your profile…',
+      profile_tag:'Phase 01 — Profile',
+      profile_h:'To map your Roadmap,<br/>tell me: <em>which profile fits you most today?</em>',
+      profile_h_greeting: 'Hi <em>{{name}}</em>. ',
+      p0_phase:'Phase 01 · Feeling', p0_title:'The Visionary', p0_quote:'"I have the vision, but my brand is invisible."', p0_desc:"You can't connect emotionally with your audience.", p_btn:'This is me',
+      p1_phase:'Phase 02 · Doing', p1_title:'The Executor', p1_quote:'"I do everything, but I can\'t convert sales."', p1_desc:'Your systems aren\'t closing the business cycle.',
+      p2_phase:'Phase 03 · Thinking', p2_title:'The Strategist', p2_quote:'"I want to scale, but I don\'t have a clear route."', p2_desc:'You lack the logical architecture to grow without chaos.',
+      unlock_prof:'Unlocking validator for ',
+      f_phase:'Phase 01 — Feeling', f_h:'<em>{{name}}</em>, if your brand were a person<br/>in a room full of strangers…<br/><em>what would happen?</em>', f_sub:'Think about the first impression your brand makes.',
+      f_o0:'Nobody would notice I walked in.', f_o1:"They'd hear me, but forget me quickly.", f_o2:"I'd connect instantly with the right people.",
+      unlock_f:'🔓 Connection Level analyzed. Dropping into execution engine…',
+      d_phase:'Phase 02 — Doing', d_h:'When a potential client finds you,<br/><em>how easy is it for them to say YES?</em>', d_sub:'Evaluate the fluency of your conversion process.',
+      d_o0:'It\'s a technical maze, many get lost.', d_o1:'I have clear steps, but I lack automation.', d_o2:'It\'s a straight line, my funnel runs itself.',
+      unlock_d:'🔓 Technical Capacity validated. Unlocking Strategic Architecture…',
+      th_phase:'Phase 03 — Thinking', th_h:'Do you have a Roadmap for<br/>the next 90 days…<br/><em>or are you improvising each week?</em>', th_sub:'Think about your medium-term strategic plan.',
+      th_o0:'I improvise day by day.', th_o1:'I have goals, but not a clear strategy.', th_o2:'I have a validated master plan.',
+      unlock_th:'🔓 Strategic map registered. Diagnosis complete.',
+      r_green_badge:'✦ Brand ready to scale', r_green_title:'Your brand has a <em>solid</em> foundation.', r_green_insight:'<strong>{{name}}</strong>, your system has emotional clarity, functional execution, and strategic vision. The next step is to accelerate: optimize, automate, and expand.',
+      r_yellow_badge:'◈ Brand with blocked potential', r_yellow_title:'You have potential. You\'re missing <em>the bridges</em>.', r_yellow_insight:'<strong>{{name}}</strong>, there\'s energy in your brand, but gaps exist between what you feel, execute, and plan. Clear strategic architecture can unlock that growth.',
+      r_red_badge:'⚠ Urgent structural blocks', r_red_title:'Your brand needs <em>restructuring</em>.', r_red_insight:'<strong>{{name}}</strong>, the fundamentals need immediate attention. Without emotional clarity and a roadmap, every effort consumes energy without sustainable results.',
+      r_close:'You don\'t need to work more.<br/>You need a <em>structure that connects</em><br/>emotion, execution, and strategy.',
+      r_close_sub:'Your diagnosis has already revealed where the block is.',
+      r_cta_btn:'Book my strategic session',
+      r_scarcity:'I only accept <span>a limited number</span> of projects per month.',
+      ring_phrases:[
+        ['Your brand generates no emotional connection','Your emotional connection is inconsistent','Solid emotional resonance with your audience'],
+        ['Without systems, your energy is scattered','Your execution needs more structure','Functional and consistent execution'],
+        ['Without a roadmap, you improvise every week','Your strategy doesn\'t translate into action','Clear and actionable strategic vision']
+      ]
+    },
+    fr: {
+      nav_about:'À propos', nav_method:'Méthode', nav_services:'Services',
+      nav_cases:'Cas', nav_contact:'Contact', nav_cta:'Parlons-en',
+      about_tag:'À propos',
+      about_title:'Je construis des marques<br/>qui durent.',
+      about_p1:"Je suis Germán Baher, stratège de marque et de croissance. J'aide les entrepreneurs et les entreprises à clarifier leur identité, à se différencier avec intention et à croître de manière cohérente.",
+      about_p2:"Mon travail combine une réflexion stratégique approfondie, l'intuition du marché et une exécution axée sur les résultats. Je ne construis pas des logos. Je construis du positionnement.",
+      stat_brands:'Marques accompagnées', stat_years:"Années d'expérience", stat_countries:'Pays',
+      method_tag:'Méthode', method_title:'La méthodologie FDT',
+      method_sub:'Trois dimensions que toute marque doit intégrer pour générer un mouvement réel sur le marché.',
+      fdt_f_title:'Ressentir<br/>la marque', fdt_f_body:"Nous explorons l'émotion, les valeurs et l'objectif qui motivent votre audience. Là où la marque se connecte à l'être humain, pas seulement au consommateur.",
+      fdt_d_title:'Faire<br/>la marque', fdt_d_body:'Nous concevons la stratégie, le positionnement et les actifs qui matérialisent la marque dans le monde réel. Du concept à l\'exécution sans perdre le cap.',
+      fdt_t_title:'Penser<br/>la marque', fdt_t_body:'Nous analysons les données, les comportements et les tendances pour prendre des décisions stratégiques éclairées. L\'intelligence qui guide la croissance durable.',
+      serv_tag:'Ce que je fais', serv_title:'Services', serv_sub:'Solutions stratégiques pour les marques qui veulent croître avec clarté.',
+      s1_title:'Brand Strategy', s1_body:'Nous définissons le positionnement, la voix et l\'identité de votre marque pour qu\'elle se distingue de manière authentique et mémorable.',
+      s2_title:'Diagnostic de Clarté', s2_body:'Un processus approfondi pour identifier les écarts entre où se trouve votre marque aujourd\'hui et où elle doit être pour croître.',
+      s3_title:'Growth Consulting', s3_body:'Accompagnement stratégique continu pour exécuter, mesurer et ajuster la croissance de votre marque avec des données réelles.',
+      s4_title:'Ateliers & Formation', s4_body:'Sessions intensives pour les équipes et les fondateurs qui veulent maîtriser la pensée stratégique de marque.',
+      cases_tag:'Portfolio', cases_title:'Cas de succès', cases_sub:'Marques que j\'ai aidées à clarifier, repositionner et développer.',
+      brands_label:"Marques avec lesquelles j'ai travaillé",
+      cta_title:'Votre marque a-t-elle<br/>une voix claire?', cta_btn:'Commencer le diagnostic',
+      contact_tag:'Contact', contact_title:'Parlons<br/>de votre marque.',
+      contact_sub:'Si vous avez un projet, une question ou souhaitez simplement explorer si nous pouvons travailler ensemble, écrivez-moi.',
+      diag_tag:'Diagnostic Stratégique',
+      diag_h:'Avant de construire une marque<br/>qui vend… nous devons découvrir<br/><em>où elle se brise.</em>',
+      diag_sub:'Votre feuille de route commence par une seule question.',
+      diag_placeholder:'Comment vous appelez-vous?',
+      diag_cta_btn:'Commencer le diagnostic',
+      diag_fdt_tag:'BASÉ SUR LA MÉTHODOLOGIE · FEELING · DOING · THINKING',
+      confirmed:'🔓 Identité confirmée, ', unlocking:'. Déverrouillage de votre profil…',
+      profile_tag:'Phase 01 — Profil',
+      profile_h:'Pour tracer votre Feuille de Route,<br/>dites-moi: <em>quel profil vous correspond le mieux?</em>',
+      profile_h_greeting: 'Bonjour <em>{{name}}</em>. ',
+      p0_phase:'Phase 01 · Feeling', p0_title:'Le Visionnaire', p0_quote:'"J\'ai la vision, mais ma marque est invisible."', p0_desc:'Vous ne parvenez pas à créer un lien émotionnel avec votre audience.', p_btn:'C\'est moi',
+      p1_phase:'Phase 02 · Doing', p1_title:'L\'Exécuteur', p1_quote:'"Je fais tout, mais je ne convertis pas de ventes."', p1_desc:'Vos systèmes ne ferment pas le cycle commercial.',
+      p2_phase:'Phase 03 · Thinking', p2_title:'Le Stratège', p2_quote:'"Je veux évoluer, mais je n\'ai pas de route claire."', p2_desc:'Il vous manque l\'architecture logique pour croître sans chaos.',
+      unlock_prof:'Déverrouillage du validateur de ',
+      f_phase:'Phase 01 — Feeling', f_h:'<em>{{name}}</em>, si votre marque était une personne<br/>dans une pièce pleine d\'étrangers…<br/><em>que se passerait-il?</em>', f_sub:'Pensez à la première impression que crée votre marque.',
+      f_o0:'Personne ne remarquerait mon entrée.', f_o1:'On m\'écouterait, mais on m\'oublierait vite.', f_o2:'Je me connecterais immédiatement avec les bonnes personnes.',
+      unlock_f:'🔓 Niveau de Connexion analysé. Accès au moteur d\'exécution…',
+      d_phase:'Phase 02 — Doing', d_h:'Quand un client potentiel vous trouve,<br/><em>à quel point est-il facile de dire OUI?</em>', d_sub:'Évaluez la fluidité de votre processus de conversion.',
+      d_o0:'C\'est un labyrinthe technique, beaucoup se perdent.', d_o1:'J\'ai des étapes claires, mais il me manque de l\'automatisation.', d_o2:'C\'est une ligne droite, mon entonnoir fonctionne seul.',
+      unlock_d:'🔓 Capacité Technique validée. Déverrouillage de l\'Architecture Stratégique…',
+      th_phase:'Phase 03 — Thinking', th_h:'Avez-vous une Feuille de Route pour<br/>les 90 prochains jours…<br/><em>ou improvisez-vous chaque semaine?</em>', th_sub:'Pensez à votre plan stratégique à moyen terme.',
+      th_o0:'J\'improvise au jour le jour.', th_o1:'J\'ai des objectifs, mais pas de stratégie claire.', th_o2:'J\'ai un plan directeur validé.',
+      unlock_th:'🔓 Carte stratégique enregistrée. Diagnostic complet.',
+      r_green_badge:'✦ Marque prête à évoluer', r_green_title:'Votre marque a une base <em>solide</em>.', r_green_insight:'<strong>{{name}}</strong>, votre système a une clarté émotionnelle, une exécution fonctionnelle et une vision stratégique. La prochaine étape est d\'accélérer.',
+      r_yellow_badge:'◈ Marque avec potentiel bloqué', r_yellow_title:'Vous avez du potentiel. Il vous manque <em>les ponts</em>.', r_yellow_insight:'<strong>{{name}}</strong>, il y a de l\'énergie dans votre marque, mais des lacunes existent entre ce que vous ressentez, exécutez et planifiez.',
+      r_red_badge:'⚠ Blocages structurels urgents', r_red_title:'Votre marque a besoin d\'une <em>restructuration</em>.', r_red_insight:'<strong>{{name}}</strong>, les fondamentaux nécessitent une attention immédiate. Sans clarté émotionnelle et feuille de route, chaque effort consomme de l\'énergie sans résultats durables.',
+      r_close:'Vous n\'avez pas besoin de travailler plus.<br/>Vous avez besoin d\'une <em>structure qui connecte</em><br/>émotion, exécution et stratégie.',
+      r_close_sub:'Votre diagnostic a déjà révélé où se trouve le blocage.',
+      r_cta_btn:'Réserver ma session stratégique',
+      r_scarcity:"J'accepte seulement <span>un nombre limité</span> de projets par mois.",
+      ring_phrases:[
+        ['Votre marque ne génère pas de connexion émotionnelle','Votre connexion émotionnelle est intermittente','Résonance émotionnelle solide avec votre audience'],
+        ['Sans systèmes, votre énergie se disperse','Votre exécution manque de structure','Exécution fonctionnelle et cohérente'],
+        ['Sans feuille de route, vous improvisez chaque semaine','Votre stratégie ne se traduit pas en action','Vision stratégique claire et actionnable']
+      ]
+    }
+  };
+
+  function applyLang(lang) {
+    _lang = lang;
+    // Update buttons
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    // Apply static translations
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.dataset.i18n;
+      if (_t[lang] && _t[lang][key] !== undefined) el.innerHTML = _t[lang][key];
+    });
+    // Re-render diagnostic step 0 with new language
+    _diagStep = 0;
+    _diagRender(
+      '<div class="diag-step">' +
+        '<p class="diag-phase">' + _t[lang].diag_tag + '</p>' +
+        '<h1 class="diag-h">' + _t[lang].diag_h + '</h1>' +
+        '<p class="diag-sub">' + _t[lang].diag_sub + '</p>' +
+        '<div class="diag-name-wrap">' +
+          '<input class="diag-name-input" id="diagName" type="text" placeholder="' + _t[lang].diag_placeholder + '" autocomplete="off"/>' +
+        '</div>' +
+        '<button class="diag-cta pulse" type="button" onclick="diagSubmitName()">' +
+          _t[lang].diag_cta_btn +
+          ' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+        '</button>' +
+        '<p style="font-size:.68rem;color:rgba(255,255,255,.2);margin-top:1.2rem;letter-spacing:.08em;">' + _t[lang].diag_fdt_tag + '</p>' +
+      '</div>'
+    );
+    localStorage.setItem('gb_lang', lang);
+  }
+
+  // Patch diagnostic render functions to use current language
+  function diagSubmitName() {
+    var v = (document.getElementById('diagName').value || '').trim();
+    if (!v) { document.getElementById('diagName').style.borderColor = 'rgba(237,36,80,0.8)'; return; }
+    _diagName = v; _diagStep = 1;
+    var t = _t[_lang];
+    _diagRender(
+      '<div class="diag-step">' +
+        '<div class="diag-confirm">' + t.confirmed + '<strong>' + _diagName + '</strong>' + t.unlocking + '</div>' +
+        '<p class="diag-phase">' + t.profile_tag + '</p>' +
+        '<h2 class="diag-h">' + (t.profile_h_greeting||'').replace('{{name}}', _diagName) + t.profile_h + '</h2>' +
+        '<div class="diag-cards" style="margin-top:2rem;">' +
+          ['p0','p1','p2'].map(function(p,i){
+            return '<div class="diag-card" onclick="diagSelectProfile('+i+')">' +
+              '<div class="card-phase">'+t[p+'_phase']+'</div>' +
+              '<div class="card-title">'+t[p+'_title']+'</div>' +
+              '<p class="card-desc">'+t[p+'_quote']+'</p>' +
+              '<p style="font-size:.73rem;color:rgba(255,255,255,.32);margin-bottom:1rem;line-height:1.45;">'+t[p+'_desc']+'</p>' +
+              '<button class="card-btn" type="button">'+t.p_btn+'</button>' +
+            '</div>';
+          }).join('') +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function diagSelectProfile(i) {
+    _diagStep = 2; var t = _t[_lang];
+    var profiles = [t.p0_title, t.p1_title, t.p2_title];
+    _diagRender(
+      '<div class="diag-step">' +
+        '<div class="diag-confirm">🔓 ' + t.unlock_prof + '<strong>' + profiles[i] + '</strong>…</div>' +
+        '<p class="diag-phase">' + t.f_phase + '</p>' +
+        '<h2 class="diag-h">' + t.f_h.replace('{{name}}', _diagName) + '</h2>' +
+        '<p class="diag-sub">' + t.f_sub + '</p>' +
+        '<div class="diag-options">' +
+          [t.f_o0, t.f_o1, t.f_o2].map(function(o,j){
+            return '<button class="diag-opt" type="button" onclick="diagAnswer(0,'+j+')">'+o+'</button>';
+          }).join('') +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function diagAnswer(q, val) {
+    _diagAnswers[q] = val; var t = _t[_lang];
+    if (q === 0) {
+      _diagStep = 3;
+      _diagRender('<div class="diag-step"><div class="diag-confirm">'+t.unlock_f+'</div>' +
+        '<p class="diag-phase">'+t.d_phase+'</p><h2 class="diag-h">'+t.d_h+'</h2><p class="diag-sub">'+t.d_sub+'</p>' +
+        '<div class="diag-options">' + [t.d_o0,t.d_o1,t.d_o2].map(function(o,j){return '<button class="diag-opt" type="button" onclick="diagAnswer(1,'+j+')">'+o+'</button>';}).join('') + '</div></div>');
+    } else if (q === 1) {
+      _diagStep = 4;
+      _diagRender('<div class="diag-step"><div class="diag-confirm">'+t.unlock_d+'</div>' +
+        '<p class="diag-phase">'+t.th_phase+'</p><h2 class="diag-h">'+t.th_h+'</h2><p class="diag-sub">'+t.th_sub+'</p>' +
+        '<div class="diag-options">' + [t.th_o0,t.th_o1,t.th_o2].map(function(o,j){return '<button class="diag-opt" type="button" onclick="diagAnswer(2,'+j+')">'+o+'</button>';}).join('') + '</div></div>');
+    } else {
+      _diagStep = 5; diagBuildResult();
+    }
+  }
+
+  function diagBuildResult() {
+    var total = _diagAnswers[0]+_diagAnswers[1]+_diagAnswers[2]; var t = _t[_lang];
+    var level, badge, title, insight;
+    if (total >= 5) { level='green'; badge=t.r_green_badge; title=t.r_green_title; insight=t.r_green_insight.replace('{{name}}',_diagName); }
+    else if (total >= 2) { level='yellow'; badge=t.r_yellow_badge; title=t.r_yellow_title; insight=t.r_yellow_insight.replace('{{name}}',_diagName); }
+    else { level='red-badge'; badge=t.r_red_badge; title=t.r_red_title; insight=t.r_red_insight.replace('{{name}}',_diagName); }
+
+    var rp = t.ring_phrases || [
+      ['Tu marca no genera conexión emocional','Tu conexión emocional es intermitente','Resonancia emocional sólida con tu audiencia'],
+      ['Sin sistemas, tu energía se dispersa','Tu ejecución necesita más estructura','Ejecución funcional y consistente'],
+      ['Sin hoja de ruta, improvisas cada semana','Tu estrategia no se traduce en acción','Visión estratégica clara y ejecutable']
+    ];
+    var ringColors = _diagAnswers.map(function(a){
+      return a===0?'rgba(237,36,80,0.28)': a===1?'rgba(237,36,80,0.72)':'#ed2450';
+    });
+    var pcts=[Math.round(_diagAnswers[0]/2*100),Math.round(_diagAnswers[1]/2*100),Math.round(_diagAnswers[2]/2*100)];
+    var rings=['Feeling','Doing','Thinking'].map(function(l,i){
+      var glowCls = _diagAnswers[i]===2?' glow':'';
+      return '<div class="score-ring-wrap">' +
+        '<div class="score-ring"><svg viewBox="0 0 100 100">' +
+          '<circle class="bg" cx="50" cy="50" r="42"/>' +
+          '<circle class="fill'+glowCls+'" id="ring'+i+'" cx="50" cy="50" r="42" stroke="'+ringColors[i]+'" style="stroke-dashoffset:264"/>' +
+        '</svg><div class="score-ring-val" id="ringval'+i+'">0%</div></div>' +
+        '<div class="score-ring-label">'+l+'</div>' +
+        '<div class="score-ring-phrase">'+rp[i][_diagAnswers[i]]+'</div>' +
+      '</div>';
+    }).join('');
+    _diagRender('<div class="diag-step"><div class="diag-confirm">'+t.unlock_th+'</div>' +
+      '<div class="score-badge '+level+'">'+badge+'</div><h2 class="diag-h" style="margin-bottom:1.5rem;">'+title+'</h2>' +
+      '<div class="score-rings">'+rings+'</div><div class="score-insight">'+insight+'</div>' +
+      '<p class="diag-h" style="font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:.6rem;">'+t.r_close+'</p>' +
+      '<p class="diag-sub" style="margin-bottom:1.8rem;">'+t.r_close_sub+'</p>' +
+      '<button type="button" class="diag-cta pulse" data-cal-link="german-baher-njlkqp" data-cal-config=\'{"layout":"month_view"}\'>'+t.r_cta_btn+' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>' +
+      '<p class="diag-scarcity">'+t.r_scarcity+'</p></div>');
+    setTimeout(function(){
+      pcts.forEach(function(p,i){
+        var c=document.getElementById('ring'+i);
+        if(c) c.style.strokeDashoffset=String(264-(264*p/100));
+        var valEl=document.getElementById('ringval'+i);
+        if(valEl){
+          var start=performance.now(),dur=1500;
+          (function countUp(now){
+            var prog=Math.min((now-start)/dur,1);
+            var ease=1-Math.pow(1-prog,3);
+            valEl.textContent=Math.round(ease*p)+'%';
+            if(prog<1) requestAnimationFrame(countUp);
+          })(performance.now());
+        }
+      });
+    },400);
+  }
+
+  // Lang switcher click
+  document.getElementById('langSwitcher').addEventListener('click', function(e){
+    var btn = e.target.closest('.lang-btn');
+    if (btn) applyLang(btn.dataset.lang);
+  });
+
+  // Init: saved lang → IP detect → apply
+  (function initLang(){
+    var saved = localStorage.getItem('gb_lang');
+    if (saved && _t[saved]) { applyLang(saved); return; }
+    fetch('https://ipapi.co/json/')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        var country = (d.country_code || '').toUpperCase();
+        var es = ['ES','MX','AR','CO','CL','PE','VE','EC','BO','PY','UY','CR','PA','DO','CU','GT','HN','SV','NI','PR','GQ'];
+        var fr = ['FR','BE','CH','LU','MC','SN','CI','CM','CD','MG','BF','ML','NE','TG','BJ','GA','CG','CF','TD','DZ','TN','MA'];
+        var lang = fr.indexOf(country) > -1 ? 'fr' : es.indexOf(country) > -1 ? 'es' : 'en';
+        applyLang(lang);
+      })
+      .catch(function(){ applyLang('es'); });
+  })();
+
+  // ── Counter animation ──
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        // ease out cubic
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(ease * target);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('.count-up').forEach(el => counterObs.observe(el));
+</script>
+
+<!-- ── Cal.com embed ── -->
+<script type="text/javascript">
+(function (C, A, L) {
+  let p = function (a, ar) { a.q.push(ar); };
+  let d = C.document;
+  C.Cal = C.Cal || function () {
+    let cal = C.Cal; let ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {}; cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
+    }
+    if (ar[0] === L) {
+      const api = function () { p(api, arguments); };
+      const namespace = ar[1]; api.q = api.q || [];
+      if (typeof namespace === "string") {
+        cal.ns[namespace] = cal.ns[namespace] || api;
+        p(cal.ns[namespace], ar);
+        p(cal, ["initNamespace", namespace]);
+      } else p(cal, ar);
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+Cal("init", { origin: "https://app.cal.com" });
+Cal("ui", {
+  theme: "dark",
+  styles: { branding: { brandColor: "#ed2450" } },
+  hideEventTypeDetails: false,
+  layout: "month_view"
+});
+</script>
+</body>
+</html>
