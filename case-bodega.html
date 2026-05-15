@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bodega PIL — Shopper-Centric Retail Brand Transformation | Germán Baher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --red: #ed2450; --black: #080808; --black2: #0d0d0d;
+      --black3: #141414; --white: #ffffff; --grey: rgba(255,255,255,0.5);
+      --border: rgba(255,255,255,0.07);
+    }
+    body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
+
+    .bg-lines { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bg-lines::before {
+      content: ''; position: absolute; top: -30%; left: -10%; width: 140%; height: 160%;
+      background: linear-gradient(115deg,
+        transparent 0%, transparent 28%,
+        rgba(255,255,255,0.022) 28.4%, rgba(255,255,255,0.022) 28.8%,
+        transparent 29.2%, transparent 48%,
+        rgba(255,255,255,0.016) 48.3%, rgba(255,255,255,0.016) 48.6%,
+        transparent 49%, transparent 65%,
+        rgba(255,255,255,0.012) 65.3%, rgba(255,255,255,0.012) 65.6%,
+        transparent 66%, transparent 100%);
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.3rem 5vw; background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(18px); border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto; display: block; }
+    .nav-back {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    .case-hero {
+      position: relative; min-height: 85vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 9rem 5vw 5rem;
+      background: url('assets/cases/bodega/cover-color.webp') center 40% / cover no-repeat;
+      will-change: background-position;
+    }
+    .case-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.65) 50%, rgba(8,8,8,0.3) 100%);
+    }
+    .case-hero-inner { position: relative; z-index: 1; max-width: 900px; }
+    .case-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--red); border: 1px solid var(--red);
+      padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem;
+    }
+    .case-hero h1 {
+      font-size: clamp(2.8rem, 7vw, 6.5rem); font-weight: 900; line-height: 0.92;
+      letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .case-hero h1 em { font-style: normal; color: var(--red); }
+    .case-hero-sub {
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      color: rgba(255,255,255,0.65); max-width: 560px; line-height: 1.7; margin-bottom: 2.5rem;
+    }
+    .case-meta {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+      border-top: 1px solid var(--border); padding-top: 1.5rem;
+    }
+    .case-meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .case-meta-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+    }
+    .case-meta-value { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+    .case-meta-value.red { color: var(--red); }
+
+    .case-body { position: relative; z-index: 1; }
+    .cs { padding: 6rem 5vw; border-top: 1px solid var(--border); }
+    .cs-wrap { max-width: 1100px; margin: 0 auto; }
+    .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .cs-grid.reverse { direction: rtl; }
+    .cs-grid.reverse > * { direction: ltr; }
+    .section-num {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.7rem;
+    }
+    .cs h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;
+      line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .cs-sub {
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 2rem;
+    }
+    .cs p { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.7); margin-bottom: 1.2rem; }
+    .cs p:last-child { margin-bottom: 0; }
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin: 1.5rem 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.95rem; color: rgba(255,255,255,0.75); line-height: 1.5;
+    }
+    .checklist li::before {
+      content: ''; flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px;
+      border-radius: 50%; background: var(--red);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 65%; background-repeat: no-repeat; background-position: center;
+    }
+    .cs-img { position: relative; border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; }
+    .cs-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .cs-img:hover img { transform: scale(1.03); }
+    .cs-img-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 1.2rem;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 100%);
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+    .cs-full-img { width: 100%; border-radius: 4px; overflow: hidden; margin: 0 auto; max-width: 1100px; }
+    .cs-full-img img { width: 100%; display: block; }
+
+    /* Research cities */
+    .cities-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2rem;
+    }
+    .city-card {
+      background: var(--black3); border: 1px solid var(--border); border-radius: 4px;
+      padding: 1.5rem; text-align: center;
+    }
+    .city-card .city-name {
+      font-size: 1rem; font-weight: 800; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--white); margin-bottom: 0.4rem;
+    }
+    .city-card .city-label {
+      font-size: 0.7rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* Users */
+    .users-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;
+    }
+    .user-card {
+      background: var(--black3); border: 1px solid var(--border); border-radius: 4px;
+      padding: 2rem;
+    }
+    .user-card.featured { border-color: var(--red); }
+    .user-card-type {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem;
+    }
+    .user-card-name { font-size: 1.1rem; font-weight: 800; color: var(--white); margin-bottom: 0.6rem; }
+    .user-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin: 0; }
+
+    /* Symbol story */
+    .symbol-story {
+      background: var(--black3); border: 1px solid var(--border); border-radius: 4px;
+      padding: 2.5rem; margin-top: 2.5rem;
+    }
+    .symbol-layers {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;
+    }
+    .symbol-layer {
+      text-align: center; padding: 1.5rem 1rem;
+      border: 1px solid var(--border); border-radius: 4px;
+    }
+    .symbol-layer .layer-icon {
+      font-size: 2rem; margin-bottom: 0.8rem;
+    }
+    .symbol-layer .layer-title {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem;
+    }
+    .symbol-layer p { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.5; margin: 0; }
+
+    .stat-highlight {
+      background: var(--black3); border: 1px solid var(--border);
+      border-left: 3px solid var(--red); border-radius: 4px;
+      padding: 2rem 2.5rem; margin: 2rem 0;
+    }
+    .stat-highlight .big-num {
+      font-size: clamp(3rem, 6vw, 5rem); font-weight: 900;
+      color: var(--red); line-height: 1; letter-spacing: -0.03em;
+    }
+    .stat-highlight .big-label {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 0.4rem;
+    }
+
+    .case-quote {
+      padding: 6rem 5vw; text-align: center; position: relative; z-index: 1;
+      background: var(--black2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .case-quote blockquote {
+      max-width: 750px; margin: 0 auto;
+      font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800;
+      line-height: 1.25; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .case-quote blockquote em { font-style: normal; color: var(--red); }
+    .case-quote cite {
+      display: block; margin-top: 1.5rem;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); font-style: normal;
+    }
+
+    .case-cta {
+      position: relative; z-index: 1; padding: 7rem 5vw; text-align: center;
+      background: url('assets/images/cta-bg.webp') center/cover no-repeat;
+    }
+    .case-cta::before { content: ''; position: absolute; inset: 0; background: rgba(8,8,8,0.82); }
+    .case-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .case-cta h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900;
+      letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .case-cta p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.65; margin-bottom: 2.5rem; }
+    .btn-red {
+      display: inline-block; background: var(--red); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 0.85rem;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      padding: 1rem 2.2rem; border-radius: 3px; transition: opacity 0.2s;
+    }
+    .btn-red:hover { opacity: 0.85; }
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.85rem;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      padding: 1rem 2.2rem; border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 3px; transition: all 0.2s; margin-left: 1rem;
+    }
+    .btn-outline:hover { border-color: var(--white); }
+
+    footer { position: relative; z-index: 1; padding: 2.5rem 5vw 2rem; border-top: 1px solid var(--border); }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.4rem; flex-wrap: wrap; gap: 1rem; }
+    footer .f-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+    footer .f-logo img { height: 22px; opacity: 0.5; }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-disclaimer { font-size: 0.68rem; color: rgba(255,255,255,0.22); line-height: 1.6; }
+    .footer-legal { font-size: 0.68rem; color: rgba(255,255,255,0.22); }
+    .footer-legal a { color: rgba(255,255,255,0.35); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--white); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+
+    .client-logo { display: flex; align-items: center; margin-bottom: 2rem; }
+    .client-logo img { height: 48px; width: auto; }
+
+    @media (max-width: 768px) {
+      .cs-grid, .cities-grid, .users-grid, .symbol-layers { grid-template-columns: 1fr; gap: 2rem; }
+      .cs-grid.reverse { direction: ltr; }
+      .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-lines"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/brand/logo-full.svg" alt="Germán Baher — Growth Brands" />
+  </a>
+  <a href="index.html#casos" class="nav-back">
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Casos de éxito
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="case-hero">
+  <div class="case-hero-inner">
+    <div class="case-tag">Retail Branding · Shopper-Centric · Bolivia</div>
+    <h1>Bodega<br/><em>PIL</em></h1>
+    <p class="case-hero-sub">Cuando una marca se vuelve invisible dentro de la tienda, deja de vender. Transformación retail centrada en el shopper que generó un crecimiento en ventas superior al 35%.</p>
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <span class="case-meta-label">Rol</span>
+        <span class="case-meta-value">Retail Brand Strategy & Design</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Alcance</span>
+        <span class="case-meta-value">Identity · Store Design · Category System</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Resultado</span>
+        <span class="case-meta-value red">+35% crecimiento en ventas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="case-body">
+
+  <!-- 1. OVERVIEW -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid">
+        <div>
+          <div class="section-num">01 — Proyecto</div>
+          <h2>Cuando la marca se vuelve invisible adentro</h2>
+          <p class="cs-sub">Shopper-centric · Neighbourhood retail</p>
+          <p>Bodega PIL es un concepto retail creado para acercar productos lácteos y de consumo diario a los compradores de barrio en Bolivia. Sin embargo, con el tiempo, el entorno de la marca se había vuelto visualmente desactualizado y operativamente ineficiente.</p>
+          <p>Este proyecto se centró en rediseñar la experiencia de marca retail para transformar Bodega PIL en un sistema centrado en el shopper, mejorando la organización de la tienda, la identidad visual y la visibilidad del producto.</p>
+          <div class="client-logo" style="margin-top:2rem;">
+            <img src="assets/logos/Bodega.svg" alt="Bodega PIL" />
+          </div>
+        </div>
+        <div>
+          <div class="cs-img">
+            <img src="assets/cases/bodega/cover-color.webp" alt="Bodega PIL — New Identity" />
+            <div class="cs-img-caption">Post-transformation retail experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CHALLENGE -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid reverse">
+        <div>
+          <div class="section-num">02 — El Desafío</div>
+          <h2>Las tiendas existían. El sistema no.</h2>
+          <p class="cs-sub">Visual noise · No category structure · Confusion</p>
+          <p>La identidad anterior usaba colores apagados, texturas de madera artificial y tipografía rústica para evocar un ambiente de "bodega tradicional". En la realidad, este enfoque creaba varios problemas:</p>
+          <ul class="checklist" style="margin-top:1.5rem;">
+            <li>Ruido visual en espacios retail pequeños</li>
+            <li>Falta de estructura clara de categorías de producto</li>
+            <li>Dificultad para que los tenderos organicen el inventario</li>
+            <li>Confusión para los compradores que buscan productos rápidamente</li>
+          </ul>
+          <p style="margin-top:1.5rem;">Las tiendas operaban, pero la experiencia de marca estaba fragmentada.</p>
+        </div>
+        <div>
+          <div class="cs-img">
+            <img src="assets/cases/bodega/cover-bw.webp" alt="Before transformation" />
+            <div class="cs-img-caption">Pre-transformation — fragmented retail</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FIELD RESEARCH -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="section-num">03 — Investigación de Campo</div>
+      <h2>La estrategia comienza dentro de la tienda, no en el estudio</h2>
+      <p class="cs-sub">Store visits · Shopkeeper interviews · Bolivia</p>
+      <p>Para entender el problema real, realicé investigación de campo en los principales ejes comerciales de Bolivia. A través de visitas a tiendas y entrevistas con tenderos, quedó claro que el problema no era solo estético, sino también estructural.</p>
+      <div class="cities-grid">
+        <div class="city-card">
+          <div class="city-name">Santa Cruz</div>
+          <div class="city-label">Eje comercial</div>
+        </div>
+        <div class="city-card">
+          <div class="city-name">Cochabamba</div>
+          <div class="city-label">Eje comercial</div>
+        </div>
+        <div class="city-card">
+          <div class="city-name">La Paz</div>
+          <div class="city-label">Eje comercial</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. STRATEGIC INSIGHT -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="section-num">04 — Insight Estratégico</div>
+      <h2>Si el shopper está confundido, la marca está perdiendo</h2>
+      <p class="cs-sub" style="margin-bottom:2.5rem;">Two users · One solution</p>
+      <div class="users-grid">
+        <div class="user-card featured">
+          <div class="user-card-type">Usuario Principal</div>
+          <div class="user-card-name">El Shopper</div>
+          <p>Necesita claridad visual, guía de categorías y una experiencia retail agradable. La solución debía facilitarle encontrar lo que busca sin confusión.</p>
+        </div>
+        <div class="user-card">
+          <div class="user-card-type">Usuario Secundario</div>
+          <div class="user-card-name">El Tendero</div>
+          <p>Necesita orden detrás del mostrador, almacenamiento eficiente de productos y acceso rápido al inventario para operar con fluidez.</p>
+        </div>
+      </div>
+      <p style="margin-top:2rem;">El key insight fue simple: <strong>la marca necesitaba organizar la tienda antes de intentar decorarla.</strong></p>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="case-quote reveal">
+    <blockquote>
+      "El corazón como símbolo universal. De la emoción al nombre: <em>B de Bodega.</em>"
+      <cite>El origen del concepto — Bodega PIL</cite>
+    </blockquote>
+  </div>
+
+  <!-- 5. VISUAL IDENTITY -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="section-num">05 — Transformación de Identidad Visual</div>
+      <h2>Del rusticismo artificial al reconocimiento vibrante</h2>
+      <p class="cs-sub">Symbol · Color · Emotion</p>
+      <p>La identidad evolucionó desde una estética rústica artificial hacia una paleta de colores más brillante y energética, creando un entorno retail alegre que refleja el consumo cotidiano y la accesibilidad del barrio.</p>
+      <div class="symbol-story">
+        <p style="font-weight:600; color:var(--white); margin-bottom:1.5rem;">El origen del símbolo: tres lecturas en un solo elemento</p>
+        <div class="symbol-layers">
+          <div class="symbol-layer">
+            <div class="layer-icon">❤️</div>
+            <div class="layer-title">Cuidado</div>
+            <p>El vínculo emocional con los consumidores. PIL, presente en hogares bolivianos por décadas.</p>
+          </div>
+          <div class="symbol-layer">
+            <div class="layer-icon">B</div>
+            <div class="layer-title">Bodega</div>
+            <p>El corazón se transforma en la letra "B". Funcional y emocional al mismo tiempo.</p>
+          </div>
+          <div class="symbol-layer">
+            <div class="layer-icon">🤝</div>
+            <div class="layer-title">Comunidad</div>
+            <p>El gesto de formar un corazón con las manos: tendero, shopper, barrio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CATEGORY SYSTEM -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid">
+        <div>
+          <div class="section-num">06 — Arquitectura de Categorías</div>
+          <h2>Cuando las categorías hablan claro, los productos venden más rápido</h2>
+          <p class="cs-sub">Visual categories · Navigation · Order</p>
+          <p>Una de las mayores oportunidades fue organizar la gran variedad de productos en un sistema de categorías estructurado. Se crearon categorías visuales claras para guiar a los compradores y ayudar a los tenderos a mantener el orden.</p>
+          <ul class="checklist" style="margin-top:1.5rem;">
+            <li>Mayor visibilidad de producto</li>
+            <li>Navegación más fácil en tiendas pequeñas</li>
+            <li>Organización de inventario simplificada</li>
+            <li>La marca se convirtió en una guía dentro de la tienda</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cs-img">
+            <img src="assets/cases/bodega/category-system.webp" alt="Category System" />
+            <div class="cs-img-caption">Category architecture — visual hierarchy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. STORE DESIGN -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid reverse">
+        <div>
+          <div class="section-num">07 — Diseño de Tienda</div>
+          <h2>En tiendas pequeñas, cada centímetro importa</h2>
+          <p class="cs-sub">Space · Refrigeration · Vertical display</p>
+          <p>Dado el espacio limitado en las bodegas de barrio, el diseño de tienda necesitaba priorizar la funcionalidad. Una decisión central fue transformar las unidades de refrigeración en el eje visual principal de la tienda, funcionando como estantes de exhibición congelados donde los compradores pueden localizar fácilmente los productos clave.</p>
+          <p>Esto permitió a la marca organizar la tienda verticalmente mientras maximizaba la visibilidad del producto.</p>
+        </div>
+        <div>
+          <div class="cs-img">
+            <img src="assets/cases/bodega/shelf-impact.webp" alt="Shelf Impact" />
+            <div class="cs-img-caption">Shelf impact — refrigeration as visual axis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. RESULTS -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid">
+        <div>
+          <div class="section-num">08 — Resultados</div>
+          <h2>El branding no es decoración. Es un motor de ventas.</h2>
+          <p class="cs-sub">Sales growth · Shopper experience</p>
+          <p>La implementación del nuevo sistema de marca Bodega PIL continúa expandiéndose en ubicaciones. Las tiendas que adoptaron el nuevo modelo reportaron incrementos en ventas que superan el 35%.</p>
+          <p>Esta transformación demuestra una verdad simple: cuando el branding se alinea con el comportamiento del shopper, el crecimiento sigue.</p>
+        </div>
+        <div class="stat-highlight">
+          <div class="big-num">+35%</div>
+          <div class="big-label">Incremento en ventas por tienda</div>
+          <p style="margin-top:1.5rem; font-size:0.9rem; color:rgba(255,255,255,0.6); line-height:1.6;">
+            Una marca con propósito, combinada con una organización retail inteligente, puede transformar dramáticamente el rendimiento del negocio. Las tiendas no solo se ven mejor — trabajan mejor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- CTA -->
+<section class="case-cta reveal">
+  <div class="case-cta-inner">
+    <h2>El retail branding no se trata de que las tiendas luzcan mejor. Se trata de que <em style="color:var(--red);">trabajen mejor.</em></h2>
+    <p>Si tu marca necesita un sistema que venda desde la experiencia, hablemos.</p>
+    <a href="index.html#contacto" class="btn-red">Hablemos</a>
+    <a href="index.html#casos" class="btn-outline">Ver más casos</a>
+  </div>
+</section>
+
+<!-- ── TESTIMONIO ── -->
+<section style="padding:5rem 5vw;background:#0d0d0d;border-top:1px solid rgba(255,255,255,0.06);">
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <p style="font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:2rem;">
+      "La capacidad de Germán de tener esa visión de Shopper Marketing nos ayudó a estructurar categorías y humanizar la marca. Eso se reflejó directamente en las ventas."
+    </p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1.2rem;">
+      <img src="assets/logos/Bodega.svg" alt="Bodega PIL" style="height:26px;opacity:0.5;filter:brightness(0) invert(1);" />
+      <div style="text-align:left;">
+        <p style="font-size:0.88rem;font-weight:700;color:#fff;">Laura Lozano</p>
+        <p style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.08em;text-transform:uppercase;">Bodega PIL</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <a href="index.html" class="f-logo"><img src="assets/brand/logo-full.svg" alt="Germán Baher" /></a>
+    <span class="f-copy">© 2026 Germán Baher LLC — Todos los derechos reservados</span>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-disclaimer">Este sitio web es una plataforma profesional independiente. No está afiliado, patrocinado ni asociado con Meta, Facebook, Instagram ni ninguna otra red social o plataforma de terceros. El contenido publicado aquí representa exclusivamente el trabajo, opiniones y servicios de Germán Baher LLC. Germán Baher LLC no se hace responsable por el uso indebido de la información presentada en este sitio, ni por decisiones tomadas con base en su contenido sin asesoramiento profesional directo.</p>
+    <p class="footer-legal">Se aplica la <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">Política de privacidad</a> y los <a href="https://policies.google.com/terms?hl=es" target="_blank" rel="noopener">Términos de servicio</a>.</p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const heroEl = document.querySelector('.case-hero');
+  const bgLines = document.querySelector('.bg-lines');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (heroEl) heroEl.style.backgroundPositionY = `calc(40% + ${y * 0.35}px)`;
+    if (bgLines) bgLines.style.transform = `translateY(${y * 0.08}px)`;
+  }, { passive: true });
+</script>
+</body>
+</html>

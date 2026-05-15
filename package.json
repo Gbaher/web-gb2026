@@ -1,0 +1,8 @@
+{
+  "name": "web-gb2026",
+  "version": "1.0.0",
+  "description": "Germán Baher — Growth Brands personal website",
+  "scripts": {
+    "build": "echo 'Static site, no build needed'"
+  }
+}

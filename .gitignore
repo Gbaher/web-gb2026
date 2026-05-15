@@ -1,0 +1,13 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Archivos comprimidos
+*.zip
+
+# Archivos de diseño (no son parte del sitio web)
+Artboard\ 2.svg
+Colors.svg
+fonts.svg
+logo-icon\ 2.svg.zip
+logo-icon.svg.zip

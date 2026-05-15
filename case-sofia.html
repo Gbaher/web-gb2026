@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sofía al Paso — Strategic Brand Transformation | Germán Baher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --red:    #ed2450;
+      --black:  #080808;
+      --black2: #0d0d0d;
+      --black3: #141414;
+      --white:  #ffffff;
+      --grey:   rgba(255,255,255,0.5);
+      --border: rgba(255,255,255,0.07);
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
+
+    /* ── Diagonal streaks ── */
+    .bg-lines {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .bg-lines::before {
+      content: '';
+      position: absolute; top: -30%; left: -10%; width: 140%; height: 160%;
+      background:
+        linear-gradient(115deg,
+          transparent 0%, transparent 28%,
+          rgba(255,255,255,0.022) 28.4%, rgba(255,255,255,0.022) 28.8%,
+          transparent 29.2%, transparent 48%,
+          rgba(255,255,255,0.016) 48.3%, rgba(255,255,255,0.016) 48.6%,
+          transparent 49%, transparent 65%,
+          rgba(255,255,255,0.012) 65.3%, rgba(255,255,255,0.012) 65.6%,
+          transparent 66%, transparent 100%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.3rem 5vw;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto; display: block; }
+    .nav-back {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── CASE HERO ── */
+    .case-hero {
+      position: relative; min-height: 85vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 9rem 5vw 5rem;
+      background: url('assets/cases/sofia/cover-color.webp') center 30% / cover no-repeat;
+      will-change: background-position;
+    }
+    .case-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.6) 50%, rgba(8,8,8,0.25) 100%);
+    }
+    .case-hero-inner { position: relative; z-index: 1; max-width: 900px; }
+    .case-tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--red); border: 1px solid var(--red);
+      padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem;
+    }
+    .case-hero h1 {
+      font-size: clamp(2.8rem, 7vw, 6.5rem);
+      font-weight: 900; line-height: 0.92;
+      letter-spacing: -0.03em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .case-hero h1 em { font-style: normal; color: var(--red); }
+    .case-hero-sub {
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      color: rgba(255,255,255,0.65); max-width: 560px; line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .case-meta {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+      border-top: 1px solid var(--border); padding-top: 1.5rem;
+    }
+    .case-meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .case-meta-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+    }
+    .case-meta-value { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+    .case-meta-value.red { color: var(--red); }
+
+    /* ── CONTENT ── */
+    .case-body { position: relative; z-index: 1; }
+
+    /* Section base */
+    .cs { padding: 6rem 5vw; border-top: 1px solid var(--border); }
+    .cs-wrap { max-width: 1100px; margin: 0 auto; }
+    .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .cs-grid.reverse { direction: rtl; }
+    .cs-grid.reverse > * { direction: ltr; }
+
+    .section-num {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.7rem;
+    }
+    .cs h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900;
+      line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .cs-sub {
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-bottom: 2rem;
+    }
+    .cs p {
+      font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.7);
+      margin-bottom: 1.2rem;
+    }
+    .cs p:last-child { margin-bottom: 0; }
+
+    /* Checklist */
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin: 1.5rem 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.95rem; color: rgba(255,255,255,0.75); line-height: 1.5;
+    }
+    .checklist li::before {
+      content: ''; flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px;
+      border-radius: 50%; background: var(--red);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 65%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* Image blocks */
+    .cs-img {
+      position: relative; border-radius: 4px; overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .cs-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; transition: transform 0.6s ease;
+    }
+    .cs-img:hover img { transform: scale(1.03); }
+    .cs-img-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.2rem;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 100%);
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+
+    /* Full-width image */
+    .cs-full-img {
+      width: 100%; border-radius: 4px; overflow: hidden; margin: 0 auto;
+      max-width: 1100px;
+    }
+    .cs-full-img img { width: 100%; display: block; }
+
+    /* Stat highlight */
+    .stat-highlight {
+      background: var(--black3); border: 1px solid var(--border);
+      border-left: 3px solid var(--red); border-radius: 4px;
+      padding: 2rem 2.5rem; margin: 2rem 0;
+    }
+    .stat-highlight .big-num {
+      font-size: clamp(3rem, 6vw, 5rem); font-weight: 900;
+      color: var(--red); line-height: 1; letter-spacing: -0.03em;
+    }
+    .stat-highlight .big-label {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+      margin-top: 0.4rem;
+    }
+
+    /* Quote block */
+    .case-quote {
+      padding: 6rem 5vw; text-align: center; position: relative; z-index: 1;
+      background: var(--black2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .case-quote blockquote {
+      max-width: 750px; margin: 0 auto;
+      font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800;
+      line-height: 1.25; letter-spacing: -0.02em; text-transform: uppercase;
+    }
+    .case-quote blockquote em { font-style: normal; color: var(--red); }
+    .case-quote cite {
+      display: block; margin-top: 1.5rem;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      font-style: normal;
+    }
+
+    /* Team section */
+    .team-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .team-card {
+      background: var(--black3); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.5rem;
+    }
+    .team-card-role {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem;
+    }
+    .team-card-name {
+      font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem;
+    }
+    .team-card-title {
+      font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.4;
+    }
+    .team-card.featured {
+      border-color: var(--red); grid-column: span 2;
+    }
+
+    /* CTA */
+    .case-cta {
+      position: relative; z-index: 1;
+      padding: 7rem 5vw; text-align: center;
+      background: url('assets/images/cta-bg.webp') center/cover no-repeat;
+    }
+    .case-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(8,8,8,0.82);
+    }
+    .case-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .case-cta h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900;
+      letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .case-cta p {
+      color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+    .btn-red {
+      display: inline-block; background: var(--red); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 0.85rem;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      padding: 1rem 2.2rem; border-radius: 3px; transition: opacity 0.2s;
+    }
+    .btn-red:hover { opacity: 0.85; }
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.85rem;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      padding: 1rem 2.2rem; border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 3px; transition: all 0.2s; margin-left: 1rem;
+    }
+    .btn-outline:hover { border-color: var(--white); }
+
+    /* Footer */
+    footer {
+      position: relative; z-index: 1; padding: 2.5rem 5vw 2rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.4rem; flex-wrap: wrap; gap: 1rem; }
+    footer .f-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+    footer .f-logo img { height: 22px; opacity: 0.5; }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-disclaimer { font-size: 0.68rem; color: rgba(255,255,255,0.22); line-height: 1.6; }
+    .footer-legal { font-size: 0.68rem; color: rgba(255,255,255,0.22); }
+    .footer-legal a { color: rgba(255,255,255,0.35); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--white); }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Logo bar */
+    .client-logo {
+      display: flex; align-items: center; margin-bottom: 2rem;
+    }
+    .client-logo img { height: 48px; width: auto; }
+
+    @media (max-width: 768px) {
+      .cs-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cs-grid.reverse { direction: ltr; }
+      .team-card.featured { grid-column: span 1; }
+      .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-lines"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/brand/logo-full.svg" alt="Germán Baher — Growth Brands" />
+  </a>
+  <a href="index.html#casos" class="nav-back">
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Casos de éxito
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="case-hero">
+  <div class="case-hero-inner">
+    <div class="case-tag">Brand Transformation · Retail · Bolivia</div>
+    <h1>Sofía<br/><em>al Paso</em></h1>
+    <p class="case-hero-sub">Cuando el crecimiento supera a la identidad, la estrategia debe liderar. Modelo de transformación de marca para una de las empresas de alimentos más reconocidas de Bolivia.</p>
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <span class="case-meta-label">Rol</span>
+        <span class="case-meta-value">Brand Strategy & Creative Direction</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Alcance</span>
+        <span class="case-meta-value">Retail · Visual Identity · System Design</span>
+      </div>
+      <div class="case-meta-item">
+        <span class="case-meta-label">Resultado</span>
+        <span class="case-meta-value red">Expansión estructurada nationwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="case-body">
+
+  <!-- 1. PROJECT OVERVIEW -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid">
+        <div>
+          <div class="section-num">01 — Proyecto</div>
+          <h2>Cuando el crecimiento supera la identidad</h2>
+          <p class="cs-sub">Strategy must lead</p>
+          <p>Sofía es una de las marcas de alimentos más reconocidas de Bolivia, con fuerte presencia en distribución y retail a nivel nacional. Sin embargo, la rápida expansión y la evolución del mercado crearon una brecha entre la percepción de marca y la ambición del negocio.</p>
+          <p>Este proyecto se centró en diseñar un modelo de transformación de marca escalable, alineando la experiencia retail, la comunicación y la identidad visual bajo un sistema estratégico cohesivo.</p>
+          <div class="client-logo" style="margin-top:2rem;">
+            <img src="assets/logos/sofia_al_paso.svg" alt="Sofía al Paso" />
+          </div>
+        </div>
+        <div>
+          <div class="cs-img">
+            <img src="assets/cases/sofia/cover-color.webp" alt="Sofía al Paso — Brand Transformation" />
+            <div class="cs-img-caption">Brand Transformation · Bolivia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. CHALLENGE -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid reverse">
+        <div>
+          <div class="section-num">02 — El Desafío</div>
+          <h2>Una marca poderosa sin experiencia unificada</h2>
+          <p class="cs-sub">Alignment, not recognition</p>
+          <p>Sofía tenía un fuerte reconocimiento de marca, pero su ejecución retail carecía de consistencia en todos los puntos de contacto:</p>
+          <ul class="checklist">
+            <li>Los layouts de tienda variaban significativamente</li>
+            <li>La aplicación de identidad visual era inconsistente</li>
+            <li>El tono de comunicación cambiaba según el canal</li>
+            <li>La experiencia en tienda no expresaba liderazgo de marca</li>
+          </ul>
+          <p>El desafío no era el reconocimiento. Era la <strong>alineación</strong>.</p>
+        </div>
+        <div>
+          <div class="cs-img">
+            <img src="assets/cases/sofia/retail-experience.webp" alt="Retail Experience Challenge" />
+            <div class="cs-img-caption">Pre-transformation retail environment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="case-quote reveal">
+    <blockquote>
+      "Convertir el poder de distribución en <em>poder de experiencia</em> de marca."
+      <cite>Objetivo estratégico — Sofía al Paso</cite>
+    </blockquote>
+  </div>
+
+  <!-- 3. TRANSFORMATION MODEL -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="section-num">03 — El Modelo de Transformación</div>
+      <h2>Estrategia primero.<br/>Diseño como ejecución.</h2>
+      <p class="cs-sub" style="margin-bottom:3rem;">Structured phases · Business-anchored decisions</p>
+      <div class="cs-grid" style="gap:3rem; align-items:start;">
+        <div>
+          <p>La transformación se estructuró en fases, donde cada decisión estuvo anclada en lógica de negocio, no solo en estética:</p>
+          <ul class="checklist" style="margin-top:1.5rem;">
+            <li>Claridad y refinamiento de posicionamiento de marca</li>
+            <li>Mapeo de la experiencia retail</li>
+            <li>Expansión del sistema de identidad visual</li>
+            <li>Estandarización del diseño de tiendas</li>
+            <li>Framework de consistencia en comunicación</li>
+          </ul>
+        </div>
+        <div>
+          <p>El objetivo del proyecto era claro: construir un modelo de transformación escalable que elevara la percepción sin perder accesibilidad y creara un sistema adaptable al crecimiento futuro.</p>
+          <p>Esto requirió más que un rebranding. Requirió un <strong>framework operativo estratégico</strong>.</p>
+          <ul class="checklist" style="margin-top:1.5rem;">
+            <li>Modelo de transformación escalable</li>
+            <li>Identidad retail estandarizada en todos los formatos</li>
+            <li>Percepción elevada sin perder accesibilidad</li>
+            <li>Sistema adaptable al crecimiento futuro</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. RETAIL EXPERIENCE -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid">
+        <div>
+          <div class="section-num">04 — Experiencia Retail Redefinida</div>
+          <h2>Una marca se construye donde los clientes interactúan</h2>
+          <p class="cs-sub">Store design · Signage · Flow</p>
+          <p>El entorno retail se convirtió en el foco central. Rediseñamos cada punto de contacto físico para crear una experiencia de compra consistente, moderna y eficiente que refuerza la confianza en la marca.</p>
+          <ul class="checklist" style="margin-top:1.5rem;">
+            <li>Señalética exterior y sistemas de identidad</li>
+            <li>Layouts interiores para flujo y claridad</li>
+            <li>Jerarquía de color para visibilidad</li>
+            <li>Sistemas de exhibición de producto</li>
+            <li>Mensajería en punto de venta</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cs-img">
+            <img src="assets/cases/sofia/packaging-detail.webp" alt="Packaging Detail" />
+            <div class="cs-img-caption">Visual system & packaging evolution</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. VISUAL SYSTEM -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div style="max-width:700px; margin-bottom:3.5rem;">
+        <div class="section-num">05 — Evolución del Sistema Visual</div>
+        <h2>La consistencia construye credibilidad</h2>
+        <p class="cs-sub">Typography · Color · Signage · Templates</p>
+        <p>La identidad visual fue refinada y sistematizada para garantizar: aplicación correcta del logo, jerarquía tipográfica escalable, uso controlado de la paleta de color, sistemas de señalización claros y plantillas promocionales para campañas.</p>
+        <p>Lo que antes se sentía fragmentado se convirtió en algo estructurado y replicable.</p>
+      </div>
+      <div class="cs-full-img">
+        <img src="assets/cases/sofia/cover-bw.webp" alt="Visual System Documentation" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SCALABILITY -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="cs-grid reverse">
+        <div>
+          <div class="section-num">06 — Escalabilidad Operacional</div>
+          <h2>Si no puede escalar, no es estrategia</h2>
+          <p class="cs-sub">Brand manuals · Guidelines · Checklists</p>
+          <p>Un enfoque central del proyecto fue la claridad operacional. Desarrollamos herramientas para que las nuevas tiendas pudieran replicar la experiencia sin perder coherencia:</p>
+          <ul class="checklist" style="margin-top:1.5rem;">
+            <li>Manuales de marca</li>
+            <li>Lineamientos de implementación retail</li>
+            <li>Checklists de ejecución</li>
+            <li>Sistemas de diseño de tiendas modulares</li>
+          </ul>
+        </div>
+        <div class="stat-highlight">
+          <div class="big-num">Nationwide</div>
+          <div class="big-label">Consistencia visual en todos los puntos de venta</div>
+          <p style="margin-top:1.5rem; font-size:0.9rem; color:rgba(255,255,255,0.6); line-height:1.6;">
+            La marca pasó de una ejecución reactiva a una expansión estructurada. Implementación más eficiente de nuevas tiendas y comunicación más clara entre marketing y operaciones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. TEAM -->
+  <section class="cs reveal">
+    <div class="cs-wrap">
+      <div class="section-num">07 — Equipo del Proyecto</div>
+      <h2>Una transformación de esta escala requiere liderazgo estratégico</h2>
+      <p class="cs-sub" style="margin-bottom:0;">Cross-functional coordination across divisions</p>
+      <div class="team-grid">
+        <div class="team-card featured">
+          <div class="team-card-role">Strategic Brand Lead</div>
+          <div class="team-card-name">Germán Baher</div>
+          <div class="team-card-title">Brand Strategist & Creative Director · Lideró el modelo de transformación estratégico, alineando posicionamiento, experiencia retail e identidad visual bajo un sistema escalable.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-role">Marketing Leadership</div>
+          <div class="team-card-name">Laura Lozano</div>
+          <div class="team-card-title">Marketing Manager</div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-role">Commercial Division</div>
+          <div class="team-card-name">Jorge Román</div>
+          <div class="team-card-title">Commercial Division Manager</div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-role">Retail Strategy</div>
+          <div class="team-card-name">Daniela Téllez</div>
+          <div class="team-card-title">Head of Retail</div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-role">Implementation</div>
+          <div class="team-card-name">Ana Salek</div>
+          <div class="team-card-title">Rollout & Deployment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- CTA -->
+<section class="case-cta reveal">
+  <div class="case-cta-inner">
+    <h2>¿Tu marca lista para <em style="color:var(--red);">escalar</em>?</h2>
+    <p>El branding estratégico no se trata de hacer las cosas lucir mejor. Se trata de hacer el crecimiento sostenible.</p>
+    <a href="index.html#contacto" class="btn-red">Hablemos</a>
+    <a href="index.html#casos" class="btn-outline">Ver más casos</a>
+  </div>
+</section>
+
+<!-- ── TESTIMONIO ── -->
+<section style="padding:5rem 5vw;background:#0d0d0d;border-top:1px solid rgba(255,255,255,0.06);">
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <p style="font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:2rem;">
+      "Germán tiene una visión estratégica que va más allá del diseño. Sabe construir marcas con propósito y traducir esa profundidad en un lenguaje que la gente siente como propio. Trabajar con él transformó por completo la manera en que Sofía al Paso comunica quién es."
+    </p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1.2rem;">
+      <img src="assets/logos/sofia_al_paso.svg" alt="Sofía al Paso" style="height:26px;opacity:0.5;filter:brightness(0) invert(1);" />
+      <div style="text-align:left;">
+        <p style="font-size:0.88rem;font-weight:700;color:#fff;">Daniela Téllez</p>
+        <p style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.08em;text-transform:uppercase;">Sofía al Paso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <a href="index.html" class="f-logo"><img src="assets/brand/logo-full.svg" alt="Germán Baher" /></a>
+    <span class="f-copy">© 2026 Germán Baher LLC — Todos los derechos reservados</span>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-disclaimer">Este sitio web es una plataforma profesional independiente. No está afiliado, patrocinado ni asociado con Meta, Facebook, Instagram ni ninguna otra red social o plataforma de terceros. El contenido publicado aquí representa exclusivamente el trabajo, opiniones y servicios de Germán Baher LLC. Germán Baher LLC no se hace responsable por el uso indebido de la información presentada en este sitio, ni por decisiones tomadas con base en su contenido sin asesoramiento profesional directo.</p>
+    <p class="footer-legal">Se aplica la <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">Política de privacidad</a> y los <a href="https://policies.google.com/terms?hl=es" target="_blank" rel="noopener">Términos de servicio</a>.</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Parallax
+  const heroEl = document.querySelector('.case-hero');
+  const bgLines = document.querySelector('.bg-lines');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (heroEl) heroEl.style.backgroundPositionY = `calc(30% + ${y * 0.35}px)`;
+    if (bgLines) bgLines.style.transform = `translateY(${y * 0.08}px)`;
+  }, { passive: true });
+</script>
+</body>
+</html>
