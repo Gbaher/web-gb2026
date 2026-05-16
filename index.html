@@ -736,13 +736,9 @@
     .contact-list dd { font-size: 0.95rem; color: var(--white); }
 
     .gform-wrap {
-      width: 100%; border-radius: 14px; overflow: hidden;
+      width: 100%; border-radius: 14px; padding: 2.4rem;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.07);
-    }
-    .gform-wrap iframe {
-      width: 100%; min-height: 680px; display: block;
-      border: none; filter: invert(1) hue-rotate(180deg);
     }
     .contact-form { display: flex; flex-direction: column; gap: 1rem; }
     .field { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -1112,10 +1108,22 @@
         </button>
       </div>
       <div class="gform-wrap reveal">
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSdmEUjCsfud5BRPUXYbqO5eP1Ti1CfxkcniBC5Tisn5Z4QV1A/viewform?embedded=true"
-          frameborder="0" marginheight="0" marginwidth="0"
-          title="Formulario de contacto">Cargando…</iframe>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="field">
+            <label for="cf-nombre">Nombre</label>
+            <input type="text" id="cf-nombre" name="nombre" placeholder="Tu nombre completo" required />
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="tu@email.com" required />
+          </div>
+          <div class="field">
+            <label for="cf-mensaje">Mensaje</label>
+            <textarea id="cf-mensaje" name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto o pregunta…" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="cfBtn">Enviar mensaje →</button>
+          <p id="cfStatus" style="font-size:.78rem;margin-top:.6rem;min-height:1.2em;"></p>
+        </form>
       </div>
     </div>
   </div>
@@ -1358,13 +1366,58 @@
     '</div>'
   );
 
-  function handleForm(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.btn-submit');
-    btn.textContent = '✓ Mensaje enviado';
-    btn.style.background = '#1a7a1a';
-    setTimeout(() => { btn.textContent = 'Enviar mensaje →'; btn.style.background = ''; e.target.reset(); }, 3000);
+  // ── Contact form → Google Sheets webhook ────────────────────────
+  const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwnJOX14kd3puq3j2PEy65jvb00fF9S1BuTjfs9onDyLTLEdfRaOzyrRwvsP143XcY5Bw/exec';
+
+  const cfForm   = document.getElementById('contactForm');
+  const cfBtn    = document.getElementById('cfBtn');
+  const cfStatus = document.getElementById('cfStatus');
+
+  if (cfForm) {
+    cfForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const nombre  = document.getElementById('cf-nombre').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
+      const mensaje = document.getElementById('cf-mensaje').value.trim();
+
+      if (!nombre || !email || !mensaje) {
+        cfStatus.style.color = '#ed2450';
+        cfStatus.textContent = 'Por favor completa todos los campos.';
+        return;
+      }
+
+      cfBtn.disabled = true;
+      cfBtn.textContent = 'Enviando…';
+      cfStatus.textContent = '';
+
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre, email, mensaje })
+        });
+        cfBtn.textContent = '✓ Mensaje enviado';
+        cfBtn.style.background = '#1a7a1a';
+        cfStatus.style.color = 'rgba(255,255,255,0.45)';
+        cfStatus.textContent = 'Te escribo en las próximas 24 horas.';
+        cfForm.reset();
+        setTimeout(() => {
+          cfBtn.disabled = false;
+          cfBtn.textContent = 'Enviar mensaje →';
+          cfBtn.style.background = '';
+          cfStatus.textContent = '';
+        }, 4000);
+      } catch (err) {
+        cfBtn.disabled = false;
+        cfBtn.textContent = 'Enviar mensaje →';
+        cfStatus.style.color = '#ed2450';
+        cfStatus.textContent = 'Error al enviar. Escríbeme a gbaher03@gmail.com';
+      }
+    });
   }
+
+  function handleForm(e) { e.preventDefault(); }
 
   // Active nav + Parallax
   const secs  = document.querySelectorAll('section[id]');
