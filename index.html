@@ -544,7 +544,7 @@
     .met-card:hover::after { background: var(--red); }
 
     .met-icon { width: 72px; height: 72px; margin-bottom: 2rem; }
-    .met-icon svg { width: 100%; height: 100%; }
+    .met-icon svg, .met-icon img { width: 100%; height: 100%; object-fit: contain; }
     /* Recolor methodology icons to red */
     .met-icon svg path { fill: var(--red) !important; }
 
@@ -908,12 +908,7 @@
 
       <div class="met-card reveal">
         <div class="met-icon">
-          <!-- FDT Feeling icon inline -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550.14 612">
-            <path fill="#ed2450" d="M498.01,258.45c0,124.49-100.95,225.4-225.48,225.4S47.05,382.94,47.05,258.45,148,33.04,272.53,33.04s225.48,100.92,225.48,225.4ZM491.47,258.5c0-120.9-98.04-218.91-218.98-218.91S53.52,137.6,53.52,258.5s98.04,218.91,218.98,218.91,218.98-98.01,218.98-218.91Z"/>
-            <path fill="#ed2450" d="M168.64,296.79c30.02,33.05,64.34,62.41,94.07,95.84,1.19,2.83-5.32,6.29-6.69,2.25-24.54-23.88-48.2-48.69-71.78-73.39-19.94-20.89-43.14-37.17-50.37-66.92-20.66-85.03,83.31-137.82,139.05-70.13,72.49-83.83,187.68,19.08,120.94,103.33l-106.52,109.04c-4.5,1.22-6.48-3.42-3.49-6.45l100.55-101.79c65.65-76.66-28.01-168.21-96.09-110.72-3.39,2.86-14.65,17.4-16.8,16.88-31.98-49.21-106.54-44.82-128.02,11.35-14.76,38.59.32,63.39,25.14,90.72Z"/>
-            <path fill="#ed2450" d="M170.59,586.45c-.94,0-1.62-.13-2.03-.39-.41-.26-.61-.6-.61-1.03v-41.87c0-1.29.67-1.93,2-1.93h19.78c.81,0,1.22.64,1.22,1.93v1.03c0,1.29-.41,1.93-1.22,1.93h-15.98v16.3h14.95c.86,0,1.29.64,1.29,1.93v1.03c0,1.29-.43,1.93-1.29,1.93h-14.95v17.71c0,.43-.19.77-.58,1.03-.39.26-1.07.39-2.06.39h-.52Z"/>
-          </svg>
+          <img src="assets/brand/fdt-feeling.svg" alt="Feeling" />
         </div>
         <span class="met-label">Feeling</span>
         <h3 data-i18n="fdt_f_title">Sentir<br />la marca</h3>
@@ -922,12 +917,7 @@
 
       <div class="met-card reveal">
         <div class="met-icon">
-          <!-- FDT Doing icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 522.23 612">
-            <path fill="#ed2450" d="M487.35,258.45c0,124.03-100.58,224.58-224.65,224.58S38.04,382.48,38.04,258.45,138.62,33.87,262.7,33.87s224.65,100.55,224.65,224.58ZM480.86,258.46c0-120.46-97.68-218.1-218.17-218.1S44.51,138,44.51,258.46s97.68,218.1,218.17,218.1,218.17-97.65,218.17-218.1Z"/>
-            <path fill="#ed2450" d="M177.86,394.23c-3.6-1.11-1.81-14.91-2.52-19.26-3.63-22-59.11-53.7-67.52-82.07-5.81-19.59-4.92-77.75-3.37-99.85,1.86-26.59,25.33-22.21,34.17.81,9.45,24.61-2.7,64.38,5.99,84.04,5.63,12.75,34.42,33.25,44.14,45.17.34-21.51-20.02-31.53-30.48-45.75-7.53-10.24-6.57-26.58,8.14-28.21,9.04-1,14.37,4.25,21.36,8.88,19.35,12.81,57.65,40.49,57.65,65.8v68.25l-2.18,2.18h-65.37ZM182.94,386.97h55.2v-63.17c0-20.09-23.68-37.02-37.92-47.77-5.79-4.37-35.98-30.96-39.05-14.61-2.13,11.36,10.27,17.77,16.71,25.33,10.04,11.78,21.89,25.89,16.8,42.61-3.57,5.65-11.97-2.14-15.33-4.88-7.89-6.43-38.9-37.45-41.78-45.36-8.33-22.93,3.11-55.35-4.43-79.8-4.09-13.26-19.51-27.98-21.45-6.28-1.65,18.42-2.13,80.53,2.51,96.37,6.79,23.14,43.98,47.38,59.17,67.18,6.99,9.11,10.56,18.69,9.56,30.37Z"/>
-            <path fill="#ed2450" d="M278.81,323.81c3.4-28.69,30.01-46.28,51.83-61.45,4.66-3.24,14.61-11.4,19.29-12.65,18.93-5.07,26.37,13.54,16.02,27.62-10.45,14.22-28.78,22.72-30.49,44.29l11.57-9.41c9.24-11.98,32.26-27.05,34.53-42.51,3.81-26.04-7.59-67.15,10.77-87.97,9.58-10.87,24.57-8.44,25.99,6.97,2.18,23.7,2.04,70.69-.02,94.51-3.22,37.22-64.52,66.06-69.45,90.31-1.4,6.88,1.96,15.42-2.51,20.73h-65.37l-2.18-2.18c1.86-21.58-2.5-47.18,0-68.25ZM286.08,323.81c-2.31,19.51,1.71,43.19,0,63.17h55.2c-.92-10.73,1.23-19.43,7.51-28.07,15.22-20.92,54.17-45.45,61.22-69.49,4.76-16.23,4.11-78.87,2.5-97.81-1.76-20.71-18.27-4.08-21.76,8.86-5.18,19.2-1.3,45.6-1.49,65.18-.06,5.83-2.41,14.2-5.87,18.94-5.18,7.1-37.28,39.28-44.31,44.3-6.17,4.41-11.16.82-10.95-6.45.73-25.14,21-33.51,32.03-49.46,6.23-9.01,3.91-19.48-8.76-16.01-5.11,1.4-47.45,33.86-52.28,39.22-6.25,6.92-11.95,18.37-13.04,27.62Z"/>
-          </svg>
+          <img src="assets/brand/fdt-doing.svg" alt="Doing" />
         </div>
         <span class="met-label">Doing</span>
         <h3 data-i18n="fdt_d_title">Hacer<br />la marca</h3>
@@ -936,14 +926,7 @@
 
       <div class="met-card reveal">
         <div class="met-icon">
-          <!-- Thinking simplified circle icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.71 245.48">
-            <circle cx="112" cy="122" r="100" stroke="#ed2450" stroke-width="6" fill="none"/>
-            <path fill="#ed2450" d="M80,85 Q112,60 144,85 Q165,105 155,130 Q145,155 112,155 Q79,155 69,130 Q59,105 80,85Z" opacity="0.15"/>
-            <path fill="none" stroke="#ed2450" stroke-width="4" stroke-linecap="round" d="M90,100 Q112,80 134,100 Q148,115 140,135 Q132,155 112,155 Q92,155 84,135 Q76,115 90,100Z"/>
-            <line x1="112" y1="155" x2="112" y2="185" stroke="#ed2450" stroke-width="4" stroke-linecap="round"/>
-            <line x1="98" y1="180" x2="126" y2="180" stroke="#ed2450" stroke-width="4" stroke-linecap="round"/>
-          </svg>
+          <img src="assets/brand/fdt-thinking.svg" alt="Thinking" />
         </div>
         <span class="met-label">Thinking</span>
         <h3 data-i18n="fdt_t_title">Pensar<br />la marca</h3>
@@ -1096,9 +1079,9 @@
         <h2 class="s-title reveal" data-i18n="contact_title">Hablemos<br />de tu marca.</h2>
         <p class="s-body reveal" data-i18n="contact_sub">Si tienes un proyecto, una pregunta o simplemente quieres explorar si podemos trabajar juntos, escríbeme.</p>
         <dl class="contact-list">
-          <div class="reveal"><dt>Email</dt><dd>gbaher03@gmail.com</dd></div>
-          <div class="reveal"><dt>Instagram</dt><dd>@germanbahergb</dd></div>
-          <div class="reveal"><dt>LinkedIn</dt><dd>Germán Baher</dd></div>
+          <div class="reveal"><dt>Email</dt><dd>contacto@germanbaher.com</dd></div>
+          <div class="reveal"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/germanbaher" target="_blank" rel="noopener">Germán Baher</a></dd></div>
+          <div class="reveal"><dt>Portfolio</dt><dd><a href="https://germanbaher.myportfolio.com/work" target="_blank" rel="noopener">germanbaher.myportfolio.com</a></dd></div>
         </dl>
         <button class="btn-cal reveal" type="button"
           data-cal-link="german-baher-njlkqp"
