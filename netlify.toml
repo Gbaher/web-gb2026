@@ -23,6 +23,16 @@
   to = "/case-bodega.html"
   status = 200
 
+[[redirects]]
+  from = "/brand-intelligence"
+  to = "/brand-intelligence.html"
+  status = 200
+
+[[redirects]]
+  from = "/bi-001-logo-vs-marca"
+  to = "/bi-001-logo-vs-marca.html"
+  status = 200
+
 # Redirige la URL con .html a la URL canónica sin .html (evita contenido duplicado)
 [[redirects]]
   from = "/case-sofia.html"

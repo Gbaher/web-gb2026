@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logo vs. Marca: La confusión que le cuesta ventas a tu negocio | Brand Intelligence</title>
+  <meta name="description" content="El error más costoso que cometen los emprendedores bolivianos: confundir el logo con la marca. Descubre la diferencia y cómo construir una marca real. Por Germán Baher." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.germanbaher.com/bi-001-logo-vs-marca" />
+  <link rel="icon" type="image/svg+xml" href="assets/brand/icon-red.svg" />
+
+  <meta property="og:title" content="Logo vs. Marca: La confusión que le cuesta ventas | Brand Intelligence" />
+  <meta property="og:description" content="El error más costoso que cometen los emprendedores bolivianos — y cómo salir de él con claridad estratégica." />
+  <meta property="og:url" content="https://www.germanbaher.com/bi-001-logo-vs-marca" />
+  <meta property="og:image" content="https://www.germanbaher.com/assets/images/og-cover.jpg?v=3" />
+  <meta property="og:type" content="article" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --red:    #ed2450;
+      --black:  #080808;
+      --black2: #0d0d0d;
+      --black3: #141414;
+      --white:  #ffffff;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
+
+    .bg-lines { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bg-lines::before {
+      content: ''; position: absolute; top: -30%; left: -10%; width: 140%; height: 160%;
+      background: linear-gradient(115deg, transparent 0%, transparent 28%, rgba(255,255,255,0.022) 28.4%, rgba(255,255,255,0.022) 28.8%, transparent 29.2%, transparent 48%, rgba(255,255,255,0.016) 48.3%, rgba(255,255,255,0.016) 48.6%, transparent 49%, transparent 65%, rgba(255,255,255,0.012) 65.3%, rgba(255,255,255,0.012) 65.6%, transparent 66%, transparent 100%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5vw; background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 30px; width: auto; }
+    .nav-back {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.5);
+      text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: var(--red); z-index: 200; width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 720px; margin: 0 auto; padding: 0 5vw; position: relative; z-index: 1; }
+
+    /* ── HERO DEL ARTÍCULO ── */
+    .article-hero { padding: 8rem 5vw 4rem; position: relative; z-index: 1; }
+    .article-meta {
+      display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .article-tag {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--red); border: 1px solid rgba(237,36,80,0.4); padding: 0.25rem 0.7rem; border-radius: 2px;
+    }
+    .article-num { font-size: 0.72rem; color: rgba(255,255,255,0.25); font-weight: 600; letter-spacing: 0.1em; }
+    .article-time { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .article-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.02em; margin-bottom: 1.4rem;
+    }
+    .article-hero h1 em { font-style: normal; color: var(--red); }
+    .article-hero .lead {
+      font-size: 1.12rem; color: rgba(255,255,255,0.6); line-height: 1.75;
+      border-left: 3px solid var(--red); padding-left: 1.2rem;
+    }
+
+    /* ── CUERPO ── */
+    .article-body { padding: 0 5vw 6rem; position: relative; z-index: 1; }
+    .article-body .container { max-width: 720px; }
+
+    .section-break {
+      display: flex; align-items: center; gap: 1rem; margin: 3.5rem 0 2.5rem;
+    }
+    .section-break-num {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; color: var(--red);
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .section-break-line { flex: 1; height: 1px; background: var(--border); }
+
+    h2 {
+      font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em;
+      margin-bottom: 1rem; line-height: 1.25;
+    }
+    h2 em { font-style: normal; color: var(--red); }
+
+    p { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.72); margin-bottom: 1.4rem; }
+
+    /* ── QUOTE ── */
+    .bi-quote {
+      margin: 2.5rem 0; padding: 2rem 2rem 2rem 2.2rem;
+      border-left: 4px solid var(--red);
+      background: var(--black3); border-radius: 0 8px 8px 0;
+    }
+    .bi-quote p {
+      font-size: 1.2rem; font-weight: 600; color: var(--white);
+      line-height: 1.5; margin: 0; font-style: italic;
+    }
+
+    /* ── COMPARACIÓN ── */
+    .bi-compare {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border); border-radius: 10px; overflow: hidden;
+      margin: 2.5rem 0;
+    }
+    .bi-compare-col {
+      background: var(--black3); padding: 1.8rem;
+    }
+    .bi-compare-col.red-col { background: rgba(237,36,80,0.08); }
+    .bi-compare-title {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border);
+    }
+    .bi-compare-title.red { color: var(--red); }
+    .bi-compare-title.grey { color: rgba(255,255,255,0.3); }
+    .bi-compare ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .bi-compare li { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .bi-compare li::before { content: '→  '; color: var(--red); font-weight: 700; }
+
+    /* ── STAT ── */
+    .bi-stat {
+      text-align: center; padding: 3rem 2rem; margin: 2.5rem 0;
+      background: var(--black3); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .bi-stat-num { font-size: 4rem; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 0.5rem; }
+    .bi-stat-desc { font-size: 0.9rem; color: rgba(255,255,255,0.45); }
+
+    /* ── TAKEAWAYS ── */
+    .bi-takeaways {
+      background: var(--black3); border: 1px solid rgba(237,36,80,0.2);
+      border-radius: 10px; padding: 2rem; margin: 3rem 0;
+    }
+    .bi-takeaways-title {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1.4rem;
+    }
+    .bi-takeaways ol { list-style: none; display: flex; flex-direction: column; gap: 1rem; counter-reset: item; }
+    .bi-takeaways li {
+      font-size: 0.95rem; color: rgba(255,255,255,0.75); line-height: 1.6;
+      display: flex; gap: 1rem; align-items: flex-start; counter-increment: item;
+    }
+    .bi-takeaways li::before {
+      content: counter(item); min-width: 24px; height: 24px; background: var(--red);
+      color: var(--white); font-size: 0.72rem; font-weight: 700; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ── CTA FINAL ── */
+    .bi-cta {
+      margin: 4rem 0 0; padding: 3rem; background: var(--black3);
+      border: 1px solid rgba(237,36,80,0.25); border-radius: 12px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .bi-cta::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(ellipse at center, rgba(237,36,80,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .bi-cta-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 0.8rem;
+    }
+    .bi-cta h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.6rem; line-height: 1.3; }
+    .bi-cta p { font-size: 0.9rem; color: rgba(255,255,255,0.45); margin-bottom: 1.8rem; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .cta-form { display: flex; gap: 0.8rem; max-width: 420px; margin: 0 auto 0.8rem; flex-wrap: wrap; }
+    .cta-form input {
+      flex: 1; min-width: 160px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px; padding: 0.75rem 1rem; color: var(--white); font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+    }
+    .cta-form input::placeholder { color: rgba(255,255,255,0.25); }
+    .cta-form input:focus { border-color: var(--red); }
+    .cta-form button {
+      background: var(--red); color: var(--white); border: none; border-radius: 6px;
+      padding: 0.75rem 1.4rem; font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.88rem; letter-spacing: 0.06em; text-transform: uppercase;
+      cursor: pointer; transition: opacity 0.2s; white-space: nowrap;
+    }
+    .cta-form button:hover { opacity: 0.88; }
+    .cta-note { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+    .cta-success { display: none; color: var(--white); font-weight: 600; padding: 1rem; }
+    .cta-success span { color: var(--red); }
+
+    /* ── AUTHOR ── */
+    .bi-author {
+      display: flex; align-items: center; gap: 1.2rem; padding: 2rem 0;
+      border-top: 1px solid var(--border); margin-top: 3rem;
+    }
+    .bi-author img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+    .bi-author-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .bi-author-role { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+    /* ── NAV BOTTOM ── */
+    .bi-nav-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 2rem 5vw; border-top: 1px solid var(--border);
+      position: relative; z-index: 1; flex-wrap: wrap; gap: 1rem;
+    }
+    .bi-nav-link {
+      font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.4);
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .bi-nav-link:hover { color: var(--white); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+
+    @media (max-width: 600px) {
+      .bi-compare { grid-template-columns: 1fr; }
+      .article-hero h1 { font-size: 2rem; }
+      .cta-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="bg-lines"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="assets/brand/logo-full.svg" alt="Germán Baher Growth Brands" />
+  </a>
+  <a href="/brand-intelligence" class="nav-back">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M9 2L4 7l5 5"/>
+    </svg>
+    Brand Intelligence
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="article-hero">
+  <div class="container">
+    <div class="article-meta">
+      <span class="article-tag">Fundamentos</span>
+      <span class="article-num">BI — 001</span>
+      <span class="article-time">5 min de lectura</span>
+    </div>
+    <h1>Logo vs. Marca:<br /><em>La confusión que le<br />cuesta ventas a tu negocio.</em></h1>
+    <p class="lead">El error más costoso que cometen los emprendedores bolivianos — y cómo salir de él con claridad estratégica real.</p>
+  </div>
+</section>
+
+<!-- CUERPO -->
+<div class="article-body">
+  <div class="container">
+
+    <div class="section-break reveal">
+      <span class="section-break-num">El problema</span>
+      <div class="section-break-line"></div>
+    </div>
+
+    <h2 class="reveal">Gastas en diseño.<br />Pero sigues <em>invisible.</em></h2>
+    <p class="reveal">Todos los años, miles de emprendedores bolivianos invierten en un logo nuevo. Contratan a un diseñador, eligen colores, tipografías, y quedan satisfechos con el resultado visual. Y sin embargo, los clientes siguen sin recordarlos. Los precios siguen siendo una barrera. La diferenciación no existe.</p>
+    <p class="reveal">El problema no es el diseño. El problema es que confundieron el logo con la marca.</p>
+
+    <div class="bi-quote reveal">
+      <p>"Un logo es un símbolo. Una marca es la razón por la que alguien te elige a ti — y no a tu competidor."</p>
+    </div>
+
+    <div class="section-break reveal">
+      <span class="section-break-num">La diferencia real</span>
+      <div class="section-break-line"></div>
+    </div>
+
+    <h2 class="reveal">¿Qué es un logo<br />y qué es una <em>marca?</em></h2>
+    <p class="reveal">Esta distinción parece obvia cuando la lees. Pero en la práctica, la mayoría de los negocios tratan su marca como si fuera solo su logo. Y eso tiene consecuencias directas en sus ventas.</p>
+
+    <div class="bi-compare reveal">
+      <div class="bi-compare-col">
+        <div class="bi-compare-title grey">Un logo es…</div>
+        <ul>
+          <li>Un símbolo visual</li>
+          <li>Un archivo de diseño</li>
+          <li>Lo que ves en una tarjeta</li>
+          <li>Se puede cambiar en un día</li>
+          <li>No genera lealtad por sí solo</li>
+        </ul>
+      </div>
+      <div class="bi-compare-col red-col">
+        <div class="bi-compare-title red">Una marca es…</div>
+        <ul>
+          <li>Una promesa en la mente del cliente</li>
+          <li>Una experiencia completa</li>
+          <li>Lo que sienten cuando interactúan contigo</li>
+          <li>Se construye con años de consistencia</li>
+          <li>Es la razón real de la lealtad y el precio</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="reveal">Apple no vale lo que vale por su manzana mordida. Vale lo que vale porque durante décadas construyó una promesa de simplicidad, creatividad y estatus que sus clientes perciben con cada interacción.</p>
+    <p class="reveal">En Bolivia, el equivalente es una empresa familiar que lleva 30 años siendo la referencia en su categoría — no por su logo, sino por la confianza acumulada, la consistencia en la calidad y el significado que representa para su cliente.</p>
+
+    <div class="section-break reveal">
+      <span class="section-break-num">El costo real</span>
+      <div class="section-break-line"></div>
+    </div>
+
+    <h2 class="reveal">¿Qué pierdes cuando<br />solo tienes <em>logo?</em></h2>
+
+    <div class="bi-stat reveal">
+      <div class="bi-stat-num">73%</div>
+      <div class="bi-stat-desc">de los consumidores pagan más por una marca en la que confían — independientemente del precio del competidor.*</div>
+    </div>
+
+    <p class="reveal">Cuando solo tienes un logo — sin posicionamiento claro, sin narrativa, sin una experiencia consistente — compites únicamente por precio. Y competir por precio es una carrera a la que nadie llega bien.</p>
+    <p class="reveal">Tus clientes no pueden articular por qué deberían elegirte. No tienen una historia que contar sobre ti. No te recomiendan espontáneamente. Y cuando llega un competidor más barato, se van.</p>
+
+    <div class="bi-quote reveal">
+      <p>"Construir marca no es un lujo para empresas grandes. Es la única forma sostenible de crecer sin depender del precio."</p>
+    </div>
+
+    <div class="section-break reveal">
+      <span class="section-break-num">Qué hacer</span>
+      <div class="section-break-line"></div>
+    </div>
+
+    <h2 class="reveal">Las 3 preguntas que<br />definen si tienes <em>una marca real.</em></h2>
+    <p class="reveal">Antes de contratar a otro diseñador o cambiar tus colores, responde estas tres preguntas con honestidad:</p>
+
+    <div class="bi-takeaways reveal">
+      <div class="bi-takeaways-title">Test de marca real</div>
+      <ol>
+        <li><strong>¿Por qué te eligen a ti?</strong> — Si la respuesta es "porque somos buenos" o "porque somos baratos", aún no tienes un posicionamiento diferenciado.</li>
+        <li><strong>¿Qué diría tu mejor cliente sobre ti en una reunión?</strong> — Si no puedes predecir exactamente esa respuesta, tu marca no está siendo gestionada estratégicamente.</li>
+        <li><strong>¿Qué perderías si cambias tu logo mañana?</strong> — Si la respuesta es "nada importante", tu marca vive en el logo. Si la respuesta es "la confianza de mis clientes", entonces sí tienes una marca real.</li>
+      </ol>
+    </div>
+
+    <p class="reveal">Si alguna de estas preguntas te generó incomodidad, es una señal importante. No es un problema — es el punto de partida para construir algo que realmente perdure.</p>
+
+    <!-- CTA SUSCRIPCIÓN -->
+    <div class="bi-cta reveal">
+      <div class="bi-cta-tag">Brand Intelligence — Semanal</div>
+      <h3>El próximo insight llega la semana que viene.</h3>
+      <p>Suscríbete y recíbelo directo en tu email — y por WhatsApp si quieres.</p>
+      <form class="cta-form" id="ctaForm">
+        <input type="email" name="email" placeholder="Tu email" required />
+        <button type="submit">Quiero recibirlo →</button>
+      </form>
+      <p class="cta-note">Sin spam. Cancelas cuando quieras.</p>
+      <div class="cta-success" id="ctaSuccess">✓ ¡Perfecto! Te avisamos con el próximo <span>Brand Intelligence.</span></div>
+    </div>
+
+    <!-- AUTOR -->
+    <div class="bi-author reveal">
+      <img src="assets/images/german-portrait-main.webp" alt="Germán Baher — Estratega de Marca Bolivia" />
+      <div>
+        <div class="bi-author-name">Germán Baher</div>
+        <div class="bi-author-role">Estratega de Marca · Growth Brands · Bolivia</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.7rem;color:rgba(255,255,255,0.18);margin-top:1rem;">* Fuente: Edelman Trust Barometer 2023. Datos globales.</p>
+
+  </div>
+</div>
+
+<!-- NAV BOTTOM -->
+<div class="bi-nav-bottom">
+  <a href="/brand-intelligence" class="bi-nav-link">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M9 2L4 7l5 5"/>
+    </svg>
+    Ver todos los insights
+  </a>
+  <a href="/#contacto" class="bi-nav-link">
+    ¿Necesitas ayuda con tu marca?
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M5 2l5 5-5 5"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  // ── Progress bar ──
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+  });
+
+  // ── Reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── CTA Form ──
+  const WEBHOOK = 'https://script.google.com/macros/s/AKfycbwnJOX14kd3puq3j2PEy65jvb00fF9S1BuTjfs9onDyLTLEdfRaOzyrRwvsP143XcY5Bw/exec';
+  document.getElementById('ctaForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    btn.textContent = 'Enviando…'; btn.disabled = true;
+    try {
+      await fetch(WEBHOOK, {
+        method: 'POST', mode: 'no-cors',
+        body: JSON.stringify({ email: this.email.value, nombre: '', mensaje: 'Suscripción BI-001 — Logo vs Marca', fuente: 'bi-001' })
+      });
+    } catch(_) {}
+    this.style.display = 'none';
+    document.getElementById('ctaSuccess').style.display = 'block';
+  });
+</script>
+</body>
+</html>
