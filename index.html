@@ -1188,7 +1188,13 @@
       e.preventDefault();
       var btn = this.querySelector('button');
       btn.textContent = 'Enviando…'; btn.disabled = true;
-      try { await fetch(WEBHOOK, { method:'POST', mode:'no-cors', body: JSON.stringify({ email: this.email.value, nombre:'', mensaje:'Suscripción Brand Intelligence (home)', fuente:'home-bi' }) }); } catch(_){}
+      var emailVal = this.email.value;
+      try {
+        await Promise.all([
+          fetch(WEBHOOK, { method:'POST', mode:'no-cors', body: JSON.stringify({ email: emailVal, nombre:'', mensaje:'Suscripción Brand Intelligence (home)', fuente:'home-bi' }) }),
+          fetch('/api/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email: emailVal, nombre: '', fuente: 'bi-home' }) })
+        ]);
+      } catch(_){}
       this.style.display = 'none';
       document.getElementById('biHomeSuccess').style.display = 'block';
     });
@@ -1474,8 +1480,18 @@
     '</div>'
   );
 
-  // ── Contact form → Google Sheets webhook ────────────────────────
+  // ── Contact form → Google Sheets + Brevo ────────────────────────
   const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwnJOX14kd3puq3j2PEy65jvb00fF9S1BuTjfs9onDyLTLEdfRaOzyrRwvsP143XcY5Bw/exec';
+
+  async function brevoContact(email, nombre, fuente) {
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, nombre, fuente })
+      });
+    } catch(_) {}
+  }
 
   const cfForm   = document.getElementById('contactForm');
   const cfBtn    = document.getElementById('cfBtn');
@@ -1499,12 +1515,15 @@
       cfStatus.textContent = '';
 
       try {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nombre, email, mensaje })
-        });
+        await Promise.all([
+          fetch(WEBHOOK_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, email, mensaje })
+          }),
+          brevoContact(email, nombre, 'contacto-web')
+        ]);
         cfBtn.textContent = '✓ Mensaje enviado';
         cfBtn.style.background = '#1a7a1a';
         cfStatus.style.color = 'rgba(255,255,255,0.45)';
