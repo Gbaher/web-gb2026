@@ -1,22 +1,25 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "*.html", "use": "@vercel/static" },
-    { "src": "assets/**", "use": "@vercel/static" }
+  "rewrites": [
+    { "source": "/case-sofia",           "destination": "/case-sofia.html" },
+    { "source": "/case-alalay",          "destination": "/case-alalay.html" },
+    { "source": "/case-bodega",          "destination": "/case-bodega.html" },
+    { "source": "/brand-intelligence",   "destination": "/brand-intelligence.html" },
+    { "source": "/bi-001-logo-vs-marca", "destination": "/bi-001-logo-vs-marca.html" }
   ],
-  "routes": [
-    { "src": "/case-sofia", "dest": "/case-sofia.html" },
-    { "src": "/case-alalay", "dest": "/case-alalay.html" },
-    { "src": "/case-bodega", "dest": "/case-bodega.html" },
-    { "src": "/(.*)", "dest": "/$1" }
+  "redirects": [
+    { "source": "/case-sofia.html",           "destination": "/case-sofia",           "permanent": true },
+    { "source": "/case-alalay.html",          "destination": "/case-alalay",          "permanent": true },
+    { "source": "/case-bodega.html",          "destination": "/case-bodega",          "permanent": true },
+    { "source": "/brand-intelligence.html",   "destination": "/brand-intelligence",   "permanent": true },
+    { "source": "/bi-001-logo-vs-marca.html", "destination": "/bi-001-logo-vs-marca", "permanent": true }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
+        { "key": "X-Frame-Options",        "value": "DENY" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" }
       ]
     }
   ]
