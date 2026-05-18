@@ -221,6 +221,23 @@
     }
     .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
 
+    .btn-nav-client {
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.55rem 1.1rem; background: transparent; color: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 2px;
+      cursor: pointer; text-decoration: none;
+      transition: color 0.2s, border-color 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+    }
+    .btn-nav-client::before {
+      content: '';
+      display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0;
+    }
+    .btn-nav-client:hover { color: var(--white); border-color: rgba(255,255,255,0.35); transform: translateY(-1px); }
+    @media (max-width: 600px) { .btn-nav-client { display: none; } }
+
     /* ══ DIAGNOSTIC HERO ══ */
     #hero {
       position: relative; z-index: 1; min-height: 100vh;
@@ -889,6 +906,7 @@
       <span class="lang-sep">·</span>
       <button class="lang-btn" data-lang="fr">FR</button>
     </div>
+    <a href="/portal" class="btn-nav-client" data-i18n="nav_portal">Acceso Clientes</a>
     <a href="#contacto" class="btn-nav" data-i18n="nav_cta">Hablemos</a>
   </div>
 </nav>
@@ -1542,7 +1560,7 @@
   var _t = {
     es: {
       nav_about:'Sobre mí', nav_method:'Metodología', nav_services:'Servicios',
-      nav_cases:'Casos', nav_contact:'Contacto', nav_cta:'Hablemos',
+      nav_cases:'Casos', nav_contact:'Contacto', nav_cta:'Hablemos', nav_portal:'Acceso Clientes',
       about_tag:'Sobre mí',
       about_title:'Construyo<br/>marcas que<br/>perduran.',
       about_p1:'Soy Germán Baher, estratega de marca y crecimiento. Ayudo a emprendedores y empresas a clarificar su identidad, diferenciarse con propósito y crecer de forma consistente.',
@@ -1602,7 +1620,7 @@
     },
     en: {
       nav_about:'About', nav_method:'Methodology', nav_services:'Services',
-      nav_cases:'Cases', nav_contact:'Contact', nav_cta:"Let's Talk",
+      nav_cases:'Cases', nav_contact:'Contact', nav_cta:"Let's Talk", nav_portal:'Client Access',
       about_tag:'About Me',
       about_title:'I build brands<br/>that last.',
       about_p1:"I'm Germán Baher, brand and growth strategist. I help entrepreneurs and companies clarify their identity, differentiate with purpose, and grow consistently.",
@@ -1661,7 +1679,7 @@
     },
     fr: {
       nav_about:'À propos', nav_method:'Méthode', nav_services:'Services',
-      nav_cases:'Cas', nav_contact:'Contact', nav_cta:'Parlons-en',
+      nav_cases:'Cas', nav_contact:'Contact', nav_cta:'Parlons-en', nav_portal:'Espace Clients',
       about_tag:'À propos',
       about_title:'Je construis des marques<br/>qui durent.',
       about_p1:"Je suis Germán Baher, stratège de marque et de croissance. J'aide les entrepreneurs et les entreprises à clarifier leur identité, à se différencier avec intention et à croître de manière cohérente.",
