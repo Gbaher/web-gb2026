@@ -1,4 +1,5 @@
 {
+  "outputDirectory": ".",
   "rewrites": [
     { "source": "/case-sofia",           "destination": "/case-sofia.html" },
     { "source": "/case-alalay",          "destination": "/case-alalay.html" },
