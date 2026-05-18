@@ -5,14 +5,18 @@
     { "source": "/case-alalay",          "destination": "/case-alalay.html" },
     { "source": "/case-bodega",          "destination": "/case-bodega.html" },
     { "source": "/brand-intelligence",   "destination": "/brand-intelligence.html" },
-    { "source": "/bi-001-logo-vs-marca", "destination": "/bi-001-logo-vs-marca.html" }
+    { "source": "/bi-001-logo-vs-marca", "destination": "/bi-001-logo-vs-marca.html" },
+    { "source": "/portal",               "destination": "/portal.html" },
+    { "source": "/propuesta-demo",       "destination": "/propuesta-demo.html" }
   ],
   "redirects": [
     { "source": "/case-sofia.html",           "destination": "/case-sofia",           "permanent": true },
     { "source": "/case-alalay.html",          "destination": "/case-alalay",          "permanent": true },
     { "source": "/case-bodega.html",          "destination": "/case-bodega",          "permanent": true },
     { "source": "/brand-intelligence.html",   "destination": "/brand-intelligence",   "permanent": true },
-    { "source": "/bi-001-logo-vs-marca.html", "destination": "/bi-001-logo-vs-marca", "permanent": true }
+    { "source": "/bi-001-logo-vs-marca.html", "destination": "/bi-001-logo-vs-marca", "permanent": true },
+    { "source": "/portal.html",               "destination": "/portal",               "permanent": true },
+    { "source": "/propuesta-demo.html",       "destination": "/propuesta-demo",       "permanent": true }
   ],
   "headers": [
     {

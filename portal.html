@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Clientes — Germán Baher · Growth Brands</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="assets/brand/icon-red.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --red: #ed2450; --black: #080808; --black3: #141414; --white: #ffffff; --border: rgba(255,255,255,0.07); }
+
+    body {
+      background: var(--black); color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 2rem;
+    }
+
+    /* Fondo diagonal */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: linear-gradient(115deg, transparent 28%, rgba(255,255,255,0.018) 28.4%, rgba(255,255,255,0.018) 28.8%, transparent 29.2%, transparent 65%, rgba(255,255,255,0.01) 65.3%, rgba(255,255,255,0.01) 65.6%, transparent 66%);
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 0%, rgba(237,36,80,0.08) 0%, transparent 60%);
+    }
+
+    .portal-wrap {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 420px;
+    }
+
+    /* Logo */
+    .portal-logo {
+      display: flex; justify-content: center; margin-bottom: 2.8rem;
+    }
+    .portal-logo img { height: 48px; width: auto; }
+
+    /* Card */
+    .portal-card {
+      background: var(--black3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 2.4rem; position: relative; overflow: hidden;
+    }
+    .portal-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--red), transparent);
+    }
+
+    .portal-tag {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem;
+    }
+    .portal-card h1 {
+      font-size: 1.4rem; font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.01em;
+    }
+    .portal-card p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; line-height: 1.6;
+    }
+
+    label {
+      display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 0.85rem 1rem; color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none;
+      transition: border-color 0.2s; margin-bottom: 1rem;
+    }
+    input:focus { border-color: var(--red); }
+    input::placeholder { color: rgba(255,255,255,0.2); }
+
+    .portal-btn {
+      width: 100%; background: var(--red); color: var(--white); border: none;
+      border-radius: 8px; padding: 0.9rem; font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase;
+      cursor: pointer; transition: opacity 0.2s, transform 0.15s; margin-top: 0.5rem;
+    }
+    .portal-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .portal-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .portal-error {
+      display: none; margin-top: 1rem; padding: 0.75rem 1rem;
+      background: rgba(237,36,80,0.1); border: 1px solid rgba(237,36,80,0.3);
+      border-radius: 6px; font-size: 0.82rem; color: rgba(255,255,255,0.7);
+      text-align: center;
+    }
+
+    .portal-footer {
+      text-align: center; margin-top: 2rem;
+      font-size: 0.72rem; color: rgba(255,255,255,0.2);
+    }
+    .portal-footer a {
+      color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s;
+    }
+    .portal-footer a:hover { color: var(--white); }
+
+    /* Shake animation */
+    @keyframes shake {
+      0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
+    }
+    .shake { animation: shake 0.4s ease; }
+  </style>
+</head>
+<body>
+
+<div class="portal-wrap">
+  <div class="portal-logo">
+    <img src="assets/brand/logo-full.svg" alt="Germán Baher — Growth Brands" />
+  </div>
+
+  <div class="portal-card">
+    <div class="portal-tag">Portal exclusivo</div>
+    <h1>Acceso a tu propuesta</h1>
+    <p>Ingresa las credenciales que recibiste para ver tu propuesta estratégica.</p>
+
+    <form id="loginForm" autocomplete="off">
+      <label for="clientId">Tu nombre o empresa</label>
+      <input type="text" id="clientId" placeholder="Ej: Sofía al Paso" required autocomplete="off" />
+
+      <label for="clientPass">Contraseña</label>
+      <input type="password" id="clientPass" placeholder="••••••••" required autocomplete="off" />
+
+      <button type="submit" class="portal-btn" id="loginBtn">Ingresar →</button>
+    </form>
+
+    <div class="portal-error" id="loginError">
+      Credenciales incorrectas. Verifica tu contraseña o contacta a Germán.
+    </div>
+  </div>
+
+  <div class="portal-footer">
+    <a href="/">← Volver al sitio</a> &nbsp;·&nbsp;
+    <a href="mailto:contacto@germanbaher.com">contacto@germanbaher.com</a>
+  </div>
+</div>
+
+<script>
+  // ─────────────────────────────────────────────────────────────────────────
+  //  CLIENTES — agrega aquí cada cliente nuevo
+  //  Formato: { id: "nombre clave", pass: "contraseña", propuesta: "url-de-propuesta" }
+  //
+  //  La URL de propuesta puede ser:
+  //  - Una página interna: "/propuestas/nombre-cliente"
+  //  - O cualquier URL externa
+  // ─────────────────────────────────────────────────────────────────────────
+  const CLIENTES = [
+    {
+      id:       "demo",
+      pass:     "gbdemo2026",
+      propuesta: "/propuesta-demo"
+    }
+    // Agrega más clientes aquí:
+    // { id: "sofia",  pass: "sofia2026",  propuesta: "/propuesta-sofia" },
+    // { id: "alalay", pass: "alalay2026", propuesta: "/propuesta-alalay" },
+  ];
+
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn   = document.getElementById('loginBtn');
+    const error = document.getElementById('loginError');
+    const card  = document.querySelector('.portal-card');
+
+    btn.disabled = true;
+    btn.textContent = 'Verificando…';
+    error.style.display = 'none';
+
+    const inputId   = document.getElementById('clientId').value.trim().toLowerCase();
+    const inputPass = document.getElementById('clientPass').value.trim();
+
+    // Buscar coincidencia (case-insensitive en el id)
+    const match = CLIENTES.find(c =>
+      c.id.toLowerCase() === inputId && c.pass === inputPass
+    );
+
+    setTimeout(() => {
+      if (match) {
+        // Guardar sesión y redirigir
+        sessionStorage.setItem('gb_portal_client', match.id);
+        sessionStorage.setItem('gb_portal_token',  btoa(match.id + ':' + match.pass));
+        btn.textContent = '✓ Acceso concedido';
+        setTimeout(() => { window.location.href = match.propuesta; }, 600);
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Ingresar →';
+        error.style.display = 'block';
+        card.classList.add('shake');
+        setTimeout(() => card.classList.remove('shake'), 400);
+      }
+    }, 800);
+  });
+</script>
+</body>
+</html>
