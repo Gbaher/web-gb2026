@@ -289,36 +289,36 @@
     <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8">
       <path d="M9 2L4 7l5 5"/>
     </svg>
-    Volver al inicio
+    <span data-i18n="nav_back">Volver al inicio</span>
   </a>
-  <a href="/#contacto" class="btn-nav">Hablemos</a>
+  <a href="/#contacto" class="btn-nav" data-i18n="nav_cta">Hablemos</a>
 </nav>
 
 <!-- HERO -->
 <section class="bi-hero">
   <div class="container">
     <div class="bi-tag">Brand Intelligence</div>
-    <h1>Conocimiento que<br />convierte marcas<br />en <em>ventajas reales.</em></h1>
-    <p>Un insight semanal de brand strategy para emprendedores y empresas que quieren crecer con propósito. Sin relleno. Sin teoría vacía. Solo lo que funciona.</p>
+    <h1 data-i18n="hero_h1">Conocimiento que<br />convierte marcas<br />en <em>ventajas reales.</em></h1>
+    <p data-i18n="hero_p">Un insight semanal de brand strategy para emprendedores y empresas que quieren crecer con propósito. Sin relleno. Sin teoría vacía. Solo lo que funciona.</p>
     <div class="bi-meta">
-      <div class="bi-meta-item">📅 Frecuencia: <span>Semanal</span></div>
-      <div class="bi-meta-item">⏱ Tiempo de lectura: <span>5 minutos</span></div>
-      <div class="bi-meta-item">🎯 Enfocado en: <span>Bolivia · Latinoamérica</span></div>
+      <div class="bi-meta-item">📅 <span data-i18n="meta_freq_label">Frecuencia:</span> <span data-i18n="meta_freq_val">Semanal</span></div>
+      <div class="bi-meta-item">⏱ <span data-i18n="meta_read_label">Tiempo de lectura:</span> <span data-i18n="meta_read_val">5 minutos</span></div>
+      <div class="bi-meta-item">🎯 <span data-i18n="meta_focus_label">Enfocado en:</span> <span data-i18n="meta_focus_val">Bolivia · Latinoamérica</span></div>
     </div>
 
     <!-- FORM DE SUSCRIPCIÓN -->
     <div class="bi-subscribe reveal">
-      <div class="bi-subscribe-label">Suscripción gratuita</div>
-      <h2>Recibe el próximo insight directo en tu email — y por WhatsApp si quieres.</h2>
-      <p>Únete a los emprendedores bolivianos que construyen marcas con estrategia real.</p>
+      <div class="bi-subscribe-label" data-i18n="form_label">Suscripción gratuita</div>
+      <h2 data-i18n="form_h2">Recibe el próximo insight directo en tu email — y por WhatsApp si quieres.</h2>
+      <p data-i18n="form_p">Únete a los emprendedores bolivianos que construyen marcas con estrategia real.</p>
       <form class="bi-form" id="biForm">
-        <input type="text" name="nombre" placeholder="Tu nombre" required />
-        <input type="email" name="email" placeholder="Tu email" required />
-        <input type="tel" name="whatsapp" placeholder="WhatsApp (opcional)" />
-        <button type="submit">Suscribirme →</button>
+        <input type="text" name="nombre" data-i18n-placeholder="form_name_ph" placeholder="Tu nombre" required />
+        <input type="email" name="email" data-i18n-placeholder="form_email_ph" placeholder="Tu email" required />
+        <input type="tel" name="whatsapp" data-i18n-placeholder="form_wa_ph" placeholder="WhatsApp (opcional)" />
+        <button type="submit" data-i18n="form_btn">Suscribirme →</button>
       </form>
-      <p class="bi-form-note">Sin spam. Puedes cancelar cuando quieras.</p>
-      <div class="bi-success" id="biSuccess">
+      <p class="bi-form-note" data-i18n="form_note">Sin spam. Puedes cancelar cuando quieras.</p>
+      <div class="bi-success" id="biSuccess" data-i18n="form_success">
         ✓ ¡Listo! Te avisamos con el próximo <span>Brand Intelligence.</span>
       </div>
     </div>
@@ -328,12 +328,12 @@
 <!-- PÁGINAS PILAR -->
 <section class="bi-section bi-pillar-section">
   <div class="container">
-    <div class="bi-pillar-label">Contenido pilar — profundidad estratégica</div>
+    <div class="bi-pillar-label" data-i18n="pillar_label">Contenido pilar — profundidad estratégica</div>
     <a href="/brand-intelligence-inteligencia-de-marca" class="bi-pillar-card reveal">
       <div class="bi-pillar-body">
-        <span class="bi-pillar-badge">Pilar · Cluster 1</span>
-        <h3>Qué es Brand Intelligence y por qué lo necesita tu marca</h3>
-        <p>La guía estratégica completa sobre inteligencia de marca: qué es, cómo funciona y cómo aplicarla para tomar mejores decisiones. El punto de partida de todo el cluster.</p>
+        <span class="bi-pillar-badge" data-i18n="pillar_badge">Pilar · Cluster 1</span>
+        <h3 data-i18n="pillar_h3">Qué es Brand Intelligence y por qué lo necesita tu marca</h3>
+        <p data-i18n="pillar_p">La guía estratégica completa sobre inteligencia de marca: qué es, cómo funciona y cómo aplicarla para tomar mejores decisiones. El punto de partida de todo el cluster.</p>
       </div>
       <div class="bi-pillar-arrow">
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -347,19 +347,19 @@
 <!-- GRID DE INSIGHTS -->
 <section class="bi-section">
   <div class="container">
-    <div class="bi-section-title">Insights publicados — lee cuando quieras</div>
+    <div class="bi-section-title" data-i18n="grid_label">Insights publicados — lee cuando quieras</div>
     <div class="bi-grid">
 
       <!-- #001 -->
       <a href="/bi-001-logo-vs-marca" class="bi-card reveal">
         <div class="bi-card-top">
           <span class="bi-card-num">BI — 001</span>
-          <span class="bi-card-cat">Fundamentos</span>
+          <span class="bi-card-cat" data-i18n="c1_cat">Fundamentos</span>
         </div>
-        <h3>Logo vs. Marca: La confusión que le cuesta ventas a tu negocio</h3>
-        <p>El error más costoso que cometen los emprendedores bolivianos — y cómo salir de él con claridad estratégica.</p>
+        <h3 data-i18n="c1_h3">Logo vs. Marca: La confusión que le cuesta ventas a tu negocio</h3>
+        <p data-i18n="c1_p">El error más costoso que cometen los emprendedores bolivianos — y cómo salir de él con claridad estratégica.</p>
         <div class="bi-card-footer">
-          <span class="bi-card-time">5 min de lectura</span>
+          <span class="bi-card-time" data-i18n="c1_time">5 min de lectura</span>
           <div class="bi-card-arrow">
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8">
               <path d="M2 6h8M6 2l4 4-4 4"/>
@@ -372,12 +372,12 @@
       <div class="bi-card coming reveal">
         <div class="bi-card-top">
           <span class="bi-card-num">BI — 002</span>
-          <span class="bi-card-cat">Próximamente</span>
+          <span class="bi-card-cat" data-i18n="coming_soon">Próximamente</span>
         </div>
-        <h3>¿Por qué tu marca no vende aunque tengas buen producto?</h3>
-        <p>La brecha entre lo que ofreces y lo que el cliente percibe — y cómo cerrarla.</p>
+        <h3 data-i18n="c2_h3">¿Por qué tu marca no vende aunque tengas buen producto?</h3>
+        <p data-i18n="c2_p">La brecha entre lo que ofreces y lo que el cliente percibe — y cómo cerrarla.</p>
         <div class="bi-card-footer">
-          <span class="bi-card-time">Suscríbete para recibirlo</span>
+          <span class="bi-card-time" data-i18n="subscribe_cta">Suscríbete para recibirlo</span>
           <div class="bi-card-arrow">
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8">
               <path d="M2 6h8M6 2l4 4-4 4"/>
@@ -390,12 +390,12 @@
       <div class="bi-card coming reveal">
         <div class="bi-card-top">
           <span class="bi-card-num">BI — 003</span>
-          <span class="bi-card-cat">Próximamente</span>
+          <span class="bi-card-cat" data-i18n="coming_soon">Próximamente</span>
         </div>
-        <h3>El posicionamiento que nadie te enseñó en la universidad</h3>
-        <p>Cómo ocupar un lugar único en la mente de tu cliente con herramientas de estrategia real.</p>
+        <h3 data-i18n="c3_h3">El posicionamiento que nadie te enseñó en la universidad</h3>
+        <p data-i18n="c3_p">Cómo ocupar un lugar único en la mente de tu cliente con herramientas de estrategia real.</p>
         <div class="bi-card-footer">
-          <span class="bi-card-time">Suscríbete para recibirlo</span>
+          <span class="bi-card-time" data-i18n="subscribe_cta">Suscríbete para recibirlo</span>
           <div class="bi-card-arrow">
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8">
               <path d="M2 6h8M6 2l4 4-4 4"/>
@@ -452,6 +452,99 @@
     this.style.display = 'none';
     document.getElementById('biSuccess').style.display = 'block';
   });
+
+  // ── i18n ──────────────────────────────────────────────────────────
+  var _bi_t = {
+    es: {
+      nav_back:'Volver al inicio', nav_cta:'Hablemos',
+      hero_h1:'Conocimiento que<br />convierte marcas<br />en <em>ventajas reales.</em>',
+      hero_p:'Un insight semanal de brand strategy para emprendedores y empresas que quieren crecer con propósito. Sin relleno. Sin teoría vacía. Solo lo que funciona.',
+      meta_freq_label:'Frecuencia:', meta_freq_val:'Semanal',
+      meta_read_label:'Tiempo de lectura:', meta_read_val:'5 minutos',
+      meta_focus_label:'Enfocado en:', meta_focus_val:'Bolivia · Latinoamérica',
+      form_label:'Suscripción gratuita',
+      form_h2:'Recibe el próximo insight directo en tu email — y por WhatsApp si quieres.',
+      form_p:'Únete a los emprendedores bolivianos que construyen marcas con estrategia real.',
+      form_name_ph:'Tu nombre', form_email_ph:'Tu email', form_wa_ph:'WhatsApp (opcional)',
+      form_btn:'Suscribirme →', form_note:'Sin spam. Puedes cancelar cuando quieras.',
+      form_success:'✓ ¡Listo! Te avisamos con el próximo <span>Brand Intelligence.</span>',
+      pillar_label:'Contenido pilar — profundidad estratégica', pillar_badge:'Pilar · Cluster 1',
+      pillar_h3:'Qué es Brand Intelligence y por qué lo necesita tu marca',
+      pillar_p:'La guía estratégica completa sobre inteligencia de marca: qué es, cómo funciona y cómo aplicarla para tomar mejores decisiones. El punto de partida de todo el cluster.',
+      grid_label:'Insights publicados — lee cuando quieras',
+      c1_cat:'Fundamentos', c1_h3:'Logo vs. Marca: La confusión que le cuesta ventas a tu negocio',
+      c1_p:'El error más costoso que cometen los emprendedores bolivianos — y cómo salir de él con claridad estratégica.',
+      c1_time:'5 min de lectura', coming_soon:'Próximamente', subscribe_cta:'Suscríbete para recibirlo',
+      c2_h3:'¿Por qué tu marca no vende aunque tengas buen producto?',
+      c2_p:'La brecha entre lo que ofreces y lo que el cliente percibe — y cómo cerrarla.',
+      c3_h3:'El posicionamiento que nadie te enseñó en la universidad',
+      c3_p:'Cómo ocupar un lugar único en la mente de tu cliente con herramientas de estrategia real.'
+    },
+    en: {
+      nav_back:'Back to home', nav_cta:"Let's Talk",
+      hero_h1:'Knowledge that<br />turns brands<br />into <em>real advantages.</em>',
+      hero_p:'A weekly brand strategy insight for entrepreneurs and companies that want to grow with purpose. No filler. No empty theory. Only what works.',
+      meta_freq_label:'Frequency:', meta_freq_val:'Weekly',
+      meta_read_label:'Reading time:', meta_read_val:'5 minutes',
+      meta_focus_label:'Focused on:', meta_focus_val:'Bolivia · Latin America',
+      form_label:'Free subscription',
+      form_h2:'Receive the next insight directly in your email — and on WhatsApp if you want.',
+      form_p:'Join the entrepreneurs who build brands with real strategy.',
+      form_name_ph:'Your name', form_email_ph:'Your email', form_wa_ph:'WhatsApp (optional)',
+      form_btn:'Subscribe →', form_note:'No spam. Cancel anytime.',
+      form_success:'✓ Done! We\'ll notify you with the next <span>Brand Intelligence.</span>',
+      pillar_label:'Pillar content — strategic depth', pillar_badge:'Pillar · Cluster 1',
+      pillar_h3:'What is Brand Intelligence and why does your brand need it',
+      pillar_p:'The complete strategic guide on brand intelligence: what it is, how it works, and how to apply it to make better decisions. The starting point of the entire cluster.',
+      grid_label:'Published insights — read whenever you want',
+      c1_cat:'Fundamentals', c1_h3:'Logo vs. Brand: The confusion that costs your business sales',
+      c1_p:'The most costly mistake entrepreneurs make — and how to get out of it with strategic clarity.',
+      c1_time:'5 min read', coming_soon:'Coming soon', subscribe_cta:'Subscribe to receive it',
+      c2_h3:'Why doesn\'t your brand sell even if you have a great product?',
+      c2_p:'The gap between what you offer and what the client perceives — and how to close it.',
+      c3_h3:'The positioning nobody taught you in college',
+      c3_p:'How to occupy a unique place in your client\'s mind with real strategy tools.'
+    },
+    fr: {
+      nav_back:'Retour à l\'accueil', nav_cta:'Parlons-en',
+      hero_h1:'Des connaissances qui<br />transforment les marques<br />en <em>avantages réels.</em>',
+      hero_p:'Un insight hebdomadaire de brand strategy pour les entrepreneurs et entreprises qui veulent croître avec intention. Sans remplissage. Sans théorie vide. Seulement ce qui fonctionne.',
+      meta_freq_label:'Fréquence:', meta_freq_val:'Hebdomadaire',
+      meta_read_label:'Temps de lecture:', meta_read_val:'5 minutes',
+      meta_focus_label:'Centré sur:', meta_focus_val:'Bolivie · Amérique Latine',
+      form_label:'Abonnement gratuit',
+      form_h2:'Recevez le prochain insight directement dans votre email — et sur WhatsApp si vous voulez.',
+      form_p:'Rejoignez les entrepreneurs qui construisent des marques avec une vraie stratégie.',
+      form_name_ph:'Votre nom', form_email_ph:'Votre email', form_wa_ph:'WhatsApp (optionnel)',
+      form_btn:'S\'abonner →', form_note:'Sans spam. Annulez quand vous voulez.',
+      form_success:'✓ C\'est fait! Nous vous informons du prochain <span>Brand Intelligence.</span>',
+      pillar_label:'Contenu pilier — profondeur stratégique', pillar_badge:'Pilier · Cluster 1',
+      pillar_h3:'Qu\'est-ce que la Brand Intelligence et pourquoi votre marque en a besoin',
+      pillar_p:'Le guide stratégique complet sur l\'intelligence de marque: ce que c\'est, comment ça fonctionne et comment l\'appliquer pour prendre de meilleures décisions.',
+      grid_label:'Insights publiés — lisez quand vous voulez',
+      c1_cat:'Fondamentaux', c1_h3:'Logo vs. Marque: La confusion qui coûte des ventes à votre entreprise',
+      c1_p:'L\'erreur la plus coûteuse que font les entrepreneurs — et comment s\'en sortir avec clarté stratégique.',
+      c1_time:'5 min de lecture', coming_soon:'Prochainement', subscribe_cta:'Abonnez-vous pour le recevoir',
+      c2_h3:'Pourquoi votre marque ne vend-elle pas même avec un bon produit?',
+      c2_p:'L\'écart entre ce que vous offrez et ce que le client perçoit — et comment le combler.',
+      c3_h3:'Le positionnement que personne ne vous a enseigné à l\'université',
+      c3_p:'Comment occuper une place unique dans l\'esprit de votre client avec de vrais outils stratégiques.'
+    }
+  };
+
+  (function applyBiLang() {
+    var lang = localStorage.getItem('gb_lang') || 'es';
+    var t = _bi_t[lang] || _bi_t['es'];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) el.placeholder = t[key];
+    });
+    if (lang !== 'es') document.documentElement.lang = lang;
+  })();
 </script>
 </body>
 </html>
