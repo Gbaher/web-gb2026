@@ -7,7 +7,8 @@
     { "source": "/brand-intelligence",   "destination": "/brand-intelligence.html" },
     { "source": "/bi-001-logo-vs-marca", "destination": "/bi-001-logo-vs-marca.html" },
     { "source": "/portal",               "destination": "/portal.html" },
-    { "source": "/propuesta-demo",       "destination": "/propuesta-demo.html" }
+    { "source": "/propuesta-demo",        "destination": "/propuesta-demo.html" },
+    { "source": "/propuesta-sallkof",    "destination": "/propuesta-sallkof.html" }
   ],
   "redirects": [
     { "source": "/case-sofia.html",           "destination": "/case-sofia",           "permanent": true },
@@ -16,7 +17,8 @@
     { "source": "/brand-intelligence.html",   "destination": "/brand-intelligence",   "permanent": true },
     { "source": "/bi-001-logo-vs-marca.html", "destination": "/bi-001-logo-vs-marca", "permanent": true },
     { "source": "/portal.html",               "destination": "/portal",               "permanent": true },
-    { "source": "/propuesta-demo.html",       "destination": "/propuesta-demo",       "permanent": true }
+    { "source": "/propuesta-demo.html",       "destination": "/propuesta-demo",       "permanent": true },
+    { "source": "/propuesta-sallkof.html",   "destination": "/propuesta-sallkof",   "permanent": true }
   ],
   "headers": [
     {
