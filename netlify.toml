@@ -22,3 +22,22 @@
   from = "/case-bodega"
   to = "/case-bodega.html"
   status = 200
+
+# Redirige la URL con .html a la URL canónica sin .html (evita contenido duplicado)
+[[redirects]]
+  from = "/case-sofia.html"
+  to = "/case-sofia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/case-alalay.html"
+  to = "/case-alalay"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/case-bodega.html"
+  to = "/case-bodega"
+  status = 301
+  force = true
