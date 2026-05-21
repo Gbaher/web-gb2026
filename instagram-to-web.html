@@ -724,16 +724,16 @@
       .nav-back { display: none; }
     }
 
-    /* ── SCROLL REVEAL BASE ── */
-    .reveal {
+    /* ── SCROLL REVEAL BASE — oculto solo si JS carga ── */
+    .js-ready .reveal {
       opacity: 0;
       transform: translateY(28px);
     }
-    .reveal-left {
+    .js-ready .reveal-left {
       opacity: 0;
       transform: translateX(-28px);
     }
-    .reveal-right {
+    .js-ready .reveal-right {
       opacity: 0;
       transform: translateX(28px);
     }
@@ -1192,6 +1192,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
+  document.body.classList.add('js-ready');
   gsap.registerPlugin(ScrollTrigger);
 
   /* ── NAV scroll state ── */
