@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram to Website Express — Web Profesional en 72 Horas | Germán Baher</title>
+  <meta name="description" content="Transforma tu Instagram en una página web profesional y estratégica en menos de 72 horas. Ideal para emprendedores, coaches y consultores. Copywriting incluido, SEO listo y formulario de captación de clientes. Servicio de diseño web express por Germán Baher — Brand Strategist." />
+  <meta name="keywords" content="crear página web desde Instagram, diseño web profesional emprendedores, web para coaches Bolivia, transformar Instagram en página web, presencia digital profesional, diseño web rápido 72 horas, página web para consultores, web estratégica para negocios, diseño web express, pasar de Instagram a web, página web para pequeños negocios, web profesional en Bolivia, brand strategy Bolivia, Germán Baher" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Germán Baher" />
+  <link rel="canonical" href="https://www.germanbaher.com/instagram-to-web" />
+  <meta property="og:title" content="Instagram to Website Express — Web Profesional en 72 Horas" />
+  <meta property="og:description" content="Transformo tu Instagram en una web estratégica, lista para captar clientes, en menos de 72 horas. Copywriting incluido." />
+  <meta property="og:url" content="https://www.germanbaher.com/instagram-to-web" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.germanbaher.com/assets/brand/og-itw.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Germán Baher — Growth Brands" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Instagram to Website Express — Web Profesional en 72 Horas" />
+  <meta name="twitter:description" content="Transformo tu Instagram en una web estratégica en menos de 72 horas. Copywriting incluido." />
+  <meta name="twitter:image" content="https://www.germanbaher.com/assets/brand/og-itw.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Instagram to Website Express",
+    "description": "Servicio de transformación de perfil de Instagram en página web estratégica y profesional en menos de 72 horas. Incluye copywriting, SEO básico y formulario de captación de leads.",
+    "provider": {
+      "@type": "Person",
+      "name": "Germán Baher",
+      "jobTitle": "Brand Strategist & Creative Director",
+      "url": "https://www.germanbaher.com"
+    },
+    "url": "https://www.germanbaher.com/instagram-to-web",
+    "serviceType": "Diseño Web Estratégico",
+    "areaServed": ["Bolivia", "América Latina", "España"],
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Emprendedores, coaches, consultores y pequeños negocios"
+    },
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.germanbaher.com/instagram-to-web"
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --red:    #ed2450;
+      --black:  #080808;
+      --black2: #0d0d0d;
+      --black3: #141414;
+      --black4: #1a1a1a;
+      --white:  #ffffff;
+      --muted:  rgba(255,255,255,0.5);
+      --faint:  rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.1);
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 3rem;
+      background: transparent;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 28px; width: auto; display: block; }
+    .nav-cta-group { display: flex; align-items: center; gap: 1rem; }
+    .nav-back {
+      font-size: 0.78rem; font-weight: 500; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .btn-nav {
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 0.6rem 1.4rem; background: var(--red); color: var(--white);
+      text-decoration: none; border-radius: 2px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--red);
+      border: 1px solid rgba(237,36,80,0.35);
+      padding: 0.35rem 0.9rem; border-radius: 2px;
+    }
+    .tag::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--red); border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 7rem 2rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(237,36,80,0.08) 0%, transparent 70%);
+    }
+    .hero-line {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, rgba(237,36,80,0.6), transparent);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 920px; }
+    .hero-tag { margin-bottom: 2rem; }
+    .hero-h1 {
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      font-weight: 800; line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.6rem;
+    }
+    .hero-h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--red) 0%, #ff6b8a 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-h1 span { display: block; }
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      font-weight: 400; color: var(--muted);
+      max-width: 600px; margin: 0 auto 2.8rem;
+      line-height: 1.65;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--red); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.95rem; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 1rem 2.4rem; text-decoration: none; border-radius: 2px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 0 rgba(237,36,80,0);
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(237,36,80,0.35);
+    }
+    .hero-cta svg { transition: transform 0.2s; }
+    .hero-cta:hover svg { transform: translateX(3px); }
+    .hero-proof {
+      margin-top: 2.4rem;
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; flex-wrap: wrap;
+      font-size: 0.78rem; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.04em;
+    }
+    .hero-proof span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ── TRUST BAR ── */
+    #trust {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      background: var(--black2);
+    }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .trust-item {
+      text-align: center;
+      padding: 1rem 0.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-num {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800; color: var(--white);
+      letter-spacing: -0.04em; line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .trust-num em { color: var(--red); font-style: normal; }
+    .trust-label {
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--muted); letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS BASE ── */
+    .section {
+      padding: 7rem 0;
+      position: relative;
+    }
+    .section-label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1.2rem;
+    }
+    .section-h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
+    }
+    .section-h2 em { font-style: normal; color: var(--red); }
+    .section-sub {
+      font-size: 1.05rem; color: var(--muted);
+      line-height: 1.7; max-width: 560px;
+    }
+
+    /* ── PROBLEM ── */
+    #problema { background: var(--black2); }
+    .problema-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 4rem;
+    }
+    .problema-card {
+      padding: 2.8rem 2.4rem;
+      background: var(--black3);
+      border: 1px solid var(--faint);
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .problema-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .problema-card:hover::before { opacity: 1; }
+    .problema-card:hover { border-color: rgba(237,36,80,0.2); }
+    .problema-num {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(237,36,80,0.5); margin-bottom: 1rem;
+    }
+    .problema-icon {
+      width: 44px; height: 44px; margin-bottom: 1.4rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(237,36,80,0.08); border-radius: 10px;
+    }
+    .problema-icon svg { width: 22px; height: 22px; stroke: var(--red); }
+    .problema-title {
+      font-size: 1.15rem; font-weight: 700;
+      margin-bottom: 0.7rem; line-height: 1.3;
+    }
+    .problema-text {
+      font-size: 0.9rem; color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── TRANSFORMATION ── */
+    #transformacion { background: var(--black); overflow: hidden; }
+    .transf-intro { max-width: 640px; }
+    .transf-comparison {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 4rem;
+      align-items: start;
+    }
+    .mockup-card {
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .mockup-label {
+      position: absolute; top: 1rem; left: 1rem;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem; border-radius: 2px;
+      z-index: 10;
+    }
+    .mockup-label.before {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+    }
+    .mockup-label.after {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    /* Instagram mockup */
+    .insta-mockup {
+      background: #0a0a0a; padding: 3rem 1.5rem 1.5rem;
+    }
+    .insta-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem; padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .insta-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+      padding: 2px;
+    }
+    .insta-avatar-inner {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: #1a1a1a;
+    }
+    .insta-info { flex: 1; }
+    .insta-name { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .insta-handle { font-size: 0.72rem; color: var(--muted); }
+    .insta-stats {
+      display: flex; gap: 1.5rem; margin-bottom: 1.4rem;
+      text-align: center;
+    }
+    .insta-stat-num { font-size: 1rem; font-weight: 700; display: block; }
+    .insta-stat-label { font-size: 0.65rem; color: var(--muted); }
+    .insta-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .insta-post {
+      aspect-ratio: 1; border-radius: 2px;
+    }
+    .insta-post:nth-child(1) { background: #1e1e1e; }
+    .insta-post:nth-child(2) { background: #252525; }
+    .insta-post:nth-child(3) { background: #1a1a1a; }
+    .insta-post:nth-child(4) { background: #222; }
+    .insta-post:nth-child(5) { background: #2a2a2a; }
+    .insta-post:nth-child(6) { background: #1e1e1e; }
+    .insta-post:nth-child(7) { background: #252525; }
+    .insta-post:nth-child(8) { background: #1c1c1c; }
+    .insta-post:nth-child(9) { background: #212121; }
+    .insta-limit {
+      margin-top: 1.2rem; padding: 0.8rem;
+      background: rgba(255,255,255,0.04);
+      border-radius: 6px; text-align: center;
+      font-size: 0.72rem; color: rgba(255,255,255,0.3);
+      line-height: 1.5;
+    }
+
+    /* Web mockup */
+    .web-mockup {
+      background: #f5f5f5;
+    }
+    .web-browser-bar {
+      background: #e8e8e8; padding: 0.6rem 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .browser-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .browser-dot:nth-child(1) { background: #ff5f57; }
+    .browser-dot:nth-child(2) { background: #febc2e; }
+    .browser-dot:nth-child(3) { background: #28c840; }
+    .browser-url {
+      flex: 1; margin-left: 0.5rem;
+      background: #fff; border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.65rem; color: #666;
+      font-family: monospace;
+    }
+    .web-content { background: #0d0d0d; padding: 2rem 1.5rem; }
+    .web-nav-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 2rem; padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .web-logo-mock {
+      width: 80px; height: 8px;
+      background: var(--white); border-radius: 2px; opacity: 0.7;
+    }
+    .web-nav-link-mock {
+      display: flex; gap: 0.8rem;
+    }
+    .web-nav-link-mock span {
+      width: 32px; height: 6px;
+      background: rgba(255,255,255,0.2); border-radius: 2px;
+    }
+    .web-hero-mock {
+      text-align: center; padding: 1.5rem 0;
+    }
+    .web-h1-mock {
+      height: 14px; background: var(--white); border-radius: 2px;
+      margin: 0 auto 0.6rem; width: 85%;
+    }
+    .web-h1-mock.sm { width: 65%; height: 10px; background: rgba(255,255,255,0.35); }
+    .web-cta-mock {
+      display: inline-block; margin-top: 1rem;
+      width: 120px; height: 32px;
+      background: var(--red); border-radius: 2px;
+    }
+    .web-section-mock {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem; margin-top: 1.5rem;
+    }
+    .web-card-mock {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px; padding: 0.8rem; height: 70px;
+    }
+    .web-card-line {
+      height: 5px; background: rgba(255,255,255,0.15);
+      border-radius: 2px; margin-bottom: 0.4rem;
+    }
+    .web-card-line.short { width: 65%; height: 4px; background: rgba(255,255,255,0.07); }
+    .web-badge {
+      margin-top: 1.2rem; padding: 0.6rem;
+      background: rgba(237,36,80,0.08);
+      border: 1px solid rgba(237,36,80,0.2);
+      border-radius: 4px; text-align: center;
+      font-size: 0.68rem; color: var(--red);
+      font-weight: 600;
+    }
+
+    /* ── PROCESS ── */
+    #proceso { background: var(--black2); }
+    .proceso-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 4rem;
+    }
+    .proceso-step {
+      padding: 3rem 2.8rem;
+      background: var(--black3);
+      border: 1px solid var(--faint);
+      position: relative; overflow: hidden;
+    }
+    .step-num {
+      font-size: 4rem; font-weight: 900;
+      line-height: 1; letter-spacing: -0.04em;
+      color: rgba(255,255,255,0.04);
+      position: absolute; top: 1.5rem; right: 2rem;
+      user-select: none;
+    }
+    .step-tag {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .step-tag::before {
+      content: ''; display: block;
+      width: 16px; height: 2px; background: var(--red);
+    }
+    .step-h3 {
+      font-size: 1.4rem; font-weight: 700;
+      line-height: 1.25; margin-bottom: 0.9rem;
+    }
+    .step-text {
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.7;
+    }
+    .step-detail {
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--faint);
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .step-chip {
+      font-size: 0.68rem; font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      background: rgba(237,36,80,0.08);
+      border: 1px solid rgba(237,36,80,0.2);
+      border-radius: 30px; color: var(--red);
+    }
+
+    /* ── INCLUDES ── */
+    #incluye { background: var(--black); }
+    .includes-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .includes-list { list-style: none; margin-top: 0; }
+    .includes-list li {
+      display: flex; align-items: flex-start;
+      gap: 1rem; padding: 1.4rem 0;
+      border-bottom: 1px solid var(--faint);
+    }
+    .includes-list li:first-child { border-top: 1px solid var(--faint); }
+    .include-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: rgba(237,36,80,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 0.1rem;
+    }
+    .include-icon svg { width: 16px; height: 16px; stroke: var(--red); }
+    .include-title {
+      font-size: 0.95rem; font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .include-desc {
+      font-size: 0.82rem; color: var(--muted); line-height: 1.55;
+    }
+    .price-card {
+      background: var(--black3);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 3rem 2.5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .price-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+    .price-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .price-main {
+      font-size: 0.75rem; color: var(--muted);
+      margin-bottom: 0.4rem; letter-spacing: 0.04em;
+      text-transform: uppercase; font-weight: 600;
+    }
+    .price-cta-text {
+      font-size: 1.5rem; font-weight: 800;
+      line-height: 1.2; margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+    .price-cta-text em { display: block; font-style: normal; color: var(--red); }
+    .btn-price {
+      display: block; width: 100%;
+      background: var(--red); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 1.1rem 1.5rem; border-radius: 3px;
+      text-decoration: none; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-price:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(237,36,80,0.35);
+    }
+    .price-note {
+      margin-top: 1rem;
+      font-size: 0.75rem; color: rgba(255,255,255,0.3);
+      line-height: 1.5;
+    }
+    .price-tags {
+      display: flex; justify-content: center;
+      gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+    }
+    .price-tag-item {
+      font-size: 0.68rem; font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 30px; color: var(--muted);
+    }
+
+    /* ── SOBRE GERMÁN ── */
+    #sobre { background: var(--black2); }
+    .sobre-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem; align-items: center;
+    }
+    .sobre-visual {
+      position: relative;
+    }
+    .sobre-img-frame {
+      aspect-ratio: 3/4; border-radius: 12px;
+      overflow: hidden; position: relative;
+      background: var(--black3);
+      border: 1px solid var(--border);
+    }
+    .sobre-img-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+    }
+    .sobre-img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sobre-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: var(--red); color: var(--white);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.5rem 1rem; border-radius: 2px;
+    }
+    .sobre-text .section-h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    .sobre-bio {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.8; margin-bottom: 2rem;
+    }
+    .credenciales {
+      display: flex; flex-direction: column; gap: 0.8rem;
+    }
+    .credencial {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .credencial::before {
+      content: '';
+      width: 20px; height: 2px;
+      background: var(--red); flex-shrink: 0;
+    }
+
+    /* ── FINAL CTA ── */
+    #cta-final {
+      background: var(--black3);
+      padding: 10rem 0;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-bg-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 400px;
+      background: radial-gradient(ellipse, rgba(237,36,80,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-final-inner { position: relative; z-index: 1; }
+    .cta-h2 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.5rem;
+    }
+    .cta-h2 em { font-style: normal; color: var(--red); }
+    .cta-sub {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 500px; margin: 0 auto 3rem;
+      line-height: 1.65;
+    }
+    .btn-cta-final {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--red); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 1rem; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 1.2rem 3rem; border-radius: 2px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-cta-final:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 60px rgba(237,36,80,0.4);
+    }
+    .cta-micro {
+      margin-top: 1.8rem;
+      font-size: 0.78rem; color: rgba(255,255,255,0.25);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--faint);
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .footer-left {
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+    }
+    .footer-left a {
+      color: rgba(255,255,255,0.4); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-left a:hover { color: var(--white); }
+    .footer-logo img { height: 22px; opacity: 0.5; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-item:nth-child(2) { border-right: none; }
+      .problema-grid { grid-template-columns: 1fr; }
+      .transf-comparison { grid-template-columns: 1fr; }
+      .proceso-grid { grid-template-columns: 1fr; }
+      .includes-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-img-frame { aspect-ratio: 4/3; max-width: 400px; }
+      .section { padding: 5rem 0; }
+    }
+    @media (max-width: 600px) {
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .trust-item { border-right: none; }
+      .trust-item:nth-child(odd) {
+        border-right: 1px solid var(--border);
+      }
+      #cta-final { padding: 6rem 0; }
+      .nav-back { display: none; }
+    }
+
+    /* ── SCROLL REVEAL BASE ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-28px);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(28px);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <a href="https://www.germanbaher.com" class="nav-logo">
+    <img src="assets/brand/logo-full.svg" alt="Germán Baher Growth Brands" />
+  </a>
+  <div class="nav-cta-group">
+    <a href="https://www.germanbaher.com" class="nav-back">← germanbaher.com</a>
+    <a href="https://cal.com/germanbaher/diagnostico" class="btn-nav" target="_blank" rel="noopener">Solicitar diagnóstico</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-tag reveal">
+      <span class="tag">Instagram to Website Express</span>
+    </div>
+    <h1 class="hero-h1">
+      <span class="reveal" style="transition-delay:0.1s">
+        Tu negocio no necesita<br>más seguidores.
+      </span>
+      <span class="reveal" style="transition-delay:0.2s">
+        Necesita una <em>presencia digital</em><br>que trabaje por ti.
+      </span>
+    </h1>
+    <p class="hero-sub reveal" style="transition-delay:0.3s">
+      Transformo tu Instagram en una web estratégica,
+      lista para generar confianza y captar clientes.
+      En menos de 72 horas.
+    </p>
+    <a href="https://cal.com/germanbaher/diagnostico" class="hero-cta reveal" style="transition-delay:0.4s" target="_blank" rel="noopener">
+      Solicitar diagnóstico express
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="hero-proof reveal" style="transition-delay:0.5s">
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Sin código
+      </span>
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Copy estratégico incluido
+      </span>
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Entrega en 72 horas
+      </span>
+    </div>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<!-- ═══════════════════════════════════════ TRUST BAR ═══ -->
+<div id="trust">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item reveal">
+        <div class="trust-num"><em>+</em>20<em>años</em></div>
+        <div class="trust-label">Estrategia de Marca</div>
+      </div>
+      <div class="trust-item reveal" style="transition-delay:0.1s">
+        <div class="trust-num"><em>+</em>30</div>
+        <div class="trust-label">Marcas transformadas</div>
+      </div>
+      <div class="trust-item reveal" style="transition-delay:0.2s">
+        <div class="trust-num">72<em>hrs</em></div>
+        <div class="trust-label">Tiempo de entrega</div>
+      </div>
+      <div class="trust-item reveal" style="transition-delay:0.3s">
+        <div class="trust-num">1<em>día</em></div>
+        <div class="trust-label">Para agendar y comenzar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PROBLEMA ═══ -->
+<section id="problema" class="section">
+  <div class="container">
+    <div class="section-label reveal">El problema</div>
+    <h2 class="section-h2 reveal">
+      Instagram es poderoso.<br>Pero tiene un <em>costo silencioso.</em>
+    </h2>
+    <p class="section-sub reveal">
+      Depender únicamente de una red social que no controlas
+      no es una estrategia. Es una vulnerabilidad.
+    </p>
+    <div class="problema-grid">
+
+      <div class="problema-card reveal">
+        <div class="problema-num">01</div>
+        <div class="problema-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <div class="problema-title">Sin control sobre tu plataforma</div>
+        <div class="problema-text">Instagram puede banear tu cuenta, cambiar el algoritmo o simplemente desaparecer. Años de trabajo, en un solo movimiento fuera de tu control.</div>
+      </div>
+
+      <div class="problema-card reveal" style="transition-delay:0.1s">
+        <div class="problema-num">02</div>
+        <div class="problema-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="problema-title">Clientes que se van sin dejar rastro</div>
+        <div class="problema-text">Sin formulario, sin email, sin estructura. Un cliente interesado visita tu perfil, no encuentra cómo contactarte claramente… y se va.</div>
+      </div>
+
+      <div class="problema-card reveal">
+        <div class="problema-num">03</div>
+        <div class="problema-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <div class="problema-title">Credibilidad limitada</div>
+        <div class="problema-text">Los clientes B2B, corporativos o premium esperan encontrarte en una web real. Un perfil de Instagram, por muy estético que sea, no transmite lo mismo.</div>
+      </div>
+
+      <div class="problema-card reveal" style="transition-delay:0.1s">
+        <div class="problema-num">04</div>
+        <div class="problema-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+        </div>
+        <div class="problema-title">Sin estructura ni propuesta clara</div>
+        <div class="problema-text">No tienes un funnel, no captas leads, no tienes una oferta bien definida. Todo depende del scroll impredecible de alguien más.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ TRANSFORMACIÓN ═══ -->
+<section id="transformacion" class="section">
+  <div class="container">
+    <div class="transf-intro">
+      <div class="section-label reveal">La transformación</div>
+      <h2 class="section-h2 reveal">De seguidor a <em>cliente.</em><br>De perfil a presencia.</h2>
+      <p class="section-sub reveal">
+        Una web estratégica no es solo diseño.
+        Es estructura, posicionamiento y conversión.
+      </p>
+    </div>
+    <div class="transf-comparison">
+
+      <!-- ANTES: Instagram -->
+      <div class="mockup-card reveal-left">
+        <div class="mockup-label before">Antes · Solo Instagram</div>
+        <div class="insta-mockup">
+          <div class="insta-header">
+            <div class="insta-avatar"><div class="insta-avatar-inner"></div></div>
+            <div class="insta-info">
+              <div class="insta-name">tu.negocio</div>
+              <div class="insta-handle">@tu.negocio · Emprendimiento · Bolivia</div>
+            </div>
+          </div>
+          <div class="insta-stats">
+            <div><span class="insta-stat-num">847</span><span class="insta-stat-label">posts</span></div>
+            <div><span class="insta-stat-num">3,421</span><span class="insta-stat-label">seguidores</span></div>
+            <div><span class="insta-stat-num">218</span><span class="insta-stat-label">siguiendo</span></div>
+          </div>
+          <div class="insta-grid">
+            <div class="insta-post"></div>
+            <div class="insta-post"></div>
+            <div class="insta-post"></div>
+            <div class="insta-post"></div>
+            <div class="insta-post"></div>
+            <div class="insta-post"></div>
+            <div class="insta-post"></div>
+            <div class="insta-post"></div>
+            <div class="insta-post"></div>
+          </div>
+          <div class="insta-limit">
+            Sin leads captados · Sin estructura · Sin control<br>Sin página de contacto real · Dependencia total del algoritmo
+          </div>
+        </div>
+      </div>
+
+      <!-- DESPUÉS: Web estratégica -->
+      <div class="mockup-card reveal-right">
+        <div class="mockup-label after">Después · Web Estratégica</div>
+        <div class="web-mockup">
+          <div class="web-browser-bar">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-url">tunegocio.com</div>
+          </div>
+          <div class="web-content">
+            <div class="web-nav-bar">
+              <div class="web-logo-mock"></div>
+              <div class="web-nav-link-mock">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="web-hero-mock">
+              <div class="web-h1-mock"></div>
+              <div class="web-h1-mock sm"></div>
+              <div class="web-cta-mock"></div>
+            </div>
+            <div class="web-section-mock">
+              <div class="web-card-mock">
+                <div class="web-card-line"></div>
+                <div class="web-card-line short"></div>
+              </div>
+              <div class="web-card-mock">
+                <div class="web-card-line"></div>
+                <div class="web-card-line short"></div>
+              </div>
+              <div class="web-card-mock">
+                <div class="web-card-line"></div>
+                <div class="web-card-line short"></div>
+              </div>
+            </div>
+            <div class="web-badge">✓ Formulario de contacto · SEO básico · Listo para captar clientes</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PROCESO ═══ -->
+<section id="proceso" class="section">
+  <div class="container">
+    <div class="section-label reveal">El proceso</div>
+    <h2 class="section-h2 reveal">Así construimos<br>tu <em>presencia en 72 horas.</em></h2>
+    <div class="proceso-grid">
+
+      <div class="proceso-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-tag">Paso 1</div>
+        <h3 class="step-h3">Analizo tu Instagram</h3>
+        <p class="step-text">Leo tu perfil como un estratega, no como un usuario. Identifico tu propuesta de valor real, tu audiencia, tus mensajes más poderosos y lo que debes comunicar diferente.</p>
+        <div class="step-detail">
+          <span class="step-chip">Propuesta de valor</span>
+          <span class="step-chip">Audiencia objetivo</span>
+          <span class="step-chip">Diagnóstico de marca</span>
+        </div>
+      </div>
+
+      <div class="proceso-step reveal" style="transition-delay:0.1s">
+        <div class="step-num">02</div>
+        <div class="step-tag">Paso 2</div>
+        <h3 class="step-h3">Extraigo tu estrategia</h3>
+        <p class="step-text">Con lo encontrado, construyo el posicionamiento, los mensajes clave, la arquitectura de la página y el copy estratégico. Todo antes de escribir una línea de código.</p>
+        <div class="step-detail">
+          <span class="step-chip">Posicionamiento</span>
+          <span class="step-chip">Copywriting</span>
+          <span class="step-chip">Arquitectura web</span>
+        </div>
+      </div>
+
+      <div class="proceso-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-tag">Paso 3</div>
+        <h3 class="step-h3">Diseño y desarrollo</h3>
+        <p class="step-text">Construyo tu web estratégica con diseño limpio, copy incluido, formulario de contacto y estructura pensada para generar confianza desde el primer scroll.</p>
+        <div class="step-detail">
+          <span class="step-chip">Diseño premium</span>
+          <span class="step-chip">Mobile-first</span>
+          <span class="step-chip">Formulario integrado</span>
+        </div>
+      </div>
+
+      <div class="proceso-step reveal" style="transition-delay:0.1s">
+        <div class="step-num">04</div>
+        <div class="step-tag">Paso 4</div>
+        <h3 class="step-h3">Publicamos. En 72 horas.</h3>
+        <p class="step-text">Tu web online, con dominio conectado, SEO básico configurado y lista para funcionar. No meses de proceso. No decenas de correos. Setenta y dos horas.</p>
+        <div class="step-detail">
+          <span class="step-chip">Publicación live</span>
+          <span class="step-chip">SEO básico</span>
+          <span class="step-chip">Entrega total</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ QUÉ INCLUYE ═══ -->
+<section id="incluye" class="section">
+  <div class="container">
+    <div class="includes-layout">
+
+      <div>
+        <div class="section-label reveal">Qué incluye</div>
+        <h2 class="section-h2 reveal">Todo lo que<br>necesitas para <em>empezar.</em></h2>
+        <p class="section-sub reveal" style="margin-bottom:2.5rem">
+          Un paquete estratégico completo. Sin extras ocultos.
+          Sin procesos eternos.
+        </p>
+        <ul class="includes-list">
+          <li class="reveal">
+            <div class="include-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <div class="include-title">Web estratégica de una página</div>
+              <div class="include-desc">Diseñada para generar confianza y captar clientes. No una plantilla. Una web construida desde tu estrategia.</div>
+            </div>
+          </li>
+          <li class="reveal" style="transition-delay:0.05s">
+            <div class="include-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <div>
+              <div class="include-title">Copywriting estratégico incluido</div>
+              <div class="include-desc">Textos pensados para posicionarte, generar confianza y convertir visitantes en contactos. No textos genéricos.</div>
+            </div>
+          </li>
+          <li class="reveal" style="transition-delay:0.1s">
+            <div class="include-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="include-title">Formulario de captura de leads</div>
+              <div class="include-desc">Integrado y funcional. Para que nunca más pierdas un cliente interesado por falta de estructura.</div>
+            </div>
+          </li>
+          <li class="reveal" style="transition-delay:0.15s">
+            <div class="include-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div>
+              <div class="include-title">SEO básico optimizado</div>
+              <div class="include-desc">Títulos, descripciones, estructura semántica y velocidad de carga. Para que Google también te encuentre.</div>
+            </div>
+          </li>
+          <li class="reveal" style="transition-delay:0.2s">
+            <div class="include-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="include-title">Entrega en 72 horas</div>
+              <div class="include-desc">No meses. No semanas. Setenta y dos horas desde que arrancamos hasta que tu web está live.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="price-card reveal-right">
+        <div class="price-label">Diagnóstico express · Sin costo</div>
+        <div class="price-tags">
+          <span class="price-tag-item">30 minutos</span>
+          <span class="price-tag-item">Video llamada</span>
+          <span class="price-tag-item">Sin compromiso</span>
+        </div>
+        <div class="price-main">Comenzamos con</div>
+        <div class="price-cta-text">
+          Una conversación.<br>
+          <em>No un formulario eterno.</em>
+        </div>
+        <a href="https://cal.com/germanbaher/diagnostico" class="btn-price" target="_blank" rel="noopener">
+          Agendar diagnóstico gratuito
+        </a>
+        <p class="price-note">
+          En 30 minutos analizamos juntos tu situación digital actual y te digo exactamente qué necesitas. Sin ventas. Sin presión.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SOBRE GERMÁN ═══ -->
+<section id="sobre" class="section">
+  <div class="container">
+    <div class="sobre-layout">
+
+      <div class="sobre-visual reveal-left">
+        <div class="sobre-img-frame">
+          <img src="assets/brand/german-baher.jpeg" alt="Germán Baher — Brand Strategist" />
+        </div>
+        <div class="sobre-badge">Brand Strategist · +20 años</div>
+      </div>
+
+      <div class="sobre-text">
+        <div class="section-label reveal">Quién lo hace</div>
+        <h2 class="section-h2 reveal">Germán Baher.<br><em>Estratega de Marca.</em></h2>
+        <p class="sobre-bio reveal">
+          Más de 20 años construyendo marcas que crecen en mercados reales.
+          He trabajado con empresas de consumo masivo, emprendedores, coaches y negocios que necesitan transformar su presencia digital en una herramienta real de crecimiento.
+        </p>
+        <p class="sobre-bio reveal" style="transition-delay:0.1s">
+          Mi trabajo no es solo diseñar páginas. Es entender tu negocio, extraer lo que te hace único y construir la presencia que mereces — de forma rápida, estratégica y sin complicaciones técnicas de tu parte.
+        </p>
+        <div class="credenciales reveal" style="transition-delay:0.2s">
+          <div class="credencial">Brand Strategy · Shopper Marketing · Experiencia digital</div>
+          <div class="credencial">Branding para mercados latinoamericanos</div>
+          <div class="credencial">Integración de IA en procesos de marca</div>
+          <div class="credencial">Fundador de Growth Brands · Bolivia</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CTA FINAL ═══ -->
+<section id="cta-final">
+  <div class="cta-bg-glow"></div>
+  <div class="container">
+    <div class="cta-final-inner">
+      <div class="section-label reveal" style="margin-bottom:1.5rem">El siguiente paso</div>
+      <h2 class="cta-h2 reveal">
+        Tu presencia digital<br>
+        <em>empieza hoy.</em>
+      </h2>
+      <p class="cta-sub reveal">
+        30 minutos de diagnóstico gratuito.
+        Sin formularios largos, sin ventas agresivas.
+        Solo una conversación honesta sobre tu negocio.
+      </p>
+      <a href="https://cal.com/germanbaher/diagnostico" class="btn-cta-final reveal" target="_blank" rel="noopener" style="transition-delay:0.1s">
+        Agendar ahora · Es gratis
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="cta-micro reveal" style="transition-delay:0.2s">
+        Video llamada · 30 minutos · Sin compromiso · Disponibilidad limitada
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        © 2025 Germán Baher · <a href="https://www.germanbaher.com">germanbaher.com</a>
+      </div>
+      <a href="https://www.germanbaher.com" class="footer-logo">
+        <img src="assets/brand/logo-full.svg" alt="Germán Baher Growth Brands" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ── GSAP ── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── NAV scroll state ── */
+  const nav = document.getElementById('mainNav');
+  ScrollTrigger.create({
+    start: 'top -60',
+    onUpdate: (self) => {
+      nav.classList.toggle('scrolled', self.scroll() > 60);
+    }
+  });
+
+  /* ── Hero entrance ── */
+  const heroReveal = document.querySelectorAll('#hero .reveal');
+  gsap.timeline({ delay: 0.2 })
+    .to(heroReveal, {
+      opacity: 1, y: 0,
+      duration: 0.9, ease: 'power3.out',
+      stagger: 0.12
+    });
+
+  /* ── Generic scroll reveals ── */
+  function initReveals() {
+    // Fade up
+    document.querySelectorAll('.reveal').forEach((el) => {
+      if (el.closest('#hero')) return; // skip hero (handled above)
+      gsap.to(el, {
+        opacity: 1, y: 0,
+        duration: 0.8, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          once: true
+        }
+      });
+    });
+
+    // Fade left
+    document.querySelectorAll('.reveal-left').forEach((el) => {
+      gsap.to(el, {
+        opacity: 1, x: 0,
+        duration: 0.9, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true
+        }
+      });
+    });
+
+    // Fade right
+    document.querySelectorAll('.reveal-right').forEach((el) => {
+      gsap.to(el, {
+        opacity: 1, x: 0,
+        duration: 0.9, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          once: true
+        }
+      });
+    });
+  }
+
+  initReveals();
+
+  /* ── Trust numbers counter animation ── */
+  const trustNums = document.querySelectorAll('.trust-num');
+  trustNums.forEach((el) => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        el.style.transform = 'scale(1.05)';
+        el.style.transition = 'transform 0.3s ease';
+        setTimeout(() => { el.style.transform = ''; }, 400);
+      }
+    });
+  });
+
+  /* ── Parallax hero bg glow ── */
+  gsap.to('.hero-bg', {
+    y: 80,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true
+    }
+  });
+
+  /* ── Process steps stagger on scroll ── */
+  const procesoSteps = gsap.utils.toArray('.proceso-step');
+  if (procesoSteps.length) {
+    ScrollTrigger.batch('.proceso-step', {
+      onEnter: batch => gsap.to(batch, {
+        opacity: 1, y: 0, duration: 0.75,
+        stagger: 0.12, ease: 'power3.out'
+      }),
+      start: 'top 88%',
+      once: true
+    });
+  }
+
+  /* ── CTA final glow pulse ── */
+  gsap.to('.cta-bg-glow', {
+    scale: 1.12,
+    duration: 3,
+    ease: 'sine.inOut',
+    yoyo: true,
+    repeat: -1
+  });
+
+  /* ── Horizontal line grow on section labels ── */
+  gsap.utils.toArray('.section-label').forEach(el => {
+    gsap.from(el, {
+      opacity: 0,
+      x: -10,
+      duration: 0.6,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 90%',
+        once: true
+      }
+    });
+  });
+
+</script>
+
+<!-- ── PRUEBA SOCIAL — Notificaciones ── -->
+<style>
+  .proof-toast {
+    position: fixed; bottom: 2rem; left: 2rem; z-index: 999;
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(20,20,20,0.97);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-left: 3px solid var(--red);
+    border-radius: 8px; padding: 1rem 1.4rem;
+    max-width: 320px; width: calc(100vw - 4rem);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transform: translateY(120%); opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .proof-toast.show {
+    transform: translateY(0); opacity: 1;
+  }
+  .proof-avatar {
+    width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+    background: var(--red); display: flex; align-items: center;
+    justify-content: center; font-size: 1rem; font-weight: 700;
+    color: var(--white); font-family: 'DM Sans', sans-serif;
+  }
+  .proof-text { flex: 1; }
+  .proof-name {
+    font-size: 0.82rem; font-weight: 700; color: var(--white);
+    margin-bottom: 0.15rem; font-family: 'DM Sans', sans-serif;
+  }
+  .proof-action {
+    font-size: 0.75rem; color: rgba(255,255,255,0.55);
+    font-family: 'DM Sans', sans-serif; line-height: 1.4;
+  }
+  .proof-time {
+    font-size: 0.65rem; color: rgba(255,255,255,0.28);
+    font-family: 'DM Sans', sans-serif; white-space: nowrap;
+    align-self: flex-start; padding-top: 2px;
+  }
+  @media (max-width: 500px) {
+    .proof-toast { bottom: 1rem; left: 1rem; right: 1rem; width: auto; }
+  }
+</style>
+
+<div class="proof-toast" id="proofToast" role="status" aria-live="polite">
+  <div class="proof-avatar" id="proofAvatar">A</div>
+  <div class="proof-text">
+    <div class="proof-name" id="proofName">Alberto</div>
+    <div class="proof-action" id="proofAction">acaba de contratar Instagram to Website Express</div>
+  </div>
+  <div class="proof-time" id="proofTime">hace 2 min</div>
+</div>
+
+<script>
+  const proofs = [
+    { initial: 'A', name: 'Alberto 🇨🇦',  action: 'acaba de contratar Instagram to Website Express', time: 'hace 2 min' },
+    { initial: 'A', name: 'Ana 🇺🇸',      action: 'ya tiene su web profesional lista ✓',             time: 'hace 5 min' },
+    { initial: 'C', name: 'Carlos 🇲🇽',   action: 'solicitó su diagnóstico express gratuito',         time: 'hace 8 min' },
+  ];
+  let proofIndex = 0;
+  const toast    = document.getElementById('proofToast');
+  const avatar   = document.getElementById('proofAvatar');
+  const nameEl   = document.getElementById('proofName');
+  const actionEl = document.getElementById('proofAction');
+  const timeEl   = document.getElementById('proofTime');
+
+  function showProof() {
+    const p = proofs[proofIndex % proofs.length];
+    avatar.textContent   = p.initial;
+    nameEl.textContent   = p.name;
+    actionEl.textContent = p.action;
+    timeEl.textContent   = p.time;
+    toast.classList.add('show');
+    setTimeout(() => { toast.classList.remove('show'); }, 4500);
+    proofIndex++;
+  }
+
+  // Primera aparición a los 20 segundos, luego cada 60 segundos
+  setTimeout(() => {
+    showProof();
+    setInterval(showProof, 60000);
+  }, 20000);
+</script>
+</body>
+</html>

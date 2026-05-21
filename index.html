@@ -646,6 +646,31 @@
       text-transform: uppercase; margin-bottom: 0.6rem;
     }
     .serv-item p { color: var(--grey); font-size: 0.875rem; line-height: 1.7; }
+    .serv-item-new { position: relative; }
+    .serv-item-new::before {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(237,36,80,0.25); pointer-events: none;
+    }
+    .serv-new-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white);
+      background: var(--red); padding: 0.22rem 0.55rem;
+      border-radius: 2px; margin-bottom: 0.6rem; vertical-align: middle;
+      margin-left: 0.6rem; animation: newpulse 2.5s ease-in-out infinite;
+    }
+    @keyframes newpulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(237,36,80,0.4); }
+      50% { box-shadow: 0 0 0 5px rgba(237,36,80,0); }
+    }
+    .serv-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1rem; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--red); text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .serv-link:hover { gap: 0.7rem; }
 
     /* ── CASOS ── */
     #casos { background: var(--black2); border-top: 1px solid var(--border); }
@@ -1017,6 +1042,14 @@
       <div class="serv-item reveal"><span class="serv-num">02</span><div><h3 data-i18n="s2_title">Diagnóstico de Claridad</h3><p data-i18n="s2_body">Un proceso profundo para identificar las brechas entre dónde está tu marca hoy y dónde necesita estar para crecer. Tu hoja de ruta estratégica.</p></div></div>
       <div class="serv-item reveal"><span class="serv-num">03</span><div><h3 data-i18n="s3_title">Growth Consulting</h3><p data-i18n="s3_body">Acompañamiento estratégico continuo para ejecutar, medir y ajustar el crecimiento de tu marca con datos reales y visión de largo plazo.</p></div></div>
       <div class="serv-item reveal"><span class="serv-num">04</span><div><h3 data-i18n="s4_title">Workshops & Formación</h3><p data-i18n="s4_body">Sesiones intensivas para equipos y fundadores que quieren dominar el pensamiento estratégico de marca y aplicarlo en su negocio.</p></div></div>
+      <div class="serv-item serv-item-new reveal" style="grid-column:1/-1">
+        <span class="serv-num">05</span>
+        <div>
+          <h3 data-i18n="s5_title">Instagram to Website Express <span class="serv-new-badge">NEW</span></h3>
+          <p data-i18n="s5_body">Transformo tu perfil de Instagram en una página web estratégica y profesional en menos de 72 horas. Copywriting incluido, SEO listo y formulario de captación de clientes desde el primer día.</p>
+          <a href="/instagram-to-web" class="serv-link" data-i18n="s5_link">Ver el servicio →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1595,6 +1628,7 @@
       s2_title:'Diagnóstico de Claridad', s2_body:'Un proceso profundo para identificar las brechas entre dónde está tu marca hoy y dónde necesita estar para crecer.',
       s3_title:'Growth Consulting', s3_body:'Acompañamiento estratégico continuo para ejecutar, medir y ajustar el crecimiento de tu marca con datos reales y visión de largo plazo.',
       s4_title:'Workshops & Formación', s4_body:'Sesiones intensivas para equipos y fundadores que quieren dominar el pensamiento estratégico de marca.',
+      s5_title:'Instagram to Website Express', s5_body:'Transformo tu perfil de Instagram en una página web estratégica y profesional en menos de 72 horas. Copywriting incluido, SEO listo y formulario de captación de clientes desde el primer día.', s5_link:'Ver el servicio →',
       cases_tag:'Portafolio', cases_title:'Casos de éxito', cases_sub:'Marcas que ayudé a clarificar, reposicionar y crecer.',
       brands_label:'Marcas con las que he trabajado',
       testi_tag:'Clientes', testi_title:'Lo que dicen<br/>quienes lo vivieron.',
@@ -1659,6 +1693,7 @@
       s2_title:'Clarity Diagnosis', s2_body:'A deep process to identify the gaps between where your brand is today and where it needs to be to grow. Your strategic roadmap.',
       s3_title:'Growth Consulting', s3_body:'Continuous strategic support to execute, measure, and adjust your brand\'s growth with real data and long-term vision.',
       s4_title:'Workshops & Training', s4_body:'Intensive sessions for teams and founders who want to master brand strategic thinking and apply it to their business.',
+      s5_title:'Instagram to Website Express', s5_body:'I turn your Instagram profile into a strategic, professional website in less than 72 hours. Copywriting included, SEO ready, and a lead capture form from day one.', s5_link:'See the service →',
       cases_tag:'Portfolio', cases_title:'Success Cases', cases_sub:'Brands I helped clarify, reposition, and grow.',
       brands_label:'Brands I\'ve worked with',
       testi_tag:'Clients', testi_title:'What those who lived it say.',
@@ -1722,6 +1757,7 @@
       s2_title:'Diagnostic de Clarté', s2_body:'Un processus approfondi pour identifier les écarts entre où se trouve votre marque aujourd\'hui et où elle doit être pour croître.',
       s3_title:'Growth Consulting', s3_body:'Accompagnement stratégique continu pour exécuter, mesurer et ajuster la croissance de votre marque avec des données réelles.',
       s4_title:'Ateliers & Formation', s4_body:'Sessions intensives pour les équipes et les fondateurs qui veulent maîtriser la pensée stratégique de marque.',
+      s5_title:'Instagram to Website Express', s5_body:'Je transforme votre profil Instagram en un site web stratégique et professionnel en moins de 72 heures. Copywriting inclus, SEO prêt et formulaire de capture de leads dès le premier jour.', s5_link:'Voir le service →',
       cases_tag:'Portfolio', cases_title:'Cas de succès', cases_sub:'Marques que j\'ai aidées à clarifier, repositionner et développer.',
       brands_label:"Marques avec lesquelles j'ai travaillé",
       testi_tag:'Clients', testi_title:'Ce que disent ceux qui l\'ont vécu.',
