@@ -10,10 +10,12 @@
     { "source": "/portal",               "destination": "/portal.html" },
     { "source": "/propuesta-demo",        "destination": "/propuesta-demo.html" },
     { "source": "/propuesta-sallkof",    "destination": "/propuesta-sallkof.html" },
-    { "source": "/instagram-to-web",     "destination": "/instagram-to-web.html" }
+    { "source": "/instagram-to-web",     "destination": "/instagram-to-web.html" },
+    { "source": "/instagram-to-web-en",  "destination": "/instagram-to-web-en.html" }
   ],
   "redirects": [
-    { "source": "/instagram-to-web.html","destination": "/instagram-to-web",     "permanent": true },
+    { "source": "/instagram-to-web.html",    "destination": "/instagram-to-web",    "permanent": true },
+    { "source": "/instagram-to-web-en.html","destination": "/instagram-to-web-en", "permanent": true },
     { "source": "/case-sofia.html",           "destination": "/case-sofia",           "permanent": true },
     { "source": "/case-alalay.html",          "destination": "/case-alalay",          "permanent": true },
     { "source": "/case-bodega.html",          "destination": "/case-bodega",          "permanent": true },
