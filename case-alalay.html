@@ -262,6 +262,25 @@
       .cs-grid.reverse { direction: ltr; }
       .btn-outline { margin-left: 0; margin-top: 0.75rem; }
     }
+
+    .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+    .lang-switcher { display: flex; align-items: center; gap: 0.4rem; }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.3);
+      padding: 0.2rem 0.1rem; transition: color 0.2s;
+    }
+    .lang-btn:hover { color: rgba(255,255,255,0.7); }
+    .lang-btn.active { color: var(--white); }
+    .lang-sep { font-size: 0.55rem; color: rgba(255,255,255,0.15); }
+    .btn-nav {
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 0.6rem 1.4rem;
+      background: var(--red); color: var(--white); border: none; border-radius: 2px;
+      cursor: pointer; text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
   </style>
 </head>
 <body>
@@ -276,28 +295,36 @@
     <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    Casos de éxito
+    <span data-i18n="nav_back">Casos de éxito</span>
   </a>
+  <div class="nav-right">
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <span class="lang-sep">·</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="index.html#contacto" class="btn-nav" data-i18n="nav_cta">Hablemos</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="case-hero">
   <div class="case-hero-inner">
-    <div class="case-tag">Nonprofit · Brand Transformation · Bolivia</div>
+    <div class="case-tag" data-i18n="case_tag">Nonprofit · Brand Transformation · Bolivia</div>
     <h1>Alalay<br/><em>+35 años</em></h1>
-    <p class="case-hero-sub">La infancia merece protección. La marca debe demostrarlo. Transformación de identidad para una organización con más de 35 años protegiendo niños y adolescentes en Bolivia.</p>
+    <p class="case-hero-sub" data-i18n="hero_sub">La infancia merece protección. La marca debe demostrarlo. Transformación de identidad para una organización con más de 35 años protegiendo niños y adolescentes en Bolivia.</p>
     <div class="case-meta">
       <div class="case-meta-item">
-        <span class="case-meta-label">Rol</span>
+        <span class="case-meta-label" data-i18n="meta_rol_label">Rol</span>
         <span class="case-meta-value">Brand Strategy & FDT Method</span>
       </div>
       <div class="case-meta-item">
-        <span class="case-meta-label">Alcance</span>
+        <span class="case-meta-label" data-i18n="meta_scope_label">Alcance</span>
         <span class="case-meta-value">Identity · Messaging · Brand Architecture</span>
       </div>
       <div class="case-meta-item">
-        <span class="case-meta-label">Resultado</span>
-        <span class="case-meta-value red">+95% incremento en engagement</span>
+        <span class="case-meta-label" data-i18n="meta_result_label">Resultado</span>
+        <span class="case-meta-value red" data-i18n="meta_result_val">+95% incremento en engagement</span>
       </div>
     </div>
   </div>
@@ -310,8 +337,8 @@
     <div class="cs-wrap">
       <div class="cs-grid">
         <div>
-          <div class="section-num">01 — Proyecto</div>
-          <h2>35 años de impacto. La marca debe probarlo.</h2>
+          <div class="section-num" data-i18n="s01_num">01 — Proyecto</div>
+          <h2 data-i18n="s01_h2">35 años de impacto. La marca debe probarlo.</h2>
           <p class="cs-sub">Coherence · Recognition · Trust</p>
           <p>ALALAY es una organización sin fines de lucro con más de 30 años de experiencia apoyando a niños y adolescentes en situaciones de alto riesgo social en La Paz, Bolivia.</p>
           <p>A pesar de su fuerte impacto, la marca carecía de consistencia visual y estratégica. Este proyecto reconstruyó el sistema de marca de ALALAY a través del framework <strong>Feeling Doing Thinking</strong>, resultando en una identidad unificada que clarificó el posicionamiento y fortaleció la conexión emocional.</p>
@@ -334,8 +361,8 @@
     <div class="cs-wrap">
       <div class="cs-grid reverse">
         <div>
-          <div class="section-num">02 — El Desafío</div>
-          <h2>Cuando la comunicación es fragmentada, la confianza se debilita</h2>
+          <div class="section-num" data-i18n="s02_num">02 — El Desafío</div>
+          <h2 data-i18n="s02_h2">Cuando la comunicación es fragmentada, la confianza se debilita</h2>
           <p class="cs-sub">Visibility · Coherence · Recognition</p>
           <p>La misión era poderosa. La trayectoria era innegable. Sin embargo, la marca se sentía inconsistente en plataformas, materiales y mensajes.</p>
           <p>Sin coherencia visual y verbal, el reconocimiento se desvanece. El desafío era claro: unificar el sistema para que el público pudiera reconocer, confiar y recordar a ALALAY sin confusión.</p>
@@ -359,24 +386,24 @@
   <!-- 3. FDT STRATEGY -->
   <section class="cs reveal">
     <div class="cs-wrap">
-      <div class="section-num">03 — La Estrategia</div>
-      <h2>Estrategia antes que estética.<br/>Emoción antes que gráficos.</h2>
+      <div class="section-num" data-i18n="s03_num">03 — La Estrategia</div>
+      <h2 data-i18n="s03_h2">Estrategia antes que estética.<br/>Emoción antes que gráficos.</h2>
       <p class="cs-sub" style="margin-bottom:0;">Feeling · Doing · Thinking — FDT Framework</p>
       <div class="fdt-grid">
         <div class="fdt-card">
           <div class="fdt-card-letter">F</div>
           <div class="fdt-card-title">Feeling</div>
-          <p>Definir la respuesta emocional que la marca debe generar. Cercanía, esperanza y confianza institucional.</p>
+          <p data-i18n="fdt_f_p">Definir la respuesta emocional que la marca debe generar. Cercanía, esperanza y confianza institucional.</p>
         </div>
         <div class="fdt-card">
           <div class="fdt-card-letter">D</div>
           <div class="fdt-card-title">Doing</div>
-          <p>Construir un sistema práctico que funcione en contextos reales: papelería, uniformes, eventos, kioscos retail, plantillas digitales.</p>
+          <p data-i18n="fdt_d_p">Construir un sistema práctico que funcione en contextos reales: papelería, uniformes, eventos, kioscos retail, plantillas digitales.</p>
         </div>
         <div class="fdt-card">
           <div class="fdt-card-letter">T</div>
           <div class="fdt-card-title">Thinking</div>
-          <p>Clarificar propósito, posicionamiento y mensaje con precisión. El diseño no fue decoración: fue expresión estructurada del impacto.</p>
+          <p data-i18n="fdt_t_p">Clarificar propósito, posicionamiento y mensaje con precisión. El diseño no fue decoración: fue expresión estructurada del impacto.</p>
         </div>
       </div>
     </div>
@@ -395,8 +422,8 @@
     <div class="cs-wrap">
       <div class="cs-grid">
         <div>
-          <div class="section-num">04 — El Símbolo</div>
-          <h2>De ser protegido a crecer con alas</h2>
+          <div class="section-num" data-i18n="s04_num">04 — El Símbolo</div>
+          <h2 data-i18n="s04_h2">De ser protegido a crecer con alas</h2>
           <p class="cs-sub">Meaning · Evolution · History</p>
           <p>El símbolo evolucionó cuidadosamente, respetando 35 años de historia mientras proyecta el futuro. Dos niños tomados de la mano, elevados por un globo, representan la transformación:</p>
           <ul class="checklist" style="margin-top:1.5rem;">
@@ -419,8 +446,8 @@
   <!-- 5. ARCHITECTURE -->
   <section class="cs reveal">
     <div class="cs-wrap">
-      <div class="section-num">05 — Arquitectura de Marca</div>
-      <h2>La estructura elimina la confusión</h2>
+      <div class="section-num" data-i18n="s05_num">05 — Arquitectura de Marca</div>
+      <h2 data-i18n="s05_h2">La estructura elimina la confusión</h2>
       <p class="cs-sub">Foundation · Retail · Ecosystem</p>
       <p>Clarificamos la relación entre las dos expresiones de la organización: diferentes voces, un mismo ecosistema de marca cohesivo.</p>
       <div class="arch-grid">
@@ -443,8 +470,8 @@
     <div class="cs-wrap">
       <div class="cs-grid reverse">
         <div>
-          <div class="section-num">06 — Sistema Visual en Acción</div>
-          <h2>La identidad se prueba en la aplicación</h2>
+          <div class="section-num" data-i18n="s06_num">06 — Sistema Visual en Acción</div>
+          <h2 data-i18n="s06_h2">La identidad se prueba en la aplicación</h2>
           <p class="cs-sub">Stationery · Uniforms · Digital · Events</p>
           <p>El sistema fue traducido en assets reales y utilizables: papelería, uniformes, merchandising, eventos, kioscos retail y plantillas digitales.</p>
           <p>Las directrices fotográficas reforzaron la autenticidad: luz natural, expresiones reales, historias reales. La marca pasó de abstracta a tangible.</p>
@@ -469,15 +496,15 @@
     <div class="cs-wrap">
       <div class="cs-grid">
         <div>
-          <div class="section-num">07 — Resultados</div>
-          <h2>La visibilidad crea conciencia.<br/>La consistencia construye engagement.</h2>
+          <div class="section-num" data-i18n="s07_num">07 — Resultados</div>
+          <h2 data-i18n="s07_h2">La visibilidad crea conciencia.<br/>La consistencia construye engagement.</h2>
           <p class="cs-sub">Measurable impact · Digital growth</p>
           <p>Con un sistema de marca unificado y un storytelling más claro en canales digitales, ALALAY logró transformar su presencia pública.</p>
           <p>La organización ahora comunica con mayor claridad, profesionalismo y resonancia emocional. La confianza se volvió visible. El impacto se volvió memorable.</p>
         </div>
         <div class="stat-highlight">
           <div class="big-num">95%</div>
-          <div class="big-label">Incremento en engagement digital</div>
+          <div class="big-label" data-i18n="stat_label">Incremento en engagement digital</div>
           <p style="margin-top:1.5rem; font-size:0.9rem; color:rgba(255,255,255,0.6); line-height:1.6;">
             Impulsado principalmente por una mejor visibilidad y un mayor reconocimiento de marca. La transformación demuestra que cuando la identidad es coherente, el impacto se multiplica.
           </p>
@@ -491,10 +518,10 @@
 <!-- CTA -->
 <section class="case-cta reveal">
   <div class="case-cta-inner">
-    <h2>Construyendo marcas que <em style="color:var(--red);">sienten, actúan y piensan</em></h2>
-    <p>Si buscas construir una marca con claridad, emoción y estructura estratégica, colaboremos.</p>
-    <a href="index.html#contacto" class="btn-red">Hablemos</a>
-    <a href="index.html#casos" class="btn-outline">Ver más casos</a>
+    <h2 data-i18n="cta_h2">Construyendo marcas que <em style="color:var(--red);">sienten, actúan y piensan</em></h2>
+    <p data-i18n="cta_p">Si buscas construir una marca con claridad, emoción y estructura estratégica, colaboremos.</p>
+    <a href="index.html#contacto" class="btn-red" data-i18n="cta_btn_primary">Hablemos</a>
+    <a href="index.html#casos" class="btn-outline" data-i18n="cta_btn_secondary">Ver más casos</a>
   </div>
 </section>
 
@@ -502,7 +529,7 @@
 <section style="padding:5rem 5vw;background:#0d0d0d;border-top:1px solid rgba(255,255,255,0.06);">
   <div style="max-width:680px;margin:0 auto;text-align:center;">
     <p style="font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:2rem;">
-      "La metodología FDT de Germán nos ayudó a entender un camino distinto que nunca nos imaginamos y que hoy se refleja en un símbolo humano que representa Alalay."
+      <span data-i18n="testi_quote">"La metodología FDT de Germán nos ayudó a entender un camino distinto que nunca nos imaginamos y que hoy se refleja en un símbolo humano que representa Alalay."</span>
     </p>
     <div style="display:flex;align-items:center;justify-content:center;gap:1.2rem;">
       <img src="assets/logos/alalay.svg" alt="Alalay" style="height:26px;opacity:0.5;filter:brightness(0) invert(1);" />
@@ -517,7 +544,7 @@
 <footer>
   <div class="footer-top">
     <a href="index.html" class="f-logo"><img src="assets/brand/logo-full.svg" alt="Germán Baher" /></a>
-    <span class="f-copy">© 2026 Germán Baher LLC — Todos los derechos reservados</span>
+    <span class="f-copy" data-i18n="footer_copy">© 2026 Germán Baher LLC — Todos los derechos reservados</span>
   </div>
   <div class="footer-bottom">
     <p class="footer-disclaimer">Este sitio web es una plataforma profesional independiente. No está afiliado, patrocinado ni asociado con Meta, Facebook, Instagram ni ninguna otra red social o plataforma de terceros. El contenido publicado aquí representa exclusivamente el trabajo, opiniones y servicios de Germán Baher LLC. Germán Baher LLC no se hace responsable por el uso indebido de la información presentada en este sitio, ni por decisiones tomadas con base en su contenido sin asesoramiento profesional directo.</p>
@@ -538,6 +565,79 @@
     if (heroEl) heroEl.style.backgroundPositionY = `calc(30% + ${y * 0.35}px)`;
     if (bgLines) bgLines.style.transform = `translateY(${y * 0.08}px)`;
   }, { passive: true });
+</script>
+
+<script>
+  // ── i18n ──
+  var _cs_t = {
+    es: {
+      nav_back:'Casos de éxito', nav_cta:'Hablemos',
+      case_tag:'Nonprofit · Brand Transformation · Bolivia',
+      hero_sub:'La infancia merece protección. La marca debe demostrarlo. Transformación de identidad para una organización con más de 35 años protegiendo niños y adolescentes en Bolivia.',
+      meta_rol_label:'Rol', meta_scope_label:'Alcance', meta_result_label:'Resultado',
+      meta_result_val:'+95% incremento en engagement',
+      s01_num:'01 — Proyecto', s01_h2:'35 años de impacto. La marca debe probarlo.',
+      s02_num:'02 — El Desafío', s02_h2:'Cuando la comunicación es fragmentada, la confianza se debilita',
+      s03_num:'03 — La Estrategia', s03_h2:'Estrategia antes que estética.<br/>Emoción antes que gráficos.',
+      s04_num:'04 — El Símbolo', s04_h2:'De ser protegido a crecer con alas',
+      s05_num:'05 — Arquitectura de Marca', s05_h2:'La estructura elimina la confusión',
+      s06_num:'06 — Sistema Visual en Acción', s06_h2:'La identidad se prueba en la aplicación',
+      s07_num:'07 — Resultados', s07_h2:'La visibilidad crea conciencia.<br/>La consistencia construye engagement.',
+      fdt_f_p:'Definir la respuesta emocional que la marca debe generar. Cercanía, esperanza y confianza institucional.',
+      fdt_d_p:'Construir un sistema práctico que funcione en contextos reales: papelería, uniformes, eventos, kioscos retail, plantillas digitales.',
+      fdt_t_p:'Clarificar propósito, posicionamiento y mensaje con precisión. El diseño no fue decoración: fue expresión estructurada del impacto.',
+      stat_label:'Incremento en engagement digital',
+      cta_h2:'Construyendo marcas que <em style="color:var(--red);">sienten, actúan y piensan</em>',
+      cta_p:'Si buscas construir una marca con claridad, emoción y estructura estratégica, colaboremos.',
+      cta_btn_primary:'Hablemos', cta_btn_secondary:'Ver más casos',
+      footer_copy:'© 2026 Germán Baher LLC — Todos los derechos reservados',
+      testi_quote:'"La metodología FDT de Germán nos ayudó a entender un camino distinto que nunca nos imaginamos y que hoy se refleja en un símbolo humano que representa Alalay."'
+    },
+    en: {
+      nav_back:'Success Cases', nav_cta:"Let's Talk",
+      case_tag:'Nonprofit · Brand Transformation · Bolivia',
+      hero_sub:'Childhood deserves protection. The brand must prove it. Identity transformation for an organization with over 35 years protecting children and teenagers in Bolivia.',
+      meta_rol_label:'Role', meta_scope_label:'Scope', meta_result_label:'Result',
+      meta_result_val:'+95% increase in engagement',
+      s01_num:'01 — Project', s01_h2:'35 years of impact. The brand must prove it.',
+      s02_num:'02 — The Challenge', s02_h2:'When communication is fragmented, trust weakens',
+      s03_num:'03 — The Strategy', s03_h2:'Strategy before aesthetics.<br/>Emotion before graphics.',
+      s04_num:'04 — The Symbol', s04_h2:'From being protected to growing with wings',
+      s05_num:'05 — Brand Architecture', s05_h2:'Structure eliminates confusion',
+      s06_num:'06 — Visual System in Action', s06_h2:'Identity is tested in application',
+      s07_num:'07 — Results', s07_h2:'Visibility creates awareness.<br/>Consistency builds engagement.',
+      fdt_f_p:'Define the emotional response the brand must generate. Closeness, hope, and institutional trust.',
+      fdt_d_p:'Build a practical system that works in real contexts: stationery, uniforms, events, retail kiosks, digital templates.',
+      fdt_t_p:'Clarify purpose, positioning, and messaging with precision. Design was not decoration — it was the structured expression of impact.',
+      stat_label:'Increase in digital engagement',
+      cta_h2:'Building brands that <em style="color:var(--red);">feel, act, and think</em>',
+      cta_p:"If you're looking to build a brand with clarity, emotion, and strategic structure, let's collaborate.",
+      cta_btn_primary:"Let's Talk", cta_btn_secondary:'View more cases',
+      footer_copy:'© 2026 Germán Baher LLC — All rights reserved',
+      testi_quote:""Germán's FDT methodology helped us discover a different path we never imagined, one that today is reflected in a human symbol that represents Alalay.""
+    }
+  };
+
+  function applyLang(lang) {
+    lang = lang || localStorage.getItem('gb_lang') || 'es';
+    var t = _cs_t[lang] || _cs_t['es'];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    localStorage.setItem('gb_lang', lang);
+    document.documentElement.lang = lang;
+  }
+
+  applyLang(localStorage.getItem('gb_lang') || 'es');
+
+  document.getElementById('langSwitcher').addEventListener('click', function(e) {
+    var btn = e.target.closest('.lang-btn');
+    if (btn) applyLang(btn.dataset.lang);
+  });
 </script>
 </body>
 </html>
