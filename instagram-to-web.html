@@ -9,6 +9,9 @@
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Germán Baher" />
   <link rel="canonical" href="https://www.germanbaher.com/instagram-to-web" />
+  <link rel="alternate" hreflang="es" href="https://www.germanbaher.com/instagram-to-web" />
+  <link rel="alternate" hreflang="en" href="https://www.germanbaher.com/instagram-to-web-en" />
+  <link rel="alternate" hreflang="x-default" href="https://www.germanbaher.com/instagram-to-web" />
   <meta property="og:title" content="Instagram to Website Express — Web Profesional en 72 Horas" />
   <meta property="og:description" content="Transformo tu Instagram en una web estratégica, lista para captar clientes, en menos de 72 horas. Copywriting incluido." />
   <meta property="og:url" content="https://www.germanbaher.com/instagram-to-web" />
@@ -116,6 +119,18 @@
       transition: opacity 0.2s, transform 0.2s;
     }
     .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+    .lang-switcher {
+      display: flex; align-items: center; gap: 0.15rem;
+      border: 1px solid var(--border); border-radius: 4px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 0.35rem 0.6rem; text-decoration: none;
+      color: var(--muted); transition: background 0.2s, color 0.2s;
+    }
+    .lang-btn:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+    .lang-btn.active { background: var(--red); color: var(--white); }
 
     /* ── UTILITY ── */
     .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
@@ -758,6 +773,10 @@
   </a>
   <div class="nav-cta-group">
     <a href="https://www.germanbaher.com" class="nav-back">← germanbaher.com</a>
+    <div class="lang-switcher">
+      <a href="/instagram-to-web" class="lang-btn active">ES</a>
+      <a href="/instagram-to-web-en" class="lang-btn">EN</a>
+    </div>
     <a href="#" data-cal-link="german-baher-njlkqp" data-cal-config='{"layout":"month_view"}' class="btn-nav">Solicitar diagnóstico</a>
   </div>
 </nav>

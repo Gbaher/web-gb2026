@@ -9,6 +9,9 @@
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Germán Baher" />
   <link rel="canonical" href="https://www.germanbaher.com/instagram-to-web-en" />
+  <link rel="alternate" hreflang="es" href="https://www.germanbaher.com/instagram-to-web" />
+  <link rel="alternate" hreflang="en" href="https://www.germanbaher.com/instagram-to-web-en" />
+  <link rel="alternate" hreflang="x-default" href="https://www.germanbaher.com/instagram-to-web" />
   <meta property="og:title" content="Instagram to Website Express — Professional Website in 72 Hours" />
   <meta property="og:description" content="I turn your Instagram into a strategic website, ready to attract clients, in less than 72 hours. Copywriting included." />
   <meta property="og:url" content="https://www.germanbaher.com/instagram-to-web-en" />
@@ -116,6 +119,18 @@
       transition: opacity 0.2s, transform 0.2s;
     }
     .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+    .lang-switcher {
+      display: flex; align-items: center; gap: 0.15rem;
+      border: 1px solid var(--border); border-radius: 4px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 0.35rem 0.6rem; text-decoration: none;
+      color: var(--muted); transition: background 0.2s, color 0.2s;
+    }
+    .lang-btn:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+    .lang-btn.active { background: var(--red); color: var(--white); }
 
     /* ── UTILITY ── */
     .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
@@ -758,6 +773,10 @@
   </a>
   <div class="nav-cta-group">
     <a href="https://www.germanbaher.com" class="nav-back">← germanbaher.com</a>
+    <div class="lang-switcher">
+      <a href="/instagram-to-web" class="lang-btn">ES</a>
+      <a href="/instagram-to-web-en" class="lang-btn active">EN</a>
+    </div>
     <a href="#" data-cal-link="german-baher-njlkqp" data-cal-config='{"layout":"month_view"}' class="btn-nav">Book a free call</a>
   </div>
 </nav>
@@ -821,7 +840,7 @@
         <div class="trust-label">Delivery time</div>
       </div>
       <div class="trust-item reveal" style="transition-delay:0.3s">
-        <div class="trust-num">1<em>día</em></div>
+        <div class="trust-num">1<em>day</em></div>
         <div class="trust-label">To book and get started</div>
       </div>
     </div>
@@ -1077,7 +1096,7 @@
         <div class="sobre-img-frame">
           <img src="assets/brand/german-baher.jpeg" alt="Germán Baher — Brand Strategist" />
         </div>
-        <div class="sobre-badge">Brand Strategist · +20 años</div>
+        <div class="sobre-badge">Brand Strategist · +20 yrs</div>
       </div>
 
       <div class="sobre-text">
@@ -1332,9 +1351,9 @@ Cal("ui", { styles: { branding: { brandColor: "#ed2450" } }, hideEventTypeDetail
   <div class="proof-avatar" id="proofAvatar">A</div>
   <div class="proof-text">
     <div class="proof-name" id="proofName">Alberto</div>
-    <div class="proof-action" id="proofAction">acaba de contratar Instagram to Website Express</div>
+    <div class="proof-action" id="proofAction">just booked Instagram to Website Express</div>
   </div>
-  <div class="proof-time" id="proofTime">hace 2 min</div>
+  <div class="proof-time" id="proofTime">2 min ago</div>
 </div>
 
 <script>
