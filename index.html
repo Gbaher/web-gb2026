@@ -968,9 +968,11 @@
       </div>
       <div class="sobre-text">
         <span class="s-tag reveal" data-i18n="about_tag">Sobre mí</span>
-        <h2 class="s-title reveal" data-i18n="about_title">Construyo<br />marcas que<br />perduran.</h2>
-        <p class="s-body reveal" data-i18n="about_p1">Soy Germán Baher, estratega de marca y crecimiento. Ayudo a emprendedores y empresas a clarificar su identidad, diferenciarse con propósito y crecer de forma consistente.</p>
-        <p class="s-body reveal" data-i18n="about_p2">Mi trabajo combina pensamiento estratégico profundo, intuición de mercado y ejecución orientada a resultados. No construyo logos. Construyo posicionamiento.</p>
+        <h2 class="s-title reveal" data-i18n="about_title">No construyo<br />logos. Construyo<br />posicionamiento.</h2>
+        <p class="s-body reveal" data-i18n="about_p1">Llevo más de 20 años trabajando en la brecha que existe entre lo que una marca quiere ser y lo que el mercado realmente percibe. Esa brecha tiene un nombre: falta de estrategia. Y tiene solución.</p>
+        <p class="s-body reveal" data-i18n="about_p2">Creé la metodología <strong style="color:var(--white);">Feeling · Doing · Thinking</strong> porque entendí que las marcas que perduran no son las que tienen mejor diseño — son las que saben quiénes son, ejecutan con coherencia y piensan antes de actuar.</p>
+        <p class="s-body reveal" data-i18n="about_p3">Trabajo con un número limitado de clientes al año. No porque no pueda tomar más, sino porque la profundidad de mi atención es parte del servicio. Cada proyecto es una colaboración estratégica, no una transacción.</p>
+
         <dl class="stats">
           <div class="stat-item reveal">
             <dt>+<em class="count-up" data-target="50">0</em></dt>
@@ -985,10 +987,71 @@
             <dd data-i18n="stat_countries">Países</dd>
           </div>
         </dl>
+
+        <!-- Proceso de trabajo -->
+        <div class="sobre-proceso reveal">
+          <p class="sobre-proceso-label" data-i18n="about_process_label">Cómo trabajo</p>
+          <div class="proceso-steps">
+            <div class="proceso-step">
+              <span class="proceso-num">01</span>
+              <div>
+                <strong data-i18n="ps1_title">Diagnóstico</strong>
+                <span data-i18n="ps1_body">Entiendo tu marca, tu mercado y tus brechas reales.</span>
+              </div>
+            </div>
+            <div class="proceso-step">
+              <span class="proceso-num">02</span>
+              <div>
+                <strong data-i18n="ps2_title">Estrategia</strong>
+                <span data-i18n="ps2_body">Diseñamos el posicionamiento y la hoja de ruta juntos.</span>
+              </div>
+            </div>
+            <div class="proceso-step">
+              <span class="proceso-num">03</span>
+              <div>
+                <strong data-i18n="ps3_title">Ejecución</strong>
+                <span data-i18n="ps3_body">Materializamos la marca con coherencia y propósito.</span>
+              </div>
+            </div>
+            <div class="proceso-step">
+              <span class="proceso-num">04</span>
+              <div>
+                <strong data-i18n="ps4_title">Crecimiento</strong>
+                <span data-i18n="ps4_body">Medimos, ajustamos y escalamos con datos reales.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
+<style>
+  .sobre-proceso { margin-top: 3rem; }
+  .sobre-proceso-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 1.4rem;
+  }
+  .proceso-steps { display: flex; flex-direction: column; gap: 1.1rem; }
+  .proceso-step {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .proceso-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .proceso-num {
+    font-size: 0.62rem; font-weight: 800; color: var(--red);
+    letter-spacing: 0.1em; padding-top: 0.2rem; min-width: 22px; flex-shrink: 0;
+  }
+  .proceso-step strong {
+    display: block; font-size: 0.88rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.2rem;
+  }
+  .proceso-step span {
+    font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.55;
+  }
+</style>
 
 <!-- ── METODOLOGÍA ── -->
 <section id="metodologia">
@@ -1758,9 +1821,15 @@
       nav_about:'Sobre mí', nav_method:'Metodología', nav_services:'Servicios',
       nav_cases:'Casos', nav_contact:'Contacto', nav_cta:'Hablemos', nav_portal:'Acceso Clientes',
       about_tag:'Sobre mí',
-      about_title:'Construyo<br/>marcas que<br/>perduran.',
-      about_p1:'Soy Germán Baher, estratega de marca y crecimiento. Ayudo a emprendedores y empresas a clarificar su identidad, diferenciarse con propósito y crecer de forma consistente.',
-      about_p2:'Mi trabajo combina pensamiento estratégico profundo, intuición de mercado y ejecución orientada a resultados. No construyo logos. Construyo posicionamiento.',
+      about_title:'No construyo<br/>logos. Construyo<br/>posicionamiento.',
+      about_p1:'Llevo más de 20 años trabajando en la brecha que existe entre lo que una marca quiere ser y lo que el mercado realmente percibe. Esa brecha tiene un nombre: falta de estrategia. Y tiene solución.',
+      about_p2:'Creé la metodología <strong style="color:var(--white);">Feeling · Doing · Thinking</strong> porque entendí que las marcas que perduran no son las que tienen mejor diseño — son las que saben quiénes son, ejecutan con coherencia y piensan antes de actuar.',
+      about_p3:'Trabajo con un número limitado de clientes al año. No porque no pueda tomar más, sino porque la profundidad de mi atención es parte del servicio. Cada proyecto es una colaboración estratégica, no una transacción.',
+      about_process_label:'Cómo trabajo',
+      ps1_title:'Diagnóstico', ps1_body:'Entiendo tu marca, tu mercado y tus brechas reales.',
+      ps2_title:'Estrategia', ps2_body:'Diseñamos el posicionamiento y la hoja de ruta juntos.',
+      ps3_title:'Ejecución', ps3_body:'Materializamos la marca con coherencia y propósito.',
+      ps4_title:'Crecimiento', ps4_body:'Medimos, ajustamos y escalamos con datos reales.',
       stat_brands:'Marcas trabajadas', stat_years:'Años de experiencia', stat_countries:'Países',
       method_tag:'Método', method_title:'La metodología FDT',
       method_sub:'Tres dimensiones que toda marca debe integrar para generar movimiento real en el mercado.',
@@ -1846,9 +1915,15 @@
       nav_about:'About', nav_method:'Methodology', nav_services:'Services',
       nav_cases:'Cases', nav_contact:'Contact', nav_cta:"Let's Talk", nav_portal:'Client Access',
       about_tag:'About Me',
-      about_title:'I build brands<br/>that last.',
-      about_p1:"I'm Germán Baher, brand and growth strategist. I help entrepreneurs and companies clarify their identity, differentiate with purpose, and grow consistently.",
-      about_p2:'My work combines deep strategic thinking, market intuition, and results-driven execution. I don\'t build logos. I build positioning.',
+      about_title:"I don't build<br/>logos. I build<br/>positioning.",
+      about_p1:"For over 20 years I've worked in the gap between what a brand wants to be and what the market actually perceives. That gap has a name: lack of strategy. And it has a solution.",
+      about_p2:'I created the <strong style="color:var(--white);">Feeling · Doing · Thinking</strong> methodology because I understood that brands that last aren\'t the ones with the best design — they\'re the ones that know who they are, execute with consistency, and think before they act.',
+      about_p3:'I work with a limited number of clients per year. Not because I can\'t take more, but because the depth of my attention is part of the service. Every project is a strategic collaboration, not a transaction.',
+      about_process_label:'How I work',
+      ps1_title:'Diagnosis', ps1_body:'I understand your brand, your market, and your real gaps.',
+      ps2_title:'Strategy', ps2_body:'We design the positioning and roadmap together.',
+      ps3_title:'Execution', ps3_body:'We materialize the brand with consistency and purpose.',
+      ps4_title:'Growth', ps4_body:'We measure, adjust, and scale with real data.',
       stat_brands:'Brands worked with', stat_years:'Years of experience', stat_countries:'Countries',
       method_tag:'Method', method_title:'The FDT Methodology',
       method_sub:'Three dimensions every brand must integrate to generate real movement in the market.',
@@ -1933,9 +2008,15 @@
       nav_about:'À propos', nav_method:'Méthode', nav_services:'Services',
       nav_cases:'Cas', nav_contact:'Contact', nav_cta:'Parlons-en', nav_portal:'Espace Clients',
       about_tag:'À propos',
-      about_title:'Je construis des marques<br/>qui durent.',
-      about_p1:"Je suis Germán Baher, stratège de marque et de croissance. J'aide les entrepreneurs et les entreprises à clarifier leur identité, à se différencier avec intention et à croître de manière cohérente.",
-      about_p2:"Mon travail combine une réflexion stratégique approfondie, l'intuition du marché et une exécution axée sur les résultats. Je ne construis pas des logos. Je construis du positionnement.",
+      about_title:"Je ne construis pas<br/>des logos. Je construis<br/>du positionnement.",
+      about_p1:"Depuis plus de 20 ans, je travaille dans l'écart entre ce qu'une marque veut être et ce que le marché perçoit réellement. Cet écart a un nom : manque de stratégie. Et il a une solution.",
+      about_p2:'J\'ai créé la méthodologie <strong style="color:var(--white);">Feeling · Doing · Thinking</strong> car j\'ai compris que les marques qui durent ne sont pas celles qui ont le meilleur design — ce sont celles qui savent qui elles sont, exécutent avec cohérence et pensent avant d\'agir.',
+      about_p3:"Je travaille avec un nombre limité de clients par an. Non pas parce que je ne peux pas en prendre plus, mais parce que la profondeur de mon attention fait partie du service. Chaque projet est une collaboration stratégique, pas une transaction.",
+      about_process_label:'Comment je travaille',
+      ps1_title:'Diagnostic', ps1_body:'Je comprends votre marque, votre marché et vos lacunes réelles.',
+      ps2_title:'Stratégie', ps2_body:'Nous concevons le positionnement et la feuille de route ensemble.',
+      ps3_title:'Exécution', ps3_body:'Nous matérialisons la marque avec cohérence et intention.',
+      ps4_title:'Croissance', ps4_body:'Nous mesurons, ajustons et évoluons avec des données réelles.',
       stat_brands:'Marques accompagnées', stat_years:"Années d'expérience", stat_countries:'Pays',
       method_tag:'Méthode', method_title:'La méthodologie FDT',
       method_sub:'Trois dimensions que toute marque doit intégrer pour générer un mouvement réel sur le marché.',
