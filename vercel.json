@@ -11,7 +11,8 @@
     { "source": "/propuesta-demo",        "destination": "/propuesta-demo.html" },
     { "source": "/propuesta-sallkof",    "destination": "/propuesta-sallkof.html" },
     { "source": "/instagram-to-web",     "destination": "/instagram-to-web.html" },
-    { "source": "/instagram-to-web-en",  "destination": "/instagram-to-web-en.html" }
+    { "source": "/instagram-to-web-en",  "destination": "/instagram-to-web-en.html" },
+    { "source": "/propuestas/:slug",     "destination": "/propuestas/:slug.html" }
   ],
   "redirects": [
     { "source": "/instagram-to-web.html",    "destination": "/instagram-to-web",    "permanent": true },
