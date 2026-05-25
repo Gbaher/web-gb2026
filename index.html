@@ -932,7 +932,7 @@
       <button class="lang-btn" data-lang="fr">FR</button>
     </div>
     <a href="/portal" class="btn-nav-client" data-i18n="nav_portal">Acceso Clientes</a>
-    <a href="#contacto" class="btn-nav" data-i18n="nav_cta">Hablemos</a>
+    <a href="#contacto" class="btn-nav" data-i18n="nav_cta">Aplicar →</a>
   </div>
 </nav>
 
@@ -1053,6 +1053,57 @@
     </div>
   </div>
 </section>
+
+<!-- ── PARA QUIÉN ── -->
+<section id="para-quien" style="background:var(--black3);border-top:1px solid var(--border);padding:6rem 5vw;">
+  <div class="container">
+    <span class="s-tag reveal" data-i18n="pq_tag">Este trabajo es para ti</span>
+    <h2 class="s-title reveal" style="margin-bottom:3rem;" data-i18n="pq_title">Trabajo con<br />las marcas correctas.</h2>
+    <div class="pq-grid">
+      <div class="pq-col pq-yes reveal">
+        <div class="pq-col-header">
+          <span class="pq-icon">✓</span>
+          <h3 data-i18n="pq_yes_title">Este servicio ES para ti si…</h3>
+        </div>
+        <ul class="pq-list">
+          <li data-i18n="pq_y1">Tienes una empresa con tracción real y quieres escalar con estructura</li>
+          <li data-i18n="pq_y2">Entiendes el branding como inversión estratégica, no como gasto</li>
+          <li data-i18n="pq_y3">Tu marca tiene historia pero su imagen no refleja quién eres hoy</li>
+          <li data-i18n="pq_y4">Piensas en 3–5 años, no en el mes que viene</li>
+          <li data-i18n="pq_y5">Estás listo para trabajar con método, no con improvisación</li>
+        </ul>
+      </div>
+      <div class="pq-col pq-no reveal">
+        <div class="pq-col-header">
+          <span class="pq-icon pq-icon-no">✕</span>
+          <h3 data-i18n="pq_no_title">Este servicio NO es para ti si…</h3>
+        </div>
+        <ul class="pq-list pq-list-no">
+          <li data-i18n="pq_n1">Buscas "solo un logo rápido y económico"</li>
+          <li data-i18n="pq_n2">Tu inversión disponible es menor a $1,500 USD</li>
+          <li data-i18n="pq_n3">Necesitas resultados "para mañana" sin proceso</li>
+          <li data-i18n="pq_n4">Ya tienes todo claro y no necesitas perspectiva externa</li>
+          <li data-i18n="pq_n5">Tu negocio aún no tiene modelo validado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .pq-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  .pq-col { border-radius:12px; padding:2.2rem; }
+  .pq-yes { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); }
+  .pq-no  { background:rgba(237,36,80,0.04); border:1px solid rgba(237,36,80,0.15); }
+  .pq-col-header { display:flex; align-items:center; gap:1rem; margin-bottom:1.8rem; }
+  .pq-icon { width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:800;color:rgba(255,255,255,0.6);flex-shrink:0; }
+  .pq-icon-no { background:rgba(237,36,80,0.15); color:var(--red); }
+  .pq-col h3 { font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); }
+  .pq-list { list-style:none; display:flex; flex-direction:column; gap:1rem; }
+  .pq-list li { font-size:0.9rem; color:rgba(255,255,255,0.65); line-height:1.55; padding-left:1.4rem; position:relative; }
+  .pq-list li::before { content:'—'; position:absolute; left:0; color:rgba(255,255,255,0.2); }
+  .pq-list-no li::before { color:rgba(237,36,80,0.4); }
+  @media(max-width:700px){ .pq-grid{ grid-template-columns:1fr; } }
+</style>
 
 <!-- ── CASOS ── -->
 <section id="casos">
@@ -1240,47 +1291,120 @@
   })();
 </script>
 
-<!-- ── CONTACTO ── -->
+<!-- ── CONTACTO / APLICACIÓN ── -->
 <section id="contacto">
   <div class="container">
     <div class="contacto-grid">
       <div class="contacto-left">
-        <span class="s-tag reveal" data-i18n="contact_tag">Contacto</span>
-        <h2 class="s-title reveal" data-i18n="contact_title">Hablemos<br />de tu marca.</h2>
-        <p class="s-body reveal" data-i18n="contact_sub">Si tienes un proyecto, una pregunta o simplemente quieres explorar si podemos trabajar juntos, escríbeme.</p>
-        <dl class="contact-list">
-          <div class="reveal"><dt>Email</dt><dd>contacto@germanbaher.com</dd></div>
+        <span class="s-tag reveal" data-i18n="contact_tag">Aplicar</span>
+        <h2 class="s-title reveal" data-i18n="contact_title">Trabajemos<br />juntos.</h2>
+        <p class="s-body reveal" data-i18n="contact_sub">No acepto todo tipo de proyectos. Si completas esta aplicación es porque estás listo para una transformación estratégica real — no solo para un cambio visual.</p>
+
+        <!-- Scarcity signal -->
+        <div class="apply-scarcity reveal">
+          <span class="apply-dot"></span>
+          <span data-i18n="contact_scarcity">Actualmente acepto <strong>2–3 proyectos por trimestre.</strong></span>
+        </div>
+
+        <dl class="contact-list" style="margin-top:2.5rem;">
+          <div class="reveal"><dt>Email</dt><dd><a href="mailto:contacto@germanbaher.com" style="color:var(--white);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);">contacto@germanbaher.com</a></dd></div>
           <div class="reveal"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/germanbaher" target="_blank" rel="noopener">Germán Baher</a></dd></div>
-          <div class="reveal"><dt>Portfolio</dt><dd><a href="https://germanbaher.myportfolio.com/work" target="_blank" rel="noopener">germanbaher.myportfolio.com</a></dd></div>
         </dl>
-        <button class="btn-cal reveal" type="button"
-          data-cal-link="german-baher-njlkqp"
-          data-cal-config='{"layout":"month_view"}'>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Agendar sesión estratégica
-        </button>
+
+        <!-- Anti-scam policy -->
+        <div class="apply-policy reveal">
+          <p class="apply-policy-title" data-i18n="contact_policy_title">🔒 Política de pagos y seguridad</p>
+          <p data-i18n="contact_policy_body">Solo acepto pagos digitales verificables: transferencia bancaria, Stripe o PayPal Business. Nunca acepto cheques ni pagos en efectivo. Ningún proyecto inicia sin contrato firmado y depósito del 50%.</p>
+        </div>
       </div>
+
       <div class="gform-wrap reveal">
+        <!-- Availability badge -->
+        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.6rem;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 6px rgba(34,197,94,0.6);"></span>
+          <span style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);" data-i18n="contact_available">Recibiendo aplicaciones · Respuesta en 48h</span>
+        </div>
+
         <form class="contact-form" id="contactForm" novalidate>
+
+          <!-- Honeypot anti-bot (invisible para humanos) -->
+          <div aria-hidden="true" style="display:none;visibility:hidden;position:absolute;left:-9999px;">
+            <label for="_hp_field">Leave empty</label>
+            <input type="text" id="_hp_field" name="_hp_field" tabindex="-1" autocomplete="off" />
+          </div>
+
           <div class="field">
-            <label for="cf-nombre">Nombre</label>
-            <input type="text" id="cf-nombre" name="nombre" placeholder="Tu nombre completo" required />
+            <label for="cf-nombre" data-i18n="cf_label_nombre">Nombre completo</label>
+            <input type="text" id="cf-nombre" name="nombre" placeholder="Tu nombre" required />
+          </div>
+          <div class="field">
+            <label for="cf-empresa" data-i18n="cf_label_empresa">Empresa o proyecto</label>
+            <input type="text" id="cf-empresa" name="empresa" placeholder="Nombre de tu empresa o marca" required />
           </div>
           <div class="field">
             <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" name="email" placeholder="tu@email.com" required />
+            <input type="email" id="cf-email" name="email" placeholder="tu@empresa.com" required />
           </div>
           <div class="field">
-            <label for="cf-mensaje">Mensaje</label>
-            <textarea id="cf-mensaje" name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto o pregunta…" required></textarea>
+            <label for="cf-presupuesto" data-i18n="cf_label_presupuesto">Inversión disponible</label>
+            <select id="cf-presupuesto" name="presupuesto" required style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:2px;padding:0.85rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;appearance:none;-webkit-appearance:none;width:100%;transition:border-color 0.2s;cursor:pointer;">
+              <option value="" disabled selected style="background:#141414;" data-i18n="cf_pres_placeholder">Selecciona un rango</option>
+              <option value="menos-1500" style="background:#141414;">Menos de $1,500 USD</option>
+              <option value="1500-5000" style="background:#141414;">$1,500 – $5,000 USD</option>
+              <option value="5000-15000" style="background:#141414;">$5,000 – $15,000 USD</option>
+              <option value="mas-15000" style="background:#141414;">+ $15,000 USD</option>
+            </select>
           </div>
-          <button type="submit" class="btn-submit" id="cfBtn">Enviar mensaje →</button>
+          <div class="field">
+            <label for="cf-desafio" data-i18n="cf_label_desafio">¿Cuál es el mayor desafío de tu marca hoy?</label>
+            <textarea id="cf-desafio" name="desafio" rows="3" placeholder="Sé específico. Esta es la información más importante." required></textarea>
+          </div>
+          <div class="field">
+            <label for="cf-mensaje" data-i18n="cf_label_porque">¿Por qué Germán Baher específicamente?</label>
+            <textarea id="cf-mensaje" name="mensaje" rows="3" placeholder="¿Qué te trajo aquí?" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="cfBtn" data-i18n="cf_submit">Enviar aplicación →</button>
           <p id="cfStatus" style="font-size:.78rem;margin-top:.6rem;min-height:1.2em;"></p>
+          <p style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:0.5rem;line-height:1.5;" data-i18n="cf_time">⏱ Tarda menos de 5 minutos. Respondo en 24–48 horas hábiles.</p>
         </form>
       </div>
     </div>
   </div>
 </section>
+<style>
+  .apply-scarcity {
+    display:flex; align-items:center; gap:0.7rem;
+    font-size:0.82rem; color:rgba(255,255,255,0.5);
+    margin-top:2rem; line-height:1.5;
+  }
+  .apply-scarcity strong { color:var(--white); }
+  .apply-dot {
+    width:8px; height:8px; border-radius:50%;
+    background:#22c55e; flex-shrink:0;
+    box-shadow:0 0 6px rgba(34,197,94,0.6);
+    animation: livepulse 2.5s ease-in-out infinite;
+  }
+  @keyframes livepulse {
+    0%,100%{ box-shadow:0 0 6px rgba(34,197,94,0.6); }
+    50%{ box-shadow:0 0 14px rgba(34,197,94,0.9); }
+  }
+  .apply-policy {
+    margin-top:2.5rem; padding:1.2rem 1.4rem;
+    background:rgba(237,36,80,0.04);
+    border:1px solid rgba(237,36,80,0.15);
+    border-radius:8px;
+  }
+  .apply-policy-title {
+    font-size:0.72rem; font-weight:700; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--red); margin-bottom:0.6rem;
+  }
+  .apply-policy p:last-child {
+    font-size:0.78rem; color:rgba(255,255,255,0.35); line-height:1.65;
+  }
+  select option { background:#141414; color:#fff; }
+  select:focus { border-color:rgba(255,255,255,0.22) !important; }
+</style>
 
 <!-- ── FOOTER ── -->
 <footer>
@@ -1539,19 +1663,33 @@
   if (cfForm) {
     cfForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const nombre  = document.getElementById('cf-nombre').value.trim();
-      const email   = document.getElementById('cf-email').value.trim();
-      const mensaje = document.getElementById('cf-mensaje').value.trim();
+
+      // Honeypot check — bots fill hidden fields, humans don't
+      const hp = document.getElementById('_hp_field');
+      if (hp && hp.value.length > 0) return; // silent discard
+
+      const nombre     = document.getElementById('cf-nombre').value.trim();
+      const empresa    = (document.getElementById('cf-empresa') || {value:''}).value.trim();
+      const email      = document.getElementById('cf-email').value.trim();
+      const presupuesto= (document.getElementById('cf-presupuesto') || {value:''}).value;
+      const desafio    = (document.getElementById('cf-desafio') || {value:''}).value.trim();
+      const mensaje    = document.getElementById('cf-mensaje').value.trim();
 
       if (!nombre || !email || !mensaje) {
         cfStatus.style.color = '#ed2450';
-        cfStatus.textContent = 'Por favor completa todos los campos.';
+        cfStatus.textContent = _lang === 'en' ? 'Please fill in all required fields.' : 'Por favor completa todos los campos.';
         return;
       }
 
       cfBtn.disabled = true;
-      cfBtn.textContent = 'Enviando…';
+      cfBtn.textContent = _lang === 'en' ? 'Sending…' : 'Enviando…';
       cfStatus.textContent = '';
+
+      const payload = {
+        nombre, empresa, email, presupuesto, desafio, mensaje,
+        fuente: 'aplicacion-web',
+        fecha: new Date().toISOString()
+      };
 
       try {
         await Promise.all([
@@ -1559,26 +1697,26 @@
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombre, email, mensaje })
+            body: JSON.stringify(payload)
           }),
-          brevoContact(email, nombre, 'contacto-web')
+          brevoContact(email, nombre, 'aplicacion-web')
         ]);
-        cfBtn.textContent = '✓ Mensaje enviado';
+        cfBtn.textContent = _lang === 'en' ? '✓ Application sent' : '✓ Aplicación enviada';
         cfBtn.style.background = '#1a7a1a';
         cfStatus.style.color = 'rgba(255,255,255,0.45)';
-        cfStatus.textContent = 'Te escribo en las próximas 24 horas.';
+        cfStatus.textContent = _lang === 'en' ? 'I\'ll reply within 24–48 business hours.' : 'Te respondo en 24–48 horas hábiles.';
         cfForm.reset();
         setTimeout(() => {
           cfBtn.disabled = false;
-          cfBtn.textContent = 'Enviar mensaje →';
+          cfBtn.textContent = _lang === 'en' ? 'Send application →' : 'Enviar aplicación →';
           cfBtn.style.background = '';
           cfStatus.textContent = '';
-        }, 4000);
+        }, 5000);
       } catch (err) {
         cfBtn.disabled = false;
-        cfBtn.textContent = 'Enviar mensaje →';
+        cfBtn.textContent = _lang === 'en' ? 'Send application →' : 'Enviar aplicación →';
         cfStatus.style.color = '#ed2450';
-        cfStatus.textContent = 'Error al enviar. Escríbeme a gbaher03@gmail.com';
+        cfStatus.textContent = _lang === 'en' ? 'Error sending. Write to contacto@germanbaher.com' : 'Error al enviar. Escríbeme a contacto@germanbaher.com';
       }
     });
   }
@@ -1635,15 +1773,38 @@
       s3_title:'Growth Consulting', s3_body:'Acompañamiento estratégico continuo para ejecutar, medir y ajustar el crecimiento de tu marca con datos reales y visión de largo plazo.',
       s4_title:'Workshops & Formación', s4_body:'Sesiones intensivas para equipos y fundadores que quieren dominar el pensamiento estratégico de marca.',
       s5_title:'Instagram to Website Express', s5_body:'Transformo tu perfil de Instagram en una página web estratégica y profesional en menos de 72 horas. Copywriting incluido, SEO listo y formulario de captación de clientes desde el primer día.', s5_link:'Ver el servicio →',
-      cases_tag:'Portafolio', cases_title:'Casos de éxito', cases_sub:'Marcas que ayudé a clarificar, reposicionar y crecer.',
+      cases_tag:'Resultados', cases_title:'Casos de éxito', cases_sub:'Marcas que ayudé a clarificar, reposicionar y crecer.',
       brands_label:'Marcas con las que he trabajado',
       testi_tag:'Clientes', testi_title:'Lo que dicen<br/>quienes lo vivieron.',
       testi_1_quote:'"Germán tiene una visión estratégica que va más allá del diseño. Sabe construir marcas con propósito y traducir esa profundidad en un lenguaje que la gente siente como propio. Trabajar con él transformó por completo la manera en que Sofía al Paso comunica quién es."',
       testi_2_quote:'"La metodología FDT de Germán nos ayudó a entender un camino distinto que nunca nos imaginamos y que hoy se refleja en un símbolo humano que representa Alalay."',
       testi_3_quote:'"Germán colaboró como Consultor en el rediseño de las Bodegas PIL, aportando una visión estratégica de Shopper Marketing y experiencia en punto de venta. Su trabajo con el equipo nos ayudó a plasmar de manera más consistente la estrategia de comunicación de las bodegas, unificando el lenguaje y la experiencia que queremos transmitir a nuestros clientes."',
       cta_title:'¿Tu marca tiene<br/>una voz clara?', cta_btn:'Empezar el diagnóstico',
-      contact_tag:'Contacto', contact_title:'Hablemos<br/>de tu marca.',
-      contact_sub:'Si tienes un proyecto, una pregunta o simplemente quieres explorar si podemos trabajar juntos, escríbeme.',
+      contact_tag:'Aplicar', contact_title:'Trabajemos<br/>juntos.',
+      contact_sub:'No acepto todo tipo de proyectos. Si completas esta aplicación es porque estás listo para una transformación estratégica real — no solo para un cambio visual.',
+      contact_scarcity:'Actualmente acepto <strong>2–3 proyectos por trimestre.</strong>',
+      contact_policy_title:'🔒 Política de pagos y seguridad',
+      contact_policy_body:'Solo acepto pagos digitales verificables: transferencia bancaria, Stripe o PayPal Business. Nunca acepto cheques ni pagos en efectivo. Ningún proyecto inicia sin contrato firmado y depósito del 50%.',
+      contact_available:'Recibiendo aplicaciones · Respuesta en 48h',
+      cf_label_nombre:'Nombre completo', cf_label_empresa:'Empresa o proyecto',
+      cf_label_presupuesto:'Inversión disponible', cf_pres_placeholder:'Selecciona un rango',
+      cf_label_desafio:'¿Cuál es el mayor desafío de tu marca hoy?',
+      cf_label_porque:'¿Por qué Germán Baher específicamente?',
+      cf_submit:'Enviar aplicación →',
+      cf_time:'⏱ Tarda menos de 5 minutos. Respondo en 24–48 horas hábiles.',
+      pq_tag:'Este trabajo es para ti', pq_title:'Trabajo con<br/>las marcas correctas.',
+      pq_yes_title:'Este servicio ES para ti si…', pq_no_title:'Este servicio NO es para ti si…',
+      pq_y1:'Tienes una empresa con tracción real y quieres escalar con estructura',
+      pq_y2:'Entiendes el branding como inversión estratégica, no como gasto',
+      pq_y3:'Tu marca tiene historia pero su imagen no refleja quién eres hoy',
+      pq_y4:'Piensas en 3–5 años, no en el mes que viene',
+      pq_y5:'Estás listo para trabajar con método, no con improvisación',
+      pq_n1:'Buscas "solo un logo rápido y económico"',
+      pq_n2:'Tu inversión disponible es menor a $1,500 USD',
+      pq_n3:'Necesitas resultados "para mañana" sin proceso',
+      pq_n4:'Ya tienes todo claro y no necesitas perspectiva externa',
+      pq_n5:'Tu negocio aún no tiene modelo validado',
+      nav_cta:'Aplicar →',
       // Diagnostic
       diag_tag:'Diagnóstico Estratégico',
       diag_h:'Antes de construir una marca<br/>que venda… necesitamos descubrir<br/><em>dónde se está rompiendo.</em>',
@@ -1700,15 +1861,38 @@
       s3_title:'Growth Consulting', s3_body:'Continuous strategic support to execute, measure, and adjust your brand\'s growth with real data and long-term vision.',
       s4_title:'Workshops & Training', s4_body:'Intensive sessions for teams and founders who want to master brand strategic thinking and apply it to their business.',
       s5_title:'Instagram to Website Express', s5_body:'I turn your Instagram profile into a strategic, professional website in less than 72 hours. Copywriting included, SEO ready, and a lead capture form from day one.', s5_link:'See the service →',
-      cases_tag:'Portfolio', cases_title:'Success Cases', cases_sub:'Brands I helped clarify, reposition, and grow.',
+      cases_tag:'Results', cases_title:'Success Cases', cases_sub:'Brands I helped clarify, reposition, and grow.',
       brands_label:'Brands I\'ve worked with',
       testi_tag:'Clients', testi_title:'What those who lived it say.',
       testi_1_quote:'"Germán has a strategic vision that goes beyond design. He knows how to build brands with purpose and translate that depth into a language people feel as their own. Working with him completely transformed the way Sofía al Paso communicates who they are."',
       testi_2_quote:'"Germán\'s FDT methodology helped us discover a different path we never imagined, one that today is reflected in a human symbol that represents Alalay."',
       testi_3_quote:'"Germán collaborated as a Consultant in the redesign of Bodegas PIL, bringing strategic Shopper Marketing vision and point-of-sale expertise. His work with the team helped us convey the communication strategy of the stores more consistently, unifying the language and experience we want to deliver to our customers."',
       cta_title:'Does your brand<br/>have a clear voice?', cta_btn:'Start the diagnosis',
-      contact_tag:'Contact', contact_title:"Let's talk<br/>about your brand.",
-      contact_sub:'If you have a project, a question, or simply want to explore if we can work together, write to me.',
+      contact_tag:'Apply', contact_title:"Let's work<br/>together.",
+      contact_sub:"I don't take every project. Completing this application means you're ready for real strategic transformation — not just a visual refresh.",
+      contact_scarcity:'Currently accepting <strong>2–3 projects per quarter.</strong>',
+      contact_policy_title:'🔒 Payment & Security Policy',
+      contact_policy_body:'I only accept verifiable digital payments: bank transfer, Stripe, or PayPal Business. No checks, no cash. No project starts without a signed contract and 50% deposit.',
+      contact_available:'Accepting applications · Response within 48h',
+      cf_label_nombre:'Full name', cf_label_empresa:'Company or project',
+      cf_label_presupuesto:'Available investment', cf_pres_placeholder:'Select a range',
+      cf_label_desafio:"What is your brand's biggest challenge today?",
+      cf_label_porque:'Why Germán Baher specifically?',
+      cf_submit:'Send application →',
+      cf_time:'⏱ Takes under 5 minutes. I reply within 24–48 business hours.',
+      pq_tag:'This work is for you', pq_title:'I work with<br/>the right brands.',
+      pq_yes_title:'This service IS for you if…', pq_no_title:'This service is NOT for you if…',
+      pq_y1:'You have a business with real traction and want to scale with structure',
+      pq_y2:'You understand branding as a strategic investment, not an expense',
+      pq_y3:'Your brand has history but its image no longer reflects who you are today',
+      pq_y4:'You think in 3–5 year horizons, not just the next month',
+      pq_y5:"You're ready to work with method, not improvisation",
+      pq_n1:'You\'re looking for "just a quick, cheap logo"',
+      pq_n2:'Your available investment is less than $1,500 USD',
+      pq_n3:'You need results "by tomorrow" without process',
+      pq_n4:"You already have it all figured out and don't need outside perspective",
+      pq_n5:"Your business doesn't have a validated model yet",
+      nav_cta:'Apply →',
       diag_tag:'Strategic Diagnosis',
       diag_h:'Before building a brand<br/>that sells… we need to discover<br/><em>where it\'s breaking.</em>',
       diag_sub:'Your roadmap starts with a single question.',
@@ -1771,8 +1955,31 @@
       testi_2_quote:'"La méthodologie FDT de Germán nous a aidés à découvrir un chemin différent que nous n\'aurions jamais imaginé, et qui se reflète aujourd\'hui dans un symbole humain qui représente Alalay."',
       testi_3_quote:'"Germán a collaboré comme Consultant dans la refonte des Bodegas PIL, apportant une vision stratégique du Shopper Marketing et une expertise en point de vente. Son travail avec l\'équipe nous a aidés à transmettre de manière plus cohérente la stratégie de communication des boutiques, unifiant le langage et l\'expérience que nous voulons offrir à nos clients."',
       cta_title:'Votre marque a-t-elle<br/>une voix claire?', cta_btn:'Commencer le diagnostic',
-      contact_tag:'Contact', contact_title:'Parlons<br/>de votre marque.',
-      contact_sub:'Si vous avez un projet, une question ou souhaitez simplement explorer si nous pouvons travailler ensemble, écrivez-moi.',
+      contact_tag:'Postuler', contact_title:'Travaillons<br/>ensemble.',
+      contact_sub:"Je ne prends pas tous les projets. Si vous remplissez cette candidature, c'est que vous êtes prêt pour une transformation stratégique réelle.",
+      contact_scarcity:"J'accepte actuellement <strong>2–3 projets par trimestre.</strong>",
+      contact_policy_title:'🔒 Politique de paiement et sécurité',
+      contact_policy_body:"J'accepte uniquement les paiements numériques vérifiables: virement bancaire, Stripe ou PayPal Business. Aucun chèque, aucun espèce. Aucun projet ne commence sans contrat signé et dépôt de 50%.",
+      contact_available:'Candidatures ouvertes · Réponse sous 48h',
+      cf_label_nombre:'Nom complet', cf_label_empresa:'Entreprise ou projet',
+      cf_label_presupuesto:'Investissement disponible', cf_pres_placeholder:'Sélectionner une fourchette',
+      cf_label_desafio:'Quel est le plus grand défi de votre marque aujourd\'hui?',
+      cf_label_porque:'Pourquoi Germán Baher spécifiquement?',
+      cf_submit:'Envoyer la candidature →',
+      cf_time:'⏱ Moins de 5 minutes. Je réponds sous 24–48 heures ouvrables.',
+      pq_tag:'Ce travail est pour vous', pq_title:'Je travaille avec<br/>les bonnes marques.',
+      pq_yes_title:'Ce service EST pour vous si…', pq_no_title:"Ce service N'EST PAS pour vous si…",
+      pq_y1:'Vous avez une entreprise avec une vraie traction et vous voulez évoluer',
+      pq_y2:'Vous comprenez le branding comme un investissement stratégique',
+      pq_y3:"Votre marque a de l'histoire mais son image ne reflète plus qui vous êtes",
+      pq_y4:'Vous pensez à 3–5 ans, pas seulement au mois prochain',
+      pq_y5:'Vous êtes prêt à travailler avec méthode, pas improvisation',
+      pq_n1:'Vous cherchez "juste un logo rapide et pas cher"',
+      pq_n2:"Votre investissement disponible est inférieur à 1 500 USD",
+      pq_n3:'Vous avez besoin de résultats "pour demain" sans processus',
+      pq_n4:"Vous avez déjà tout compris et n'avez pas besoin de perspective externe",
+      pq_n5:"Votre entreprise n'a pas encore de modèle validé",
+      nav_cta:'Postuler →',
       diag_tag:'Diagnostic Stratégique',
       diag_h:'Avant de construire une marque<br/>qui vend… nous devons découvrir<br/><em>où elle se brise.</em>',
       diag_sub:'Votre feuille de route commence par une seule question.',
