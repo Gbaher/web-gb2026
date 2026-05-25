@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta Estratégica — Growth Brands</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="assets/brand/icon-red.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root { --red: #ed2450; --black: #080808; --black2: #0d0d0d; --black3: #141414; --white: #ffffff; --border: rgba(255,255,255,0.07); }
+
+    body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
+
+    .bg-lines { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bg-lines::before {
+      content: ''; position: absolute; top: -30%; left: -10%; width: 140%; height: 160%;
+      background: linear-gradient(115deg, transparent 28%, rgba(255,255,255,0.022) 28.4%, rgba(255,255,255,0.022) 28.8%, transparent 29.2%, transparent 48%, rgba(255,255,255,0.016) 48.3%, rgba(255,255,255,0.016) 48.6%, transparent 49%, transparent 65%, rgba(255,255,255,0.012) 65.3%, rgba(255,255,255,0.012) 65.6%, transparent 66%);
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: var(--red); z-index: 200; width: 0%; transition: width 0.1s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 5vw; background: rgba(8,8,8,0.9);
+      backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+    }
+    .nav-logo img { height: 28px; }
+    .nav-badge {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--red); border: 1px solid rgba(237,36,80,0.4);
+      padding: 0.25rem 0.75rem; border-radius: 2px;
+    }
+    .nav-logout {
+      font-size: 0.75rem; color: rgba(255,255,255,0.3); text-decoration: none;
+      transition: color 0.2s; cursor: pointer; background: none; border: none;
+      font-family: 'DM Sans', sans-serif; letter-spacing: 0.04em;
+    }
+    .nav-logout:hover { color: var(--white); }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 5vw; position: relative; z-index: 1; }
+
+    /* ── PORTADA ── */
+    .portada {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding: 8rem 5vw 6rem;
+      position: relative; z-index: 1;
+      border-bottom: 1px solid var(--border);
+    }
+    .portada-meta {
+      display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+    }
+    .portada-tag {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--red); border: 1px solid rgba(237,36,80,0.4); padding: 0.25rem 0.7rem; border-radius: 2px;
+    }
+    .portada-date { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .portada-confidencial {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.25rem 0.7rem; border-radius: 2px;
+    }
+
+    .portada h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 1rem;
+    }
+    .portada h1 em { font-style: normal; color: var(--red); }
+    .portada-client {
+      font-size: 1.1rem; color: rgba(255,255,255,0.45); margin-bottom: 3rem; line-height: 1.7;
+    }
+
+    .portada-pills { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .pill {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6); padding: 0.4rem 1rem; border-radius: 20px;
+    }
+    .pill.red { background: rgba(237,36,80,0.1); border-color: rgba(237,36,80,0.3); color: var(--red); }
+
+    /* ── SECCIONES ── */
+    .section { padding: 5rem 5vw; border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
+
+    .section-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 0.8rem;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem;
+    }
+    h2 em { font-style: normal; color: var(--red); }
+    h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+
+    p { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 1.2rem; }
+
+    /* Quote */
+    .quote {
+      margin: 2.5rem 0; padding: 1.8rem 1.8rem 1.8rem 2rem;
+      border-left: 4px solid var(--red); background: var(--black3); border-radius: 0 8px 8px 0;
+    }
+    .quote p { font-size: 1.1rem; font-weight: 600; color: var(--white); margin: 0; font-style: italic; }
+
+    /* Grid de items */
+    .items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+    .item-card {
+      background: var(--black3); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.6rem;
+    }
+    .item-num {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; color: var(--red);
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .item-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .item-card p { font-size: 0.85rem; margin: 0; }
+
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .timeline-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .timeline-dot {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(237,36,80,0.15);
+      border: 2px solid var(--red); display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 800; color: var(--red); flex-shrink: 0; margin-top: 2px;
+    }
+    .timeline-content h3 { margin-bottom: 0.3rem; }
+    .timeline-content p { margin: 0; }
+
+    /* Inversión */
+    .inversion-box {
+      background: var(--black3); border: 1px solid rgba(237,36,80,0.25);
+      border-radius: 12px; padding: 2.5rem; text-align: center; margin-top: 2rem;
+      position: relative; overflow: hidden;
+    }
+    .inversion-box::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--red), rgba(237,36,80,0.2));
+    }
+    .inversion-amount {
+      font-size: 3.5rem; font-weight: 900; color: var(--white);
+      letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.4rem;
+    }
+    .inversion-amount em { color: var(--red); font-style: normal; }
+    .inversion-desc { font-size: 0.9rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+    .inversion-includes { display: flex; flex-direction: column; gap: 0.6rem; text-align: left; max-width: 380px; margin: 0 auto; }
+    .inversion-includes li {
+      font-size: 0.9rem; color: rgba(255,255,255,0.65); list-style: none;
+      display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.5;
+    }
+    .inversion-includes li::before { content: '→'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+
+    /* CTA */
+    .cta-section {
+      padding: 6rem 5vw; text-align: center; position: relative; z-index: 1;
+    }
+    .cta-section h2 { margin-bottom: 0.6rem; }
+    .cta-section p { color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--red); color: var(--white); border: none; border-radius: 8px;
+      padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.5); }
+
+    /* Footer portal */
+    .portal-footer-bar {
+      border-top: 1px solid var(--border); padding: 1.5rem 5vw;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1;
+    }
+    .portal-footer-bar span { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+
+    @media (max-width: 640px) {
+      .portada h1 { font-size: 2.2rem; }
+      .items-grid { grid-template-columns: 1fr; }
+      .cta-btns { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="bg-lines"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" style="text-decoration:none;"><img src="assets/brand/logo-full.svg" alt="Growth Brands" style="height:28px;" /></a>
+  <span class="nav-badge">Propuesta confidencial</span>
+  <button class="nav-logout" onclick="salir()">Cerrar sesión</button>
+</nav>
+
+<!-- PORTADA -->
+<section class="portada">
+  <div class="container">
+    <div class="portada-meta">
+      <span class="portada-tag">Brand Strategy</span>
+      <span class="portada-date" id="fechaDoc"></span>
+      <span class="portada-confidencial">🔒 Confidencial</span>
+    </div>
+    <h1>Propuesta<br />Estratégica<br /><em>de Marca.</em></h1>
+    <p class="portada-client">Preparada exclusivamente para <strong style="color:var(--white);">Cliente Demo</strong> por Germán Baher — Growth Brands.</p>
+    <div class="portada-pills">
+      <span class="pill red">Brand Strategy</span>
+      <span class="pill">Diagnóstico de Marca</span>
+      <span class="pill">Posicionamiento</span>
+      <span class="pill">Hoja de Ruta 90 días</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 1: EL DIAGNÓSTICO -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal">01 — Diagnóstico</div>
+    <h2 class="reveal">Dónde está<br />tu marca <em>hoy.</em></h2>
+    <p class="reveal">Después de analizar tu negocio, tu mercado y tu competencia, identificamos los siguientes puntos clave que están limitando el crecimiento de tu marca:</p>
+
+    <div class="quote reveal">
+      <p>"Tu producto es bueno. Tu marca aún no comunica por qué debería importarle a tu cliente."</p>
+    </div>
+
+    <div class="items-grid">
+      <div class="item-card reveal">
+        <div class="item-num">Oportunidad 01</div>
+        <h3>Posicionamiento difuso</h3>
+        <p>El cliente no puede articular en una frase por qué elegiría tu marca sobre la competencia.</p>
+      </div>
+      <div class="item-card reveal">
+        <div class="item-num">Oportunidad 02</div>
+        <h3>Voz de marca inconsistente</h3>
+        <p>El tono y el lenguaje cambian según el canal. Eso genera desconfianza sin que nadie lo note.</p>
+      </div>
+      <div class="item-card reveal">
+        <div class="item-num">Oportunidad 03</div>
+        <h3>Propuesta de valor genérica</h3>
+        <p>Los mensajes actuales podrían pertenecer a cualquier competidor. Falta diferenciación real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 2: LA PROPUESTA -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal">02 — La propuesta</div>
+    <h2 class="reveal">Lo que vamos<br />a <em>construir juntos.</em></h2>
+    <p class="reveal">Un proceso de Brand Strategy de 3 fases diseñado para darte claridad total sobre tu marca — y las herramientas para comunicarla con consistencia y propósito.</p>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">F1</div>
+        <div class="timeline-content">
+          <h3>Diagnóstico de Claridad — Semanas 1-2</h3>
+          <p>Entrevistas profundas, análisis de mercado, mapeo de competencia. Identificamos exactamente dónde se rompe tu marca hoy y cuál es el punto de palanca.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">F2</div>
+        <div class="timeline-content">
+          <h3>Arquitectura de Marca — Semanas 3-5</h3>
+          <p>Definimos tu posicionamiento, propuesta de valor única, voz de marca, arquetipos y mensajes clave. Todo documentado en tu Brand Book.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">F3</div>
+        <div class="timeline-content">
+          <h3>Hoja de Ruta 90 días — Semanas 6-8</h3>
+          <p>Un plan de acción concreto para ejecutar la nueva estrategia: qué comunicar, dónde, cómo y con qué métricas medir el progreso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 3: INVERSIÓN -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal">03 — Inversión</div>
+    <h2 class="reveal">Lo que incluye<br />y su <em>valor.</em></h2>
+    <p class="reveal">Esta propuesta tiene vigencia de 15 días desde la fecha de envío.</p>
+
+    <div class="inversion-box reveal">
+      <div class="inversion-amount"><em>$</em>X,XXX</div>
+      <div class="inversion-desc">Pago único · Incluye todo lo descrito abajo</div>
+      <ul class="inversion-includes">
+        <li>Diagnóstico de Claridad completo (2 semanas)</li>
+        <li>Brand Book con posicionamiento, voz y mensajes</li>
+        <li>Hoja de Ruta estratégica 90 días</li>
+        <li>3 sesiones de trabajo colaborativo (Zoom)</li>
+        <li>1 mes de soporte post-entrega por email</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label reveal" style="text-align:center;">¿Seguimos?</div>
+    <h2 class="reveal">¿Tienes preguntas<br />o estás <em>listo para empezar?</em></h2>
+    <p class="reveal">Agenda una sesión de 30 minutos para resolver cualquier duda antes de arrancar.</p>
+    <div class="cta-btns reveal">
+      <a href="https://cal.com/german-baher-njlkqp" target="_blank" class="btn-primary">Agendar llamada →</a>
+      <a href="mailto:contacto@germanbaher.com" class="btn-secondary">Escribir por email</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER PORTAL -->
+<div class="portal-footer-bar">
+  <span>Propuesta confidencial — Germán Baher · Growth Brands · 2026</span>
+  <span id="clientLabel"></span>
+</div>
+
+<script>
+  // Verificar sesión
+  const token  = sessionStorage.getItem('gb_portal_token');
+  const client = sessionStorage.getItem('gb_portal_client');
+  if (!token) { window.location.href = '/portal'; }
+
+  document.getElementById('clientLabel').textContent = 'Cliente: ' + (client || '');
+
+  // Fecha dinámica
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const now = new Date();
+  document.getElementById('fechaDoc').textContent = now.getDate() + ' de ' + meses[now.getMonth()] + ' de ' + now.getFullYear();
+
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const d = document.documentElement;
+    document.getElementById('progressBar').style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+  });
+
+  // Reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Logout
+  function salir() {
+    sessionStorage.clear();
+    window.location.href = '/portal';
+  }
+</script>
+</body>
+</html>

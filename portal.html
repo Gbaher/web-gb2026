@@ -152,16 +152,24 @@
     {
       id:       "demo",
       pass:     "gbdemo2026",
-      propuesta: "/propuesta-demo"
+      propuesta: "/propuestas/demo"
     },
     {
       id:       "sallkof",
       pass:     "sallkof2026",
-      propuesta: "/propuesta-sallkof"
+      propuesta: "/propuestas/sallkof"
     }
-    // Agrega más clientes aquí:
-    // { id: "sofia",  pass: "sofia2026",  propuesta: "/propuesta-sofia" },
-    // { id: "alalay", pass: "alalay2026", propuesta: "/propuesta-alalay" },
+    {
+      id:       "sofia",
+      pass:     "sofia2026",
+      propuesta: "/propuestas/presentacion_sofia_al_paso_plan_retail_gb_v3"
+    },
+    // ── Para agregar un cliente nuevo: ──────────────────────────────────────
+    // 1. Crea el archivo:  propuestas/nombre-cliente.html
+    // 2. Agrega una línea aquí y sube con git push origin master:main
+    // { id: "sofia",   pass: "sofia2026",   propuesta: "/propuestas/sofia"   },
+    // { id: "alalay",  pass: "alalay2026",  propuesta: "/propuestas/alalay"  },
+    // ────────────────────────────────────────────────────────────────────────
   ];
 
   document.getElementById('loginForm').addEventListener('submit', function(e) {

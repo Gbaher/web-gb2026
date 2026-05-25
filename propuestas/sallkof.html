@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <script>
+    // ── Auth guard — redirect to /portal if no valid session ────────────
+    (function() {
+      var token = sessionStorage.getItem('gb_portal_token');
+      var client = sessionStorage.getItem('gb_portal_client');
+      if (!token || !client) {
+        window.location.replace('/portal');
+      }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnóstico estratégico accionable para SALLKOF | Germán Baher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gb-red: #da2553;
+      --gb-navy: #0c1521;
+      --gb-burgundy: #961a34;
+      --gb-pink-dark: #db2653;
+      --gb-pink: #ee2551;
+      --gb-dark-gray: #2b2b30;
+      --gb-gray: #8b8d94;
+      --gb-light: #f4f4f5;
+      --gb-white: #ffffff;
+      --radius: 28px;
+      --shadow: 0 28px 80px rgba(12, 21, 33, .14);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--gb-light);
+      color: var(--gb-navy);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(218,37,83,.09), transparent 28%),
+        radial-gradient(circle at 86% 20%, rgba(150,26,52,.08), transparent 32%),
+        linear-gradient(90deg, rgba(12,21,33,.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(12,21,33,.035) 1px, transparent 1px);
+      background-size: auto, auto, 64px 64px, 64px 64px;
+      z-index: -2;
+    }
+    .deck-shell {
+      position: relative;
+      width: 100%;
+    }
+    .topbar {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 40px));
+      height: 58px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(12,21,33,.08);
+      backdrop-filter: blur(18px);
+      border-radius: 999px;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px 0 24px;
+      box-shadow: 0 18px 50px rgba(12,21,33,.08);
+    }
+    .brand-lockup { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-lockup img { width: 180px; height: auto; display:block; }
+    .brand-kicker {
+      color: var(--gb-gray);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .top-actions { display:flex; align-items:center; gap:10px; }
+    .pill-btn {
+      appearance: none;
+      border: 1px solid rgba(12,21,33,.12);
+      background: #fff;
+      color: var(--gb-navy);
+      height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      text-decoration: none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+    .pill-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(12,21,33,.12); }
+    .pill-btn.red { background: var(--gb-red); color:#fff; border-color: var(--gb-red); }
+    .slide {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 118px 6vw 66px;
+      position: relative;
+      isolation: isolate;
+    }
+    .slide-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      position: relative;
+    }
+    .slide.dark {
+      background: radial-gradient(circle at 16% 20%, rgba(238,37,81,.28), transparent 30%), linear-gradient(135deg, #0c1521 0%, #121a28 56%, #05070d 100%);
+      color: #fff;
+    }
+    .slide.white { background: rgba(255,255,255,.52); }
+    .slide.soft { background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(244,244,245,.95)); }
+    .eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color: var(--gb-red);
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: clamp(11px, 1vw, 13px);
+      margin-bottom: 18px;
+    }
+    .eyebrow::before { content:''; width:34px; height:2px; background: currentColor; border-radius:999px; }
+    .dark .eyebrow { color: #fff; opacity:.9; }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(54px, 8vw, 104px);
+      line-height: .9;
+      letter-spacing: -.075em;
+      font-weight: 900;
+      max-width: 980px;
+    }
+    h2 {
+      font-size: clamp(42px, 5.2vw, 72px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      font-weight: 900;
+      max-width: 1050px;
+    }
+    h3 { font-size: clamp(21px, 2vw, 32px); line-height: 1.08; letter-spacing:-.03em; font-weight:900; }
+    .lead {
+      font-size: clamp(20px, 2.1vw, 31px);
+      line-height: 1.22;
+      max-width: 880px;
+      color: rgba(12,21,33,.72);
+      margin-top: 24px;
+      font-weight: 500;
+    }
+    .dark .lead { color: rgba(255,255,255,.78); }
+    .tiny { font-size: 12px; line-height: 1.45; color: var(--gb-gray); }
+    .highlight {
+      margin-top: 34px;
+      display:inline-flex;
+      max-width: 880px;
+      padding: 20px 24px;
+      border-left: 5px solid var(--gb-red);
+      background: rgba(218,37,83,.07);
+      border-radius: 0 20px 20px 0;
+      font-size: clamp(22px, 2.3vw, 34px);
+      line-height:1.05;
+      font-weight: 900;
+      letter-spacing:-.04em;
+    }
+    .dark .highlight { background: rgba(255,255,255,.08); color:#fff; border-color:#fff; }
+    .grid { display:grid; gap: 18px; }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .grid.cols-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .card {
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(12,21,33,.08);
+      border-radius: var(--radius);
+      padding: clamp(22px, 2.3vw, 36px);
+      box-shadow: var(--shadow);
+      transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 34px 90px rgba(12,21,33,.18); border-color: rgba(218,37,83,.22); }
+    .dark .card { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.14); box-shadow:none; }
+    .card .num { color: var(--gb-red); font-size: 13px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; margin-bottom:16px; }
+    .card p { color: rgba(12,21,33,.65); font-size: clamp(16px, 1.35vw, 20px); line-height:1.38; margin-top:12px; }
+    .dark .card p { color: rgba(255,255,255,.72); }
+    .list { margin: 30px 0 0; padding:0; list-style:none; display:grid; gap: 12px; }
+    .list li {
+      position: relative;
+      padding: 14px 18px 14px 46px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(12,21,33,.07);
+      font-size: clamp(16px, 1.35vw, 20px);
+      color: rgba(12,21,33,.76);
+      font-weight: 600;
+    }
+    .list li::before {
+      content:'';
+      position:absolute; left:18px; top:50%; transform:translateY(-50%);
+      width:10px; height:10px; border-radius:50%; background: var(--gb-red);
+      box-shadow: 0 0 0 6px rgba(218,37,83,.12);
+    }
+    .dark .list li { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.11); color:rgba(255,255,255,.82); }
+    .split { display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 4vw, 68px); align-items:center; }
+    .compare { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top:28px; }
+    .compare-box { border-radius: 26px; padding: 28px; background:#fff; border:1px solid rgba(12,21,33,.08); box-shadow: var(--shadow); }
+    .compare-box .label { font-size:12px; text-transform:uppercase; letter-spacing:.14em; font-weight:900; color:var(--gb-gray); margin-bottom:14px; }
+    .compare-box.no { background: #f7f7f8; }
+    .compare-box.yes { background: linear-gradient(135deg, rgba(218,37,83,.95), rgba(150,26,52,.96)); color:#fff; }
+    .compare-box.yes .label { color: rgba(255,255,255,.72); }
+    .compare-box strong { font-size: clamp(23px,2.4vw,34px); line-height:1.03; letter-spacing:-.04em; }
+    .roadmap { display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top:34px; }
+    .road-step {
+      min-height: 330px;
+      border-radius: 32px;
+      padding: 34px;
+      position:relative;
+      overflow:hidden;
+      background: #fff;
+      border: 1px solid rgba(12,21,33,.08);
+      box-shadow: var(--shadow);
+    }
+    .road-step::after {
+      content: attr(data-step);
+      position:absolute; right:-8px; bottom:-30px;
+      font-size: 170px; line-height:1;
+      font-weight:900; letter-spacing:-.08em;
+      color: rgba(218,37,83,.08);
+    }
+    .road-step h3 { color: var(--gb-red); }
+    .road-step p { margin-top: 18px; color: rgba(12,21,33,.7); font-size: 18px; line-height:1.42; }
+    .fdt { display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top:34px; }
+    .fdt-card { background: #fff; border: 1px solid rgba(12,21,33,.08); border-radius: 32px; padding: 32px; box-shadow: var(--shadow); }
+    .fdt-card .letter { width:58px; height:58px; border-radius:20px; background: var(--gb-red); color:#fff; display:grid; place-items:center; font-weight:900; font-size:28px; margin-bottom:22px; }
+    .fdt-card p { color:rgba(12,21,33,.7); font-size:18px; line-height:1.38; margin-top:12px; }
+    .price-card {
+      margin-top: 34px;
+      background: #fff;
+      border: 1px solid rgba(12,21,33,.08);
+      border-radius: 38px;
+      padding: clamp(32px, 4vw, 58px);
+      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns: 1fr .85fr;
+      gap: 36px;
+      align-items:center;
+    }
+    .price { font-size: clamp(54px, 6vw, 92px); line-height:.9; letter-spacing:-.075em; font-weight:900; color: var(--gb-red); }
+    .price small { font-size: 22px; letter-spacing:0; color: var(--gb-gray); }
+    .formula { border-radius: 28px; background: var(--gb-light); padding: 26px; border: 1px solid rgba(12,21,33,.06); }
+    .formula strong { font-size: 32px; color: var(--gb-navy); }
+    .cta-row { display:flex; flex-wrap:wrap; gap:14px; margin-top:34px; }
+    .cta {
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display:inline-flex; align-items:center; justify-content:center;
+      font-weight: 900;
+      text-decoration:none;
+      transition: .25s ease;
+    }
+    .cta.primary { background: var(--gb-red); color:#fff; }
+    .cta.secondary { background:#fff; color:var(--gb-navy); border:1px solid rgba(12,21,33,.1); }
+    .dark .cta.secondary { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.18); color:#fff; }
+    .cta:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(12,21,33,.16); }
+    .slide-no {
+      position:absolute;
+      right: clamp(26px, 5vw, 80px);
+      bottom: 28px;
+      font-weight:900;
+      color: rgba(12,21,33,.2);
+      letter-spacing:-.06em;
+      font-size: clamp(52px, 8vw, 120px);
+      line-height:1;
+      z-index:-1;
+    }
+    .dark .slide-no { color: rgba(255,255,255,.08); }
+    .side-nav {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      z-index: 50;
+    }
+    .dot { width:9px; height:9px; border-radius:999px; background: rgba(12,21,33,.18); border:0; cursor:pointer; transition:.25s ease; }
+    .dot.active { height:28px; background: var(--gb-red); }
+    .next-btn {
+      position: fixed;
+      right: 26px;
+      bottom: 26px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border:0;
+      background: var(--gb-red);
+      color:#fff;
+      font-size:24px;
+      z-index:55;
+      cursor:pointer;
+      box-shadow: 0 18px 42px rgba(218,37,83,.35);
+      transition:.25s ease;
+    }
+    .next-btn:hover { transform: translateY(-4px) scale(1.03); }
+    .reveal { opacity:0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+    .slide.in-view .reveal { opacity:1; transform:none; }
+    .slide.in-view .reveal:nth-child(2) { transition-delay:.08s; }
+    .slide.in-view .reveal:nth-child(3) { transition-delay:.16s; }
+    .slide.in-view .reveal:nth-child(4) { transition-delay:.24s; }
+    .floating-mark {
+      position:absolute;
+      right: 7vw;
+      top: 20vh;
+      width: clamp(160px, 20vw, 300px);
+      opacity: .08;
+      animation: float 7s ease-in-out infinite;
+      z-index:-1;
+    }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-18px) rotate(2deg); } }
+    .print-hint { position:fixed; left:24px; bottom:24px; z-index:55; background:rgba(255,255,255,.78); border:1px solid rgba(12,21,33,.08); border-radius:999px; padding:10px 14px; font-size:12px; font-weight:800; color:var(--gb-gray); backdrop-filter:blur(12px); }
+
+
+    .dark .compare-box.no { background: #ffffff; color: var(--gb-navy); border-color: rgba(255,255,255,.2); }
+    .dark .compare-box.no .label { color: var(--gb-gray); }
+    .dark .compare-box.no strong { color: var(--gb-navy); }
+    .dark .compare-box.yes { background: linear-gradient(135deg, #da2553, #961a34); color:#fff; border-color: rgba(255,255,255,.16); }
+    .dark .compare-box.yes strong { color:#fff; }
+
+    .portfolio-map { display:grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+    .portfolio-tier {
+      position:relative;
+      min-height: 68px;
+      border-radius: 24px;
+      display:grid;
+      grid-template-columns: 86px 1fr auto;
+      align-items:center;
+      gap: 18px;
+      padding: 18px 22px;
+      background: #fff;
+      border: 1px solid rgba(12,21,33,.08);
+      box-shadow: 0 16px 45px rgba(12,21,33,.08);
+      overflow:hidden;
+    }
+    .portfolio-tier::before { content:''; position:absolute; inset:0; width: var(--w); background: linear-gradient(90deg, rgba(218,37,83,.12), transparent); pointer-events:none; }
+    .portfolio-tier .rank { position:relative; width:54px; height:54px; border-radius:18px; display:grid; place-items:center; font-weight:900; color:#fff; background: var(--gb-red); }
+    .portfolio-tier h3 { position:relative; font-size: clamp(18px, 1.8vw, 27px); }
+    .portfolio-tier p { position:relative; color: rgba(12,21,33,.64); font-size: 15px; line-height:1.35; margin-top:3px; }
+    .portfolio-tier .tag { position:relative; font-size: 11px; letter-spacing:.12em; text-transform:uppercase; font-weight:900; color: var(--gb-red); background: rgba(218,37,83,.08); padding: 8px 10px; border-radius:999px; }
+    .portfolio-tier.dim { opacity:.68; }
+    .portfolio-tier.pause .rank { background: var(--gb-dark-gray); }
+    .portfolio-tier.pause .tag { color: var(--gb-dark-gray); background: rgba(12,21,33,.08); }
+
+    .unlock-map { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:16px; margin-top:34px; }
+    .unlock-step { position:relative; min-height: 360px; border-radius: 32px; padding: 30px; background:#fff; border:1px solid rgba(12,21,33,.08); box-shadow: var(--shadow); overflow:hidden; }
+    .unlock-step::after { content: attr(data-num); position:absolute; right:-5px; bottom:-24px; font-size:150px; font-weight:900; letter-spacing:-.08em; color:rgba(218,37,83,.08); line-height:1; }
+    .unlock-step.active { border:2px solid var(--gb-red); background: linear-gradient(180deg, #fff, #fff6f8); }
+    .unlock-step.future { opacity:.38; filter:saturate(.2); }
+    .unlock-step .stage { font-size:11px; text-transform:uppercase; letter-spacing:.14em; font-weight:900; color:var(--gb-red); margin-bottom:14px; }
+    .unlock-step h3 { font-size: clamp(22px, 2.2vw, 32px); }
+    .unlock-step p { margin-top:14px; color:rgba(12,21,33,.66); font-size:17px; line-height:1.38; }
+    .unlock-step ul { margin:18px 0 0; padding:0; list-style:none; display:grid; gap:9px; }
+    .unlock-step li { font-size:14px; line-height:1.3; color:rgba(12,21,33,.68); padding-left:18px; position:relative; }
+    .unlock-step li::before { content:''; position:absolute; left:0; top:.55em; width:7px; height:7px; border-radius:50%; background:var(--gb-red); }
+    .unlock-note { margin-top: 22px; padding: 18px 22px; border-radius: 22px; background: rgba(218,37,83,.07); border:1px solid rgba(218,37,83,.12); font-weight:800; color:var(--gb-navy); }
+
+    .contract-steps { counter-reset: step; display:grid; gap:14px; margin-top:30px; }
+    .contract-step { counter-increment: step; display:grid; grid-template-columns: 54px 1fr; gap:18px; align-items:start; padding:18px; border-radius:24px; background:#fff; border:1px solid rgba(12,21,33,.08); box-shadow: 0 14px 40px rgba(12,21,33,.07); }
+    .contract-step::before { content: counter(step); width:54px; height:54px; border-radius:18px; display:grid; place-items:center; background:var(--gb-red); color:#fff; font-weight:900; }
+    .contract-step h3 { font-size:20px; margin-bottom:5px; }
+    .contract-step p { font-size:15px; color:rgba(12,21,33,.64); line-height:1.35; }
+    .legal-note { margin-top: 18px; color: var(--gb-gray); font-size: 11.5px; line-height:1.45; max-width: 880px; }
+
+
+
+    .alignment-board { display:grid; grid-template-columns: .9fr 1.1fr; gap: 22px; margin-top:34px; align-items:stretch; }
+    .alignment-panel { border-radius: 34px; padding: 34px; background:#fff; border:1px solid rgba(12,21,33,.08); box-shadow: var(--shadow); position:relative; overflow:hidden; }
+    .alignment-panel::after { content:''; position:absolute; width:220px; height:220px; right:-90px; bottom:-90px; background:radial-gradient(circle, rgba(218,37,83,.16), transparent 70%); }
+    .alignment-panel h3 { color: var(--gb-red); }
+    .alignment-panel p { margin-top:14px; font-size:18px; line-height:1.42; color:rgba(12,21,33,.68); }
+    .alignment-list { display:grid; gap: 12px; }
+    .alignment-item { display:grid; grid-template-columns: 42px 1fr; gap:14px; align-items:start; padding:18px; border-radius:24px; background:rgba(255,255,255,.86); border:1px solid rgba(12,21,33,.08); box-shadow:0 14px 42px rgba(12,21,33,.06); }
+    .alignment-item .icon { width:42px; height:42px; border-radius:15px; background:rgba(218,37,83,.1); color:var(--gb-red); display:grid; place-items:center; font-weight:900; }
+    .alignment-item h3 { font-size:20px; margin-bottom:5px; }
+    .alignment-item p { font-size:15.5px; color:rgba(12,21,33,.66); line-height:1.35; }
+    .pilot-ribbon { display:inline-flex; gap:10px; align-items:center; margin-top:20px; padding:10px 14px; border-radius:999px; background:rgba(218,37,83,.09); color:var(--gb-red); font-size:12px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+    .pilot-ribbon::before { content:''; width:9px; height:9px; border-radius:50%; background:var(--gb-red); box-shadow:0 0 0 6px rgba(218,37,83,.12); }
+
+    @media (max-width: 900px) {
+      .topbar { width: calc(100% - 22px); top:10px; }
+      .brand-lockup img { width: 140px; }
+      .brand-kicker { display:none; }
+      .top-actions .pill-btn:not(.red) { display:none; }
+      .slide { padding: 96px 22px 64px; }
+      .split, .grid.cols-2, .grid.cols-3, .grid.cols-4, .roadmap, .fdt, .price-card, .compare, .unlock-map, .portfolio-tier, .alignment-board { grid-template-columns: 1fr; }
+      .road-step { min-height:auto; }
+      .side-nav { display:none; }
+      .print-hint { display:none; }
+    }
+    @media print {
+      body { background:#fff; }
+      .topbar, .side-nav, .next-btn, .print-hint { display:none !important; }
+      .slide { min-height: auto; height: 100vh; page-break-after: always; padding: 55px 60px; }
+      .reveal { opacity:1 !important; transform:none !important; }
+      .card, .road-step, .fdt-card, .price-card { box-shadow:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand-lockup">
+      <!-- Logo de Germán Baher sin fondo. Reemplazar este src por tu SVG definitivo si deseas. -->
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3OTIgMjczLjE4Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsLXJ1bGU6IGV2ZW5vZGQ7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yIHsKICAgICAgICBmaWxsOiAjZWQyNDUwOwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGlzb2xhdGlvbjogaXNvbGF0ZTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGcgY2xhc3M9ImNscy0zIj4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTU3LjU3LDE1OS4yNmMtOC42OSwwLTE1LTIuNjgtMTguOTEtOC4wMy0zLjkyLTUuMzYtNS44OC0xMy42OS01Ljg4LTI1LjAyczIuMTQtMTkuMTQsNi40My0yNC41NiwxMC45Ni04LjEyLDIwLjAyLTguMTJjMS45NiwwLDMuNzkuMTEsNS41MS4zMiwxLjcxLjIyLDIuOTcuNDUsMy43Ni42OSwxLjEuMzEsMS44NS43NSwyLjI1LDEuMzMuNC41OS42LDEuMzYuNiwyLjM0LDAsMS4xNi0uMTQsMi40LS40MSwzLjcycy0uNjYsMi40NS0xLjE1LDMuNC0xLjEzLDEuNDItMS45MywxLjQyYy0uNjEsMC0xLjYyLS4xNC0zLjAzLS40MXMtMy4wNi0uNDEtNC45Ni0uNDFjLTQuMzUsMC03LjUsMS42MS05LjQ2LDQuODItMS45NiwzLjIxLTIuOTQsOC40LTIuOTQsMTUuNTYsMCw1LjIuMzcsOS4zMywxLjEsMTIuMzkuNzQsMy4wNiwxLjk2LDUuMjUsMy42Nyw2LjU3LDEuNzEsMS4zMiw0LjAxLDEuOTcsNi44OSwxLjk3LjczLDAsMS42NS0uMDYsMi43NS0uMTl2LTE0LjMyaC00Ljg3Yy0xLjg0LDAtMi43NS0xLjUzLTIuNzUtNC41OXYtMi42NmMwLTMuMDYuOTItNC41OSwyLjc1LTQuNTloMTUuMDZjMi4yNiwwLDMuNCwxLjIyLDMuNCwzLjY3djI3LjM2YzAsMS41OS0uOTUsMi44OC0yLjg1LDMuODYtMS45Ljk4LTQuMTMsMS44MS02LjcsMi40OHMtNS4zNiwxLjAxLTguMzYsMS4wMVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTg4LjE1LDE1OC43MWMtMy42NywwLTUuNTEtMS4wMS01LjUxLTMuMDN2LTU3Ljc1YzAtMi40NSwxLjIyLTMuNjcsMy42Ny0zLjY3aDE1LjYxYzYuNzMsMCwxMS43NCwxLjY0LDE1LjAxLDQuOTFzNC45MSw4LjM3LDQuOTEsMTUuMjljMCwyLjk0LS41MSw1LjQ2LTEuNTIsNy41OHMtMi4yOCwzLjc2LTMuODEsNC45NmMtMS41MywxLjItMy4xNSwxLjg1LTQuODcsMS45OHYuMzdjMS4yMi40MywyLjM3LDEuMjQsMy40NCwyLjQzLDEuMDcsMS4yLDEuODIsMi41NiwyLjI1LDQuMDlsNS42LDE4LjM2Yy4yNC43NC4zNywxLjQ0LjM3LDIuMTEsMCwuOTgtLjM4LDEuNjItMS4xNSwxLjkzLS43Ny4zMS0yLjIyLjQ2LTQuMzYuNDZoLTMuMjFjLTEuNDcsMC0yLjY5LS4xOS0zLjY3LS41NXMtMS41OS0xLjA0LTEuODMtMi4wMmwtNC4yMi0xNi45OWMtLjQzLTEuNzctMS4wNi0yLjk3LTEuODgtMy41OHMtMi4xMy0uOTItMy45LS45MmgtMi4ydjIxLjAzYzAsMi4wMi0xLjg0LDMuMDMtNS41MSwzLjAzaC0zLjIxWk05Ni44NywxMjIuNjNoNS4wNWMyLjMzLDAsMy45My0uNjQsNC44Mi0xLjkzLjg5LTEuMjgsMS4zMy0zLjM2LDEuMzMtNi4yNHMtLjQ1LTQuOTYtMS4zMy02LjI0Yy0uODktMS4yOS0yLjQ5LTEuOTMtNC44Mi0xLjkzaC01LjA1djE2LjM0WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTUwLjc3LDE1OS4yNmMtOC4yLDAtMTQuMjUtMi42Ni0xOC4xMy03Ljk5LTMuODktNS4zMy01LjgzLTEzLjYyLTUuODMtMjQuODhzMS45NC0xOS41Niw1LjgzLTI0Ljg4YzMuODktNS4zMiw5LjkzLTcuOTksMTguMTMtNy45OXMxNC4zNCwyLjY2LDE4LjIyLDcuOTljMy44OSw1LjMzLDUuODMsMTMuNjIsNS44MywyNC44OHMtMS45NCwxOS41Ni01LjgzLDI0Ljg4Yy0zLjg5LDUuMzItOS45Niw3Ljk5LTE4LjIyLDcuOTlaTTE1MC44NiwxNDcuMjNjMy40MywwLDUuODYtMS42Miw3LjMtNC44NywxLjQ0LTMuMjQsMi4xNi04LjU3LDIuMTYtMTUuOThzLS43Mi0xMi44MS0yLjE2LTE2LjAyYy0xLjQ0LTMuMjItMy44Ny00LjgyLTcuMy00Ljgycy01LjgsMS42MS03LjMsNC44MmMtMS41LDMuMjEtMi4yNSw4LjU1LTIuMjUsMTYuMDJzLjc1LDEyLjczLDIuMjUsMTUuOThjMS41LDMuMjQsMy45Myw0Ljg3LDcuMyw0Ljg3WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTkzLjA5LDE1OC43MWMtMS4yMywwLTIuMzMtLjIzLTMuMzEtLjY5cy0xLjYyLTEuMzktMS45My0yLjhsLTEwLjI4LTU2LjU2Yy0uMDYtLjMxLS4xNC0uNzItLjIzLTEuMjQtLjA5LS41Mi0uMTQtLjktLjE0LTEuMTUsMC0uNjcuMzEtMS4yMS45Mi0xLjYxLjYxLS40LDEuNjItLjYsMy4wMy0uNmg0Ljg3YzEuMjksMCwyLjQuMTYsMy4zNS40Ni45NS4zMSwxLjQ4Ljk1LDEuNjEsMS45M2w1Ljk3LDQ4LjExaC4zN2w3LjQ0LTQ3LjY1Yy4xOC0xLjIyLjY2LTIuMDEsMS40Mi0yLjM0Ljc2LS4zMywxLjk0LS41MSwzLjU0LS41MWgyLjc1YzEuNTksMCwyLjc3LjE3LDMuNTQuNTEuNzYuMzQsMS4yNCwxLjEyLDEuNDIsMi4zNGw3LjI1LDQ3LjkzaC4zN2w1LjY5LTQ4LjM5Yy4xMi0uOTguNjYtMS42MiwxLjYxLTEuOTNzMi4wMy0uNDYsMy4yNi0uNDZoNC45NmMxLjQxLDAsMi40Mi4yLDMuMDMuNi42MS40LjkyLjkzLjkyLDEuNjEsMCwuMTgtLjEyLjk4LS4zNywyLjM5bC0xMC42NSw1Ni41NmMtLjI1LDEuNDEtLjg3LDIuMzQtMS44OCwyLjhzLTIuMS42OS0zLjI2LjY5aC02Ljg5Yy0xLjIzLDAtMi4zNC0uMjMtMy4zNS0uNjlzLTEuNjQtMS4zOS0xLjg4LTIuOGwtNS4yMy0zNC4xNmgtLjM3bC01LjUxLDM0LjE2Yy0uMjUsMS40MS0uODcsMi4zNC0xLjg4LDIuOHMtMi4xLjY5LTMuMjYuNjloLTYuODlaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNjIuNjksMTU4LjcxYy0zLjY3LDAtNS41MS0xLjAxLTUuNTEtMy4wM3YtNDkuNGgtMTAuMjhjLTEuODQsMC0yLjc1LTEuNTMtMi43NS00LjU5di0yLjg1YzAtMy4wNi45Mi00LjU5LDIuNzUtNC41OWgzNC44YzEuODMsMCwyLjc1LDEuNTMsMi43NSw0LjU5djIuODVjMCwzLjA2LS45Miw0LjU5LTIuNzUsNC41OWgtMTAuMjh2NDkuNGMwLDIuMDItMS44NCwzLjAzLTUuNTEsMy4wM2gtMy4yMVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI5NC41NSwxNTguNzFjLTMuNjcsMC01LjUxLTEuMDEtNS41MS0zLjAzdi01OC41OGMwLTIuMDIsMS44NC0zLjAzLDUuNTEtMy4wM2gzLjIxYzMuNjcsMCw1LjUxLDEuMDEsNS41MSwzLjAzdjIyLjU5aDE1Ljd2LTIyLjU5YzAtMi4wMiwxLjg0LTMuMDMsNS41MS0zLjAzaDMuMjFjMy42NywwLDUuNTEsMS4wMSw1LjUxLDMuMDN2NTguNThjMCwyLjAyLTEuODQsMy4wMy01LjUxLDMuMDNoLTMuMjFjLTMuNjcsMC01LjUxLTEuMDEtNS41MS0zLjAzdi0yMy45NmgtMTUuN3YyMy45NmMwLDIuMDItMS44NCwzLjAzLTUuNTEsMy4wM2gtMy4yMVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTQ4NC4xMywxNTguNTNjLTIuMjcsMC0zLjQtMS4yMi0zLjQtMy42N3YtNTYuOTJjMC0yLjQ1LDEuMTMtMy42NywzLjQtMy42N2gxNC41MWM2LjczLDAsMTEuNTgsMS42NCwxNC41NSw0LjkxLDIuOTcsMy4yNyw0LjQ1LDcuNDgsNC40NSwxMi42MiwwLDMtLjgxLDUuNzQtMi40Myw4LjIyLTEuNjIsMi40OC0zLjY5LDQuMTItNi4yLDQuOTFsLjA5LjM3YzMuMDYuOCw1LjU4LDIuNjIsNy41Nyw1LjQ2LDEuOTksMi44NSwyLjk4LDYuMTQsMi45OCw5Ljg3LDAsMTEuOTQtNy4wMSwxNy45LTIxLjAzLDE3LjloLTE0LjUxWk00OTQuNTEsMTE5Ljk2aDQuMTNjMi4wMiwwLDMuNDctLjU2LDQuMzYtMS43Ljg5LTEuMTMsMS4zMy0yLjkzLDEuMzMtNS4zN3MtLjQ1LTQuMDEtMS4zMy01LjA1Yy0uODktMS4wNC0yLjM0LTEuNTYtNC4zNi0xLjU2aC00LjEzdjEzLjY4Wk00OTQuNTEsMTQ2LjVoNC4xM2MyLjM5LDAsNC4xMS0uNTgsNS4xOS0xLjc0LDEuMDctMS4xNiwxLjYxLTMuMDYsMS42MS01LjY5cy0uNTQtNC43NC0xLjYxLTUuOTdjLTEuMDctMS4yMi0yLjgtMS44NC01LjE5LTEuODRoLTQuMTN2MTUuMjRaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik01MjkuNzcsMTU4LjcxYy0zLjY3LDAtNS41MS0xLjAxLTUuNTEtMy4wM3YtNTcuNzVjMC0yLjQ1LDEuMjItMy42NywzLjY3LTMuNjdoMTUuNjFjNi43MywwLDExLjc0LDEuNjQsMTUuMDEsNC45MXM0LjkxLDguMzcsNC45MSwxNS4yOWMwLDIuOTQtLjUxLDUuNDYtMS41Miw3LjU4cy0yLjI4LDMuNzYtMy44MSw0Ljk2Yy0xLjUzLDEuMi0zLjE1LDEuODUtNC44NywxLjk4di4zN2MxLjIyLjQzLDIuMzcsMS4yNCwzLjQ0LDIuNDMsMS4wNywxLjIsMS44MiwyLjU2LDIuMjUsNC4wOWw1LjYsMTguMzZjLjI0Ljc0LjM3LDEuNDQuMzcsMi4xMSwwLC45OC0uMzgsMS42Mi0xLjE1LDEuOTMtLjc3LjMxLTIuMjIuNDYtNC4zNi40NmgtMy4yMWMtMS40NywwLTIuNjktLjE5LTMuNjctLjU1cy0xLjU5LTEuMDQtMS44My0yLjAybC00LjIyLTE2Ljk5Yy0uNDMtMS43Ny0xLjA2LTIuOTctMS44OC0zLjU4cy0yLjEzLS45Mi0zLjktLjkyaC0yLjJ2MjEuMDNjMCwyLjAyLTEuODQsMy4wMy01LjUxLDMuMDNoLTMuMjFaTTUzOC40OSwxMjIuNjNoNS4wNWMyLjMzLDAsMy45My0uNjQsNC44Mi0xLjkzLjg5LTEuMjgsMS4zMy0zLjM2LDEuMzMtNi4yNHMtLjQ1LTQuOTYtMS4zMy02LjI0Yy0uODktMS4yOS0yLjQ5LTEuOTMtNC44Mi0xLjkzaC01LjA1djE2LjM0WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNTY5LjE1LDE1OC43MWMtMS40MSwwLTIuNDItLjIxLTMuMDMtLjY0LS42MS0uNDMtLjkyLS45NS0uOTItMS41NiwwLS4yNC4wMi0uNTEuMDUtLjc4LjAzLS4yNy4xNC0uODEuMzItMS42MWwxMy4yMi01Ni41NmMuMzEtMS4zNS45NS0yLjI2LDEuOTMtMi43NS45OC0uNDksMi4yNi0uNzQsMy44Ni0uNzRoNi44OWMxLjcxLDAsMy4wNC4yNSw0LC43NC45NS40OSwxLjU4LDEuNDEsMS44OCwyLjc1bDEzLjIyLDU2LjU2Yy4xOC44LjI5LDEuMzMuMzIsMS42MS4wMy4yOC4wNS41NC4wNS43OCwwLC42MS0uMzEsMS4xMy0uOTIsMS41Ni0uNjEuNDMtMS42Mi42NC0zLjAzLjY0aC00Ljg3Yy0xLjI5LDAtMi4zOS0uMTYtMy4zMS0uNDYtLjkyLS4zMS0xLjQ3LS45NS0xLjY1LTEuOTNsLTIuMDItMTAuNzRoLTE0LjE0bC0yLjAyLDEwLjc0Yy0uMTguOTgtLjczLDEuNjItMS42NSwxLjkzLS45Mi4zMS0xLjk5LjQ2LTMuMjEuNDZoLTQuOTZaTTU4Ni42LDExNC45MWwtMy41OCwxOS40Nmg5LjkybC0zLjY3LTE5LjQ2Yy0uMjUtMS4xNi0uNDYtMi4zMy0uNjQtMy40OXMtLjM0LTIuMzMtLjQ2LTMuNDloLS40NmMtLjEyLDEuMTYtLjI3LDIuMzMtLjQ2LDMuNDlzLS40LDIuMzMtLjY0LDMuNDlaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik02MjAuNjYsMTU4LjcxYy0zLjY3LDAtNS41MS0xLjAxLTUuNTEtMy4wM3YtNTguNThjMC0yLjAyLDEuODQtMy4wMyw1LjUxLTMuMDNoMy4xMmMyLjA4LDAsMy42MS4yMiw0LjU5LjY0Ljk4LjQzLDEuNzQsMS4yMywyLjMsMi4zOWwxNC4zMiwyOC41NmMuMzEuNjcuNjQsMS41LDEuMDEsMi40OC4zNy45OC43LDEuOTYsMS4wMSwyLjk0bC40Ni0uMDljLS4xMi0xLjA0LS4yNS0yLjA4LS4zNy0zLjEyLS4xMi0xLjA0LS4xOC0yLjA4LS4xOC0zLjEydi0yNy42NGMwLTIuMDIsMS44My0zLjAzLDUuNTEtMy4wM2gyLjJjMy42NywwLDUuNTEsMS4wMSw1LjUxLDMuMDN2NTguNThjMCwyLjAyLTEuODQsMy4wMy01LjUxLDMuMDNoLTMuMTJjLTIuMDIsMC0zLjUyLS4yMS00LjUtLjY0cy0xLjc0LTEuMjItMi4yOS0yLjM5bC0xNC40Mi0yOS4wMWMtLjMxLS42Ny0uNjQtMS41LTEuMDEtMi40OC0uMzctLjk4LS43LTEuOTYtMS4wMS0yLjk0bC0uNDYuMDljLjEyLDEuMDQuMjQsMi4wOC4zNywzLjEyLjEyLDEuMDQuMTgsMi4wOC4xOCwzLjEydjI4LjA5YzAsMi4wMi0xLjg0LDMuMDMtNS41MSwzLjAzaC0yLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik02NzIuNzIsMTU4LjUzYy0yLjI3LDAtMy40LTEuMjItMy40LTMuNjd2LTU2LjkyYzAtMi40NSwxLjEzLTMuNjcsMy40LTMuNjdoMTYuNTNjOC4yNiwwLDE0LjM0LDIuNiwxOC4yMyw3LjgsMy44OSw1LjIsNS44MywxMy4zMSw1LjgzLDI0LjMzcy0xLjk0LDE5LjEzLTUuODMsMjQuMzNjLTMuODksNS4yLTkuOTYsNy44LTE4LjIzLDcuOGgtMTYuNTNaTTY4My41NiwxNDYuNWg1Ljc4YzMuNDMsMCw1Ljg2LTEuNTYsNy4zLTQuNjgsMS40NC0zLjEyLDIuMTYtOC4yNiwyLjE2LTE1LjQycy0uNzItMTIuMy0yLjE2LTE1LjQyYy0xLjQ0LTMuMTItMy44Ny00LjY4LTcuMy00LjY4aC01Ljc4djQwLjIyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNzMzLjY5LDE1OS4yNmMtMi4wMiwwLTQuMDktLjI4LTYuMi0uODItMi4xMS0uNTUtMy45OS0xLjIyLTUuNjUtMi4wMi0xLjI4LS42MS0yLjM5LTEuMy0zLjMtMi4wNy0uOTItLjc2LTEuMzgtMS42MS0xLjM4LTIuNTMsMC0uNjEuMTItMS41NC4zNy0yLjguMjQtMS4yNS42Ni0yLjQzLDEuMjQtMy41NHMxLjMtMS42NSwyLjE2LTEuNjVjLjU1LDAsMS40NS4zMSwyLjcxLjkyLDEuMjUuNjEsMi43MiwxLjIyLDQuNDEsMS44MywxLjY4LjYxLDMuNDcuOTIsNS4zNy45MiwxLjY1LDAsMy4yLS40MSw0LjY0LTEuMjQsMS40NC0uODMsMi4xNi0yLjU2LDIuMTYtNS4xOSwwLTEuNzEtLjQxLTMuMTItMS4yNC00LjIyLS44Mi0xLjEtMS45My0yLjA4LTMuMy0yLjk0cy0yLjg2LTEuNzEtNC40NS0yLjU3Yy0yLjgyLTEuNTktNS4yLTMuMjQtNy4xNi00Ljk2LTEuOTYtMS43MS0zLjQ2LTMuNzItNC41LTYuMDEtMS4wNC0yLjMtMS41Ni01LjA5LTEuNTYtOC40LDAtMy44Ni44NC03LjE2LDIuNTMtOS45MiwxLjY4LTIuNzUsMy45OC00Ljg3LDYuODktNi4zNCwyLjkxLTEuNDcsNi4yLTIuMiw5Ljg3LTIuMiwyLjA4LDAsNC4yMi4yNCw2LjQzLjczczQuMDcsMS4yMiw1LjYsMi4yYy41NS4zNywxLjEzLjgzLDEuNzQsMS4zOC42MS41NS45MiwxLjIyLjkyLDIuMDIsMCwuODYtLjEyLDEuOTEtLjM3LDMuMTctLjI1LDEuMjYtLjYxLDIuMzctMS4xLDMuMzVzLTEuMSwxLjQ3LTEuODQsMS40N2MtLjQ5LDAtMS4yOC0uMjEtMi4zOS0uNjQtMS4xLS40My0yLjM2LS44Ni0zLjc2LTEuMjlzLTIuNzktLjY0LTQuMTMtLjY0Yy0xLjk2LDAtMy40NC4zNC00LjQ1LDEuMDEtMS4wMS42OC0xLjY4LDEuNDYtMi4wMiwyLjM0cy0uNTEsMS43My0uNTEsMi41MmMwLDEuODQuNTEsMy4zMSwxLjUyLDQuNDEsMS4wMSwxLjEsMi4zMSwyLjA1LDMuOSwyLjg1LDEuNTkuOCwzLjI0LDEuNjgsNC45NiwyLjY2LDIuNjksMS41Myw0LjkxLDMuMTUsNi42Niw0Ljg3LDEuNzQsMS43MSwzLjA2LDMuNjksMy45NSw1LjkyLjg5LDIuMjQsMS4zMyw0Ljk3LDEuMzMsOC4yMnMtLjcsNi40MS0yLjExLDkuMzItMy41OCw1LjI4LTYuNTIsNy4xMS02LjczLDIuNzUtMTEuMzgsMi43NVoiLz4KICA8L2c+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDE0LjI4LDY5Ljc0djU2LjgyYzAsOC42LDMsMTIuOCw5LjIsMTIuOCwyLjYsMCw0LjgtLjgsNi42LTIuNiwxLjgtMS44LDIuOC0zLjgsMi44LTYuNHMtLjgtNC44LTIuNi02LjRjLTEuOC0xLjgtMy44LTIuOC02LjQtMi44LS43NywwLTEuNTcuMTUtMi40Mi40Mi0xLjc3LjU4LTMuNTktLjc0LTMuNTktMi42di0xOS41N2MwLTEuNDIsMS4wOC0yLjYyLDIuNS0yLjczLDEuNjMtLjEzLDIuOTUtLjEzLDMuOS0uMTMsOSwwLDE2LjgsMy4yLDIzLjIxLDkuNiw2LjQsNi40LDkuNiwxNC40LDkuNiwyMy40MXMtMy4yLDE3LjItOS44LDIzLjYxYy02LjQsNi40LTE0LjYsOS42LTI0LjAxLDkuNi0yLjcyLDAtNS40My0uMzQtOC4wNi0xLjAyLTEuMzgtLjM2LTIuODEuNDUtMy4yMywxLjgxLTEuNTgsNS4wOC00LjI4LDkuNDctNy43MSwxMy40Mi02LjQsNy4yLTE0LjgsMTAuNi0yNS4yMSwxMC42LTIuNzcsMC02LjEzLS42LTEwLjA5LTEuNzktMS4xNC0uMzUtMS45Mi0xLjQyLTEuOTItMi42MnYtMTUuNTZjMC0xLjg5LDEuODUtMy4xNywzLjY0LTIuNTgsMS45Ny42NSw0LC45NCw1Ljk2Ljk0LDQuNCwwLDcuNi0xLjQsMTAtNC40LDIuNC0yLjgsMy42LTcsMy42LTEyLjJ2LTI0LjAxYzAtNi44LTIuOC0xMC04LTEwLTIuMiwwLTQuNCwxLTYuMiwyLjgtMS44LDEuOC0yLjYsMy44LTIuNiw2LjJzLjgsNC42LDIuNCw2LjJjMS42LDEuNiwzLjgsMi40LDYuMiwyLjQuNDgsMCwuOTctLjA0LDEuNDUtLjExLDEuNjYtLjI1LDMuMTUsMS4wMiwzLjE1LDIuN3YxNi4yM2MwLDEuMjItLjgxLDIuMjktMS45OCwyLjY0LTIuNzMuODMtNS40LDEuMzUtNy44MiwxLjM1LTcuOCwwLTE0LjItMy0xOS44MS04LjgtNS40LTUuOC04LTEzLTgtMjEuNDEsMC05LjIsMy4yLTE2LjgsOS42LTIzLjIxLDYuMi02LjQsMTQtOS42LDIzLjQxLTkuNiwxLjY4LDAsMy4yOS4xNCw0Ljg3LjM5LDEuNjUuMjYsMy4xMy0xLjA3LDMuMTMtMi43NXYtMTguMDhjMC0xLjUyLDEuMjQtMi43NiwyLjc3LTIuNzRsMjEuNDQuMThoMFoiLz4KICA8Zz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTQ4NC40OSwxOTguMjJjLS41NywwLS44NS0uMjctLjg1LS44MnYtMTcuNTZjMC0uNTUuMjgtLjgyLjg1LS44Mmg0Ljg4YzEuMzcsMCwyLjUxLjIxLDMuNDIuNjIuOTEuNDEsMS41OS45OCwyLjA0LDEuNy40Ni43Mi42OSwxLjU3LjY5LDIuNTQsMCwuNjItLjE0LDEuMjMtLjQyLDEuODItLjI4LjU5LS42NSwxLjExLTEuMTEsMS41NHMtLjk1LjcyLTEuNDguODZ2LjExYy44LjE4LDEuNDkuNDksMi4wNi45MS41Ny40MiwxLjAxLjk0LDEuMzIsMS41NS4zMS42MS40NywxLjI5LjQ3LDIuMDQsMCwxLjI2LS4yNywyLjMtLjgyLDMuMTFzLTEuMzYsMS40Mi0yLjQzLDEuODEtMi4zNy41OS0zLjkxLjU5aC00LjY5Wk00ODYuMTEsMTg3LjM2aDMuMTNjMS4xMiwwLDIuMDMtLjMyLDIuNzMtLjk2LjctLjY0LDEuMDYtMS40MSwxLjA2LTIuMywwLTEuMDItLjMxLTEuNzgtLjkyLTIuMjYtLjYxLS40OC0xLjYxLS43My0yLjk4LS43M2gtMy4wMnY2LjI1Wk00ODYuMTEsMTk2LjEzaDMuOTVjMS4xOSwwLDIuMTItLjMsMi43OC0uOTFzMS0xLjQ0LDEtMi41LS4zNi0xLjgzLTEuMDctMi40MWMtLjcxLS41OC0xLjc3LS44OC0zLjE4LS44OGgtMy40OHY2LjY5WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNTA3LjU0LDE5OC4yN2MtLjQsMC0uNjktLjA1LS44Ni0uMTYtLjE3LS4xMS0uMjYtLjI2LS4yNi0uNDR2LTkuMDNsLTUuNzEtOC43MmMtLjA3LS4wOS0uMTMtLjE4LS4xNi0uMjYtLjA0LS4wOC0uMDUtLjE2LS4wNS0uMjMsMC0uMTUuMDktLjI2LjI3LS4zNC4xOC0uMDguNS0uMTIuOTYtLjEyaC4zYy4yOSwwLC41NC4wMy43My4wOC4xOS4wNS4zNC4xNy40NS4zM2w1LjAyLDcuODJoLTEuMDJsNS4wOC03Ljg1Yy4wOS0uMTUuMjUtLjI1LjQ4LS4zcy40OC0uMDguNzUtLjA4aC4yMmMuNCwwLC42OS4wNC44NS4xMi4xNy4wOC4yNS4yLjI1LjM0LDAsLjA3LS4wMi4xNS0uMDUuMjMtLjA0LjA4LS4wOS4xNy0uMTcuMjZsLTUuNzMsOC44MXY4Ljk0YzAsLjE4LS4wOC4zMy0uMjUuNDQtLjE2LjExLS40Ni4xNi0uODguMTZoLS4yMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTUzNy44LDE5OC4zOGMtMywwLTUuMjItLjc5LTYuNjctMi4zNy0xLjQ1LTEuNTgtMi4xNy00LjA1LTIuMTctNy4zOXMuNzUtNS43MiwyLjI1LTcuMzRjMS41LTEuNjIsMy43MS0yLjQzLDYuNjQtMi40My40OCwwLC45My4wMywxLjM3LjA4LjQ0LjA1Ljg2LjEzLDEuMjYuMjJzLjc3LjIsMS4xLjMyLjYxLjI0Ljg1LjM3Yy4yLjEzLjM2LjI1LjQ4LjM3LjEyLjEyLjE4LjIzLjE4LjM0cy0uMDMuMjQtLjA4LjQtLjEzLjMxLS4yMi40N2MtLjA5LjE2LS4xOS4yOC0uMy4zOHMtLjIyLjE1LS4zMy4xNS0uMjctLjA1LS40OS0uMTUtLjUtLjIyLS44NC0uMzZjLS4zNC0uMTQtLjc1LS4yNi0xLjIzLS4zNnMtMS4wNS0uMTUtMS42OS0uMTVjLTIuMiwwLTMuODIuNjEtNC44NywxLjgycy0xLjU4LDMuMTgtMS41OCw1Ljg4YzAsMS43Ni4yMywzLjIuNjksNC4zMnMxLjE2LDEuOTYsMi4xLDIuNTFjLjk0LjU1LDIuMTMuODIsMy41NS44Mi41MSwwLDEuMDEtLjA0LDEuNS0uMTEuNDgtLjA3LjkyLS4xOCwxLjMtLjMyLjM4LS4xNC42OC0uMjkuODgtLjQ1bC0uMzMsMS40NXYtNy4wMmgtMy43NmMtLjM3LDAtLjU1LS4yNy0uNTUtLjgydi0uNDFjMC0uNTUuMTgtLjgyLjU1LS44Mmg1LjMyYy41NywwLC44NS4yNy44NS44MnY3LjQ2YzAsLjI5LS4wNC41LS4xMi42M3MtLjIyLjI1LS40Mi4zNmMtLjQ2LjI2LS45Ni40OS0xLjUxLjY5LS41NS4yLTEuMTMuMzYtMS43NC40Ny0uNjEuMTEtMS4yNy4xNy0xLjk2LjE3WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNTUyLjA5LDE5OC4yMmMtLjU3LDAtLjg1LS4yNy0uODUtLjgydi0xNy41NmMwLS41NS4yOC0uODIuODUtLjgyaDkuNTVjLjM3LDAsLjU1LjI3LjU1Ljgydi40NGMwLC41NS0uMTguODItLjU1LjgyaC03LjkzdjYuMjVoNy4xMWMuMzcsMCwuNTUuMjcuNTUuODJ2LjQ0YzAsLjU1LS4xOC44Mi0uNTUuODJoLTcuMTF2Ni42OWg3Ljk2Yy4zNywwLC41NS4yNy41NS44MnYuNDRjMCwuNTUtLjE4LjgyLS41NS44MmgtOS41N1oiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTU3MC4wOSwxOTguMjdjLS40LDAtLjY5LS4wNS0uODYtLjE2LS4xNy0uMTEtLjI2LS4yNi0uMjYtLjQ0di0xNy44M2MwLS41NS4yOC0uODIuODUtLjgyaDUuNGMyLjA3LDAsMy42Mi40NSw0LjY2LDEuMzQsMS4wNC45LDEuNTYsMi4yNCwxLjU2LDQuMDMsMCwuODEtLjE0LDEuNTMtLjQyLDIuMTctLjI4LjY0LS42OSwxLjE2LTEuMjIsMS41Ni0uNTMuNC0xLjE2LjY3LTEuODkuOHYuMTFjLjU3LjE3LDEuMDMuNTEsMS40LDEuMDMuMzcuNTIuNywxLjE4LDEuMDEsMS45OWwyLjE0LDUuNGMuMDQuMDcuMDYuMTUuMDcuMjIsMCwuMDcuMDEuMTMuMDEuMTcsMCwuMTMtLjA5LjIzLS4yNy4zMi0uMTguMDgtLjQ4LjEyLS44OC4xMmgtLjI3Yy0uMjcsMC0uNTEtLjA0LS43MS0uMTItLjItLjA4LS4zMy0uMTktLjM4LS4zMmwtMi4yOC01Ljg3Yy0uMi0uNTUtLjQ0LS45OC0uNzMtMS4zLS4yOC0uMzItLjY0LS41NS0xLjA2LS42OS0uNDItLjE0LS45NC0uMjEtMS41Ni0uMjFoLTIuOTZ2Ny45YzAsLjE4LS4wOC4zMy0uMjUuNDQtLjE2LjExLS40Ni4xNi0uODguMTZoLS4yMlpNNTcxLjQzLDE4Ny42OGgzLjc5YzEuMzIsMCwyLjI3LS4yNSwyLjg1LS43NC41OC0uNDkuODgtMS4zLjg4LTIuNDEsMC0xLjIxLS4yOS0yLjA4LS44OC0yLjYyLS41OS0uNTQtMS41NC0uODEtMi44NS0uODFoLTMuNzl2Ni41OFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTU4OS41NiwxOTguMjdjLS40LDAtLjY5LS4wNS0uODYtLjE2LS4xNy0uMTEtLjI2LS4yNi0uMjYtLjQ0di0xOC4xMWMwLS4yLjA5LS4zNS4yNi0uNDUuMTctLjEuNDYtLjE1Ljg2LS4xNWguOTZjLjQyLDAsLjc1LjA0Ljk3LjEyLjIzLjA4LjM4LjIxLjQ1LjM3bDQuNzIsOS4xOWMuMTMuMjQuMjYuNTEuNC44Mi4xNC4zMS4yNC42MS4zMi45MS4wOS0uMzEuMjItLjYzLjQtLjk3LjE3LS4zNC4zMi0uNjIuNDUtLjg0bDQuNjEtOS4xMWMuMDktLjE3LjI1LS4yOS40Ny0uMzcuMjItLjA4LjUzLS4xMi45My0uMTJoLjg4Yy40MiwwLC43MS4wNS44OC4xNS4xNy4xLjI1LjI1LjI1LjQ1djE4LjExYzAsLjE4LS4wOC4zMy0uMjUuNDQtLjE2LjExLS40Ni4xNi0uODguMTZoLS4yMmMtLjQsMC0uNjktLjA1LS44Ni0uMTYtLjE3LS4xMS0uMjYtLjI2LS4yNi0uNDR2LTEzLjk2YzAtLjI2LDAtLjUuMDMtLjc0bC0uMTEtLjAzYy0uMTEuMjItLjIyLjQzLS4zMi42My0uMS4yLS4yMS40LS4zMi42bC00LjE0LDguMTJjLS4xMy4yNC0uMjguMzktLjQ1LjQ3cy0uNDQuMTEtLjgxLjExaC0uNTVjLS4zNSwwLS42MS0uMDQtLjc4LS4xMS0uMTctLjA3LS4zMy0uMjMtLjQ4LS40N2wtNC4yMi04LjI5Yy0uMTEtLjItLjIyLS40LS4zMi0uNi0uMS0uMi0uMjEtLjQxLS4zMi0uNjNsLS4xMS4wM2MuMDIuMjQuMDMuNDguMDMuNzR2MTQuMTNjMCwuMTgtLjA4LjMzLS4yNS40NC0uMTYuMTEtLjQ2LjE2LS44OC4xNmgtLjIyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNjEzLjE2LDE5OC4yN2MtLjQsMC0uNy0uMDQtLjg5LS4xMi0uMTktLjA4LS4yOS0uMi0uMjktLjM0LDAtLjA2LDAtLjExLjAzLS4xOC4wMi0uMDYuMDQtLjEzLjA1LS4yMWw2LjUtMTguMDJjLjA2LS4xNS4xNy0uMjYuMzYtLjMzLjE4LS4wNy40My0uMTEuNzQtLjExaC44Yy4zMSwwLC41Ni4wNC43NC4xMS4xOC4wNy4zLjE4LjM2LjMzbDYuNSwxOC4wNWMuMDQuMDcuMDYuMTQuMDcuMTksMCwuMDUuMDEuMTEuMDEuMTcsMCwuMTMtLjA5LjI0LS4yNy4zMy0uMTguMDktLjQ5LjE0LS45MS4xNGgtLjIyYy0uMjcsMC0uNTEtLjAzLS43MS0uMS0uMi0uMDYtLjMzLS4xOC0uMzgtLjM0bC01LjE4LTE0Ljc2Yy0uMDctLjI2LS4xNS0uNTItLjIzLS44cy0uMTQtLjU0LS4xOC0uOGgtLjA1Yy0uMDUuMjYtLjExLjUyLS4xNi44LS4wNi4yNy0uMTMuNTQtLjIyLjhsLTUuMjEsMTQuNzZjLS4wNS4xNi0uMTguMjgtLjM4LjM0LS4yLjA2LS40NC4xLS43MS4xaC0uMTRaTTYxNS4wOCwxOTMuMjh2LTIuMDNoOS44NXYyLjAzaC05Ljg1Wk02MTguNDIsMTc3LjU5Yy0uMjIsMC0uMzktLjAzLS41Mi0uMS0uMTMtLjA2LS4xOS0uMTUtLjE5LS4yNiwwLS4wNy4wMi0uMTUuMDctLjIzLjA0LS4wOC4xMi0uMTguMjMtLjI5bDEuNDgtMS41NmMuMjQtLjI2LjUtLjQyLjc5LS41MS4yOS0uMDguNzItLjEyLDEuMjktLjEyLjQyLDAsLjc3LjA0LDEuMDQuMTIuMjcuMDguNDEuMjEuNDEuMzcsMCwuMTUtLjA2LjI5LS4xOS40MnMtLjQzLjM2LS45MS42N2wtMS40OC45MWMtLjM4LjI0LS43LjM5LS45Ni40Ny0uMjYuMDctLjYxLjExLTEuMDcuMTFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik02MzQuOTksMTk4LjI3Yy0uNCwwLS42OS0uMDUtLjg2LS4xNi0uMTctLjExLS4yNi0uMjYtLjI2LS40NHYtMTguMTFjMC0uMi4wOS0uMzUuMjYtLjQ1LjE3LS4xLjQ2LS4xNS44Ni0uMTVoLjY5Yy4yLDAsLjM3LjAyLjUxLjA1LjE0LjA0LjI2LjA5LjM3LjE3cy4yLjE3LjI3LjNsOC4zOSwxM2MuMTguMjcuMzUuNTQuNDkuODEuMTUuMjcuMjguNTQuNDEuODRsLjExLS4wM2MtLjAyLS4zMS0uMDMtLjYtLjA0LS44NiwwLS4yNi0uMDEtLjYtLjAxLTF2LTEyLjY3YzAtLjIuMDktLjM1LjI2LS40NS4xNy0uMS40Ni0uMTUuODYtLjE1aC4yMmMuNDIsMCwuNzEuMDUuODguMTUuMTcuMS4yNS4yNS4yNS40NXYxOC4xMWMwLC4xOC0uMDguMzMtLjI1LjQ0LS4xNi4xMS0uNDYuMTYtLjg4LjE2aC0uNjZjLS4xNywwLS4zMS0uMDEtLjQ0LS4wNHMtLjIzLS4wNy0uMzItLjE0Yy0uMDgtLjA2LS4xNS0uMTMtLjIxLS4yMWwtOC42MS0xMy4zM2MtLjE4LS4yNy0uMzQtLjU0LS40OC0uODEtLjE0LS4yNi0uMjgtLjU0LS40Mi0uODRsLS4xMS4wM2MuMDQuMzEuMDUuNi4wNS44NnYxMy44N2MwLC4xOC0uMDguMzMtLjI1LjQ0LS4xNi4xMS0uNDYuMTYtLjg4LjE2aC0uMjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik02NjYuNTIsMTk4LjIyYy0uNTcsMC0uODUtLjI3LS44NS0uODJ2LTE3LjU2YzAtLjU1LjI4LS44Mi44NS0uODJoNC44OGMxLjM3LDAsMi41MS4yMSwzLjQyLjYyLjkxLjQxLDEuNTkuOTgsMi4wNCwxLjcuNDYuNzIuNjksMS41Ny42OSwyLjU0LDAsLjYyLS4xNCwxLjIzLS40MiwxLjgyLS4yOC41OS0uNjUsMS4xMS0xLjExLDEuNTRzLS45NS43Mi0xLjQ4Ljg2di4xMWMuOC4xOCwxLjQ5LjQ5LDIuMDYuOTEuNTcuNDIsMS4wMS45NCwxLjMyLDEuNTUuMzEuNjEuNDcsMS4yOS40NywyLjA0LDAsMS4yNi0uMjcsMi4zLS44MiwzLjExcy0xLjM2LDEuNDItMi40MywxLjgxLTIuMzcuNTktMy45MS41OWgtNC42OVpNNjY4LjEzLDE4Ny4zNmgzLjEzYzEuMTIsMCwyLjAzLS4zMiwyLjczLS45Ni43LS42NCwxLjA2LTEuNDEsMS4wNi0yLjMsMC0xLjAyLS4zMS0xLjc4LS45Mi0yLjI2LS42MS0uNDgtMS42MS0uNzMtMi45OC0uNzNoLTMuMDJ2Ni4yNVpNNjY4LjEzLDE5Ni4xM2gzLjk1YzEuMTksMCwyLjEyLS4zLDIuNzgtLjkxczEtMS40NCwxLTIuNS0uMzYtMS44My0xLjA3LTIuNDFjLS43MS0uNTgtMS43Ny0uODgtMy4xOC0uODhoLTMuNDh2Ni42OVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTY4My41MiwxOTguMjdjLS40LDAtLjctLjA0LS44OS0uMTItLjE5LS4wOC0uMjktLjItLjI5LS4zNCwwLS4wNiwwLS4xMS4wMy0uMTguMDItLjA2LjA0LS4xMy4wNS0uMjFsNi41LTE4LjAyYy4wNi0uMTUuMTctLjI2LjM2LS4zMy4xOC0uMDcuNDMtLjExLjc0LS4xMWguOGMuMzEsMCwuNTYuMDQuNzQuMTEuMTguMDcuMy4xOC4zNi4zM2w2LjUsMTguMDVjLjA0LjA3LjA2LjE0LjA3LjE5LDAsLjA1LjAxLjExLjAxLjE3LDAsLjEzLS4wOS4yNC0uMjcuMzMtLjE4LjA5LS40OS4xNC0uOTEuMTRoLS4yMmMtLjI3LDAtLjUxLS4wMy0uNzEtLjEtLjItLjA2LS4zMy0uMTgtLjM4LS4zNGwtNS4xOC0xNC43NmMtLjA3LS4yNi0uMTUtLjUyLS4yMy0uOHMtLjE0LS41NC0uMTgtLjhoLS4wNWMtLjA1LjI2LS4xMS41Mi0uMTYuOC0uMDYuMjctLjEzLjU0LS4yMi44bC01LjIxLDE0Ljc2Yy0uMDUuMTYtLjE4LjI4LS4zOC4zNC0uMi4wNi0uNDQuMS0uNzEuMWgtLjE0Wk02ODUuNDUsMTkzLjI4di0yLjAzaDkuODV2Mi4wM2gtOS44NVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTcwNS4zNiwxOTguMjdjLS40LDAtLjY5LS4wNS0uODYtLjE2LS4xNy0uMTEtLjI2LS4yNi0uMjYtLjQ0di0xOC4xMWMwLS4yLjA5LS4zNS4yNi0uNDUuMTctLjEuNDYtLjE1Ljg2LS4xNWguMjJjLjQyLDAsLjcxLjA1Ljg4LjE1LjE3LjEuMjUuMjUuMjUuNDV2Ny43Nmg5Ljg1di03Ljc2YzAtLjIuMDktLjM1LjI2LS40NS4xNy0uMS40Ni0uMTUuODYtLjE1aC4yMmMuNDIsMCwuNzEuMDUuODguMTUuMTcuMS4yNS4yNS4yNS40NXYxOC4xMWMwLC4xOC0uMDguMzMtLjI1LjQ0LS4xNi4xMS0uNDYuMTYtLjg4LjE2aC0uMjJjLS40LDAtLjY5LS4wNS0uODYtLjE2LS4xNy0uMTEtLjI2LS4yNi0uMjYtLjQ0di04LjI2aC05Ljg1djguMjZjMCwuMTgtLjA4LjMzLS4yNS40NC0uMTYuMTEtLjQ2LjE2LS44OC4xNmgtLjIyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNzI3Ljk0LDE5OC4yMmMtLjU3LDAtLjg1LS4yNy0uODUtLjgydi0xNy41NmMwLS41NS4yOC0uODIuODUtLjgyaDkuNTVjLjM3LDAsLjU1LjI3LjU1Ljgydi40NGMwLC41NS0uMTguODItLjU1LjgyaC03LjkzdjYuMjVoNy4xMWMuMzcsMCwuNTUuMjcuNTUuODJ2LjQ0YzAsLjU1LS4xOC44Mi0uNTUuODJoLTcuMTF2Ni42OWg3Ljk2Yy4zNywwLC41NS4yNy41NS44MnYuNDRjMCwuNTUtLjE4LjgyLS41NS44MmgtOS41N1oiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTc0NS45NCwxOTguMjdjLS40LDAtLjY5LS4wNS0uODYtLjE2LS4xNy0uMTEtLjI2LS4yNi0uMjYtLjQ0di0xNy44M2MwLS41NS4yOC0uODIuODUtLjgyaDUuNGMyLjA3LDAsMy42Mi40NSw0LjY2LDEuMzQsMS4wNC45LDEuNTYsMi4yNCwxLjU2LDQuMDMsMCwuODEtLjE0LDEuNTMtLjQyLDIuMTctLjI4LjY0LS42OSwxLjE2LTEuMjIsMS41Ni0uNTMuNC0xLjE2LjY3LTEuODkuOHYuMTFjLjU3LjE3LDEuMDMuNTEsMS40LDEuMDMuMzcuNTIuNywxLjE4LDEuMDEsMS45OWwyLjE0LDUuNGMuMDQuMDcuMDYuMTUuMDcuMjIsMCwuMDcuMDEuMTMuMDEuMTcsMCwuMTMtLjA5LjIzLS4yNy4zMi0uMTguMDgtLjQ4LjEyLS44OC4xMmgtLjI3Yy0uMjcsMC0uNTEtLjA0LS43MS0uMTItLjItLjA4LS4zMy0uMTktLjM4LS4zMmwtMi4yOC01Ljg3Yy0uMi0uNTUtLjQ0LS45OC0uNzMtMS4zLS4yOC0uMzItLjY0LS41NS0xLjA2LS42OS0uNDItLjE0LS45NC0uMjEtMS41Ni0uMjFoLTIuOTZ2Ny45YzAsLjE4LS4wOC4zMy0uMjUuNDQtLjE2LjExLS40Ni4xNi0uODguMTZoLS4yMlpNNzQ3LjI4LDE4Ny42OGgzLjc5YzEuMzIsMCwyLjI3LS4yNSwyLjg1LS43NC41OC0uNDkuODgtMS4zLjg4LTIuNDEsMC0xLjIxLS4yOS0yLjA4LS44OC0yLjYyLS41OS0uNTQtMS41NC0uODEtMi44NS0uODFoLTMuNzl2Ni41OFoiLz4KICA8L2c+Cjwvc3ZnPg==" alt="Germán Baher Growth Brands" />
+      <span class="brand-kicker">Brand Strategy Proposal</span>
+    </div>
+    <div class="top-actions">
+      <button class="pill-btn" onclick="window.print()">Exportar PDF</button>
+      <a class="pill-btn red" href="mailto:contacto@germanbaher.com?subject=Propuesta%20SALLKOF">Contacto</a>
+      <button class="pill-btn" onclick="sessionStorage.clear(); window.location.replace('/portal');" style="color:#da2553; border-color:rgba(218,37,83,.3);">Salir</button>
+    </div>
+  </div>
+
+  <nav class="side-nav" aria-label="Navegación de slides"></nav>
+  <button class="next-btn" aria-label="Siguiente sección">↓</button>
+  <div class="print-hint">Tip: ⌘ + P para PDF</div>
+
+  <main class="deck-shell">
+    <section class="slide dark" id="slide-1">
+      <img class="floating-mark" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjQuNzEgMjQ1LjQ4Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjZGEyNTUzOwogICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjA0LjczLDc2LjEyYy0xMy4zMi0xMy4zMi0yOS41NC0xOS45Ny00OC4yNy0xOS45NywwLDAtLjAyLDAtLjAzLDAtMS44NCwwLTMuMzQsMS41LTMuMzQsMy4zNHY0OC4wOWMuODYtLjE2LDEuNzEtLjI1LDIuNTMtLjI1LDUuNDEsMCw5LjU3LDIuMDgsMTMuMzIsNS44MywzLjc1LDMuMzMsNS40MSw3LjkxLDUuNDEsMTMuMzJzLTIuMDgsOS41Ny01LjgzLDEzLjMyYy0zLjc1LDMuNzUtOC4zMiw1LjQxLTEzLjczLDUuNDEtMTIuOSwwLTE5LjE0LTguNzQtMTkuMTQtMjYuNjNWMy43YzAtMS44My0xLjQ4LTMuMzItMy4zMS0zLjM0TDg4LjY3LDBjLTEuODYtLjAyLTMuMzcsMS40OC0zLjM3LDMuMzR2NDIuODhjMCwyLjA5LTEuOSwzLjY2LTMuOTUsMy4yNy00LjExLS43Ny04LjI5LTEuMjUtMTIuNy0xLjI1LTE5LjU2LDAtMzUuNzksNi42Ni00OC42OSwxOS45N0M2LjY2LDgxLjUzLDAsOTcuMzQsMCwxMTYuNDljMCwxNy40OCw1LjQxLDMyLjQ2LDE2LjY0LDQ0LjUyLDExLjY1LDEyLjA3LDI0Ljk3LDE4LjMxLDQxLjIsMTguMzEsMi43MSwwLDUuNTgtLjMyLDguNTMtLjg4LDEuNTktLjMsMi43Ni0xLjY4LDIuNzYtMy4zdi00My4yOWMtLjE2LDAtLjMyLjAzLS40Ny4wMy00Ljk5LDAtOS41Ny0xLjY2LTEyLjktNC45OS0zLjMzLTMuMzMtNC45OS03LjkxLTQuOTktMTIuOXMxLjY2LTkuMTUsNS40MS0xMi45YzMuNzUtMy43NSw4LjMyLTUuODMsMTIuOS01LjgzLDEwLjgyLDAsMTYuNjQsNi42NiwxNi42NCwyMC44MXY0OS45M2MwLDEwLjgyLTIuNSwxOS41Ni03LjQ5LDI1LjM4LTQuOTksNi4yNC0xMS42NSw5LjE1LTIwLjgxLDkuMTUtNS4wNiwwLTEwLjM2LS45Ni0xNS4zNi0zLjA3LTIuMTktLjkzLTQuNjIuNjktNC42MiwzLjA3djM3LjUxYzAsMS40NS45NCwyLjc1LDIuMzIsMy4xOSw4Ljk2LDIuODMsMTYuNTEsNC4yNCwyMi42NCw0LjI0LDIxLjY0LDAsMzkuMTItNy4wNyw1Mi40My0yMi4wNSw3LjU5LTguNzMsMTMuNDYtMTguNTEsMTYuNjQtMjkuOTUuNDktMS43NiwyLjMyLTIuODEsNC4wNy0yLjMsNi4xLDEuOCwxMi40NiwyLjcsMTguODIsMi43LDE5LjU2LDAsMzYuNjItNi42Niw0OS45My0xOS45NywxMy43My0xMy4zMiwyMC4zOS0yOS41NCwyMC4zOS00OS4xcy02LjY2LTM1LjM3LTE5Ljk3LTQ4LjY5WiIvPgo8L3N2Zz4=" alt="" />
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Propuesta estratégica</div>
+        <h1 class="reveal">Diagnóstico estratégico accionable para SALLKOF</h1>
+        <p class="lead reveal">Una primera etapa para transformar capacidad industrial en marca, demanda y decisiones comerciales más claras.</p>
+        <div class="cta-row reveal">
+          <a class="cta primary" href="mailto:contacto@germanbaher.com?subject=Diagnóstico%20SALLKOF">Aprobar primera etapa</a>
+          <a class="cta secondary" href="https://germanbaher.com" target="_blank" rel="noopener">Ver germanbaher.com</a>
+        </div>
+      </div>
+      <div class="slide-no">01</div>
+    </section>
+
+    <section class="slide white" id="slide-2">
+      <div class="slide-inner split">
+        <div>
+          <div class="eyebrow reveal">El momento actual</div>
+          <h2 class="reveal">SALLKOF ya logró abrir mercado. Ahora necesita construir mercado.</h2>
+          <p class="lead reveal">La empresa ya tiene capacidad industrial, productos funcionales, acceso a canales relevantes y relaciones comerciales importantes. Ese es un gran avance.</p>
+        </div>
+        <div class="card reveal">
+          <h3>El siguiente crecimiento no depende solo de producir más.</h3>
+          <p>Depende de construir una arquitectura estratégica que ordene marca, portafolio, narrativa, comunicación y sell out.</p>
+          <div class="highlight">Abrir mercado no es lo mismo que construir mercado.</div>
+        </div>
+      </div>
+      <div class="slide-no">02</div>
+    </section>
+
+    <section class="slide soft" id="slide-3">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Riesgo comercial</div>
+        <h2 class="reveal">El sell in avanzó más rápido que el sell out.</h2>
+        <p class="lead reveal">Ingresar a canales importantes es una señal positiva. Pero la rotación, recompra y comprensión del consumidor todavía necesitan fortalecerse.</p>
+        <ul class="list reveal">
+          <li>Inventarios altos generan presión comercial.</li>
+          <li>La baja rotación obliga a promociones.</li>
+          <li>La falta de narrativa reduce diferenciación.</li>
+          <li>El consumidor todavía no comprende suficientemente la propuesta.</li>
+          <li>El canal no puede cargar solo con la construcción de demanda.</li>
+        </ul>
+        <div class="highlight reveal">El producto puede estar en la farmacia, pero si la marca no vive en la mente del consumidor, la venta queda incompleta.</div>
+      </div>
+      <div class="slide-no">03</div>
+    </section>
+
+    <section class="slide white" id="slide-4">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Diagnóstico central</div>
+        <h2 class="reveal">El problema no es solo marketing. Es falta de arquitectura estratégica integrada.</h2>
+        <p class="lead reveal">Hoy existen productos, líneas, marcas, distribuidores, promociones, campañas, redes sociales y negociaciones. Pero todavía falta un sistema unificado que ordene todo bajo una misma lógica.</p>
+        <div class="grid cols-3 reveal" style="margin-top:34px">
+          <div class="card"><div class="num">01</div><h3>Marca madre</h3><p>Qué representa SALLKOF y por qué debería importar.</p></div>
+          <div class="card"><div class="num">02</div><h3>Líneas y portafolio</h3><p>Qué representa Advanced Urban, Sport Nutrition y VidaSure.</p></div>
+          <div class="card"><div class="num">03</div><h3>Narrativa comercial</h3><p>Qué mensaje une marca, canal, producto y consumidor.</p></div>
+        </div>
+      </div>
+      <div class="slide-no">04</div>
+    </section>
+
+    <section class="slide dark" id="slide-5">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Marca y percepción</div>
+        <h2 class="reveal">Tener producto no es tener marca.</h2>
+        <p class="lead reveal">La capacidad industrial es una ventaja importante, pero no reemplaza el branding. El consumidor no compra moléculas. Compra beneficios, soluciones, bienestar, confianza y aspiración.</p>
+        <div class="compare reveal">
+          <div class="compare-box no"><div class="label">No decir</div><strong>isomaltulosa de bajo índice glicémico</strong></div>
+          <div class="compare-box yes"><div class="label">Sí traducir a</div><strong>energía estable sin bajones</strong></div>
+          <div class="compare-box no"><div class="label">No decir</div><strong>péptidos bioactivos hidrolizados</strong></div>
+          <div class="compare-box yes"><div class="label">Sí traducir a</div><strong>fuerza, movimiento y bienestar</strong></div>
+        </div>
+        <div class="highlight reveal">La estrategia debe traducir lo técnico en algo humano, claro y comprable.</div>
+      </div>
+      <div class="slide-no">05</div>
+    </section>
+
+    <section class="slide white" id="slide-6">
+      <div class="slide-inner split">
+        <div>
+          <div class="eyebrow reveal">Portafolio y foco</div>
+          <h2 class="reveal">Menos dispersión. Más foco.</h2>
+          <p class="lead reveal">El portafolio necesita una jerarquía visible para decidir dónde poner energía, presupuesto y comunicación.</p>
+          <div class="highlight reveal">No todos los productos deben comunicar al mismo nivel. Algunos deben liderar, otros deben acompañar y otros deben esperar.</div>
+        </div>
+        <div class="portfolio-map reveal" aria-label="Jerarquía estratégica de portafolio">
+          <div class="portfolio-tier" style="--w:100%"><div class="rank">01</div><div><h3>Productos héroes</h3><p>Los que deben concentrar narrativa, inversión, contenido y empuje comercial.</p></div><span class="tag">Lideran</span></div>
+          <div class="portfolio-tier" style="--w:82%"><div class="rank">02</div><div><h3>Productos tácticos</h3><p>Sirven para abrir conversaciones, activar canales o complementar la venta.</p></div><span class="tag">Activan</span></div>
+          <div class="portfolio-tier dim" style="--w:64%"><div class="rank">03</div><div><h3>Productos secundarios</h3><p>Acompañan el portafolio, pero no deben consumir el mismo esfuerzo estratégico.</p></div><span class="tag">Acompañan</span></div>
+          <div class="portfolio-tier dim" style="--w:48%"><div class="rank">04</div><div><h3>Productos a reposicionar</h3><p>Necesitan una nueva lectura de beneficio, público, ocasión o canal.</p></div><span class="tag">Revisar</span></div>
+          <div class="portfolio-tier dim pause" style="--w:34%"><div class="rank">05</div><div><h3>Pausar o liquidar</h3><p>Productos que hoy pueden generar ruido, inventario o presión comercial innecesaria.</p></div><span class="tag">Decidir</span></div>
+        </div>
+      </div>
+      <div class="slide-no">06</div>
+    </section>
+
+    <section class="slide soft" id="slide-7">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Ruta inteligente</div>
+        <h2 class="reveal">Primero vamos a ordenar, luego activar, después escalar el negocio.</h2>
+        <div class="roadmap reveal">
+          <div class="road-step" data-step="1"><h3>Ordenar</h3><p>Arquitectura de marca, portafolio, posicionamiento, narrativa y productos protagonistas.</p></div>
+          <div class="road-step" data-step="2"><h3>Activar</h3><p>Mensajes, contenido, trade marketing, punto de venta, comunicación y validación.</p></div>
+          <div class="road-step" data-step="3"><h3>Escalar</h3><p>Campañas, influencers, avatares de marca, producción audiovisual, IA, CRM y sistema digital.</p></div>
+        </div>
+      </div>
+      <div class="slide-no">07</div>
+    </section>
+
+    <section class="slide white" id="slide-8">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Marco estratégico</div>
+        <h2 class="reveal">Feeling, Doing, Thinking</h2>
+        <p class="lead reveal">La marca necesita una bajada de comunicación que conecte lo emocional, lo accionable y lo racional.</p>
+        <div class="fdt reveal">
+          <div class="fdt-card"><div class="letter">F</div><h3>Feeling</h3><p>Qué debe sentir el consumidor para confiar en la marca.</p></div>
+          <div class="fdt-card"><div class="letter">D</div><h3>Doing</h3><p>Qué acción debe tomar: probar, preguntar, recordar, recomendar, comprar o recomprar.</p></div>
+          <div class="fdt-card"><div class="letter">T</div><h3>Thinking</h3><p>Qué debe entender para justificar su decisión.</p></div>
+        </div>
+        <div class="highlight reveal">Una marca nutracéutica no solo informa. Educa, genera confianza y reduce la duda.</div>
+      </div>
+      <div class="slide-no">08</div>
+    </section>
+
+    <section class="slide dark" id="slide-9">
+      <div class="slide-inner split">
+        <div>
+          <div class="eyebrow reveal">Percepción visual</div>
+          <h2 class="reveal">La marca necesita verse como una marca de primer nivel.</h2>
+          <p class="lead reveal">Si SALLKOF quiere competir en una categoría donde la confianza es clave, su contenido visual debe elevar la percepción de calidad.</p>
+        </div>
+        <div class="grid reveal">
+          <div class="card"><h3>Fotografía publicitaria</h3><p>Producto, beneficios y percepción premium.</p></div>
+          <div class="card"><h3>Contenido educativo</h3><p>Videos cortos, demostraciones, testimonios y claridad.</p></div>
+          <div class="card"><h3>Trade marketing</h3><p>Punto de venta, POP y materiales que ayuden a vender.</p></div>
+          <div class="card"><h3>Avatares e IA</h3><p>Recursos para educar, humanizar y escalar comunicación.</p></div>
+        </div>
+      </div>
+      <div class="slide-no">09</div>
+    </section>
+
+    <section class="slide white" id="slide-10">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Primera etapa</div>
+        <h2 class="reveal">¿Qué incluye esta primera etapa?</h2>
+        <p class="lead reveal">No es solo un análisis. Es una herramienta para tomar mejores decisiones.</p>
+        <div class="grid cols-2 reveal" style="margin-top:34px">
+          <div class="card"><div class="num">01</div><h3>Investigación y análisis de mercado</h3><p>Categoría, competencia, comportamiento del consumidor y oportunidades.</p></div>
+          <div class="card"><div class="num">02</div><h3>Diagnóstico estratégico de marca</h3><p>Análisis de SALLKOF, sus líneas, sus brechas y su potencial.</p></div>
+          <div class="card"><div class="num">03</div><h3>Arquitectura de marca y portafolio</h3><p>Ordenamiento de marcas, líneas, productos héroes, productos tácticos y productos a revisar.</p></div>
+          <div class="card"><div class="num">04</div><h3>Narrativa y posicionamiento</h3><p>Traducción de beneficios técnicos a mensajes humanos y comerciales.</p></div>
+          <div class="card"><div class="num">05</div><h3>Lineamientos de comunicación</h3><p>Criterios para redes, contenido, trade marketing, punto de venta y futuras campañas.</p></div>
+          <div class="card"><div class="num">06</div><h3>Roadmap accionable</h3><p>Ruta de decisiones para ordenar, activar y escalar.</p></div>
+        </div>
+      </div>
+      <div class="slide-no">10</div>
+    </section>
+
+    <section class="slide soft" id="slide-11">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Alcance claro</div>
+        <h2 class="reveal">Qué no incluye esta primera etapa</h2>
+        <p class="lead reveal">Para evitar confusiones, esta etapa es estratégica. No es una etapa de ejecución operativa.</p>
+        <div class="grid cols-4 reveal" style="margin-top:34px">
+          <div class="card"><h3>Community management diario</h3></div><div class="card"><h3>Diseño de todas las piezas finales</h3></div><div class="card"><h3>Producción de fotos o videos</h3></div><div class="card"><h3>Pago a influencers</h3></div><div class="card"><h3>Administración de pauta</h3></div><div class="card"><h3>Implementación de POP</h3></div><div class="card"><h3>Desarrollo web</h3></div><div class="card"><h3>CRM o software</h3></div>
+        </div>
+        <div class="highlight reveal">Primero definimos la dirección. Luego decidimos qué producir, qué activar y qué escalar.</div>
+      </div>
+      <div class="slide-no">11</div>
+    </section>
+
+    <section class="slide white" id="slide-12">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Inversión propuesta</div>
+        <h2 class="reveal">Diagnóstico estratégico accionable y marco de posicionamiento SALLKOF</h2>
+        <div class="price-card reveal">
+          <div>
+            <div class="price">USD 1,200</div>
+            <p class="lead" style="margin-top:14px">Primera etapa estratégica para ordenar marca, portafolio, narrativa y decisiones comerciales antes de activar inversión mayor.</p>
+          </div>
+          <div class="formula">
+            <p class="tiny">Referencia operativa</p>
+            <strong style="font-size:24px">Primera etapa</strong>
+            <p class="tiny" style="margin-top:14px">Ejemplo referencial: USD 1,200 × Bs 10 = Bs 12,000. El monto final en bolivianos se calculará al tipo de cambio paralelo vigente del día de aprobación.</p>
+            <p class="tiny" style="margin-top:14px"><strong>Condición comercial:</strong> precio antes de factura. Si el cliente requiere factura, se adicionarán los impuestos de ley correspondientes. Este monto no contempla retención ni descuento del 18% sobre el valor acordado.</p>
+          </div>
+        </div>
+        <p class="tiny reveal" style="max-width:900px; margin-top:18px"><strong>Precio no incluye impuestos de ley. Precio no facturado.</strong> Valor referencial calculado para el mercado boliviano considerando la coyuntura actual del dólar paralelo, aproximadamente Bs 10 por dólar como referencia variable.</p>
+      </div>
+      <div class="slide-no">12</div>
+    </section>
+
+    <section class="slide dark" id="slide-13">
+      <div class="slide-inner split">
+        <div>
+          <div class="eyebrow reveal">Por qué empezar aquí</div>
+          <h2 class="reveal">Una inversión pequeña para evitar decisiones grandes mal enfocadas.</h2>
+          <p class="lead reveal">Invertir en campañas sin claridad puede aumentar el ruido. Invertir primero en diagnóstico permite tomar decisiones con foco.</p>
+          <div class="highlight reveal">El diagnóstico no retrasa la acción. Evita que la acción avance sin dirección.</div>
+        </div>
+        <ul class="list reveal">
+          <li>Evita gastar en campañas dispersas.</li>
+          <li>Ayuda a priorizar productos.</li>
+          <li>Alinea marca, canal y comunicación.</li>
+          <li>Da claridad al equipo interno.</li>
+          <li>Permite decidir qué lanzar, pausar, reposicionar o escalar.</li>
+          <li>Reduce riesgo antes de invertir más.</li>
+        </ul>
+      </div>
+      <div class="slide-no">13</div>
+    </section>
+
+
+    <section class="slide soft" id="slide-14">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Ajuste estratégico de la nueva etapa</div>
+        <h2 class="reveal">La estrategia debe aterrizar en sell out, rotación y ejecución comercial.</h2>
+        <p class="lead reveal">Las observaciones recibidas fortalecen el enfoque: ordenar arquitectura, narrativa, foco y posicionamiento sigue siendo el primer paso, pero la siguiente etapa debe conectarse con el punto de venta y la sostenibilidad comercial.</p>
+        <div class="alignment-board reveal">
+          <div class="alignment-panel">
+            <h3>PALATINOSA puede ser el primer piloto.</h3>
+            <p>El caso PALATINOSA permite probar la nueva lógica estratégica junto al equipo de branding de Farmacorp, reinterpretando narrativa, percepción, lenguaje, estética y forma de introducción al mercado.</p>
+            <div class="pilot-ribbon">Proyecto piloto recomendado</div>
+          </div>
+          <div class="alignment-list">
+            <div class="alignment-item"><div class="icon">1</div><div><h3>Ordenar antes de ejecutar</h3><p>Arquitectura, narrativa, foco y posicionamiento antes de campañas o producción masiva.</p></div></div>
+            <div class="alignment-item"><div class="icon">2</div><div><h3>Sell out como criterio central</h3><p>La estrategia futura debe permanecer conectada a rotación, inventarios y sostenibilidad comercial.</p></div></div>
+            <div class="alignment-item"><div class="icon">3</div><div><h3>Trade Marketing local fuerte</h3><p>Punto de venta, activaciones, exhibición, seguimiento de canal y ejecución comercial.</p></div></div>
+            <div class="alignment-item"><div class="icon">4</div><div><h3>Farmacorp como aliado de validación</h3><p>El piloto ayuda a conectar branding, canal y consumidor con aprendizajes aplicables al resto del portafolio.</p></div></div>
+          </div>
+        </div>
+        <div class="highlight reveal">El diagnóstico debe destrabar una estrategia que no se quede en la presentación: debe bajar al canal, mover rotación y construir demanda.</div>
+      </div>
+      <div class="slide-no">14</div>
+    </section>
+
+    <section class="slide white" id="slide-15">
+      <div class="slide-inner">
+        <div class="eyebrow reveal">Mapa de desbloqueo</div>
+        <h2 class="reveal">La primera etapa destraba las siguientes decisiones.</h2>
+        <p class="lead reveal">El diagnóstico no es el final. Es el punto de partida para decidir con precisión qué activar, qué pausar, qué relanzar y qué escalar.</p>
+        <div class="unlock-map reveal">
+          <div class="unlock-step active" data-num="1">
+            <div class="stage">Etapa aprobada</div>
+            <h3>Diagnóstico estratégico accionable</h3>
+            <p>Ordena marca, portafolio, narrativa, prioridades y ruta comercial.</p>
+            <ul><li>USD 1,200</li><li>Decisiones claras</li><li>Base para activar</li></ul>
+          </div>
+          <div class="unlock-step future" data-num="2">
+            <div class="stage">Siguiente decisión</div>
+            <h3>Activación de marca y contenidos</h3>
+            <p>Mensajes, piezas, storytelling, educación y comunicación para canales.</p>
+            <ul><li>Contenido</li><li>Trade</li><li>Pruebas de mensaje</li></ul>
+          </div>
+          <div class="unlock-step future" data-num="3">
+            <div class="stage">Escalamiento</div>
+            <h3>Campañas, influencers y sell out</h3>
+            <p>Activaciones con foco, medición, mayor demanda y apoyo al canal.</p>
+            <ul><li>Pauta</li><li>Influencers</li><li>Material POP</li></ul>
+          </div>
+          <div class="unlock-step future" data-num="4">
+            <div class="stage">Sistema</div>
+            <h3>CRM, IA y crecimiento digital</h3>
+            <p>Automatización, avatares, educación continua y sistema comercial escalable.</p>
+            <ul><li>CRM</li><li>IA</li><li>Recompra</li></ul>
+          </div>
+        </div>
+        <div class="unlock-note reveal">La etapa 1 reduce riesgo: define la dirección antes de invertir en producción, pauta, influencers o ejecución comercial.</div>
+      </div>
+      <div class="slide-no">15</div>
+    </section>
+
+    <section class="slide soft" id="slide-16">
+      <div class="slide-inner split">
+        <div>
+          <div class="eyebrow reveal">Siguientes pasos</div>
+          <h2 class="reveal">SALLKOF ya logró entrar al mercado. Ahora necesita aprender a quedarse.</h2>
+          <p class="lead reveal">El avance comienza con una aprobación simple y una reunión de kick off para ordenar información, expectativas y tiempos.</p>
+          <div class="cta-row reveal">
+            <a class="cta primary" href="mailto:contacto@germanbaher.com?subject=Aprobación%20Diagnóstico%20SALLKOF">Enviar aprobación</a>
+            <a class="cta secondary" href="https://germanbaher.com" target="_blank" rel="noopener">Conocer servicios</a>
+          </div>
+          <p class="lead reveal" style="font-size:22px; margin-top:30px"><strong>Germán Baher</strong><br>Brand Strategist<br>Germanbaher.com</p>
+        </div>
+        <div class="contract-steps reveal">
+          <div class="contract-step"><div><h3>Aprobación de propuesta</h3><p>Confirmación formal del alcance, inversión y condiciones comerciales.</p></div></div>
+          <div class="contract-step"><div><h3>Contrato o acuerdo de servicio</h3><p>Documento breve con entregables, tiempos, responsabilidades y forma de trabajo.</p></div></div>
+          <div class="contract-step"><div><h3>Desembolso de inicio</h3><p>Pago de activación de la primera etapa para iniciar el diagnóstico estratégico.</p></div></div>
+          <div class="contract-step"><div><h3>Reunión de kick off</h3><p>Solicitud de catálogo, productos, materiales, ventas, información comercial y lineamientos actuales.</p></div></div>
+          <div class="contract-step"><div><h3>Desarrollo y presentación final</h3><p>Investigación, análisis, diagnóstico accionable y definición de decisiones prioritarias.</p></div></div>
+        </div>
+        <p class="legal-note reveal">Condición comercial: precio antes de factura. Si se requiere factura, los impuestos de ley se adicionan al monto acordado. El valor no contempla retención ni descuento del 18% sobre el precio base.</p>
+      </div>
+      <div class="slide-no">16</div>
+    </section>
+  </main>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const nav = document.querySelector('.side-nav');
+    const nextBtn = document.querySelector('.next-btn');
+
+    slides.forEach((slide, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot';
+      dot.setAttribute('aria-label', `Ir al slide ${index + 1}`);
+      dot.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth' }));
+      nav.appendChild(dot);
+    });
+
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    let currentIndex = 0;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          currentIndex = slides.indexOf(entry.target);
+          dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+          nextBtn.textContent = currentIndex === slides.length - 1 ? '↑' : '↓';
+        }
+      });
+    }, { threshold: 0.55 });
+
+    slides.forEach(slide => observer.observe(slide));
+
+    nextBtn.addEventListener('click', () => {
+      const target = currentIndex === slides.length - 1 ? slides[0] : slides[currentIndex + 1];
+      target.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
+        e.preventDefault();
+        const target = slides[Math.min(slides.length - 1, currentIndex + 1)];
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (['ArrowUp', 'PageUp'].includes(e.key)) {
+        e.preventDefault();
+        const target = slides[Math.max(0, currentIndex - 1)];
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>

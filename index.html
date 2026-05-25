@@ -772,7 +772,7 @@
       font-size: 0.68rem; color: rgba(255,255,255,0.35);
       letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .testi-logo { height: 28px; width: auto; opacity: 0.45;
+    .testi-logo { height: 42px; width: auto; opacity: 0.55;
       filter: brightness(0) invert(1); flex-shrink: 0;
     }
     @media (max-width: 900px) {
@@ -1070,8 +1070,10 @@
         <div class="caso-body">
           <span class="caso-tag">Brand Strategy · Retail</span>
           <h3>Sofía Al Paso</h3>
-          <p>Modelo de transformación de marca para una de las empresas de alimentos más reconocidas de Bolivia. De la ejecución reactiva a la expansión estructurada.</p>
-          <a href="case-sofia.html" class="caso-link">Ver caso →</a>
+          <p data-lang="es">Modelo de transformación de marca para una de las empresas de alimentos más reconocidas de Bolivia. De la ejecución reactiva a la expansión estructurada.</p>
+          <p data-lang="en" style="display:none">Brand transformation model for one of the most recognized food companies in Bolivia. From reactive execution to structured nationwide expansion.</p>
+          <a href="case-sofia.html" class="caso-link" data-lang="es">Ver caso →</a>
+          <a href="case-sofia.html" class="caso-link" data-lang="en" style="display:none">View case →</a>
         </div>
       </div>
 
@@ -1083,8 +1085,10 @@
         <div class="caso-body">
           <span class="caso-tag">Nonprofit · FDT Method</span>
           <h3>Alalay</h3>
-          <p>Transformación de identidad para una organización con 35 años apoyando a niños en Bolivia. Resultado: +95% de incremento en engagement.</p>
-          <a href="case-alalay.html" class="caso-link">Ver caso →</a>
+          <p data-lang="es">Transformación de identidad para una organización con 35 años apoyando a niños en Bolivia. Resultado: +95% de incremento en engagement.</p>
+          <p data-lang="en" style="display:none">Identity transformation for an organization with 35 years supporting children in Bolivia. Result: +95% increase in engagement.</p>
+          <a href="case-alalay.html" class="caso-link" data-lang="es">Ver caso →</a>
+          <a href="case-alalay.html" class="caso-link" data-lang="en" style="display:none">View case →</a>
         </div>
       </div>
 
@@ -1096,8 +1100,10 @@
         <div class="caso-body">
           <span class="caso-tag">Retail Branding · Shopper</span>
           <h3>Bodega PIL</h3>
-          <p>Rediseño shopper-centric de la experiencia retail para una bodega láctea de barrio. Ventas incrementaron más del 19% en tiendas adoptantes.</p>
-          <a href="case-bodega.html" class="caso-link">Ver caso →</a>
+          <p data-lang="es">Rediseño shopper-centric de la experiencia retail para una bodega láctea de barrio. Ventas incrementaron más del 19% en tiendas adoptantes.</p>
+          <p data-lang="en" style="display:none">Shopper-centric redesign of the retail experience for a neighborhood dairy store. Sales increased by more than 19% in adopting stores.</p>
+          <a href="case-bodega.html" class="caso-link" data-lang="es">Ver caso →</a>
+          <a href="case-bodega.html" class="caso-link" data-lang="en" style="display:none">View case →</a>
         </div>
       </div>
 
@@ -1815,6 +1821,11 @@
     document.querySelectorAll('[data-i18n]').forEach(function(el){
       var key = el.dataset.i18n;
       if (_t[lang] && _t[lang][key] !== undefined) el.innerHTML = _t[lang][key];
+    });
+    // Show/hide data-lang blocks
+    document.querySelectorAll('[data-lang]').forEach(function(el){
+      if (el.classList.contains('lang-btn')) return;
+      el.style.display = el.dataset.lang === lang ? '' : 'none';
     });
     // Re-render diagnostic step 0 with new language
     _diagStep = 0;
