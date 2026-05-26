@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metodología FDT — Feeling · Doing · Thinking | Germán Baher</title>
+  <meta name="description" content="Feeling · Doing · Thinking: la metodología de brand strategy creada por Germán Baher. Un sistema que integra emoción, ejecución y pensamiento estratégico para construir marcas que perduran." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.germanbaher.com/metodologia" />
+  <link rel="icon" type="image/svg+xml" href="assets/brand/icon-red.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.germanbaher.com/metodologia" />
+  <meta property="og:title" content="Metodología FDT — Feeling · Doing · Thinking | Germán Baher" />
+  <meta property="og:description" content="El sistema de brand strategy que integra emoción, ejecución y pensamiento estratégico para construir marcas que perduran." />
+  <meta property="og:image" content="https://www.germanbaher.com/assets/images/og-cover.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --red:    #ed2450;
+      --black:  #080808;
+      --black2: #0d0d0d;
+      --black3: #141414;
+      --white:  #ffffff;
+      --grey:   rgba(255,255,255,0.5);
+      --border: rgba(255,255,255,0.07);
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); }
+
+    /* ── BG ── */
+    .bg-glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background: radial-gradient(ellipse at 50% -10%, rgba(237,36,80,0.07) 0%, transparent 55%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5vw;
+      background: rgba(8,8,8,0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 1.4rem; }
+    .nav-back {
+      font-size: 0.78rem; color: rgba(255,255,255,0.4);
+      text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .btn-nav {
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.6rem 1.4rem; background: var(--red); color: var(--white);
+      border: none; border-radius: 2px; cursor: pointer; text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .met-hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 5vw 6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .met-hero::before {
+      content: 'FDT';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(18rem, 40vw, 36rem); font-weight: 900;
+      letter-spacing: -0.05em; line-height: 1;
+      color: rgba(255,255,255,0.018);
+      pointer-events: none; user-select: none;
+      white-space: nowrap;
+    }
+
+    .met-eyebrow {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--red);
+      display: block; margin-bottom: 2rem;
+    }
+    .met-title {
+      font-size: clamp(3.5rem, 9vw, 9rem); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 0.88;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .met-title .dot { color: var(--red); }
+    .met-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.4); line-height: 1.7;
+      max-width: 560px; margin: 0 auto 3rem;
+    }
+    .met-subtitle em { color: var(--white); font-style: normal; }
+
+    .met-scroll-hint {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.18); margin-top: 2rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .met-scroll-hint::before, .met-scroll-hint::after {
+      content: ''; display: block; width: 24px; height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── INTRO ── */
+    .met-intro {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 7rem 5vw;
+      border-bottom: 1px solid var(--border);
+    }
+    .met-intro-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); display: block; margin-bottom: 1.5rem;
+    }
+    .met-intro h2 {
+      font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 900;
+      letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+    .met-intro p {
+      font-size: 1.05rem; color: rgba(255,255,255,0.5);
+      line-height: 1.8; margin-bottom: 1.4rem; max-width: 680px;
+    }
+    .met-intro p strong { color: var(--white); }
+    .met-intro blockquote {
+      border-left: 3px solid var(--red);
+      padding: 1rem 0 1rem 1.8rem;
+      margin: 2.5rem 0;
+      font-size: 1.15rem; color: rgba(255,255,255,0.7);
+      line-height: 1.65; font-style: italic;
+    }
+
+    /* ── THE THREE PILLARS ── */
+    .met-pillars {
+      position: relative; z-index: 1;
+    }
+
+    /* Each pillar full section */
+    .pillar {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 5vw;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .pillar::before {
+      content: attr(data-word);
+      position: absolute; right: -2%; top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(12rem, 22vw, 22rem); font-weight: 900;
+      letter-spacing: -0.05em; line-height: 1;
+      color: rgba(255,255,255,0.02);
+      pointer-events: none; user-select: none;
+    }
+    .pillar-inner {
+      max-width: 1080px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    .pillar-inner.reverse { direction: rtl; }
+    .pillar-inner.reverse > * { direction: ltr; }
+
+    .pillar-num {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); display: block; margin-bottom: 1.2rem;
+    }
+    .pillar-name {
+      font-size: clamp(3rem, 6vw, 6rem); font-weight: 900;
+      text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.9;
+      margin-bottom: 0.5rem;
+    }
+    .pillar-translation {
+      font-size: 1.1rem; color: rgba(255,255,255,0.25);
+      margin-bottom: 2rem; font-style: italic;
+    }
+    .pillar-body {
+      font-size: 0.95rem; color: rgba(255,255,255,0.5);
+      line-height: 1.8; margin-bottom: 1.5rem;
+    }
+    .pillar-body strong { color: var(--white); }
+
+    .pillar-questions {
+      margin-top: 2rem;
+    }
+    .pillar-questions-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.25);
+      margin-bottom: 1rem; display: block;
+    }
+    .pillar-q-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+    }
+    .pillar-q-list li {
+      font-size: 0.88rem; color: rgba(255,255,255,0.4);
+      padding-left: 1.2rem; position: relative; line-height: 1.5;
+    }
+    .pillar-q-list li::before {
+      content: '—'; position: absolute; left: 0; color: var(--red); opacity: 0.6;
+    }
+
+    /* Pillar visual card */
+    .pillar-visual {
+      background: var(--black3); border: 1px solid var(--border);
+      border-radius: 16px; padding: 3rem 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .pillar-visual::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--red);
+    }
+    .pillar-icon-wrap {
+      width: 80px; height: 80px; margin-bottom: 2rem;
+    }
+    .pillar-icon-wrap img { width: 100%; height: 100%; object-fit: contain; }
+    .pillar-card-label {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; display: block;
+    }
+    .pillar-card-title {
+      font-size: 1.6rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.05;
+    }
+    .pillar-card-body {
+      font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7;
+    }
+    .pillar-card-examples {
+      margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .pillar-example {
+      background: rgba(255,255,255,0.04); border-radius: 6px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.78rem; color: rgba(255,255,255,0.4);
+      border-left: 2px solid rgba(237,36,80,0.4);
+    }
+
+    @media (max-width: 860px) {
+      .pillar-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .pillar-inner.reverse { direction: ltr; }
+      .pillar { min-height: auto; padding: 5rem 5vw; }
+    }
+
+    /* ── INTEGRATION ── */
+    .met-integration {
+      position: relative; z-index: 1;
+      padding: 8rem 5vw;
+      border-bottom: 1px solid var(--border);
+      max-width: 1080px; margin: 0 auto;
+    }
+    .met-integration-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); display: block; margin-bottom: 1.5rem;
+    }
+    .met-integration h2 {
+      font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 900;
+      letter-spacing: -0.03em; line-height: 0.95;
+      text-transform: uppercase; margin-bottom: 3rem;
+    }
+
+    .integration-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); margin-bottom: 4rem;
+    }
+    .integration-item {
+      background: var(--black3); padding: 2.5rem 2rem;
+    }
+    .int-combo {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; display: block;
+    }
+    .int-title {
+      font-size: 1.1rem; font-weight: 800; margin-bottom: 0.7rem;
+    }
+    .int-body {
+      font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.65;
+    }
+    @media (max-width: 700px) {
+      .integration-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── DIAGNOSTIC SIGNAL ── */
+    .met-diag-signal {
+      background: rgba(237,36,80,0.06);
+      border: 1px solid rgba(237,36,80,0.2);
+      border-radius: 12px; padding: 2rem 2.4rem;
+      margin-top: 3rem;
+      display: flex; align-items: center; gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .met-diag-signal p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.65; flex: 1;
+      min-width: 200px;
+    }
+    .met-diag-signal p strong { color: var(--white); }
+    .met-diag-signal a {
+      flex-shrink: 0;
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.75rem 1.6rem; background: var(--red); color: var(--white);
+      border-radius: 2px; text-decoration: none;
+      transition: opacity 0.2s; white-space: nowrap;
+    }
+    .met-diag-signal a:hover { opacity: 0.85; }
+
+    /* ── CASES PROOF ── */
+    .met-proof {
+      position: relative; z-index: 1;
+      padding: 7rem 5vw;
+      border-bottom: 1px solid var(--border);
+      max-width: 1080px; margin: 0 auto;
+    }
+    .met-proof-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); display: block; margin-bottom: 1.5rem;
+    }
+    .met-proof h2 {
+      font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 900;
+      letter-spacing: -0.025em; line-height: 0.95;
+      text-transform: uppercase; margin-bottom: 3rem;
+    }
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .proof-card {
+      background: var(--black3); border: 1px solid var(--border);
+      border-radius: 10px; padding: 2rem 1.8rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .proof-card:hover { border-color: rgba(237,36,80,0.35); transform: translateY(-3px); }
+    .proof-tag-line {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .proof-metric {
+      font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900;
+      letter-spacing: -0.03em; line-height: 1; color: var(--white);
+    }
+    .proof-metric span { color: var(--red); }
+    .proof-card h3 {
+      font-size: 1rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: -0.01em; line-height: 1.1;
+    }
+    .proof-card p {
+      font-size: 0.8rem; color: rgba(255,255,255,0.38); line-height: 1.6; flex: 1;
+    }
+    .proof-link {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--red);
+    }
+    @media (max-width: 700px) {
+      .proof-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CTA ── */
+    #met-cta {
+      position: relative; z-index: 1;
+      padding: 8rem 5vw; text-align: center;
+      background: url('assets/images/cta-bg.webp') center/cover no-repeat;
+    }
+    #met-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(237,36,80,0.88);
+    }
+    #met-cta::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent 40%,
+        rgba(255,255,255,0.04) 40.3%, rgba(255,255,255,0.04) 40.6%, transparent 41%);
+    }
+    .cta-inner-met { position: relative; z-index: 1; }
+    #met-cta h2 {
+      font-size: clamp(2.5rem, 7vw, 6rem); font-weight: 900;
+      text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.9;
+      color: var(--white); margin-bottom: 2rem;
+    }
+    #met-cta p {
+      font-size: 1rem; color: rgba(255,255,255,0.65);
+      max-width: 420px; margin: 0 auto 2.5rem; line-height: 1.65;
+    }
+    .btn-cta-met {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif; font-weight: 800;
+      font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 1.1rem 2.8rem; background: var(--white); color: var(--red);
+      border: none; border-radius: 2px; text-decoration: none;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+    .btn-cta-met:hover { transform: translateY(-2px); opacity: 0.92; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 2rem 5vw; text-align: center;
+    }
+    footer p { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+    footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<div class="bg-glow" aria-hidden="true"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="assets/brand/logo-full.svg" alt="Germán Baher — Growth Brands" />
+  </a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">← Inicio</a>
+    <a href="/#contacto" class="btn-nav">Aplicar →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="met-hero">
+  <span class="met-eyebrow reveal">Metodología · Germán Baher</span>
+  <h1 class="met-title reveal">
+    Feeling<span class="dot">·</span><br />
+    Doing<span class="dot">·</span><br />
+    Thinking
+  </h1>
+  <p class="met-subtitle reveal">
+    Un sistema para construir marcas que <em>se sienten verdaderas</em>,
+    <em>funcionan con precisión</em> y <em>piensan hacia el futuro</em>.
+  </p>
+  <span class="met-scroll-hint reveal">Explorar el sistema</span>
+</section>
+
+<!-- ── INTRO ── -->
+<div class="met-intro">
+  <span class="met-intro-tag reveal">El origen</span>
+  <h2 class="reveal">Por qué existe<br />esta metodología.</h2>
+
+  <p class="reveal">Después de más de 20 años trabajando con marcas en Bolivia y Latinoamérica, identifiqué un patrón que se repetía sin importar el tamaño o la industria: <strong>las marcas que no crecen no tienen un problema de diseño — tienen un problema de integración.</strong></p>
+
+  <p class="reveal">Invierten en identidad visual sin tener claridad emocional. Ejecutan tácticas sin tener posicionamiento definido. Analizan datos sin conectarlos a una estrategia coherente. El resultado: mucho esfuerzo, poco movimiento.</p>
+
+  <blockquote class="reveal">
+    "Una marca no falla porque su logo es feo.<br />Falla porque no sabe quién es, no puede explicar qué hace<br />y no entiende a dónde va."
+  </blockquote>
+
+  <p class="reveal">Feeling · Doing · Thinking nació como respuesta a ese problema. No es una fórmula — es un sistema de diagnóstico y construcción que evalúa tres dimensiones simultáneas de una marca y las integra en una arquitectura coherente.</p>
+
+  <div class="met-diag-signal reveal">
+    <p><strong>¿Quieres saber cómo está tu marca en cada dimensión?</strong> El diagnóstico interactivo en la homepage evalúa tu Feeling, Doing y Thinking en 3 preguntas.</p>
+    <a href="/#hero">Hacer el diagnóstico →</a>
+  </div>
+</div>
+
+<!-- ── THE THREE PILLARS ── -->
+<div class="met-pillars">
+
+  <!-- FEELING -->
+  <section class="pillar" data-word="FEELING">
+    <div class="pillar-inner">
+      <div>
+        <span class="pillar-num reveal">01 / 03</span>
+        <h2 class="pillar-name reveal">Feeling</h2>
+        <p class="pillar-translation reveal">Sentir la marca</p>
+        <p class="pillar-body reveal">
+          <strong>Feeling es la dimensión emocional de una marca.</strong> Es la respuesta que genera en las personas antes de que digan una sola palabra. Es la confianza que transmite, la emoción que provoca, el propósito que comunica con solo existir.
+        </p>
+        <p class="pillar-body reveal">
+          La mayoría de las marcas descuidan el Feeling porque es intangible y difícil de medir. Pero es la dimensión más poderosa: las personas no recuerdan lo que vieron — recuerdan cómo se sintieron.
+        </p>
+
+        <div class="pillar-questions reveal">
+          <span class="pillar-questions-label">Preguntas que responde este pilar</span>
+          <ul class="pillar-q-list">
+            <li>¿Qué emoción genera tu marca en el primer contacto?</li>
+            <li>¿Cuál es tu propósito más allá del producto?</li>
+            <li>¿Qué valores operan realmente en tu negocio (no los del manual)?</li>
+            <li>¿Con qué tipo de persona conecta tu marca de manera auténtica?</li>
+            <li>¿Qué perdería el mundo si tu marca dejara de existir?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pillar-visual reveal">
+        <div class="pillar-icon-wrap">
+          <img src="assets/brand/fdt-feeling.svg" alt="Feeling" />
+        </div>
+        <span class="pillar-card-label">Feeling · Dimensión emocional</span>
+        <h3 class="pillar-card-title">La emoción<br />que mueve.</h3>
+        <p class="pillar-card-body">Cuando el Feeling está bien calibrado, la marca conecta antes de explicar. El cliente ideal te reconoce antes de conocerte.</p>
+        <div class="pillar-card-examples">
+          <div class="pillar-example">Diagnóstico de propósito y valores reales</div>
+          <div class="pillar-example">Arquetipo de marca y personalidad</div>
+          <div class="pillar-example">Mapa de conexión emocional con audiencia</div>
+          <div class="pillar-example">Tono de voz y registro comunicacional</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOING -->
+  <section class="pillar" data-word="DOING" style="background:var(--black2);">
+    <div class="pillar-inner reverse">
+      <div>
+        <span class="pillar-num reveal">02 / 03</span>
+        <h2 class="pillar-name reveal">Doing</h2>
+        <p class="pillar-translation reveal">Hacer la marca</p>
+        <p class="pillar-body reveal">
+          <strong>Doing es la dimensión de ejecución.</strong> Es la materialización de la estrategia en activos reales, sistemas funcionales y presencia coherente en el mercado. Es donde la marca deja de ser una idea y se convierte en algo que el cliente puede ver, tocar y experimentar.
+        </p>
+        <p class="pillar-body reveal">
+          Muchas marcas tienen Feeling pero fallan en el Doing: tienen propósito pero no lo comunican bien, tienen valores pero su identidad visual no los refleja, tienen una historia pero no saben contarla. El Doing cierra esa brecha.
+        </p>
+
+        <div class="pillar-questions reveal">
+          <span class="pillar-questions-label">Preguntas que responde este pilar</span>
+          <ul class="pillar-q-list">
+            <li>¿Tus activos de marca reflejan quién eres realmente?</li>
+            <li>¿Tu proceso de venta es coherente con tu posicionamiento?</li>
+            <li>¿Cada punto de contacto cuenta la misma historia?</li>
+            <li>¿Qué tan fácil es para un cliente ideal decirte que sí?</li>
+            <li>¿Tu marca se ve igual en todas las plataformas?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pillar-visual reveal">
+        <div class="pillar-icon-wrap">
+          <img src="assets/brand/fdt-doing.svg" alt="Doing" />
+        </div>
+        <span class="pillar-card-label">Doing · Dimensión de ejecución</span>
+        <h3 class="pillar-card-title">La estrategia<br />hecha realidad.</h3>
+        <p class="pillar-card-body">Cuando el Doing está alineado, cada touchpoint refuerza el posicionamiento. La marca actúa con coherencia — no porque le digan que debe hacerlo, sino porque sabe quién es.</p>
+        <div class="pillar-card-examples">
+          <div class="pillar-example">Sistema de identidad visual estratégica</div>
+          <div class="pillar-example">Posicionamiento y mensajes clave</div>
+          <div class="pillar-example">Arquitectura de touchpoints de marca</div>
+          <div class="pillar-example">Manual de aplicación y consistencia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THINKING -->
+  <section class="pillar" data-word="THINKING">
+    <div class="pillar-inner">
+      <div>
+        <span class="pillar-num reveal">03 / 03</span>
+        <h2 class="pillar-name reveal">Thinking</h2>
+        <p class="pillar-translation reveal">Pensar la marca</p>
+        <p class="pillar-body reveal">
+          <strong>Thinking es la dimensión estratégica e intelectual.</strong> Es la capacidad de la marca de analizar su contexto, aprender de sus resultados y tomar decisiones informadas sobre su futuro. Es donde el branding se convierte en ventaja competitiva sostenible.
+        </p>
+        <p class="pillar-body reveal">
+          Sin Thinking, una marca repite lo que funcionó ayer esperando que funcione mañana. Con Thinking, la marca evoluciona con inteligencia: entiende su mercado, lee sus datos y ajusta su estrategia antes de que el problema sea urgente.
+        </p>
+
+        <div class="pillar-questions reveal">
+          <span class="pillar-questions-label">Preguntas que responde este pilar</span>
+          <ul class="pillar-q-list">
+            <li>¿Tienes una hoja de ruta estratégica para los próximos 12 meses?</li>
+            <li>¿Qué datos estás midiendo y cómo los conectas a decisiones?</li>
+            <li>¿Cómo se posiciona tu marca frente a la competencia real?</li>
+            <li>¿Sabes cuándo pivotar y cuándo mantener el rumbo?</li>
+            <li>¿Tu marca aprende y evoluciona o repite sin analizar?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pillar-visual reveal">
+        <div class="pillar-icon-wrap">
+          <img src="assets/brand/fdt-thinking.svg" alt="Thinking" />
+        </div>
+        <span class="pillar-card-label">Thinking · Dimensión estratégica</span>
+        <h3 class="pillar-card-title">La inteligencia<br />que guía.</h3>
+        <p class="pillar-card-body">Cuando el Thinking está activo, la marca deja de reaccionar y empieza a anticipar. Las decisiones se toman con datos y visión — no con intuición aislada.</p>
+        <div class="pillar-card-examples">
+          <div class="pillar-example">Análisis competitivo y de posicionamiento</div>
+          <div class="pillar-example">Hoja de ruta estratégica de marca</div>
+          <div class="pillar-example">KPIs de marca y sistema de medición</div>
+          <div class="pillar-example">Brand intelligence y monitoreo de mercado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ── INTEGRATION ── -->
+<div style="position:relative;z-index:1;background:var(--black2);border-bottom:1px solid var(--border);">
+<div class="met-integration">
+  <span class="met-integration-tag reveal">La integración</span>
+  <h2 class="reveal">Cuando los tres<br />trabajan juntos.</h2>
+
+  <div class="integration-grid">
+    <div class="integration-item reveal">
+      <span class="int-combo">Feeling + Doing</span>
+      <h4 class="int-title">Ejecución con alma</h4>
+      <p class="int-body">Una marca que sabe cómo se siente y lo materializa con coherencia. Conecta emocionalmente y se ve bien. Pero sin estrategia, puede crecer en la dirección equivocada.</p>
+    </div>
+    <div class="integration-item reveal">
+      <span class="int-combo">Doing + Thinking</span>
+      <h4 class="int-title">Máquina sin corazón</h4>
+      <p class="int-body">Una marca que ejecuta con precisión y toma decisiones con datos. Es eficiente. Pero si le falta propósito emocional, no genera lealtad — solo transacciones.</p>
+    </div>
+    <div class="integration-item reveal">
+      <span class="int-combo">Feeling + Thinking</span>
+      <h4 class="int-title">Visión sin voz</h4>
+      <p class="int-body">Una marca con propósito claro y estrategia definida, pero que no logra materializarla en activos y sistemas concretos. La idea existe, la realidad no.</p>
+    </div>
+  </div>
+
+  <div style="background:var(--black3);border:1px solid var(--border);border-radius:12px;padding:2.5rem;text-align:center;" class="reveal">
+    <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;">La integración completa</p>
+    <p style="font-size:clamp(1.3rem,3vw,2rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.1;margin-bottom:1.2rem;">Feeling + Doing + Thinking<br/><span style="color:var(--red);">=</span> Marca que crece con significado.</p>
+    <p style="font-size:0.9rem;color:rgba(255,255,255,0.4);max-width:480px;margin:0 auto;line-height:1.7;">Una marca que se siente verdadera, funciona con precisión y piensa hacia el futuro. Eso es lo que construye la metodología FDT.</p>
+  </div>
+</div>
+</div>
+
+<!-- ── PROOF ── -->
+<div style="position:relative;z-index:1;border-bottom:1px solid var(--border);">
+<div class="met-proof">
+  <span class="met-proof-tag reveal">FDT en acción</span>
+  <h2 class="reveal">Resultados reales<br />del sistema.</h2>
+
+  <div class="proof-grid">
+    <a href="/case-sofia" class="proof-card reveal">
+      <span class="proof-tag-line">Brand Strategy · Retail</span>
+      <div class="proof-metric">Exp.<span style="font-size:0.4em;vertical-align:middle;"> nacional</span></div>
+      <h3>Sofía Al Paso</h3>
+      <p>De la ejecución reactiva a la expansión estructurada a nivel nacional. Posicionamiento claro, identidad unificada, sistema de marca escalable.</p>
+      <span class="proof-link">Ver caso →</span>
+    </a>
+    <a href="/case-alalay" class="proof-card reveal">
+      <span class="proof-tag-line">Nonprofit · FDT Method</span>
+      <div class="proof-metric"><span>+</span>95%</div>
+      <h3>Alalay</h3>
+      <p>Transformación de identidad para una organización con 35 años de historia. El símbolo humano que nació de la metodología FDT aumentó el engagement un 95%.</p>
+      <span class="proof-link">Ver caso →</span>
+    </a>
+    <a href="/case-bodega" class="proof-card reveal">
+      <span class="proof-tag-line">Retail · Shopper</span>
+      <div class="proof-metric"><span>+</span>19%</div>
+      <h3>Bodega PIL</h3>
+      <p>Rediseño shopper-centric de la experiencia de punto de venta. Las tiendas que adoptaron el nuevo sistema reportaron un aumento de ventas superior al 19%.</p>
+      <span class="proof-link">Ver caso →</span>
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- ── CTA ── -->
+<section id="met-cta">
+  <div class="cta-inner-met">
+    <h2 class="reveal">Tu marca<br />necesita un sistema.</h2>
+    <p class="reveal">No más tácticas sueltas. No más identidades que no conectan. Aplica para trabajar juntos y construyamos la arquitectura estratégica que tu marca necesita.</p>
+    <a href="/#contacto" class="btn-cta-met reveal">Aplicar para trabajar juntos →</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>
+    <a href="/">Inicio</a> &nbsp;·&nbsp;
+    <a href="/casos">Casos de éxito</a> &nbsp;·&nbsp;
+    <a href="/faq">FAQ</a> &nbsp;·&nbsp;
+    <a href="mailto:contacto@germanbaher.com">contacto@germanbaher.com</a>
+    &nbsp;·&nbsp; © 2026 Germán Baher LLC
+  </p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${Math.min((i % 4) * 0.08, 0.24)}s`;
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
