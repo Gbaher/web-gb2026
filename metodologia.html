@@ -124,11 +124,19 @@
     }
 
     /* ── INTRO ── */
+    .met-intro-bg {
+      position: relative;
+      background: url('assets/images/bg-mouse.webp') center/cover no-repeat;
+      border-bottom: 1px solid var(--border);
+    }
+    .met-intro-bg::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(105deg, rgba(8,8,8,0.97) 45%, rgba(8,8,8,0.82) 100%);
+    }
     .met-intro {
       position: relative; z-index: 1;
       max-width: 860px; margin: 0 auto;
       padding: 7rem 5vw;
-      border-bottom: 1px solid var(--border);
     }
     .met-intro-tag {
       font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
@@ -324,6 +332,14 @@
     .met-diag-signal a:hover { opacity: 0.85; }
 
     /* ── CASES PROOF ── */
+    .met-proof-bg {
+      position: relative;
+      background: url('assets/images/bg-keyboard.webp') center 40%/cover no-repeat;
+    }
+    .met-proof-bg::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(8,8,8,0.94) 0%, rgba(8,8,8,0.88) 100%);
+    }
     .met-proof {
       position: relative; z-index: 1;
       padding: 7rem 5vw;
@@ -378,11 +394,11 @@
     #met-cta {
       position: relative; z-index: 1;
       padding: 8rem 5vw; text-align: center;
-      background: url('assets/images/cta-bg.webp') center/cover no-repeat;
+      background: url('assets/images/bg-iphone.webp') center/cover no-repeat;
     }
     #met-cta::before {
       content: ''; position: absolute; inset: 0;
-      background: rgba(237,36,80,0.88);
+      background: rgba(237,36,80,0.86);
     }
     #met-cta::after {
       content: ''; position: absolute; inset: 0;
@@ -455,6 +471,7 @@
 </section>
 
 <!-- ── INTRO ── -->
+<div class="met-intro-bg">
 <div class="met-intro">
   <span class="met-intro-tag reveal">El origen</span>
   <h2 class="reveal">Por qué existe<br />esta metodología.</h2>
@@ -473,6 +490,7 @@
     <p><strong>¿Quieres saber cómo está tu marca en cada dimensión?</strong> El diagnóstico interactivo en la homepage evalúa tu Feeling, Doing y Thinking en 3 preguntas.</p>
     <a href="/#hero">Hacer el diagnóstico →</a>
   </div>
+</div>
 </div>
 
 <!-- ── THE THREE PILLARS ── -->
@@ -642,7 +660,7 @@
 </div>
 
 <!-- ── PROOF ── -->
-<div style="position:relative;z-index:1;border-bottom:1px solid var(--border);">
+<div class="met-proof-bg">
 <div class="met-proof">
   <span class="met-proof-tag reveal">FDT en acción</span>
   <h2 class="reveal">Resultados reales<br />del sistema.</h2>
