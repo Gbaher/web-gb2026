@@ -123,10 +123,27 @@
       background: rgba(255,255,255,0.15);
     }
 
+    /* ── TYPEWRITER ── */
+    .type-line { display: block; }
+    .type-char { display: inline-block; }
+    .type-cursor {
+      display: inline-block;
+      width: 4px; height: 0.82em;
+      background: var(--red);
+      margin-left: 4px;
+      vertical-align: middle;
+      border-radius: 1px;
+      animation: cursorBlink 0.65s steps(1) infinite;
+    }
+    @keyframes cursorBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
     /* ── INTRO ── */
     .met-intro-bg {
       position: relative;
-      background: url('assets/images/bg-mouse.webp') center/cover no-repeat;
+      background: url('assets/images/bg-mouse.jpg') center/cover no-repeat;
       border-bottom: 1px solid var(--border);
     }
     .met-intro-bg::before {
@@ -334,7 +351,7 @@
     /* ── CASES PROOF ── */
     .met-proof-bg {
       position: relative;
-      background: url('assets/images/bg-keyboard.webp') center 40%/cover no-repeat;
+      background: url('assets/images/bg-keyboard.jpg') center 40%/cover no-repeat;
     }
     .met-proof-bg::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -394,7 +411,7 @@
     #met-cta {
       position: relative; z-index: 1;
       padding: 8rem 5vw; text-align: center;
-      background: url('assets/images/bg-iphone.webp') center/cover no-repeat;
+      background: url('assets/images/bg-iphone.jpg') center/cover no-repeat;
     }
     #met-cta::before {
       content: ''; position: absolute; inset: 0;
@@ -458,11 +475,7 @@
 <!-- ── HERO ── -->
 <section class="met-hero">
   <span class="met-eyebrow reveal">Metodología · Germán Baher</span>
-  <h1 class="met-title reveal">
-    Feeling<span class="dot">·</span><br />
-    Doing<span class="dot">·</span><br />
-    Thinking
-  </h1>
+  <h1 class="met-title" id="met-typewriter" aria-label="Feeling · Doing · Thinking"></h1>
   <p class="met-subtitle reveal">
     Un sistema para construir marcas que <em>se sienten verdaderas</em>,
     <em>funcionan con precisión</em> y <em>piensan hacia el futuro</em>.
@@ -704,14 +717,16 @@
 <footer>
   <p>
     <a href="/">Inicio</a> &nbsp;·&nbsp;
-    <a href="/casos">Casos de éxito</a> &nbsp;·&nbsp;
+    <a href="/#casos">Casos de éxito</a> &nbsp;·&nbsp;
     <a href="/faq">FAQ</a> &nbsp;·&nbsp;
     <a href="mailto:contacto@germanbaher.com">contacto@germanbaher.com</a>
     &nbsp;·&nbsp; © 2026 Germán Baher LLC
   </p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
+  // ── Scroll reveal ──────────────────────────────────────────────
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
@@ -721,6 +736,99 @@
     el.style.transitionDelay = `${Math.min((i % 4) * 0.08, 0.24)}s`;
     obs.observe(el);
   });
+
+  // ── Typewriter hero ────────────────────────────────────────────
+  (function() {
+    const titleEl = document.getElementById('met-typewriter');
+    if (!titleEl) return;
+
+    const LINES = [
+      { text: 'Feeling', dot: true  },
+      { text: 'Doing',   dot: true  },
+      { text: 'Thinking',dot: false }
+    ];
+
+    const CHAR_SPEED  = 55;  // ms por letra
+    const LINE_PAUSE  = 240; // ms pausa entre líneas
+    const START_DELAY = 500; // ms antes de empezar
+
+    // Cursor
+    const cursor = document.createElement('span');
+    cursor.className = 'type-cursor';
+
+    // Construye los divs de línea vacíos
+    const lineEls = LINES.map(() => {
+      const d = document.createElement('div');
+      d.className = 'type-line';
+      titleEl.appendChild(d);
+      return d;
+    });
+
+    let li = 0, ci = 0;
+
+    function typeChar() {
+      if (li >= LINES.length) {
+        // Terminó — cursor parpadeando al final
+        lineEls[li - 1].appendChild(cursor);
+        return;
+      }
+
+      const line     = LINES[li];
+      const lineEl   = lineEls[li];
+      const allChars = line.text;
+
+      if (ci < allChars.length) {
+        // Mover cursor a línea actual
+        lineEl.appendChild(cursor);
+
+        // Crear span de carácter
+        const span = document.createElement('span');
+        span.className = 'type-char';
+        span.textContent = allChars[ci];
+        lineEl.insertBefore(span, cursor);
+
+        // Animación de "tecla presionada" con GSAP
+        gsap.fromTo(span,
+          { opacity: 0, scaleY: 1.4, y: -6, transformOrigin: 'bottom center' },
+          { opacity: 1, scaleY: 1,   y: 0,  duration: 0.1, ease: 'power3.out' }
+        );
+
+        ci++;
+        setTimeout(typeChar, CHAR_SPEED);
+
+      } else {
+        // Línea terminada: agregar punto en rojo
+        if (line.dot) {
+          const dot = document.createElement('span');
+          dot.className = 'dot';
+          dot.textContent = '·';
+          dot.style.opacity = '0';
+          lineEl.insertBefore(dot, cursor);
+          gsap.to(dot, { opacity: 1, duration: 0.2 });
+        }
+        li++; ci = 0;
+        setTimeout(typeChar, LINE_PAUSE);
+      }
+    }
+
+    // Animar eyebrow primero, luego arrancar el typewriter
+    const eyebrow = document.querySelector('.met-eyebrow');
+    if (eyebrow) {
+      gsap.from(eyebrow, { opacity: 0, y: 12, duration: 0.5, ease: 'power2.out',
+        onComplete: () => setTimeout(typeChar, 120)
+      });
+    } else {
+      setTimeout(typeChar, START_DELAY);
+    }
+
+    // Subtitle y scroll-hint entran después del typewriter
+    const sub   = document.querySelector('.met-subtitle');
+    const hint  = document.querySelector('.met-scroll-hint');
+    const delay = START_DELAY + (LINES.reduce((a,l) => a + l.text.length, 0) * CHAR_SPEED) + (LINES.length * LINE_PAUSE);
+
+    if (sub)  gsap.from(sub,  { opacity:0, y:20, duration:0.7, ease:'power2.out', delay: delay/1000 });
+    if (hint) gsap.from(hint, { opacity:0, y:10, duration:0.5, ease:'power2.out', delay: delay/1000 + 0.2 });
+  })();
 </script>
 </body>
 </html>

@@ -298,6 +298,15 @@
       color: var(--white); margin-bottom: 0.9rem;
     }
     .diag-h em { font-style: normal; color: var(--red); }
+    .type-char { display: inline-block; }
+    .type-em   { color: var(--red); }
+    .type-cursor {
+      display: inline-block; width: 3px; height: 0.8em;
+      background: var(--red); margin-left: 3px;
+      vertical-align: middle; border-radius: 1px;
+      animation: diagBlink 0.65s steps(1) infinite;
+    }
+    @keyframes diagBlink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
 
     /* ── Subtext ── */
     .diag-sub {
@@ -1499,6 +1508,76 @@
   /* ═══════════════════════════════════
      DIAGNOSTIC ENGINE — global functions
   ═══════════════════════════════════ */
+<!-- ── GSAP + Typewriter hero ── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  function startHeroTypewriter() {
+    var el = document.querySelector('#diagContent .diag-h');
+    if (!el) return;
+
+    var html = el.innerHTML;
+    el.innerHTML = '';
+
+    // Cursor
+    var cur = document.createElement('span');
+    cur.className = 'type-cursor';
+    el.appendChild(cur);
+
+    // Parse HTML → segments [{text, em, br}]
+    var segments = [];
+    var lines = html.split(/<br\s*\/?>/i);
+    lines.forEach(function(line, li) {
+      var parts = line.split(/(<em>|<\/em>)/i);
+      var inEm = false;
+      parts.forEach(function(p) {
+        if (/^<em>$/i.test(p))  { inEm = true;  return; }
+        if (/^<\/em>$/i.test(p)){ inEm = false; return; }
+        if (p) segments.push({ text: p, em: inEm });
+      });
+      if (li < lines.length - 1) segments.push({ br: true });
+    });
+
+    var si = 0, ci = 0;
+    var SPEED    = 38;  // ms por carácter
+    var BR_PAUSE = 160; // ms entre líneas
+
+    function tick() {
+      if (si >= segments.length) return; // done — cursor stays blinking
+
+      var seg = segments[si];
+
+      if (seg.br) {
+        el.insertBefore(document.createElement('br'), cur);
+        si++; ci = 0;
+        setTimeout(tick, BR_PAUSE);
+        return;
+      }
+
+      if (ci < seg.text.length) {
+        var span = document.createElement('span');
+        span.textContent = seg.text[ci];
+        span.className   = 'type-char' + (seg.em ? ' type-em' : '');
+        el.insertBefore(span, cur);
+
+        // Efecto tecla presionada con GSAP
+        gsap.fromTo(span,
+          { opacity: 0, y: -5, scaleY: 1.3, transformOrigin: 'bottom center' },
+          { opacity: 1, y:  0, scaleY: 1,   duration: 0.08, ease: 'power2.out' }
+        );
+
+        ci++;
+        // Velocidad ligeramente variable para sentirse natural
+        setTimeout(tick, SPEED + (Math.random() * 18 - 9));
+      } else {
+        si++; ci = 0;
+        setTimeout(tick, 50);
+      }
+    }
+
+    setTimeout(tick, 350);
+  }
+</script>
+
   var _diagName = '';
   var _diagAnswers = [0, 0, 0];
   var _diagStep = 0;
@@ -2327,6 +2406,59 @@ Cal("ui", {
   hideEventTypeDetails: false,
   layout: "month_view"
 });
+</script>
+
+<script>
+/* ── Hero Typewriter ── */
+(function(){
+  var SPEED=38, BR=160, DELAY=350, active=false;
+
+  function go(el) {
+    if (active) return; active = true;
+    var src = el.innerHTML;
+    el.innerHTML = '';
+    var cur = document.createElement('span');
+    cur.className = 'type-cursor';
+    el.appendChild(cur);
+
+    var segs = [], lines = src.split(/<br\s*\/?>/i);
+    lines.forEach(function(line, li){
+      var parts = line.split(/(<em>|<\/em>)/i), inEm=false;
+      parts.forEach(function(p){
+        if(/^<em>$/i.test(p)){inEm=true;return;}
+        if(/^<\/em>$/i.test(p)){inEm=false;return;}
+        if(p) segs.push({text:p, em:inEm});
+      });
+      if(li < lines.length-1) segs.push({br:true});
+    });
+
+    var si=0, ci=0;
+    function tick(){
+      if(si>=segs.length) return;
+      var s=segs[si];
+      if(s.br){ el.insertBefore(document.createElement('br'),cur); si++;ci=0; setTimeout(tick,BR); return; }
+      if(ci<s.text.length){
+        var sp=document.createElement('span');
+        sp.textContent=s.text[ci];
+        sp.className='type-char'+(s.em?' type-em':'');
+        el.insertBefore(sp,cur);
+        ci++; setTimeout(tick, SPEED+(Math.random()*16-8));
+      } else { si++;ci=0; setTimeout(tick,50); }
+    }
+    setTimeout(tick, DELAY);
+  }
+
+  function tryStart(){
+    var h1 = document.querySelector('#diagContent .diag-h');
+    if(h1 && h1.textContent.trim() && !active) go(h1);
+  }
+
+  var shell = document.getElementById('diagContent');
+  if(shell){
+    new MutationObserver(tryStart).observe(shell,{childList:true,subtree:true});
+    tryStart(); // por si ya renderizó
+  }
+})();
 </script>
 </body>
 </html>
