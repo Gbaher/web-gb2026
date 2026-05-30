@@ -388,23 +388,23 @@
         </div>
       </a>
 
-      <!-- #002 próximamente -->
-      <div class="bi-card coming reveal">
+      <!-- #002 -->
+      <a href="/bi-002-marca-rota" class="bi-card reveal" id="c2_link" data-i18n-href="c2_url">
         <div class="bi-card-top">
           <span class="bi-card-num">BI — 002</span>
-          <span class="bi-card-cat" data-i18n="coming_soon">Próximamente</span>
+          <span class="bi-card-cat" data-i18n="c2_cat">Diagnóstico</span>
         </div>
-        <h3 data-i18n="c2_h3">¿Por qué tu marca no vende aunque tengas buen producto?</h3>
-        <p data-i18n="c2_p">La brecha entre lo que ofreces y lo que el cliente percibe — y cómo cerrarla.</p>
+        <h3 data-i18n="c2_h3">¿Cómo saber si tu marca está rota? Las 9 señales del modelo FTD</h3>
+        <p data-i18n="c2_p">Descubre si tu marca está fallando en Feeling, Thinking o Doing — y exactamente dónde necesita trabajo.</p>
         <div class="bi-card-footer">
-          <span class="bi-card-time" data-i18n="subscribe_cta">Suscríbete para recibirlo</span>
+          <span class="bi-card-time" data-i18n="c2_time">7 min de lectura</span>
           <div class="bi-card-arrow">
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8">
               <path d="M2 6h8M6 2l4 4-4 4"/>
             </svg>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- #003 próximamente -->
       <div class="bi-card coming reveal">
@@ -495,8 +495,9 @@
       c1_cat:'Fundamentos', c1_h3:'Logo vs. Marca: La confusión que le cuesta ventas a tu negocio',
       c1_p:'El error más costoso que cometen los emprendedores bolivianos — y cómo salir de él con claridad estratégica.',
       c1_time:'5 min de lectura', coming_soon:'Próximamente', subscribe_cta:'Suscríbete para recibirlo',
-      c2_h3:'¿Por qué tu marca no vende aunque tengas buen producto?',
-      c2_p:'La brecha entre lo que ofreces y lo que el cliente percibe — y cómo cerrarla.',
+      c2_cat:'Diagnóstico', c2_h3:'¿Cómo saber si tu marca está rota? Las 9 señales del modelo FTD',
+      c2_p:'Descubre si tu marca está fallando en Feeling, Thinking o Doing — y exactamente dónde necesita trabajo.',
+      c2_time:'7 min de lectura', c2_url:'/bi-002-marca-rota',
       c3_h3:'El posicionamiento que nadie te enseñó en la universidad',
       c3_p:'Cómo ocupar un lugar único en la mente de tu cliente con herramientas de estrategia real.'
     },
@@ -520,8 +521,9 @@
       c1_cat:'Fundamentals', c1_h3:'Logo vs. Brand: The confusion that costs your business sales',
       c1_p:'The most costly mistake entrepreneurs make — and how to get out of it with strategic clarity.',
       c1_time:'5 min read', coming_soon:'Coming soon', subscribe_cta:'Subscribe to receive it',
-      c2_h3:'Why doesn\'t your brand sell even if you have a great product?',
-      c2_p:'The gap between what you offer and what the client perceives — and how to close it.',
+      c2_cat:'Diagnosis', c2_h3:'How to Know If Your Brand Is Broken: The 9 FTD Signals',
+      c2_p:'Discover if your brand is failing in Feeling, Thinking, or Doing — and exactly where it needs work.',
+      c2_time:'7 min read', c2_url:'/bi-002-broken-brand',
       c3_h3:'The positioning nobody taught you in college',
       c3_p:'How to occupy a unique place in your client\'s mind with real strategy tools.'
     },
@@ -545,8 +547,9 @@
       c1_cat:'Fondamentaux', c1_h3:'Logo vs. Marque: La confusion qui coûte des ventes à votre entreprise',
       c1_p:'L\'erreur la plus coûteuse que font les entrepreneurs — et comment s\'en sortir avec clarté stratégique.',
       c1_time:'5 min de lecture', coming_soon:'Prochainement', subscribe_cta:'Abonnez-vous pour le recevoir',
-      c2_h3:'Pourquoi votre marque ne vend-elle pas même avec un bon produit?',
-      c2_p:'L\'écart entre ce que vous offrez et ce que le client perçoit — et comment le combler.',
+      c2_cat:'Diagnostic', c2_h3:'Comment savoir si votre marque est brisée : les 9 signaux FTD',
+      c2_p:'Découvrez si votre marque échoue en Feeling, Thinking ou Doing — et exactement où elle a besoin de travail.',
+      c2_time:'7 min de lecture', c2_url:'/bi-002-broken-brand',
       c3_h3:'Le positionnement que personne ne vous a enseigné à l\'université',
       c3_p:'Comment occuper une place unique dans l\'esprit de votre client avec de vrais outils stratégiques.'
     }
@@ -562,6 +565,10 @@
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
       var key = el.getAttribute('data-i18n-placeholder');
       if (t[key] !== undefined) el.placeholder = t[key];
+    });
+    document.querySelectorAll('[data-i18n-href]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-href');
+      if (t[key] !== undefined) el.href = t[key];
     });
     document.querySelectorAll('.lang-btn').forEach(function(b) {
       b.classList.toggle('active', b.dataset.lang === lang);
