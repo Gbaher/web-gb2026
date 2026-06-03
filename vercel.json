@@ -1,33 +1,164 @@
 {
   "outputDirectory": ".",
   "rewrites": [
-    { "source": "/case-sofia",           "destination": "/case-sofia.html" },
-    { "source": "/case-alalay",          "destination": "/case-alalay.html" },
-    { "source": "/case-bodega",          "destination": "/case-bodega.html" },
-    { "source": "/brand-intelligence",   "destination": "/brand-intelligence.html" },
-    { "source": "/brand-intelligence-inteligencia-de-marca", "destination": "/brand-intelligence-inteligencia-de-marca.html" },
-    { "source": "/bi-001-logo-vs-marca", "destination": "/bi-001-logo-vs-marca.html" },
-    { "source": "/portal",               "destination": "/portal.html" },
-    { "source": "/propuesta-demo",        "destination": "/propuesta-demo.html" },
-    { "source": "/propuesta-sallkof",    "destination": "/propuesta-sallkof.html" },
-    { "source": "/instagram-to-web",     "destination": "/instagram-to-web.html" },
-    { "source": "/instagram-to-web-en",  "destination": "/instagram-to-web-en.html" },
-    { "source": "/propuestas/:slug",     "destination": "/propuestas/:slug.html" },
-    { "source": "/faq",                  "destination": "/faq.html" },
-    { "source": "/metodologia",          "destination": "/metodologia.html" }
+    {
+      "source": "/case-sofia",
+      "destination": "/case-sofia.html"
+    },
+    {
+      "source": "/case-alalay",
+      "destination": "/case-alalay.html"
+    },
+    {
+      "source": "/case-bodega",
+      "destination": "/case-bodega.html"
+    },
+    {
+      "source": "/brand-intelligence",
+      "destination": "/brand-intelligence.html"
+    },
+    {
+      "source": "/brand-intelligence-inteligencia-de-marca",
+      "destination": "/brand-intelligence-inteligencia-de-marca.html"
+    },
+    {
+      "source": "/bi-001-logo-vs-marca",
+      "destination": "/bi-001-logo-vs-marca.html"
+    },
+    {
+      "source": "/bi-002-marca-rota",
+      "destination": "/bi-002-marca-rota.html"
+    },
+    {
+      "source": "/bi-002-broken-brand",
+      "destination": "/bi-002-broken-brand.html"
+    },
+    {
+      "source": "/bi-003-marca-no-vende",
+      "destination": "/bi-003-marca-no-vende.html"
+    },
+    {
+      "source": "/bi-003-brand-doesnt-sell",
+      "destination": "/bi-003-brand-doesnt-sell.html"
+    },
+    {
+      "source": "/bi-003-marque-ne-vend-pas",
+      "destination": "/bi-003-marque-ne-vend-pas.html"
+    },
+    {
+      "source": "/portal",
+      "destination": "/portal.html"
+    },
+    {
+      "source": "/propuesta-demo",
+      "destination": "/propuesta-demo.html"
+    },
+    {
+      "source": "/propuesta-sallkof",
+      "destination": "/propuesta-sallkof.html"
+    },
+    {
+      "source": "/instagram-to-web",
+      "destination": "/instagram-to-web.html"
+    },
+    {
+      "source": "/instagram-to-web-en",
+      "destination": "/instagram-to-web-en.html"
+    },
+    {
+      "source": "/propuestas/:slug",
+      "destination": "/propuestas/:slug.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq.html"
+    },
+    {
+      "source": "/metodologia",
+      "destination": "/metodologia.html"
+    }
   ],
   "redirects": [
-    { "source": "/instagram-to-web.html",    "destination": "/instagram-to-web",    "permanent": true },
-    { "source": "/instagram-to-web-en.html","destination": "/instagram-to-web-en", "permanent": true },
-    { "source": "/case-sofia.html",           "destination": "/case-sofia",           "permanent": true },
-    { "source": "/case-alalay.html",          "destination": "/case-alalay",          "permanent": true },
-    { "source": "/case-bodega.html",          "destination": "/case-bodega",          "permanent": true },
-    { "source": "/brand-intelligence.html",   "destination": "/brand-intelligence",   "permanent": true },
-    { "source": "/brand-intelligence-inteligencia-de-marca.html", "destination": "/brand-intelligence-inteligencia-de-marca", "permanent": true },
-    { "source": "/bi-001-logo-vs-marca.html", "destination": "/bi-001-logo-vs-marca", "permanent": true },
-    { "source": "/portal.html",               "destination": "/portal",               "permanent": true },
-    { "source": "/propuesta-demo.html",       "destination": "/propuesta-demo",       "permanent": true },
-    { "source": "/propuesta-sallkof.html",   "destination": "/propuesta-sallkof",   "permanent": true }
+    {
+      "source": "/instagram-to-web.html",
+      "destination": "/instagram-to-web",
+      "permanent": true
+    },
+    {
+      "source": "/instagram-to-web-en.html",
+      "destination": "/instagram-to-web-en",
+      "permanent": true
+    },
+    {
+      "source": "/case-sofia.html",
+      "destination": "/case-sofia",
+      "permanent": true
+    },
+    {
+      "source": "/case-alalay.html",
+      "destination": "/case-alalay",
+      "permanent": true
+    },
+    {
+      "source": "/case-bodega.html",
+      "destination": "/case-bodega",
+      "permanent": true
+    },
+    {
+      "source": "/brand-intelligence.html",
+      "destination": "/brand-intelligence",
+      "permanent": true
+    },
+    {
+      "source": "/brand-intelligence-inteligencia-de-marca.html",
+      "destination": "/brand-intelligence-inteligencia-de-marca",
+      "permanent": true
+    },
+    {
+      "source": "/bi-001-logo-vs-marca.html",
+      "destination": "/bi-001-logo-vs-marca",
+      "permanent": true
+    },
+    {
+      "source": "/portal.html",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/propuesta-demo.html",
+      "destination": "/propuesta-demo",
+      "permanent": true
+    },
+    {
+      "source": "/propuesta-sallkof.html",
+      "destination": "/propuesta-sallkof",
+      "permanent": true
+    },
+    {
+      "source": "/bi-002-marca-rota.html",
+      "destination": "/bi-002-marca-rota",
+      "permanent": true
+    },
+    {
+      "source": "/bi-002-broken-brand.html",
+      "destination": "/bi-002-broken-brand",
+      "permanent": true
+    },
+    {
+      "source": "/bi-003-marca-no-vende.html",
+      "destination": "/bi-003-marca-no-vende",
+      "permanent": true
+    },
+    {
+      "source": "/bi-003-brand-doesnt-sell.html",
+      "destination": "/bi-003-brand-doesnt-sell",
+      "permanent": true
+    },
+    {
+      "source": "/bi-003-marque-ne-vend-pas.html",
+      "destination": "/bi-003-marque-ne-vend-pas",
+      "permanent": true
+    }
   ],
   "headers": [
     {
