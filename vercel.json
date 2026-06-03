@@ -76,6 +76,10 @@
     {
       "source": "/metodologia",
       "destination": "/metodologia.html"
+    },
+    {
+      "source": "/bi-001-logo-vs-brand",
+      "destination": "/bi-001-logo-vs-brand.html"
     }
   ],
   "redirects": [
@@ -157,6 +161,11 @@
     {
       "source": "/bi-003-marque-ne-vend-pas.html",
       "destination": "/bi-003-marque-ne-vend-pas",
+      "permanent": true
+    },
+    {
+      "source": "/bi-001-logo-vs-brand.html",
+      "destination": "/bi-001-logo-vs-brand",
       "permanent": true
     }
   ],
