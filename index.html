@@ -1407,15 +1407,15 @@
 
           <div class="field">
             <label for="cf-nombre" data-i18n="cf_label_nombre">Nombre completo</label>
-            <input type="text" id="cf-nombre" name="nombre" placeholder="Tu nombre" required />
+            <input type="text" id="cf-nombre" name="nombre" data-i18n-placeholder="cf_ph_nombre" placeholder="Tu nombre" required />
           </div>
           <div class="field">
             <label for="cf-empresa" data-i18n="cf_label_empresa">Empresa o proyecto</label>
-            <input type="text" id="cf-empresa" name="empresa" placeholder="Nombre de tu empresa o marca" required />
+            <input type="text" id="cf-empresa" name="empresa" data-i18n-placeholder="cf_ph_empresa" placeholder="Nombre de tu empresa o marca" required />
           </div>
           <div class="field">
             <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" name="email" placeholder="tu@empresa.com" required />
+            <input type="email" id="cf-email" name="email" data-i18n-placeholder="cf_ph_email" placeholder="tu@empresa.com" required />
           </div>
           <div class="field">
             <label for="cf-presupuesto" data-i18n="cf_label_presupuesto">Inversión disponible</label>
@@ -1429,11 +1429,11 @@
           </div>
           <div class="field">
             <label for="cf-desafio" data-i18n="cf_label_desafio">¿Cuál es el mayor desafío de tu marca hoy?</label>
-            <textarea id="cf-desafio" name="desafio" rows="3" placeholder="Sé específico. Esta es la información más importante." required></textarea>
+            <textarea id="cf-desafio" name="desafio" rows="3" data-i18n-placeholder="cf_ph_desafio" placeholder="Sé específico. Esta es la información más importante." required></textarea>
           </div>
           <div class="field">
             <label for="cf-mensaje" data-i18n="cf_label_porque">¿Por qué Germán Baher específicamente?</label>
-            <textarea id="cf-mensaje" name="mensaje" rows="3" placeholder="¿Qué te trajo aquí?" required></textarea>
+            <textarea id="cf-mensaje" name="mensaje" rows="3" data-i18n-placeholder="cf_ph_mensaje" placeholder="¿Qué te trajo aquí?" required></textarea>
           </div>
 
           <button type="submit" class="btn-submit" id="cfBtn" data-i18n="cf_submit">Enviar aplicación →</button>
@@ -1941,6 +1941,8 @@
       cf_label_presupuesto:'Inversión disponible', cf_pres_placeholder:'Selecciona un rango',
       cf_label_desafio:'¿Cuál es el mayor desafío de tu marca hoy?',
       cf_label_porque:'¿Por qué Germán Baher específicamente?',
+      cf_ph_nombre:'Tu nombre', cf_ph_empresa:'Nombre de tu empresa o marca', cf_ph_email:'tu@empresa.com',
+      cf_ph_desafio:'Sé específico. Esta es la información más importante.', cf_ph_mensaje:'¿Qué te trajo aquí?',
       cf_submit:'Enviar aplicación →',
       cf_time:'⏱ Tarda menos de 5 minutos. Respondo en 24–48 horas hábiles.',
       pq_tag:'Este trabajo es para ti', pq_title:'Trabajo con<br/>las marcas correctas.',
@@ -2035,6 +2037,8 @@
       cf_label_presupuesto:'Available investment', cf_pres_placeholder:'Select a range',
       cf_label_desafio:"What is your brand's biggest challenge today?",
       cf_label_porque:'Why Germán Baher specifically?',
+      cf_ph_nombre:'Your name', cf_ph_empresa:'Your company or brand name', cf_ph_email:'you@company.com',
+      cf_ph_desafio:'Be specific. This is the most important information.', cf_ph_mensaje:'What brought you here?',
       cf_submit:'Send application →',
       cf_time:'⏱ Takes under 5 minutes. I reply within 24–48 business hours.',
       pq_tag:'This work is for you', pq_title:'I work with<br/>the right brands.',
@@ -2128,6 +2132,8 @@
       cf_label_presupuesto:'Investissement disponible', cf_pres_placeholder:'Sélectionner une fourchette',
       cf_label_desafio:'Quel est le plus grand défi de votre marque aujourd\'hui?',
       cf_label_porque:'Pourquoi Germán Baher spécifiquement?',
+      cf_ph_nombre:'Votre nom', cf_ph_empresa:'Nom de votre entreprise ou marque', cf_ph_email:'vous@entreprise.com',
+      cf_ph_desafio:'Soyez précis. C\'est l\'information la plus importante.', cf_ph_mensaje:'Qu\'est-ce qui vous a amené ici?',
       cf_submit:'Envoyer la candidature →',
       cf_time:'⏱ Moins de 5 minutes. Je réponds sous 24–48 heures ouvrables.',
       pq_tag:'Ce travail est pour vous', pq_title:'Je travaille avec<br/>les bonnes marques.',
@@ -2191,6 +2197,11 @@
     document.querySelectorAll('[data-i18n]').forEach(function(el){
       var key = el.dataset.i18n;
       if (_t[lang] && _t[lang][key] !== undefined) el.innerHTML = _t[lang][key];
+    });
+    // Apply placeholder translations
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+      var key = el.dataset.i18nPlaceholder;
+      if (_t[lang] && _t[lang][key] !== undefined) el.placeholder = _t[lang][key];
     });
     // Show/hide data-lang blocks
     document.querySelectorAll('[data-lang]').forEach(function(el){
