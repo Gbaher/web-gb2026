@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>OG Image Generator — Germán Baher</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0a0a0a;color:#fff;font-family:'DM Sans',sans-serif;min-height:100vh;padding:32px 24px 60px;}
+h1{font-size:1.1rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#ed2450;margin-bottom:4px;}
+.sub{font-size:.75rem;color:rgba(255,255,255,.3);margin-bottom:32px;letter-spacing:.06em;}
+
+.layout{display:grid;grid-template-columns:1fr 340px;gap:32px;max-width:1380px;margin:0 auto;}
+
+/* CANVAS PREVIEW */
+.preview-wrap{position:relative;}
+.preview-label{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:8px;}
+canvas#preview{width:100%;border-radius:10px;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 20px 60px rgba(0,0,0,.6);}
+.size-hint{font-size:.65rem;color:rgba(255,255,255,.2);margin-top:8px;text-align:right;}
+
+/* CONTROLS */
+.controls{display:flex;flex-direction:column;gap:18px;}
+.ctrl-group label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px;}
+input[type=text],textarea,select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:10px 12px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;resize:vertical;}
+input[type=text]:focus,textarea:focus,select:focus{border-color:#ed2450;}
+input[type=range]{width:100%;accent-color:#ed2450;}
+.range-row{display:flex;align-items:center;gap:10px;}
+.range-val{font-size:.75rem;color:rgba(255,255,255,.4);min-width:28px;text-align:right;}
+
+.btn-dl{width:100%;background:#ed2450;color:#fff;border:none;border-radius:6px;padding:13px;font-family:'DM Sans',sans-serif;font-weight:800;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;margin-top:4px;}
+.btn-dl:hover{opacity:.88;}
+.btn-dl-sq{width:100%;background:rgba(237,36,80,.12);color:#ed2450;border:1px solid rgba(237,36,80,.3);border-radius:6px;padding:10px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:4px;}
+.btn-dl-sq:hover{background:rgba(237,36,80,.2);}
+
+.divider{height:1px;background:rgba(255,255,255,.06);}
+
+.preset-row{display:flex;flex-wrap:wrap;gap:6px;}
+.preset{font-size:.65rem;padding:4px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);cursor:pointer;transition:all .15s;background:none;}
+.preset:hover{border-color:rgba(237,36,80,.4);color:#ed2450;}
+
+@media(max-width:900px){.layout{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<h1>OG Image Generator</h1>
+<p class="sub">Brand Intelligence · Germán Baher · 1200 × 630 px</p>
+
+<div class="layout">
+
+  <!-- PREVIEW -->
+  <div class="preview-wrap">
+    <div class="preview-label">Preview — 1200 × 630</div>
+    <canvas id="preview" width="1200" height="630"></canvas>
+    <div class="size-hint">Canvas nativo 1200×630 · se escala al contenedor</div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+
+    <div class="ctrl-group">
+      <label>Categoría / Etiqueta</label>
+      <input type="text" id="ctrlCat" value="Brand Intelligence · BI-003" />
+    </div>
+
+    <div class="ctrl-group">
+      <label>Título principal</label>
+      <textarea id="ctrlTitle" rows="3">¿Por qué tu marca no vende aunque tengas buen producto?</textarea>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Subtítulo (dejar vacío para omitir)</label>
+      <input type="text" id="ctrlSub" value="El gap entre producto y marca — y cómo cerrarlo con FTD." />
+    </div>
+
+    <div class="ctrl-group">
+      <label>Formato</label>
+      <select id="ctrlFormat">
+        <option value="og">OG / LinkedIn — 1200×630</option>
+        <option value="sq">Square / Instagram — 1080×1080</option>
+        <option value="story">Story — 1080×1920</option>
+      </select>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="ctrl-group">
+      <label>Intensidad del glow rojo</label>
+      <div class="range-row">
+        <input type="range" id="ctrlGlow" min="0.2" max="1" step="0.05" value="0.72" />
+        <span class="range-val" id="glowVal">0.72</span>
+      </div>
+    </div>
+
+    <div class="ctrl-group">
+      <label>Variante de layout</label>
+      <select id="ctrlLayout">
+        <option value="center">Centro</option>
+        <option value="left">Izquierda (artículo)</option>
+        <option value="split">Split — texto / glow</option>
+      </select>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="ctrl-group">
+      <label>Artículos rápidos</label>
+      <div class="preset-row">
+        <span class="preset" data-cat="Brand Intelligence · BI-001" data-title="Logo vs. Marca: La confusión que le cuesta ventas a tu negocio" data-sub="El error más costoso de los emprendedores — con claridad estratégica.">BI-001</span>
+        <span class="preset" data-cat="Brand Intelligence · BI-002" data-title="¿Cómo saber si tu marca está rota? Las 9 señales del modelo FTD" data-sub="Descubre si tu marca falla en Feeling, Thinking o Doing.">BI-002</span>
+        <span class="preset" data-cat="Brand Intelligence · BI-003" data-title="¿Por qué tu marca no vende aunque tengas buen producto?" data-sub="El gap entre producto y marca — y cómo cerrarlo con FTD.">BI-003</span>
+        <span class="preset" data-cat="Germán Baher · Growth Brands" data-title="Construyo marcas que perduran." data-sub="Brand Strategy · Feeling · Doing · Thinking">Home</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <button class="btn-dl" id="btnDownload">↓ Descargar PNG — 1200×630</button>
+    <button class="btn-dl-sq" id="btnDownloadSq">↓ Descargar Square 1080×1080</button>
+
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   ICON PATH (blanco) — extraído del SVG de la marca
+══════════════════════════════════════════════════════════════════ */
+var ICON_PATH = "M204.73,76.12c-13.32-13.32-29.54-19.97-48.27-19.97,0,0-.02,0-.03,0-1.84,0-3.34,1.5-3.34,3.34v48.09c.86-.16,1.71-.25,2.53-.25,5.41,0,9.57,2.08,13.32,5.83,3.75,3.33,5.41,7.91,5.41,13.32s-2.08,9.57-5.83,13.32c-3.75,3.75-8.32,5.41-13.73,5.41-12.9,0-19.14-8.74-19.14-26.63V3.7c0-1.83-1.48-3.32-3.31-3.34L88.67,0c-1.86-.02-3.37,1.48-3.37,3.34v42.88c0,2.09-1.9,3.66-3.95,3.27-4.11-.77-8.29-1.25-12.7-1.25-19.56,0-35.79,6.66-48.69,19.97C6.66,81.53,0,97.34,0,116.49c0,17.48,5.41,32.46,16.64,44.52,11.65,12.07,24.97,18.31,41.2,18.31,2.71,0,5.58-.32,8.53-.88,1.59-.3,2.76-1.68,2.76-3.3v-43.29c-.16,0-.32.03-.47.03-4.99,0-9.57-1.66-12.9-4.99-3.33-3.33-4.99-7.91-4.99-12.9s1.66-9.15,5.41-12.9c3.75-3.75,8.32-5.83,12.9-5.83,10.82,0,16.64,6.66,16.64,20.81v49.93c0,10.82-2.5,19.56-7.49,25.38-4.99,6.24-11.65,9.15-20.81,9.15-5.06,0-10.36-.96-15.36-3.07-2.19-.93-4.62.69-4.62,3.07v37.51c0,1.45.94,2.75,2.32,3.19,8.96,2.83,16.51,4.24,22.64,4.24,21.64,0,39.12-7.07,52.43-22.05,7.59-8.73,13.46-18.51,16.64-29.95.49-1.76,2.32-2.81,4.07-2.3,6.1,1.8,12.46,2.7,18.82,2.7,19.56,0,36.62-6.66,49.93-19.97,13.73-13.32,20.39-29.54,20.39-49.1s-6.66-35.37-19.97-48.69z";
+var ICON_VB = {w:224.71, h:245.48};
+
+var canvas = document.getElementById('preview');
+var ctx = canvas.getContext('2d');
+
+/* ─── Inputs ─── */
+var iCat    = document.getElementById('ctrlCat');
+var iTitle  = document.getElementById('ctrlTitle');
+var iSub    = document.getElementById('ctrlSub');
+var iGlow   = document.getElementById('ctrlGlow');
+var iLayout = document.getElementById('ctrlLayout');
+var iFormat = document.getElementById('ctrlFormat');
+
+function getParams(){
+  return {
+    cat:    iCat.value.trim(),
+    title:  iTitle.value.trim(),
+    sub:    iSub.value.trim(),
+    glow:   parseFloat(iGlow.value),
+    layout: iLayout.value,
+    fmt:    iFormat.value
+  };
+}
+
+/* ─── Dimensions ─── */
+var DIMS = { og:[1200,630], sq:[1080,1080], story:[1080,1920] };
+
+function getSize(fmt){ return DIMS[fmt] || DIMS.og; }
+
+/* ─── Draw gradient background ─── */
+function drawBackground(c, ctx, p, w, h){
+  /* base black */
+  ctx.fillStyle = '#050405';
+  ctx.fillRect(0, 0, w, h);
+
+  /* helper: red radial blob */
+  function blob(cx, cy, r, alpha){
+    var g = ctx.createRadialGradient(cx*w, cy*h, 0, cx*w, cy*h, r*Math.max(w,h));
+    g.addColorStop(0, 'rgba(237,36,80,' + (alpha*p.glow) + ')');
+    g.addColorStop(0.35, 'rgba(180,18,50,' + (alpha*p.glow*0.55) + ')');
+    g.addColorStop(1,   'rgba(8,0,4,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  if(p.layout === 'center'){
+    blob(0.5, 0.25, 0.55, 0.82);
+    blob(0.18, 0.75, 0.42, 0.55);
+    blob(0.85, 0.62, 0.40, 0.48);
+    blob(0.7,  0.08, 0.30, 0.35);
+  } else if(p.layout === 'left'){
+    blob(0.22, 0.35, 0.52, 0.78);
+    blob(0.08, 0.80, 0.38, 0.45);
+    blob(0.72, 0.55, 0.35, 0.30);
+    blob(0.55, 0.05, 0.28, 0.28);
+  } else { /* split */
+    blob(0.75, 0.40, 0.55, 0.88);
+    blob(0.88, 0.82, 0.38, 0.50);
+    blob(0.20, 0.20, 0.30, 0.28);
+  }
+
+  /* dark vignette edges */
+  var vig = ctx.createRadialGradient(w/2, h/2, Math.min(w,h)*0.2, w/2, h/2, Math.max(w,h)*0.72);
+  vig.addColorStop(0, 'rgba(0,0,0,0)');
+  vig.addColorStop(1, 'rgba(0,0,0,0.72)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0,0,w,h);
+
+  /* subtle noise overlay via very fine gradient pattern */
+  ctx.globalAlpha = 0.04;
+  for(var i=0;i<6;i++){
+    var y0 = Math.random()*h;
+    var sl = ctx.createLinearGradient(0,y0,w,y0+20);
+    sl.addColorStop(0,'rgba(255,255,255,0)');
+    sl.addColorStop(0.5,'rgba(255,255,255,0.6)');
+    sl.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=sl;
+    ctx.fillRect(0,y0,w,3);
+  }
+  ctx.globalAlpha = 1;
+}
+
+/* ─── Draw icon ─── */
+function drawIcon(ctx, x, y, size, alpha){
+  var scale = size / Math.max(ICON_VB.w, ICON_VB.h);
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = '#ffffff';
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  var path = new Path2D(ICON_PATH);
+  ctx.fill(path);
+  ctx.restore();
+}
+
+/* ─── Word wrap ─── */
+function wrapText(ctx, text, maxW){
+  var words = text.split(' ');
+  var lines = [], line = '';
+  for(var i=0;i<words.length;i++){
+    var test = line ? line+' '+words[i] : words[i];
+    if(ctx.measureText(test).width > maxW && line){
+      lines.push(line); line = words[i];
+    } else { line = test; }
+  }
+  if(line) lines.push(line);
+  return lines;
+}
+
+/* ─── Main render ─── */
+function render(){
+  var p = getParams();
+  var sz = getSize(p.fmt);
+  var W = sz[0], H = sz[1];
+
+  /* resize canvas */
+  canvas.width = W; canvas.height = H;
+
+  drawBackground(canvas, ctx, p, W, H);
+
+  /* ── padding ── */
+  var PAD = W * 0.07;
+
+  /* ── Red accent line top ── */
+  ctx.fillStyle = '#ed2450';
+  ctx.fillRect(PAD, PAD * 0.85, W * 0.07, 3);
+
+  /* ── Category label ── */
+  var catSize = Math.round(W * 0.018);
+  ctx.font = '700 ' + catSize + 'px "DM Sans", sans-serif';
+  ctx.letterSpacing = '3px';
+  ctx.fillStyle = '#ed2450';
+  ctx.textBaseline = 'top';
+
+  if(p.layout === 'center'){
+    ctx.textAlign = 'center';
+    ctx.fillText(p.cat.toUpperCase(), W/2, PAD * 0.82);
+  } else {
+    ctx.textAlign = 'left';
+    ctx.fillText(p.cat.toUpperCase(), PAD, PAD * 0.82);
+  }
+  ctx.letterSpacing = '0px';
+
+  /* ── Title ── */
+  var titleSize, titleY, titleMaxW, titleAlign, titleX;
+  if(p.layout === 'center'){
+    titleSize = Math.round(W * (H > W ? 0.054 : 0.062));
+    titleY    = H * 0.38;
+    titleMaxW = W * 0.78;
+    titleAlign = 'center';
+    titleX = W / 2;
+  } else if(p.layout === 'left'){
+    titleSize = Math.round(W * 0.058);
+    titleY    = H * 0.32;
+    titleMaxW = W * 0.60;
+    titleAlign = 'left';
+    titleX = PAD;
+  } else {
+    titleSize = Math.round(W * 0.055);
+    titleY    = H * 0.30;
+    titleMaxW = W * 0.52;
+    titleAlign = 'left';
+    titleX = PAD;
+  }
+
+  ctx.font = '800 ' + titleSize + 'px "DM Sans", sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.textBaseline = 'top';
+  ctx.textAlign = titleAlign;
+
+  var lines = wrapText(ctx, p.title.toUpperCase(), titleMaxW);
+  var lineH = titleSize * 1.22;
+  var totalH = lines.length * lineH;
+
+  /* vertical center for center layout */
+  if(p.layout === 'center'){
+    titleY = H/2 - totalH/2 - (p.sub ? titleSize * 0.8 : 0);
+  }
+
+  lines.forEach(function(l, i){
+    ctx.fillText(l, titleX, titleY + i * lineH);
+  });
+
+  /* ── Subtitle ── */
+  if(p.sub){
+    var subY = titleY + totalH + titleSize * 0.55;
+    var subSize = Math.round(titleSize * 0.42);
+    ctx.font = '400 ' + subSize + 'px "DM Sans", sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = titleAlign;
+    var subLines = wrapText(ctx, p.sub, titleMaxW * 0.9);
+    subLines.forEach(function(l, i){
+      ctx.fillText(l, titleX, subY + i * (subSize * 1.6));
+    });
+  }
+
+  /* ── Bottom bar ── */
+  var barY = H - PAD * 0.72;
+  ctx.fillStyle = 'rgba(255,255,255,0.08)';
+  ctx.fillRect(PAD, barY - 1, W - PAD*2, 1);
+
+  /* logo icon */
+  var iconSz = Math.round(W * 0.038);
+  var iconX = (p.layout === 'center') ? W/2 - iconSz/2 : PAD;
+  drawIcon(ctx, iconX, barY + Math.round(W*0.012), iconSz, 0.75);
+
+  /* site URL */
+  var urlSize = Math.round(W * 0.016);
+  ctx.font = '500 ' + urlSize + 'px "DM Sans", sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.28)';
+  ctx.textBaseline = 'top';
+  ctx.textAlign = 'right';
+  ctx.fillText('germanbaher.com', W - PAD, barY + Math.round(W*0.016));
+}
+
+/* ─── Live update ─── */
+[iCat, iTitle, iSub, iGlow, iLayout, iFormat].forEach(function(el){
+  el.addEventListener('input', function(){
+    if(el === iGlow) document.getElementById('glowVal').textContent = iGlow.value;
+    render();
+  });
+});
+
+/* ─── Presets ─── */
+document.querySelectorAll('.preset').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    iCat.value   = btn.dataset.cat   || '';
+    iTitle.value = btn.dataset.title || '';
+    iSub.value   = btn.dataset.sub   || '';
+    render();
+  });
+});
+
+/* ─── Format change resizes canvas ─── */
+iFormat.addEventListener('change', render);
+
+/* ─── Download OG 1200×630 ─── */
+document.getElementById('btnDownload').addEventListener('click', function(){
+  iFormat.value = 'og'; render();
+  var slug = iTitle.value.trim().toLowerCase()
+    .replace(/[^a-záéíóúüñ0-9\s]/gi,'').replace(/\s+/g,'-').slice(0,40);
+  var a = document.createElement('a');
+  a.download = 'og-' + slug + '.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+});
+
+/* ─── Download Square 1080×1080 ─── */
+document.getElementById('btnDownloadSq').addEventListener('click', function(){
+  iFormat.value = 'sq'; render();
+  var slug = iTitle.value.trim().toLowerCase()
+    .replace(/[^a-záéíóúüñ0-9\s]/gi,'').replace(/\s+/g,'-').slice(0,40);
+  var a = document.createElement('a');
+  a.download = 'sq-' + slug + '.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+  /* restore og */
+  iFormat.value = 'og'; render();
+});
+
+/* ─── Init ─── */
+render();
+</script>
+</body>
+</html>
