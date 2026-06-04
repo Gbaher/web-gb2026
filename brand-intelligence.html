@@ -87,7 +87,14 @@
       padding: 9rem 5vw 5rem;
       position: relative; z-index: 1;
       border-bottom: 1px solid var(--border);
+      overflow: hidden;
     }
+    #beamsCanvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+      opacity: 0.85;
+    }
+    .bi-hero .container { position: relative; z-index: 2; }
     .bi-tag {
       display: inline-block; font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.22em; text-transform: uppercase; color: var(--red);
@@ -316,6 +323,7 @@
 
 <!-- HERO -->
 <section class="bi-hero">
+  <canvas id="beamsCanvas" aria-hidden="true"></canvas>
   <div class="container">
     <div class="bi-tag">Brand Intelligence</div>
     <h1 data-i18n="hero_h1">Conocimiento que<br />convierte marcas<br />en <em>ventajas reales.</em></h1>
@@ -435,6 +443,89 @@
 </footer>
 
 <script>
+  // ── Beams Background (Hero) ──────────────────────────────────────
+  (function() {
+    var canvas = document.getElementById('beamsCanvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var beams = [];
+    var raf;
+    var BEAM_COUNT = 28;
+
+    function createBeam(w, h) {
+      return {
+        x: Math.random() * w * 1.5 - w * 0.25,
+        y: Math.random() * h * 1.5 - h * 0.25,
+        width: 40 + Math.random() * 80,
+        length: h * 2.8,
+        angle: -38 + Math.random() * 14,
+        speed: 0.35 + Math.random() * 0.55,
+        opacity: 0.08 + Math.random() * 0.14,
+        hue: 340 + Math.random() * 25,   // 340–365 → deep red to crimson
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.015 + Math.random() * 0.025
+      };
+    }
+
+    function resetBeam(beam, idx) {
+      var col = idx % 3;
+      var spacing = canvas.width / 3;
+      beam.y = canvas.height + 120;
+      beam.x = col * spacing + spacing / 2 + (Math.random() - 0.5) * spacing * 0.5;
+      beam.width = 80 + Math.random() * 120;
+      beam.speed = 0.3 + Math.random() * 0.45;
+      beam.hue = 335 + (idx * 30) / BEAM_COUNT;
+      beam.opacity = 0.07 + Math.random() * 0.1;
+      return beam;
+    }
+
+    function drawBeam(beam) {
+      ctx.save();
+      ctx.translate(beam.x, beam.y);
+      ctx.rotate(beam.angle * Math.PI / 180);
+      var po = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
+      var g = ctx.createLinearGradient(0, 0, 0, beam.length);
+      g.addColorStop(0,   'hsla(' + beam.hue + ',85%,58%,0)');
+      g.addColorStop(0.1, 'hsla(' + beam.hue + ',85%,58%,' + (po * 0.5) + ')');
+      g.addColorStop(0.4, 'hsla(' + beam.hue + ',85%,58%,' + po + ')');
+      g.addColorStop(0.6, 'hsla(' + beam.hue + ',85%,58%,' + po + ')');
+      g.addColorStop(0.9, 'hsla(' + beam.hue + ',85%,58%,' + (po * 0.5) + ')');
+      g.addColorStop(1,   'hsla(' + beam.hue + ',85%,58%,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
+      ctx.restore();
+    }
+
+    function resize() {
+      var dpr = window.devicePixelRatio || 1;
+      var w = canvas.offsetWidth;
+      var h = canvas.offsetHeight;
+      canvas.width  = w * dpr;
+      canvas.height = h * dpr;
+      ctx.scale(dpr, dpr);
+      beams = Array.from({ length: BEAM_COUNT }, function() { return createBeam(w, h); });
+    }
+
+    function animate() {
+      var w = canvas.offsetWidth;
+      var h = canvas.offsetHeight;
+      ctx.clearRect(0, 0, w, h);
+      ctx.filter = 'blur(32px)';
+      beams.forEach(function(beam, idx) {
+        beam.y -= beam.speed;
+        beam.pulse += beam.pulseSpeed;
+        if (beam.y + beam.length < -120) resetBeam(beam, idx);
+        drawBeam(beam);
+      });
+      ctx.filter = 'none';
+      raf = requestAnimationFrame(animate);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    animate();
+  })();
+
   // ── Reveal on scroll ──
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
