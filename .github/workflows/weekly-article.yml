@@ -1,0 +1,157 @@
+name: 🤖 Weekly Brand Intelligence Article
+
+on:
+  # Runs every Thursday at 9:00am UTC (5am EST / 6am EDT)
+  schedule:
+    - cron: '0 9 * * 4'
+
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      article_num:
+        description: 'Article number to generate (leave blank for next in queue)'
+        required: false
+        type: string
+
+# ── JOB 1: Generate article + open PR ────────────────────────────────
+jobs:
+  generate-and-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate article + LinkedIn post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "${{ github.event.inputs.article_num }}" ]; then
+            node scripts/generate-article.js ${{ github.event.inputs.article_num }}
+          else
+            node scripts/generate-article.js
+          fi
+
+      - name: Get article info
+        id: article_info
+        run: |
+          TITLE=$(node -e "
+            const q = JSON.parse(require('fs').readFileSync('content-queue.json','utf8'));
+            const a = q.articles.find(x => x.status === 'published');
+            console.log(a ? a.title_es : 'Brand Intelligence Article');
+          ")
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          NUM=$(node -e "
+            const q = JSON.parse(require('fs').readFileSync('content-queue.json','utf8'));
+            console.log(q.last_published_num);
+          ")
+          echo "num=$NUM" >> $GITHUB_OUTPUT
+
+      - name: Read LinkedIn post draft
+        id: li_post
+        run: |
+          # Escape the post text for GitHub output (handle newlines)
+          POST=$(cat linkedin-post-draft.json | node -e "
+            const d=require('fs').readFileSync('/dev/stdin','utf8');
+            const j=JSON.parse(d);
+            process.stdout.write(j.post_text.replace(/\n/g,'\\n'));
+          ")
+          echo "post_text<<EOF" >> $GITHUB_OUTPUT
+          cat linkedin-post-draft.json | node -e "
+            const d=require('fs').readFileSync('/dev/stdin','utf8');
+            const j=JSON.parse(d);
+            console.log(j.post_text);
+          " >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "feat: BI-${{ steps.article_info.outputs.num }} — auto-generated article"
+          branch: "auto/bi-${{ steps.article_info.outputs.num }}-${{ github.run_number }}"
+          base: master
+          title: "📝 BI-${{ steps.article_info.outputs.num }} — ${{ steps.article_info.outputs.title }}"
+          body: |
+            ## 🤖 Artículo generado automáticamente
+
+            **Título:** ${{ steps.article_info.outputs.title }}
+
+            ### Checklist antes de hacer merge:
+            - [ ] Revisar el artículo en español (ES)
+            - [ ] Revisar el artículo en inglés (EN)
+            - [ ] Revisar el artículo en francés (FR)
+            - [ ] Verificar que el tono es consistente con la marca
+            - [ ] Confirmar que los datos/estadísticas son correctos
+            - [ ] Editar cualquier párrafo que no suene a Germán Baher
+
+            ---
+            ### 💼 LinkedIn post draft (revisar antes del merge):
+            ```
+            ${{ steps.li_post.outputs.post_text }}
+            ```
+            ---
+
+            ### Para publicar:
+            Haz **Merge** de este PR → Vercel despliega en ~30 seg → LinkedIn se publica automáticamente vía Make.com.
+
+            *Generado por el pipeline automático de Brand Intelligence · germanbaher.com*
+          labels: |
+            auto-generated
+            brand-intelligence
+            review-needed
+          draft: false
+
+# ── JOB 2: Send to LinkedIn via Make.com (on PR merge to master) ─────
+  publish-to-linkedin:
+    runs-on: ubuntu-latest
+    needs: []
+    if: |
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/master' &&
+      contains(github.event.head_commit.message, 'auto-generated article')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for LinkedIn post draft
+        id: check
+        run: |
+          if [ -f "linkedin-post-draft.json" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send post to Make.com → LinkedIn
+        if: steps.check.outputs.exists == 'true' && env.MAKE_WEBHOOK_URL != ''
+        env:
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+        run: |
+          echo "📤 Sending LinkedIn post to Make.com..."
+          curl -s -X POST "$MAKE_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d @linkedin-post-draft.json
+          echo "✅ Sent to Make.com successfully"
+
+      - name: Skip LinkedIn (webhook not configured)
+        if: env.MAKE_WEBHOOK_URL == ''
+        env:
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+        run: |
+          echo "⚠️ MAKE_WEBHOOK_URL secret not set. Skipping LinkedIn post."
+          echo "Add MAKE_WEBHOOK_URL to GitHub Secrets to enable auto-posting."
