@@ -237,6 +237,10 @@
     }
     .btn-nav-client:hover { color: var(--white); border-color: rgba(255,255,255,0.35); transform: translateY(-1px); }
     @media (max-width: 600px) { .btn-nav-client { display: none; } }
+    /* Brand Intelligence nav link */
+    .nav-bi { position: relative; color: var(--red) !important; }
+    .nav-bi::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--red); opacity: 0.5; }
+    @media (max-width: 860px) { .nav-bi { display: none; } }
 
     /* ══ DIAGNOSTIC HERO ══ */
     #hero {
@@ -926,11 +930,12 @@
     <img src="assets/brand/logo-full.svg" alt="Germán Baher Growth Brands — Brand Strategy" />
   </a>
   <ul class="nav-links">
-    <li><a href="#sobre"      data-i18n="nav_about">Sobre mí</a></li>
-    <li><a href="/metodologia" data-i18n="nav_method">Metodología</a></li>
-    <li><a href="#servicios"  data-i18n="nav_services">Servicios</a></li>
-    <li><a href="#casos"      data-i18n="nav_cases">Casos</a></li>
-    <li><a href="#contacto"   data-i18n="nav_contact">Contacto</a></li>
+    <li><a href="#sobre"           data-i18n="nav_about">Sobre mí</a></li>
+    <li><a href="/metodologia"     data-i18n="nav_method">Metodología</a></li>
+    <li><a href="#servicios"       data-i18n="nav_services">Servicios</a></li>
+    <li><a href="#casos"           data-i18n="nav_cases">Casos</a></li>
+    <li><a href="/brand-intelligence" data-i18n="nav_bi" class="nav-bi">Brand Intelligence</a></li>
+    <li><a href="#contacto"        data-i18n="nav_contact">Contacto</a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-switcher" id="langSwitcher">
@@ -1902,7 +1907,7 @@
   var _t = {
     es: {
       nav_about:'Sobre mí', nav_method:'Metodología', nav_services:'Servicios',
-      nav_cases:'Casos', nav_contact:'Contacto', nav_cta:'Hablemos', nav_portal:'Acceso Clientes',
+      nav_cases:'Casos', nav_bi:'Brand Intelligence', nav_contact:'Contacto', nav_cta:'Hablemos', nav_portal:'Acceso Clientes',
       about_tag:'Sobre mí',
       about_title:'No construyo<br/>logos. Construyo<br/>posicionamiento.',
       about_p1:'Llevo más de 20 años trabajando en la brecha que existe entre lo que una marca quiere ser y lo que el mercado realmente percibe. Esa brecha tiene un nombre: falta de estrategia. Y tiene solución.',
@@ -2017,7 +2022,7 @@
     },
     en: {
       nav_about:'About', nav_method:'Methodology', nav_services:'Services',
-      nav_cases:'Cases', nav_contact:'Contact', nav_cta:"Let's Talk", nav_portal:'Client Access',
+      nav_cases:'Cases', nav_bi:'Brand Intelligence', nav_contact:'Contact', nav_cta:"Let's Talk", nav_portal:'Client Access',
       about_tag:'About Me',
       about_title:"I don't build<br/>logos. I build<br/>positioning.",
       about_p1:"For over 20 years I've worked in the gap between what a brand wants to be and what the market actually perceives. That gap has a name: lack of strategy. And it has a solution.",
@@ -2131,7 +2136,7 @@
     },
     fr: {
       nav_about:'À propos', nav_method:'Méthode', nav_services:'Services',
-      nav_cases:'Cas', nav_contact:'Contact', nav_cta:'Parlons-en', nav_portal:'Espace Clients',
+      nav_cases:'Cas', nav_bi:'Brand Intelligence', nav_contact:'Contact', nav_cta:'Parlons-en', nav_portal:'Espace Clients',
       about_tag:'À propos',
       about_title:"Je ne construis pas<br/>des logos. Je construis<br/>du positionnement.",
       about_p1:"Depuis plus de 20 ans, je travaille dans l'écart entre ce qu'une marque veut être et ce que le marché perçoit réellement. Cet écart a un nom : manque de stratégie. Et il a une solution.",
