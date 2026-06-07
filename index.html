@@ -1335,6 +1335,11 @@
         <h3 style="font-size:1.1rem;font-weight:700;line-height:1.3;" data-i18n="bi_sub_h3">Recibe el próximo insight directo en tu email.</h3>
         <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);line-height:1.6;" data-i18n="bi_sub_p">Únete a los emprendedores que construyen marcas con estrategia real.</p>
         <form id="biHomeForm" style="display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem;">
+          <!-- Honeypot anti-bot -->
+          <div aria-hidden="true" style="display:none;visibility:hidden;position:absolute;left:-9999px;">
+            <label for="_gotcha_bi">Leave this empty</label>
+            <input type="text" id="_gotcha_bi" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </div>
           <input type="email" name="email" placeholder="Tu email" data-i18n-placeholder="bi_email_ph" required style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:0.7rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;" />
           <button type="submit" data-i18n="bi_sub_btn" style="background:var(--red);color:var(--white);border:none;border-radius:6px;padding:0.7rem;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;">Suscribirme →</button>
         </form>
@@ -1354,6 +1359,9 @@
     var WEBHOOK = 'https://script.google.com/macros/s/AKfycbwnJOX14kd3puq3j2PEy65jvb00fF9S1BuTjfs9onDyLTLEdfRaOzyrRwvsP143XcY5Bw/exec';
     document.getElementById('biHomeForm').addEventListener('submit', async function(e){
       e.preventDefault();
+      // Honeypot check
+      var hpBi = document.getElementById('_gotcha_bi');
+      if (hpBi && hpBi.value.length > 0) return; // bot — discard silently
       var btn = this.querySelector('button');
       btn.textContent = 'Enviando…'; btn.disabled = true;
       var emailVal = this.email.value;
@@ -1407,8 +1415,8 @@
 
           <!-- Honeypot anti-bot (invisible para humanos) -->
           <div aria-hidden="true" style="display:none;visibility:hidden;position:absolute;left:-9999px;">
-            <label for="_hp_field">Leave empty</label>
-            <input type="text" id="_hp_field" name="_hp_field" tabindex="-1" autocomplete="off" />
+            <label for="_gotcha">Leave this empty</label>
+            <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
           </div>
 
           <div class="field">
@@ -1816,7 +1824,7 @@
       e.preventDefault();
 
       // Honeypot check — bots fill hidden fields, humans don't
-      const hp = document.getElementById('_hp_field');
+      const hp = document.getElementById('_gotcha');
       if (hp && hp.value.length > 0) return; // silent discard
 
       const nombre     = document.getElementById('cf-nombre').value.trim();
