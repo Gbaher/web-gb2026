@@ -1,0 +1,96 @@
+name: Generate Weekly Brand Intelligence Article
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  generate-and-open-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Compute week id and branch name
+        id: week
+        run: |
+          WEEK_ID=$(node -e "
+            const d = new Date();
+            const dd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+            const dayNum = (dd.getUTCDay() + 6) % 7;
+            dd.setUTCDate(dd.getUTCDate() - dayNum + 3);
+            const firstThursday = new Date(Date.UTC(dd.getUTCFullYear(), 0, 4));
+            const week = 1 + Math.round(((dd - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
+            console.log(dd.getUTCFullYear() + '-W' + String(week).padStart(2, '0'));
+          ")
+          echo "week_id=$WEEK_ID" >> "$GITHUB_OUTPUT"
+          echo "branch=auto/weekly-article-$WEEK_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Skip if this week's branch already exists (avoid duplicate article)
+        id: guard
+        run: |
+          if git ls-remote --exit-code --heads origin "${{ steps.week.outputs.branch }}" >/dev/null 2>&1; then
+            echo "Branch ${{ steps.week.outputs.branch }} already exists — an article for ${{ steps.week.outputs.week_id }} was already generated. Skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate article (writes repo files only on full success)
+        if: steps.guard.outputs.skip == 'false'
+        id: generate
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/generate-weekly-article.js
+
+      - name: Create branch and commit
+        if: steps.guard.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${{ steps.week.outputs.branch }}"
+          git add -A
+          git commit -m "feat: ${{ steps.generate.outputs.article_id }} — auto-generated weekly article"
+          git push origin "${{ steps.week.outputs.branch }}"
+
+      - name: Open Draft Pull Request
+        if: steps.guard.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base main \
+            --head "${{ steps.week.outputs.branch }}" \
+            --draft \
+            --title "Brand Intelligence — ${{ steps.generate.outputs.article_id }}: ${{ steps.generate.outputs.title }}" \
+            --label "auto-generated" \
+            --label "brand-intelligence" \
+            --body "Artículo generado automáticamente para la semana ${{ steps.week.outputs.week_id }}.
+
+          **ID:** ${{ steps.generate.outputs.article_id }}
+          **Título:** ${{ steps.generate.outputs.title }}
+          **Archivo:** ${{ steps.generate.outputs.html_file }}
+
+          Checklist antes de aprobar y fusionar:
+          - [ ] Revisar el artículo (contenido, tono, exactitud)
+          - [ ] Confirmar que cualquier cifra citada tiene fuente verificable
+          - [ ] Revisar la card añadida en brand-intelligence.html
+          - [ ] Revisar las entradas nuevas en vercel.json y sitemap.xml
+
+          Al fusionar este Pull Request a \`main\`, Vercel publica automáticamente."
