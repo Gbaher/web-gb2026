@@ -8,6 +8,9 @@
 .DS_Store
 Thumbs.db
 
+# Salida de prueba local del generador semanal (nunca se commitea)
+.simulate-output/
+
 # Archivos comprimidos
 *.zip
 
