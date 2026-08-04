@@ -112,8 +112,9 @@
     .bi-cta { margin: 3rem 0 0; padding: 3rem; background: var(--black3); border: 1px solid rgba(237,36,80,0.25); border-radius: 12px; text-align: center; position: relative; overflow: hidden; }
     .bi-cta::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(237,36,80,0.06) 0%, transparent 60%); pointer-events: none; }
     .bi-cta-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; position: relative; z-index: 1; }
-    .bi-cta-link { display: inline-block; background: var(--red); color: var(--white); border: none; border-radius: 6px; padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: opacity 0.2s; position: relative; z-index: 1; }
-    .bi-cta-link:hover { opacity: 0.88; text-decoration: none; }
+    .article-body a.bi-cta-link { display: inline-block; background: var(--red); color: var(--white); border: none; border-radius: 6px; padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: opacity 0.2s; position: relative; z-index: 1; }
+    .article-body a.bi-cta-link:hover { opacity: 0.88; text-decoration: none; color: var(--white); }
+    .bi-cta-logo { display: block; width: 48px; height: 48px; margin: 0 auto 1rem; border-radius: 12px; position: relative; z-index: 1; }
     .cta-form { display: flex; gap: 0.8rem; max-width: 420px; margin: 0 auto 0.8rem; flex-wrap: wrap; }
     .cta-form input { flex: 1; min-width: 160px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 0.75rem 1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
     .cta-form input::placeholder { color: rgba(255,255,255,0.25); }
@@ -346,6 +347,7 @@
     <p class="reveal">Tu primer paso será reconocer dónde estás hoy, mirar tu negocio como un Growth Builder y completar tu primera misión dentro de la comunidad.</p>
 
     <div class="bi-cta reveal">
+      <img src="assets/images/skool-logo.png" alt="Skool" class="bi-cta-logo" />
       <div class="bi-cta-tag">Growth Brands</div>
       <a href="https://www.skool.com/growth-brands-3019/about" target="_blank" rel="noopener" class="bi-cta-link">Comenzar mi primera misión</a>
     </div>
