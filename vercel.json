@@ -104,6 +104,10 @@
     {
       "source": "/bi-004-premiere-impression-marque",
       "destination": "/bi-004-premiere-impression-marque.html"
+    },
+    {
+      "source": "/bi-006-como-construir-comunidad-de-marca",
+      "destination": "/bi-006-como-construir-comunidad-de-marca.html"
     }
   ],
   "redirects": [
@@ -205,6 +209,11 @@
     {
       "source": "/bi-004-premiere-impression-marque.html",
       "destination": "/bi-004-premiere-impression-marque",
+      "permanent": true
+    },
+    {
+      "source": "/bi-006-como-construir-comunidad-de-marca.html",
+      "destination": "/bi-006-como-construir-comunidad-de-marca",
       "permanent": true
     }
   ],
