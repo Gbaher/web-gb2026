@@ -120,6 +120,10 @@
     {
       "source": "/bi-006-como-construir-comunidad-de-marca",
       "destination": "/bi-006-como-construir-comunidad-de-marca.html"
+    },
+    {
+      "source": "/bi-007-emprender-en-la-era-de-la-ia",
+      "destination": "/bi-007-emprender-en-la-era-de-la-ia.html"
     }
   ],
   "redirects": [
@@ -241,6 +245,11 @@
     {
       "source": "/bi-006-como-construir-comunidad-de-marca.html",
       "destination": "/bi-006-como-construir-comunidad-de-marca",
+      "permanent": true
+    },
+    {
+      "source": "/bi-007-emprender-en-la-era-de-la-ia.html",
+      "destination": "/bi-007-emprender-en-la-era-de-la-ia",
       "permanent": true
     }
   ],
