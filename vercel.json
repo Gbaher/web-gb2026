@@ -124,6 +124,10 @@
     {
       "source": "/bi-007-emprender-en-la-era-de-la-ia",
       "destination": "/bi-007-emprender-en-la-era-de-la-ia.html"
+    },
+    {
+      "source": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana",
+      "destination": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana.html"
     }
   ],
   "redirects": [
@@ -250,6 +254,11 @@
     {
       "source": "/bi-007-emprender-en-la-era-de-la-ia.html",
       "destination": "/bi-007-emprender-en-la-era-de-la-ia",
+      "permanent": true
+    },
+    {
+      "source": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana.html",
+      "destination": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana",
       "permanent": true
     }
   ],
