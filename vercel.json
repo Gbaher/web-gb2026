@@ -106,6 +106,18 @@
       "destination": "/bi-004-premiere-impression-marque.html"
     },
     {
+      "source": "/bi-005-precio-no-es-el-problema",
+      "destination": "/bi-005-precio-no-es-el-problema.html"
+    },
+    {
+      "source": "/bi-005-price-is-not-the-problem",
+      "destination": "/bi-005-price-is-not-the-problem.html"
+    },
+    {
+      "source": "/bi-005-le-prix-nest-pas-le-probleme",
+      "destination": "/bi-005-le-prix-nest-pas-le-probleme.html"
+    },
+    {
       "source": "/bi-006-como-construir-comunidad-de-marca",
       "destination": "/bi-006-como-construir-comunidad-de-marca.html"
     }
@@ -209,6 +221,21 @@
     {
       "source": "/bi-004-premiere-impression-marque.html",
       "destination": "/bi-004-premiere-impression-marque",
+      "permanent": true
+    },
+    {
+      "source": "/bi-005-precio-no-es-el-problema.html",
+      "destination": "/bi-005-precio-no-es-el-problema",
+      "permanent": true
+    },
+    {
+      "source": "/bi-005-price-is-not-the-problem.html",
+      "destination": "/bi-005-price-is-not-the-problem",
+      "permanent": true
+    },
+    {
+      "source": "/bi-005-le-prix-nest-pas-le-probleme.html",
+      "destination": "/bi-005-le-prix-nest-pas-le-probleme",
       "permanent": true
     },
     {
