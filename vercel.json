@@ -260,6 +260,56 @@
       "source": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana.html",
       "destination": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana",
       "permanent": true
+    },
+    {
+      "source": "/nosotros",
+      "destination": "/#sobre",
+      "permanent": true
+    },
+    {
+      "source": "/carmax",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sofiaalpaso",
+      "destination": "/case-sofia",
+      "permanent": true
+    },
+    {
+      "source": "/premier",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/quiz",
+      "destination": "/metodologia",
+      "permanent": true
+    },
+    {
+      "source": "/blog/manualdemarca",
+      "destination": "/bi-001-logo-vs-marca",
+      "permanent": true
+    },
+    {
+      "source": "/blog/10-acciones-clave-para-lograr-un-negocio-exitoso-66b27bfb833c5",
+      "destination": "/brand-intelligence",
+      "permanent": true
+    },
+    {
+      "source": "/blog/el-futuro-del-retail-en-bolivia-de-la-tradicion-a-la-innovacion-de-marca-6733c4d48f772",
+      "destination": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana",
+      "permanent": true
+    },
+    {
+      "source": "/blog/el-consumidor-digital-boliviano-un-perfil-en-evolucion-66b16e30867ef",
+      "destination": "/brand-intelligence",
+      "permanent": true
+    },
+    {
+      "source": "/blog/-por-qu-es-importante-invertir-en-marca-pa-s-",
+      "destination": "/metodologia",
+      "permanent": true
     }
   ],
   "headers": [
