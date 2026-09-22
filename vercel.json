@@ -128,6 +128,10 @@
     {
       "source": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana",
       "destination": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana.html"
+    },
+    {
+      "source": "/bi-009-marca-b2b-te-compran-personas",
+      "destination": "/bi-009-marca-b2b-te-compran-personas.html"
     }
   ],
   "redirects": [
@@ -259,6 +263,11 @@
     {
       "source": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana.html",
       "destination": "/bi-008-de-tienda-que-anuncia-a-marca-que-acompana",
+      "permanent": true
+    },
+    {
+      "source": "/bi-009-marca-b2b-te-compran-personas.html",
+      "destination": "/bi-009-marca-b2b-te-compran-personas",
       "permanent": true
     },
     {
