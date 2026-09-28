@@ -7,6 +7,10 @@
 //   node scripts/generate-weekly-article.js            → real run (needs OPENAI_API_KEY), writes repo files.
 //   node scripts/generate-weekly-article.js --simulate  → mock content, no network, no repo writes.
 //                                                          Output preview goes to .simulate-output/.
+//   node scripts/generate-weekly-article.js --from-json ruta.json
+//                                                       → usa un artículo ya escrito (desde la nota de voz
+//                                                          de Germán) en lugar de llamar a OpenAI. Se puede
+//                                                          combinar con --simulate para ver la vista previa.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,6 +18,13 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SIMULATE = process.argv.includes('--simulate');
+const FROM_JSON = (() => {
+  const i = process.argv.indexOf('--from-json');
+  if (i === -1) return null;
+  const p = process.argv[i + 1];
+  if (!p) fail('--from-json necesita la ruta de un archivo JSON.');
+  return path.resolve(process.cwd(), p);
+})();
 const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
 const SITE = 'https://www.germanbaher.com';
 const LOG_PATH = path.join(ROOT, 'data', 'brand-intelligence', 'weekly-article-log.json');
@@ -143,6 +154,15 @@ async function callOpenAI() {
     fail(`Respuesta de OpenAI no es JSON válido: ${e.message}`);
   }
   return parsed;
+}
+
+function readArticleJson(filePath) {
+  if (!fs.existsSync(filePath)) fail(`No existe el archivo ${filePath}.`);
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch (e) {
+    fail(`${filePath} no es JSON válido: ${e.message}`);
+  }
 }
 
 function mockArticle() {
@@ -639,10 +659,10 @@ async function main() {
   const num = nextBiNumber();
   const prev = latestEsArticle();
 
-  const article = SIMULATE ? mockArticle() : await callOpenAI();
+  const article = FROM_JSON ? readArticleJson(FROM_JSON) : SIMULATE ? mockArticle() : await callOpenAI();
   validateArticle(article);
 
-  const slug = slugify(article.title);
+  const slug = slugify(article.slug || article.title);
   const htmlFileName = `bi-${String(num).padStart(3, '0')}-${slug}.html`;
   const canonicalPath = `/bi-${String(num).padStart(3, '0')}-${slug}`;
   const targetHtmlPath = path.join(ROOT, htmlFileName);
