@@ -287,6 +287,43 @@ ${paras}
   return '';
 }
 
+// Botones de compartir: mismos enlaces e íconos que BI-009 y BI-010.
+const SHARE_ICONS = {
+  linkedin: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z',
+  facebook: 'M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z',
+  whatsapp: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z',
+  x: 'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z',
+};
+
+function renderShare(url, title) {
+  const u = net => encodeURIComponent(`${url}?utm_source=${net}&utm_medium=social&utm_campaign=compartir`);
+  const t = encodeURIComponent(title);
+  const btn = (href, label, icon) =>
+    `      <a class="bi-share-btn" href="${href}" target="_blank" rel="noopener" aria-label="Compartir en ${label}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${icon}"/></svg>${label}</a>`;
+  return [
+    '    <div class="bi-share reveal">',
+    '      <span class="bi-share-label">Compartir</span>',
+    btn(`https://www.linkedin.com/sharing/share-offsite/?url=${u('linkedin')}`, 'LinkedIn', SHARE_ICONS.linkedin),
+    btn(`https://www.facebook.com/sharer/sharer.php?u=${u('facebook')}`, 'Facebook', SHARE_ICONS.facebook),
+    btn(`https://wa.me/?text=${t}%20${u('whatsapp')}`, 'WhatsApp', SHARE_ICONS.whatsapp),
+    btn(`https://x.com/intent/post?url=${u('x')}&amp;text=${t}&amp;via=germanbaher`, 'X', SHARE_ICONS.x),
+    '    </div>',
+  ].join('\n');
+}
+
+// En la nota anterior, el enlace de la derecha de bi-nav-bottom pasa a apuntar a la nueva.
+function updatePrevNav(prev, canonicalPath, label) {
+  if (!prev) return null;
+  const filePath = path.join(ROOT, prev.file);
+  const original = fs.readFileSync(filePath, 'utf8');
+  const re = /(<div class="bi-nav-bottom">[\s\S]*?<\/a>\s*)<a href="[^"]*" class="bi-nav-link">\s*[^<]*?(\s*<svg)/;
+  if (!re.test(original)) {
+    console.warn(`AVISO: no se encontró el enlace siguiente en ${prev.file}; queda sin actualizar.`);
+    return null;
+  }
+  return original.replace(re, `$1<a href="${canonicalPath}" class="bi-nav-link">\n    ${escapeHtml(label)}$2`);
+}
+
 function renderArticleHtml({ a, num, slug, canonicalPath, publishedDate, prev }) {
   const url = `${SITE}${canonicalPath}`;
   const takeaways = a.takeaways.map(t => `        <li><strong>${escapeHtml(t.bold)}</strong> ${t.text}</li>`).join('\n');
@@ -314,6 +351,8 @@ function renderArticleHtml({ a, num, slug, canonicalPath, publishedDate, prev })
   <meta name="author" content="Germán Baher" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="${url}" />
+  <link rel="alternate" hreflang="es" href="${url}" />
+  <link rel="alternate" hreflang="x-default" href="${url}" />
   <link rel="icon" type="image/svg+xml" href="assets/brand/icon-red.svg" />
 
   <meta property="og:site_name" content="Germán Baher — Brand Intelligence" />
@@ -459,6 +498,24 @@ ${faqEntities}
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.on { opacity: 1; transform: none; }
     @media (max-width: 600px) { .bi-compare { grid-template-columns: 1fr; } .article-hero h1 { font-size: 2rem; } .cta-form { flex-direction: column; } }
+    /* Componentes de las notas BI-009 en adelante */
+    .article-body h2 { margin-top: 3rem; }
+    h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.9rem; margin-top: 2rem; line-height: 1.3; }
+    .article-body ul, .article-body ol { margin: 0 0 1.4rem 1.4rem; }
+    .article-body li { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.72); margin-bottom: 0.5rem; }
+    .article-body a { color: var(--red); font-weight: 600; text-decoration: none; }
+    .article-body a:hover { text-decoration: underline; }
+    .bi-takeaways ol { margin: 0; }
+    .bi-cta-tag { position: relative; z-index: 1; }
+    .article-body a.bi-cta-link { display: inline-block; background: var(--red); color: var(--white); border: none; border-radius: 6px; padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: opacity 0.2s; position: relative; z-index: 1; }
+    .article-body a.bi-cta-link:hover { opacity: 0.88; text-decoration: none; color: var(--white); }
+    .bi-cta-logo { display: block; width: 48px; height: 48px; margin: 0 auto 1rem; border-radius: 12px; position: relative; z-index: 1; }
+    .bi-share { display: flex; align-items: center; flex-wrap: wrap; gap: 0.7rem; margin-top: 3rem; padding-top: 1.8rem; border-top: 1px solid var(--border); }
+    .bi-share-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+    .article-body a.bi-share-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+    .article-body a.bi-share-btn:hover { border-color: var(--red); color: #fff; background: rgba(237,36,80,0.1); text-decoration: none; }
+    .bi-share-btn svg { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
+    @media (max-width: 600px) { .bi-share-label { width: 100%; } }
   </style>
 </head>
 <body>
@@ -510,7 +567,16 @@ ${takeaways}
 
     <p class="reveal">${a.closing_paragraph}</p>
 
+    <p class="reveal">Growth Brands es una comunidad creada para ayudarte a pensar con más claridad antes de ejecutar. Aprendemos a observar, diagnosticar y construir negocios desde las tres dimensiones de FTD: lo que las personas sienten, lo que hacen y lo que finalmente piensan.</p>
+    <p class="reveal">Tu primer paso será reconocer dónde estás hoy, mirar tu negocio como un Growth Builder y completar tu primera misión dentro de la comunidad.</p>
+
     <div class="bi-cta reveal">
+      <img src="assets/images/skool-logo.png" alt="Skool" class="bi-cta-logo" />
+      <div class="bi-cta-tag">Growth Brands</div>
+      <a href="https://www.skool.com/growth-brands-3019/about" target="_blank" rel="noopener" class="bi-cta-link">Comenzar mi primera misión</a>
+    </div>
+
+    <div class="bi-cta reveal" style="margin-top:2rem;">
       <div class="bi-cta-tag">Brand Intelligence — Semanal</div>
       <h3>El próximo insight llega la semana que viene.</h3>
       <p>Análisis de marca que te hace pensar — directo en tu email.</p>
@@ -522,6 +588,8 @@ ${takeaways}
       <p class="cta-note">Sin spam. Cancelas cuando quieras.</p>
       <div class="cta-success" id="ctaSuccess">✓ ¡Perfecto! Te avisamos con el próximo <span>Brand Intelligence.</span></div>
     </div>
+
+${renderShare(url, a.title)}
 
     <div class="bi-author reveal">
       <img src="assets/images/german-portrait-main.webp" alt="Germán Baher — Brand Strategist" />
@@ -676,6 +744,8 @@ async function main() {
   const updatedBiHtml = updateBrandIntelligenceHtml(cardHtml);
   const updatedVercelJson = updateVercelJson(canonicalPath, htmlFileName);
   const updatedSitemap = updateSitemap(canonicalPath, publishedDate);
+  const navLabel = `BI-${String(num).padStart(3, '0')}: ${article.breadcrumb_label || article.title}`;
+  const updatedPrevHtml = updatePrevNav(prev, canonicalPath, navLabel);
 
   const logEntry = {
     id: `bi-${String(num).padStart(3, '0')}`,
@@ -694,6 +764,7 @@ async function main() {
     fs.writeFileSync(path.join(outDir, 'brand-intelligence.html'), updatedBiHtml);
     fs.writeFileSync(path.join(outDir, 'vercel.json'), updatedVercelJson);
     fs.writeFileSync(path.join(outDir, 'sitemap.xml'), updatedSitemap);
+    if (updatedPrevHtml) fs.writeFileSync(path.join(outDir, prev.file), updatedPrevHtml);
     fs.writeFileSync(path.join(outDir, 'weekly-article-log-entry.json'), JSON.stringify(logEntry, null, 2) + '\n');
 
     console.log('\n--- SIMULACIÓN COMPLETA ---');
@@ -714,6 +785,7 @@ async function main() {
   fs.writeFileSync(path.join(ROOT, 'brand-intelligence.html'), updatedBiHtml);
   fs.writeFileSync(path.join(ROOT, 'vercel.json'), updatedVercelJson);
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), updatedSitemap);
+  if (updatedPrevHtml) fs.writeFileSync(path.join(ROOT, prev.file), updatedPrevHtml);
 
   fs.mkdirSync(path.dirname(LOG_PATH), { recursive: true });
   const log = fs.existsSync(LOG_PATH) ? JSON.parse(fs.readFileSync(LOG_PATH, 'utf8')) : { entries: [] };
@@ -723,7 +795,7 @@ async function main() {
   console.log('\n--- GENERACIÓN COMPLETA ---');
   console.log(`Archivo creado: ${htmlFileName}`);
   console.log(`ID: ${logEntry.id}  Ruta: ${canonicalPath}`);
-  console.log('Archivos modificados: brand-intelligence.html, vercel.json, sitemap.xml');
+  console.log(`Archivos modificados: brand-intelligence.html, vercel.json, sitemap.xml${updatedPrevHtml ? `, ${prev.file}` : ''}`);
   console.log(`Log actualizado: ${path.relative(ROOT, LOG_PATH)}`);
 
   // Emit machine-readable outputs for the GitHub Actions workflow.
