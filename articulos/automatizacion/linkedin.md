@@ -8,7 +8,7 @@ Objetivo: que cada artículo aprobado salga en LinkedIn una sola vez, después d
 
 2. Para cada una:
    1. Lee en `main` el archivo `.md` de `articulos/04-publicados/` que agregó esa propuesta. Toma la sección `## LinkedIn` y el campo `url`.
-   2. Comprueba que la página ya responde en la web (código 200). Si todavía no, déjala para la próxima revisión.
+   2. Confirma que la propuesta se fusionó hace al menos 15 minutos, para que Vercel ya haya publicado. No intentes abrir germanbaher.com desde la sesión, porque la red del entorno no lo permite. Si se fusionó hace menos, déjala para la próxima revisión.
    3. Reemplaza `{url}` por la dirección del artículo.
    4. Revisa en Zapier que exista una conexión de LinkedIn. Si no existe:
       - Si la propuesta ya tiene la etiqueta `linkedin-sin-conexion`, termina sin hacer nada.
