@@ -8,12 +8,12 @@ Objetivo: que cada artículo aprobado salga en LinkedIn una sola vez, después d
 
 2. Para cada una:
    1. Lee en `main` el archivo `.md` de `articulos/04-publicados/` que agregó esa propuesta. Toma la sección `## LinkedIn` y el campo `url`.
-   2. Comprueba que la página ya responde en la web (código 200). Si todavía no, déjala para la próxima revisión.
+   2. Confirma que la propuesta se fusionó hace al menos 15 minutos, para que Vercel ya haya publicado. No intentes abrir germanbaher.com desde la sesión, porque la red del entorno no lo permite. Si se fusionó hace menos, déjala para la próxima revisión.
    3. Reemplaza `{url}` por la dirección del artículo.
-   4. Revisa en Zapier que exista una conexión de LinkedIn. Si no existe:
+   4. Revisa en Zapier que exista una conexión de LinkedIn (`list_zapier_connections` con `LinkedInCLIAPI`) y que no esté vencida (`is_stale`). Si no existe:
       - Si la propuesta ya tiene la etiqueta `linkedin-sin-conexion`, termina sin hacer nada.
       - Si no la tiene, envía a gbaher03@gmail.com un correo con el asunto `Falta conectar LinkedIn` que explique en dos frases que el artículo ya está en la web pero el post no pudo salir, con el enlace para conectar LinkedIn en Zapier que te dé la herramienta de conexiones. Agrega la etiqueta `linkedin-sin-conexion` y termina.
-   5. Publica el post en el perfil personal de Germán con la acción de LinkedIn de Zapier para compartir una actualización, con el texto y el enlace. Visibilidad pública.
+   5. Publica el post en el perfil personal de Germán con Zapier. App `LinkedInCLIAPI`, acción `share`, con la conexión por defecto (la cuenta "Germán Baher"). Parámetros: `comment` con el texto del post, `visibility__code` en `anyone` y `content__submitted_url` con la dirección del artículo. Antes de ejecutar, confirma el esquema con `inspect_zapier_actions`. El texto no puede pasar de 3000 caracteres.
    6. Si salió bien, agrega la etiqueta `linkedin-publicado` a la propuesta y deja un comentario con el enlace al post, si Zapier lo devuelve.
    7. Si falló, no agregues la etiqueta. Envía un correo a gbaher03@gmail.com con el asunto `No se pudo publicar en LinkedIn` y el error en una frase.
 
