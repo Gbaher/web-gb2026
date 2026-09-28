@@ -132,6 +132,10 @@
     {
       "source": "/bi-009-marca-b2b-te-compran-personas",
       "destination": "/bi-009-marca-b2b-te-compran-personas.html"
+    },
+    {
+      "source": "/bi-010-empresa-lista-para-la-ia",
+      "destination": "/bi-010-empresa-lista-para-la-ia.html"
     }
   ],
   "redirects": [
@@ -268,6 +272,11 @@
     {
       "source": "/bi-009-marca-b2b-te-compran-personas.html",
       "destination": "/bi-009-marca-b2b-te-compran-personas",
+      "permanent": true
+    },
+    {
+      "source": "/bi-010-empresa-lista-para-la-ia.html",
+      "destination": "/bi-010-empresa-lista-para-la-ia",
       "permanent": true
     },
     {
