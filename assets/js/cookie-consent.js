@@ -243,7 +243,7 @@
     .gb-banner-actions{display:flex;gap:.6rem;flex-wrap:wrap;flex-shrink:0;}
     .gb-btn{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:4px;padding:.55rem 1.1rem;cursor:pointer;transition:opacity .2s,transform .15s;white-space:nowrap;}
     .gb-btn:hover{opacity:.88;transform:translateY(-1px);}
-    .gb-btn-primary{background:#ed2450;color:#fff;}
+    .gb-btn-primary{background:#c71940;color:#fff;}
     .gb-btn-ghost{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);}
     .gb-btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.4);}
     .gb-btn-link{background:none;border:none;color:rgba(255,255,255,.35);font-size:.72rem;padding:.4rem .6rem;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px;}
@@ -275,6 +275,7 @@
     .gb-toggle input{opacity:0;width:0;height:0;position:absolute;}
     .gb-toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,.12);border-radius:22px;cursor:pointer;transition:background .2s;}
     .gb-toggle-slider::before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform .2s;}
+    .gb-toggle input:focus-visible+.gb-toggle-slider{outline:2px solid #fff;outline-offset:3px;}
     .gb-toggle input:checked+.gb-toggle-slider{background:#ed2450;}
     .gb-toggle input:checked+.gb-toggle-slider::before{transform:translateX(18px);}
     .gb-toggle input:disabled+.gb-toggle-slider{background:rgba(237,36,80,.4);cursor:not-allowed;}
@@ -466,11 +467,11 @@
         <div class="gb-category">
           <div class="gb-cat-header">
             <div>
-              <div class="gb-cat-name">${cat.name}</div>
+              <div class="gb-cat-name" id="gb-cat-${key}">${cat.name}</div>
               ${locked ? '<span class="gb-locked-badge">Siempre activo</span>' : ''}
             </div>
             <label class="gb-toggle">
-              <input type="checkbox" data-cat="${key}"
+              <input type="checkbox" data-cat="${key}" aria-labelledby="gb-cat-${key}"
                 ${locked ? 'checked disabled' : ''}
                 ${key === 'analytics' ? 'checked' : ''}
               />

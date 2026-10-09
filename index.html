@@ -919,6 +919,23 @@
       .stats { gap: 1.8rem; }
     }
   </style>
+<style>
+  /* Performance and readability: retain the palette with a static mobile hero. */
+  #hero { background: radial-gradient(ellipse at 25% 35%, #40101b, #080808 70%); }
+  .btn-nav, .diag-cta, .btn-submit { background: #c71940; }
+  .footer-copy, .footer-disclaimer, .footer-legal, .footer-legal a { color: #a8a8a8; }
+  .diag-dot { transition: transform .4s, opacity .4s; }
+  .pulse, .apply-dot, .serv-new-badge { animation: none; }
+  :focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+  @media (max-width: 900px) {
+    nav, .diag-name-input, .diag-card, .diag-opt { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
 </head>
 <body>
 
@@ -927,7 +944,7 @@
 <!-- ── NAV ── -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <img src="assets/brand/logo-full.svg" alt="Germán Baher Growth Brands — Brand Strategy" />
+    <img src="assets/brand/logo-full.svg" alt="Germán Baher Growth Brands — Brand Strategy" width="225" height="245" />
   </a>
   <ul class="nav-links">
     <li><a href="#sobre"           data-i18n="nav_about">Sobre mí</a></li>
@@ -979,7 +996,7 @@
   <div class="container">
     <div class="sobre-grid">
       <div class="sobre-img reveal">
-        <img src="assets/images/german-portrait-main.webp" alt="Germán Baher — Brand Strategist y Consultor de Marca" />
+        <img src="assets/images/german-portrait-main-400.webp" srcset="assets/images/german-portrait-main-200.webp 200w, assets/images/german-portrait-main-400.webp 400w" sizes="(max-width: 900px) 160px, 200px" alt="Germán Baher — Brand Strategist y Consultor de Marca" loading="lazy" decoding="async" width="400" height="400" />
       </div>
       <div class="sobre-text">
         <span class="s-tag reveal" data-i18n="about_tag">Sobre mí</span>
@@ -1080,7 +1097,7 @@
 
       <div class="met-card reveal">
         <div class="met-icon">
-          <img src="assets/brand/fdt-feeling.svg" alt="Feeling" />
+          <img src="assets/brand/fdt-feeling.svg" alt="Feeling" loading="lazy" decoding="async" width="550" height="612" />
         </div>
         <span class="met-label">Feeling</span>
         <h3 data-i18n="fdt_f_title">Sentir<br />la marca</h3>
@@ -1089,7 +1106,7 @@
 
       <div class="met-card reveal">
         <div class="met-icon">
-          <img src="assets/brand/fdt-doing.svg" alt="Doing" />
+          <img src="assets/brand/fdt-doing.svg" alt="Doing" loading="lazy" decoding="async" width="522" height="612" />
         </div>
         <span class="met-label">Doing</span>
         <h3 data-i18n="fdt_d_title">Hacer<br />la marca</h3>
@@ -1098,7 +1115,7 @@
 
       <div class="met-card reveal">
         <div class="met-icon">
-          <img src="assets/brand/fdt-thinking.svg" alt="Thinking" />
+          <img src="assets/brand/fdt-thinking.svg" alt="Thinking" loading="lazy" decoding="async" width="534" height="612" />
         </div>
         <span class="met-label">Thinking</span>
         <h3 data-i18n="fdt_t_title">Pensar<br />la marca</h3>
@@ -1193,8 +1210,8 @@
 
       <div class="caso-card reveal">
         <div class="caso-img-wrap">
-          <img class="caso-img-color" src="assets/images/case-1-color.webp" alt="Sofía Al Paso" />
-          <img class="caso-img-bw" src="assets/images/case-1-bw.webp" alt="Sofía Al Paso BW" />
+          <img class="caso-img-color" src="assets/images/case-1-color-960.webp" srcset="assets/images/case-1-color-480.webp 480w, assets/images/case-1-color-960.webp 960w" sizes="(max-width: 900px) 90vw, 340px" alt="Sofía Al Paso" loading="lazy" decoding="async" width="960" height="536" />
+          <img class="caso-img-bw" src="assets/images/case-1-bw-960.webp" srcset="assets/images/case-1-bw-480.webp 480w, assets/images/case-1-bw-960.webp 960w" sizes="(max-width: 900px) 90vw, 340px" alt="Sofía Al Paso BW" loading="lazy" decoding="async" width="960" height="536" />
         </div>
         <div class="caso-body">
           <span class="caso-tag">Brand Strategy · Retail</span>
@@ -1208,8 +1225,8 @@
 
       <div class="caso-card reveal">
         <div class="caso-img-wrap">
-          <img class="caso-img-color" src="assets/images/case-2-color.webp" alt="Alalay" />
-          <img class="caso-img-bw" src="assets/images/case-2-bw.webp" alt="Alalay BW" />
+          <img class="caso-img-color" src="assets/images/case-2-color.webp" alt="Alalay" loading="lazy" decoding="async" width="2752" height="1536" />
+          <img class="caso-img-bw" src="assets/images/case-2-bw.webp" alt="Alalay BW" loading="lazy" decoding="async" width="2752" height="1536" />
         </div>
         <div class="caso-body">
           <span class="caso-tag">Nonprofit · FDT Method</span>
@@ -1223,8 +1240,8 @@
 
       <div class="caso-card reveal">
         <div class="caso-img-wrap">
-          <img class="caso-img-color" src="assets/images/case-3-color.webp" alt="Bodega PIL" />
-          <img class="caso-img-bw" src="assets/images/case-3-bw.webp" alt="Bodega PIL BW" />
+          <img class="caso-img-color" src="assets/images/case-3-color.webp" alt="Bodega PIL" loading="lazy" decoding="async" width="1920" height="1080" />
+          <img class="caso-img-bw" src="assets/images/case-3-bw.webp" alt="Bodega PIL BW" loading="lazy" decoding="async" width="2752" height="1536" />
         </div>
         <div class="caso-body">
           <span class="caso-tag">Retail Branding · Shopper</span>
@@ -1245,12 +1262,12 @@
   <div class="container">
     <p class="marcas-label reveal" data-i18n="brands_label">Marcas con las que he trabajado</p>
     <div class="marcas-row">
-      <div class="marca-logo reveal"><img src="assets/logos/sofia_al_paso.svg" alt="Sofía Al Paso" /></div>
-      <div class="marca-logo reveal"><img src="assets/logos/alalay.svg" alt="Alalay" /></div>
-      <div class="marca-logo reveal"><img src="assets/logos/Bodega.svg" alt="Bodega" /></div>
-      <div class="marca-logo reveal"><img src="assets/logos/greenfield.svg" alt="Greenfield" /></div>
-      <div class="marca-logo reveal"><img src="assets/logos/irradia.svg" alt="Irradia" /></div>
-      <div class="marca-logo reveal"><img src="assets/logos/becycle.svg" alt="Becycle" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/sofia_al_paso.svg" alt="Sofía Al Paso" loading="lazy" decoding="async" width="314" height="118" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/alalay.svg" alt="Alalay" loading="lazy" decoding="async" width="170" height="118" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/Bodega.svg" alt="Bodega" loading="lazy" decoding="async" width="287" height="118" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/greenfield.svg" alt="Greenfield" loading="lazy" decoding="async" width="170" height="118" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/irradia.svg" alt="Irradia" loading="lazy" decoding="async" width="170" height="118" /></div>
+      <div class="marca-logo reveal"><img src="assets/logos/becycle.svg" alt="Becycle" loading="lazy" decoding="async" width="353" height="345" /></div>
     </div>
   </div>
 </section>
@@ -1269,7 +1286,7 @@
             <span class="testi-name">Daniela Téllez</span>
             <span class="testi-role">Sofía al Paso</span>
           </div>
-          <img class="testi-logo" src="assets/logos/sofia_al_paso.svg" alt="Sofía al Paso" />
+          <img class="testi-logo" src="assets/logos/sofia_al_paso.svg" alt="Sofía al Paso" loading="lazy" decoding="async" width="314" height="118" />
         </div>
       </div>
 
@@ -1280,7 +1297,7 @@
             <span class="testi-name">Claudia González</span>
             <span class="testi-role">Fundación Alalay</span>
           </div>
-          <img class="testi-logo" src="assets/logos/alalay.svg" alt="Alalay" />
+          <img class="testi-logo" src="assets/logos/alalay.svg" alt="Alalay" loading="lazy" decoding="async" width="170" height="118" />
         </div>
       </div>
 
@@ -1291,7 +1308,7 @@
             <span class="testi-name">Laura Lozano</span>
             <span class="testi-role">Bodega PIL</span>
           </div>
-          <img class="testi-logo" src="assets/logos/Bodega.svg" alt="Bodega PIL" />
+          <img class="testi-logo" src="assets/logos/Bodega.svg" alt="Bodega PIL" loading="lazy" decoding="async" width="287" height="118" />
         </div>
       </div>
 
@@ -1520,79 +1537,7 @@
   });
 </script>
 
-<!-- ── GSAP + Typewriter hero ── -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script>
-  function startHeroTypewriter() {
-    var el = document.querySelector('#diagContent .diag-h');
-    if (!el) return;
 
-    var html = el.innerHTML;
-    el.innerHTML = '';
-
-    // Cursor
-    var cur = document.createElement('span');
-    cur.className = 'type-cursor';
-    el.appendChild(cur);
-
-    // Parse HTML → segments [{text, em, br}]
-    var segments = [];
-    var lines = html.split(/<br\s*\/?>/i);
-    lines.forEach(function(line, li) {
-      var parts = line.split(/(<em>|<\/em>)/i);
-      var inEm = false;
-      parts.forEach(function(p) {
-        if (/^<em>$/i.test(p))  { inEm = true;  return; }
-        if (/^<\/em>$/i.test(p)){ inEm = false; return; }
-        if (p) segments.push({ text: p, em: inEm });
-      });
-      if (li < lines.length - 1) segments.push({ br: true });
-    });
-
-    var si = 0, ci = 0;
-    var SPEED    = 38;  // ms por carácter
-    var BR_PAUSE = 160; // ms entre líneas
-
-    function tick() {
-      if (si >= segments.length) return; // done — cursor stays blinking
-
-      var seg = segments[si];
-
-      if (seg.br) {
-        el.insertBefore(document.createElement('br'), cur);
-        si++; ci = 0;
-        setTimeout(tick, BR_PAUSE);
-        return;
-      }
-
-      if (ci < seg.text.length) {
-        var ch = seg.text[ci];
-        if(ch === ' '){ el.insertBefore(document.createTextNode(' '), cur); }
-        else {
-          var span = document.createElement('span');
-          span.textContent = ch;
-          span.className   = 'type-char' + (seg.em ? ' type-em' : '');
-          el.insertBefore(span, cur);
-          if(typeof gsap !== 'undefined'){
-            gsap.fromTo(span,
-              { opacity: 0, y: -5, scaleY: 1.3, transformOrigin: 'bottom center' },
-              { opacity: 1, y:  0, scaleY: 1,   duration: 0.08, ease: 'power2.out' }
-            );
-          }
-        }
-
-        ci++;
-        // Velocidad ligeramente variable para sentirse natural
-        setTimeout(tick, SPEED + (Math.random() * 18 - 9));
-      } else {
-        si++; ci = 0;
-        setTimeout(tick, 50);
-      }
-    }
-
-    setTimeout(tick, 350);
-  }
-</script>
 
 <script>
   var _diagName = '';
@@ -1611,6 +1556,7 @@
     }
     // enter key on name input
     var inp = document.getElementById('diagName');
+    if (inp) inp.setAttribute('aria-label', inp.placeholder);
     if (inp) inp.addEventListener('keydown', function(e){ if(e.key==='Enter') diagSubmitName(); });
   }
 
@@ -1762,7 +1708,7 @@
         '<p class="diag-sub" style="margin-bottom:1.8rem;">Tu diagnóstico ya reveló dónde está el bloqueo.</p>' +
         '<button type="button" class="diag-cta pulse" data-cal-link="german-baher-njlkqp" data-cal-config=\'{"layout":"month_view"}\'>' +
           'Agendar mi sesión estratégica ' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
         '</button>' +
         '<p class="diag-scarcity">Solo acepto <span>un número limitado</span> de proyectos por mes.</p>' +
       '</div>'
@@ -1796,7 +1742,7 @@
       '</div>' +
       '<button class="diag-cta pulse" type="button" onclick="diagSubmitName()">' +
         'Comenzar diagnóstico ' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
       '</button>' +
       '<p style="font-size:.68rem;color:rgba(255,255,255,.2);margin-top:1.2rem;letter-spacing:.08em;">BASADO EN LA METODOLOGÍA · FEELING · DOING · THINKING</p>' +
     '</div>'
@@ -2260,6 +2206,7 @@
 
   function applyLang(lang) {
     _lang = lang;
+    document.documentElement.lang = lang;
     // Update buttons
     document.querySelectorAll('.lang-btn').forEach(function(b){
       b.classList.toggle('active', b.dataset.lang === lang);
@@ -2291,12 +2238,12 @@
         '</div>' +
         '<button class="diag-cta pulse" type="button" onclick="diagSubmitName()">' +
           _t[lang].diag_cta_btn +
-          ' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+          ' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
         '</button>' +
         '<p style="font-size:.68rem;color:rgba(255,255,255,.2);margin-top:1.2rem;letter-spacing:.08em;">' + _t[lang].diag_fdt_tag + '</p>' +
       '</div>'
     );
-    localStorage.setItem('gb_lang', lang);
+    try { localStorage.setItem('gb_lang', lang); } catch (e) {}
   }
 
   // Patch diagnostic render functions to use current language
@@ -2392,7 +2339,7 @@
       '<div class="score-rings">'+rings+'</div><div class="score-insight">'+insight+'</div>' +
       '<p class="diag-h" style="font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:.6rem;">'+t.r_close+'</p>' +
       '<p class="diag-sub" style="margin-bottom:1.8rem;">'+t.r_close_sub+'</p>' +
-      '<button type="button" class="diag-cta pulse" data-cal-link="german-baher-njlkqp" data-cal-config=\'{"layout":"month_view"}\'>'+t.r_cta_btn+' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>' +
+      '<button type="button" class="diag-cta pulse" data-cal-link="german-baher-njlkqp" data-cal-config=\'{"layout":"month_view"}\'>'+t.r_cta_btn+' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>' +
       '<p class="diag-scarcity">'+t.r_scarcity+'</p></div>');
     setTimeout(function(){
       pcts.forEach(function(p,i){
@@ -2418,20 +2365,14 @@
     if (btn) applyLang(btn.dataset.lang);
   });
 
-  // Init: saved lang → IP detect → apply
+  // Saved preference, then browser language; render without a geolocation request.
   (function initLang(){
-    var saved = localStorage.getItem('gb_lang');
-    if (saved && _t[saved]) { applyLang(saved); return; }
-    fetch('https://ipapi.co/json/')
-      .then(function(r){ return r.json(); })
-      .then(function(d){
-        var country = (d.country_code || '').toUpperCase();
-        var es = ['ES','MX','AR','CO','CL','PE','VE','EC','BO','PY','UY','CR','PA','DO','CU','GT','HN','SV','NI','PR','GQ'];
-        var fr = ['FR','BE','CH','LU','MC','SN','CI','CM','CD','MG','BF','ML','NE','TG','BJ','GA','CG','CF','TD','DZ','TN','MA'];
-        var lang = fr.indexOf(country) > -1 ? 'fr' : es.indexOf(country) > -1 ? 'es' : 'en';
-        applyLang(lang);
-      })
-      .catch(function(){ applyLang('es'); });
+    var saved;
+    try { saved = localStorage.getItem('gb_lang'); } catch (e) {}
+    var preferred = (navigator.languages || [navigator.language || 'es'])
+      .map(function(value){ return value.toLowerCase().split('-')[0]; })
+      .find(function(value){ return !!_t[value]; });
+    applyLang(saved && _t[saved] ? saved : preferred || 'es');
   })();
 
   // ── Counter animation ──
@@ -2493,68 +2434,16 @@ Cal("ui", {
 });
 </script>
 
-<script>
-/* ── Hero Typewriter ── */
-(function(){
-  var SPEED=38, BR=160, DELAY=350, active=false;
 
-  function go(el) {
-    if (active) return; active = true;
-    var src = el.innerHTML;
-    el.innerHTML = '';
-    var cur = document.createElement('span');
-    cur.className = 'type-cursor';
-    el.appendChild(cur);
-
-    var segs = [], lines = src.split(/<br\s*\/?>/i);
-    lines.forEach(function(line, li){
-      var parts = line.split(/(<em>|<\/em>)/i), inEm=false;
-      parts.forEach(function(p){
-        if(/^<em>$/i.test(p)){inEm=true;return;}
-        if(/^<\/em>$/i.test(p)){inEm=false;return;}
-        if(p) segs.push({text:p, em:inEm});
-      });
-      if(li < lines.length-1) segs.push({br:true});
-    });
-
-    var si=0, ci=0;
-    function tick(){
-      if(si>=segs.length) return;
-      var s=segs[si];
-      if(s.br){ el.insertBefore(document.createElement('br'),cur); si++;ci=0; setTimeout(tick,BR); return; }
-      if(ci<s.text.length){
-        var ch=s.text[ci];
-        if(ch===' '){ el.insertBefore(document.createTextNode(' '),cur); }
-        else {
-          var sp=document.createElement('span');
-          sp.textContent=ch;
-          sp.className='type-char'+(s.em?' type-em':'');
-          el.insertBefore(sp,cur);
-        }
-        ci++; setTimeout(tick, SPEED+(Math.random()*16-8));
-      } else { si++;ci=0; setTimeout(tick,50); }
-    }
-    setTimeout(tick, DELAY);
-  }
-
-  function tryStart(){
-    var h1 = document.querySelector('#diagContent .diag-h');
-    if(h1 && h1.textContent.trim() && !active) go(h1);
-  }
-
-  var shell = document.getElementById('diagContent');
-  if(shell){
-    new MutationObserver(tryStart).observe(shell,{childList:true,subtree:true});
-    tryStart(); // por si ya renderizó
-  }
-})();
-</script>
 
 <!-- ── Mesh Gradient Shader (Hero) ────────────────────────────────── -->
 <script>
 (function(){
   var canvas = document.getElementById('meshCanvas');
   if (!canvas) return;
+  var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile = window.matchMedia('(max-width: 900px)');
+  if (motion.matches || mobile.matches) { canvas.style.display = 'none'; return; }
   var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
   if (!gl) { canvas.style.display = 'none'; return; }
 
@@ -2661,23 +2550,40 @@ Cal("ui", {
   COLORS.forEach(function(c,i){ gl.uniform3fv(uC[i], c); });
 
   function resize(){
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var dpr = Math.min(window.devicePixelRatio || 1, 1);
     var w = canvas.offsetWidth, h = canvas.offsetHeight;
     canvas.width = w * dpr; canvas.height = h * dpr;
     gl.viewport(0,0,canvas.width,canvas.height);
     gl.uniform2f(uRes, canvas.width, canvas.height);
   }
 
-  var start = performance.now();
-  function frame(){
-    gl.uniform1f(uT, (performance.now() - start) / 1000);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    requestAnimationFrame(frame);
+  var start = performance.now(), raf = 0, lastFrame = 0, visible = true;
+  function canAnimate(){ return visible && !document.hidden && !motion.matches && !mobile.matches; }
+  function frame(now){
+    raf = 0;
+    if (!canAnimate()) return;
+    if (now - lastFrame >= 1000 / 24) {
+      gl.uniform1f(uT, (now - start) / 1000);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      lastFrame = now;
+    }
+    raf = requestAnimationFrame(frame);
   }
-
+  function syncAnimation(){
+    canvas.style.display = motion.matches || mobile.matches ? 'none' : '';
+    if (canAnimate() && !raf) raf = requestAnimationFrame(frame);
+    else if (!canAnimate() && raf) { cancelAnimationFrame(raf); raf = 0; }
+  }
   resize();
   window.addEventListener('resize', resize);
-  frame();
+  document.addEventListener('visibilitychange', syncAnimation);
+  motion.addEventListener('change', syncAnimation);
+  mobile.addEventListener('change', syncAnimation);
+  new IntersectionObserver(function(entries){
+    visible = entries[0].isIntersecting;
+    syncAnimation();
+  }).observe(document.getElementById('hero'));
+  syncAnimation();
 })();
 </script>
 <script src="assets/js/cookie-consent.js"></script>
