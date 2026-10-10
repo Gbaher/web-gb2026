@@ -133,7 +133,10 @@
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet" /></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -2399,8 +2402,9 @@
   document.querySelectorAll('.count-up').forEach(el => counterObs.observe(el));
 </script>
 
-<!-- ── Cal.com embed ── -->
+<!-- ── Cal.com embed (deferred) ── -->
 <script type="text/javascript">
+function initCalCom(){
 (function (C, A, L) {
   let p = function (a, ar) { a.q.push(ar); };
   let d = C.document;
@@ -2432,12 +2436,19 @@ Cal("ui", {
   hideEventTypeDetails: false,
   layout: "month_view"
 });
+}
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(initCalCom, {timeout: 3000});
+} else {
+  setTimeout(initCalCom, 500);
+}
 </script>
 
 
 
 <!-- ── Mesh Gradient Shader (Hero) ────────────────────────────────── -->
 <script>
+function initMeshGradient(){
 (function(){
   var canvas = document.getElementById('meshCanvas');
   if (!canvas) return;
@@ -2585,7 +2596,13 @@ Cal("ui", {
   }).observe(document.getElementById('hero'));
   syncAnimation();
 })();
+}
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(initMeshGradient, {timeout: 2000});
+} else {
+  setTimeout(initMeshGradient, 200);
+}
 </script>
-<script src="assets/js/cookie-consent.js"></script>
+<script src="assets/js/cookie-consent.js" defer></script>
 </body>
 </html>
