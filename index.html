@@ -932,32 +932,12 @@
 
   /* ── HERO SCROLL (prueba) ── */
   .gv-scroll { position: relative; width: 100%; height: 500vh; background: #000; }
-  .gv-canvas { position: sticky; top: 0; width: 100%; height: 100vh; object-fit: cover; display: block; z-index: 1; background: #000 url(assets/video/hero-adn-poster.webp) center / cover no-repeat; }
+  .gv-canvas { position: sticky; top: 0; width: 100%; height: 100vh; object-fit: cover; display: block; z-index: 1; background: #000 url(assets/video/hero-frames/f001.webp) center / cover no-repeat; }
   .gv-overlay { position: fixed; inset: 0; height: 100vh; z-index: 3; pointer-events: none; }
   .gv-overlay::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 55%, rgba(0,0,0,.6) 100%); }
-  .gv-content h2, .gv-content p { text-shadow: 0 1px 20px rgba(0,0,0,.7); }
-  .gv-panel { position: absolute; inset: 0; display: flex; opacity: 0; transition: opacity .4s ease; pointer-events: none; }
-  .gv-panel.active { opacity: 1; pointer-events: auto; }
-  .gv-panel--1 { align-items: flex-end; justify-content: flex-start; }
-  .gv-panel--2 { align-items: flex-start; justify-content: flex-end; padding-top: 72px; }
-  .gv-panel--3 { align-items: flex-end; justify-content: flex-end; }
-  .gv-content { max-width: 520px; padding: 64px; color: #fff; }
-  .gv-content h2 { font-size: clamp(2rem, 3vw, 2.25rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
-  .gv-content p { font-size: clamp(.875rem, 1.2vw, 1.125rem); font-weight: 300; line-height: 1.5; margin-bottom: 32px; color: #fff; }
-  .gv-content h2, .gv-content p, .gv-btn { opacity: 0; transform: translateY(20px); transition: opacity .6s cubic-bezier(.23,1,.32,1), transform .6s cubic-bezier(.23,1,.32,1); }
-  .gv-panel.active .gv-content h2 { opacity: 1; transform: none; transition-delay: .1s; }
-  .gv-panel.active .gv-content p { opacity: .85; transform: none; transition-delay: .25s; }
-  .gv-panel.active .gv-btn { opacity: 1; transform: none; transition-delay: .4s; }
-  .gv-btn { display: inline-block; font-size: .8125rem; font-weight: 400; padding: 8px 16px; border: 1px solid #fff; background: #fff; color: #000; letter-spacing: .02em; text-decoration: none; cursor: pointer; }
-  .gv-btn:hover { background: transparent; color: #fff; }
-  .gv-btn--line { background: transparent; color: #fff; border: 0; padding: 8px 0; text-decoration: underline; text-underline-offset: 4px; }
-  .gv-btn--line:hover { opacity: .7; background: transparent; }
-  @media (max-width: 768px) {
-    .gv-content { max-width: 100%; padding: 32px 24px; }
-    .gv-content h2 { font-size: 1.75rem; }
-    .gv-panel--2 { justify-content: flex-start; padding-top: 88px; }
-    .gv-panel--3 { justify-content: flex-start; }
-  }
+  .gv-panel { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-start; }
+  .gv-title { max-width: 920px; padding: 0 5vw 12vh; margin: 0; color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(2rem, 4.6vw, 4rem); line-height: 1.08; letter-spacing: -0.025em; text-wrap: balance; text-shadow: 0 2px 28px rgba(0,0,0,.75); }
+  @media (max-width: 768px) { .gv-title { padding: 0 24px 14vh; font-size: clamp(1.7rem, 7.4vw, 2.2rem); } }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -1002,26 +982,8 @@
 <section id="gvScroll" class="gv-scroll" aria-label="Introducción">
   <canvas id="gvCanvas" class="gv-canvas" width="1280" height="720" aria-hidden="true"></canvas>
   <div id="gvOverlay" class="gv-overlay">
-    <div class="gv-panel gv-panel--1 active" data-section="0">
-      <div class="gv-content">
-        <h2 data-i18n="gv1_h">No construyo<br/>logos. Construyo<br/>posicionamiento.</h2>
-        <p data-i18n="gv1_p">Llevo más de 20 años trabajando en la brecha que existe entre lo que una marca quiere ser y lo que el mercado realmente percibe.</p>
-        <a href="#hero" class="gv-btn" data-gv-goto="#hero" data-i18n="gv_btn_diag">Comenzar diagnóstico</a>
-      </div>
-    </div>
-    <div class="gv-panel gv-panel--2" data-section="1">
-      <div class="gv-content">
-        <h2 data-i18n="gv2_h">Antes de construir una marca que venda… necesitamos descubrir dónde se está rompiendo su ADN.</h2>
-        <p data-i18n="gv2_p">El diagnóstico lee las tres dimensiones de tu marca, Feeling, Thinking y Doing, y encuentra la que falla.</p>
-        <a href="#hero" class="gv-btn" data-gv-goto="#hero" data-i18n="gv_btn_diag">Comenzar diagnóstico</a>
-      </div>
-    </div>
-    <div class="gv-panel gv-panel--3" data-section="2">
-      <div class="gv-content">
-        <h2 data-i18n="gv3_h">¿Tu marca tiene<br/>una voz clara?</h2>
-        <p data-i18n="gv3_p">Un proceso profundo para identificar las brechas entre dónde está tu marca hoy y dónde necesita estar para crecer.</p>
-        <a href="#contacto" class="gv-btn gv-btn--line" data-gv-goto="#contacto" data-i18n="gv_btn_talk">Hablemos</a>
-      </div>
+    <div class="gv-panel active" data-section="0">
+      <h2 class="gv-title" data-i18n="gv_h">Antes de construir una marca que venda… necesitamos descubrir dónde se está rompiendo su ADN.</h2>
     </div>
   </div>
 </section>
@@ -1915,10 +1877,7 @@
 
   var _t = {
     es: {
-      gv1_h:"No construyo<br/>logos. Construyo<br/>posicionamiento.", gv1_p:"Llevo más de 20 años trabajando en la brecha que existe entre lo que una marca quiere ser y lo que el mercado realmente percibe.",
-      gv2_h:"Antes de construir una marca que venda… necesitamos descubrir dónde se está rompiendo su ADN.", gv2_p:"El diagnóstico lee las tres dimensiones de tu marca, Feeling, Thinking y Doing, y encuentra la que falla.",
-      gv3_h:"¿Tu marca tiene<br/>una voz clara?", gv3_p:"Un proceso profundo para identificar las brechas entre dónde está tu marca hoy y dónde necesita estar para crecer.",
-      gv_btn_diag:"Comenzar diagnóstico", gv_btn_talk:"Hablemos",
+      gv_h:"Antes de construir una marca que venda… necesitamos descubrir dónde se está rompiendo su ADN.",
       nav_about:'Sobre mí', nav_method:'Metodología', nav_services:'Servicios',
       nav_cases:'Casos', nav_bi:'Brand Intelligence', nav_contact:'Contacto', nav_cta:'Hablemos', nav_portal:'Acceso Clientes',
       about_tag:'Sobre mí',
@@ -2034,10 +1993,7 @@
       ]
     },
     en: {
-      gv1_h:"I don't build<br/>logos. I build<br/>positioning.", gv1_p:"For over 20 years I've worked in the gap between what a brand wants to be and what the market actually perceives.",
-      gv2_h:"Before building a brand that sells… we need to find where its DNA is breaking.", gv2_p:"The diagnosis reads the three dimensions of your brand, Feeling, Thinking and Doing, and finds the one that fails.",
-      gv3_h:"Does your brand<br/>have a clear voice?", gv3_p:"A deep process to identify the gaps between where your brand is today and where it needs to be to grow.",
-      gv_btn_diag:"Start diagnosis", gv_btn_talk:"Let's Talk",
+      gv_h:"Before building a brand that sells… we need to find where its DNA is breaking.",
       nav_about:'About', nav_method:'Methodology', nav_services:'Services',
       nav_cases:'Cases', nav_bi:'Brand Intelligence', nav_contact:'Contact', nav_cta:"Let's Talk", nav_portal:'Client Access',
       about_tag:'About Me',
@@ -2152,10 +2108,7 @@
       ]
     },
     fr: {
-      gv1_h:"Je ne construis pas<br/>des logos. Je construis<br/>du positionnement.", gv1_p:"Depuis plus de 20 ans, je travaille dans l'écart entre ce qu'une marque veut être et ce que le marché perçoit réellement.",
-      gv2_h:"Avant de construire une marque qui vend… nous devons découvrir où son ADN se brise.", gv2_p:"Le diagnostic lit les trois dimensions de votre marque, Feeling, Thinking et Doing, et trouve celle qui échoue.",
-      gv3_h:"Votre marque a-t-elle<br/>une voix claire?", gv3_p:"Un processus approfondi pour identifier les écarts entre où se trouve votre marque aujourd'hui et où elle doit être pour croître.",
-      gv_btn_diag:"Commencer le diagnostic", gv_btn_talk:"Parlons-en",
+      gv_h:"Avant de construire une marque qui vend… nous devons découvrir où son ADN se brise.",
       nav_about:'À propos', nav_method:'Méthode', nav_services:'Services',
       nav_cases:'Cas', nav_bi:'Brand Intelligence', nav_contact:'Contact', nav_cta:'Parlons-en', nav_portal:'Espace Clients',
       about_tag:'À propos',
