@@ -182,12 +182,30 @@
     }
   }
 
-  function render(t) {
-    if (bankReady && !bankFailed) { drawFromBank(t); return; }
-    if (!video.seeking && Math.abs(video.currentTime - t) > 0.01) {
-      try { video.currentTime = t; } catch (e) {}
-    }
+  var lastSeekAt = 0;
+  function seekVideo(t) {
+    var now = performance.now();
+    if (now - lastSeekAt < 33 || Math.abs(video.currentTime - t) < 0.02) return;
+    lastSeekAt = now;
+    try {
+      if (typeof video.fastSeek === 'function') video.fastSeek(t);
+      else video.currentTime = t;
+    } catch (e) {}
   }
+
+  function render(t) {
+    if (bankReady && !bankFailed) drawFromBank(t);
+    // Mientras el canvas no esté visible, el video sigue al scroll para que la imagen nunca quede congelada.
+    if (!canvas.classList.contains('is-live')) seekVideo(t);
+  }
+
+  // Safari/iOS no dibuja fotogramas al buscar en un video que nunca se reprodujo.
+  function unlockVideo() {
+    var pr = video.play();
+    if (pr && pr.then) pr.then(function () { video.pause(); }).catch(function () {});
+  }
+  if (video.readyState >= 2) unlockVideo();
+  else video.addEventListener('loadeddata', unlockVideo, { once: true });
 
   function updateSections(p) {
     var idx = Math.min(panels.length - 1, Math.floor(p * panels.length));
