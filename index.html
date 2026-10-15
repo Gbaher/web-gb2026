@@ -936,8 +936,8 @@
   .gv-overlay { position: fixed; inset: 0; height: 100vh; z-index: 3; pointer-events: none; }
   .gv-overlay::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 55%, rgba(0,0,0,.6) 100%); }
   .gv-panel { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-start; }
-  .gv-title { max-width: 920px; padding: 0 5vw 12vh; margin: 0; color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(2rem, 4.6vw, 4rem); line-height: 1.08; letter-spacing: -0.025em; text-wrap: balance; text-shadow: 0 2px 28px rgba(0,0,0,.75); }
-  @media (max-width: 768px) { .gv-title { padding: 0 24px 14vh; font-size: clamp(1.7rem, 7.4vw, 2.2rem); } }
+  .gv-title { max-width: 760px; padding: 0 5vw 12vh; margin: 0; color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: clamp(1.55rem, 3.8vw, 2.4rem); line-height: 1.15; letter-spacing: -0.025em; text-wrap: balance; text-shadow: 0 2px 24px rgba(0,0,0,.7); }
+  @media (max-width: 600px) { .gv-title { padding: 0 24px 14vh; font-size: 1.45rem; } }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }

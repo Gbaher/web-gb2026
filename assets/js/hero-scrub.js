@@ -1,4 +1,4 @@
-// Hero de prueba: secuencia de imágenes ligada al scroll (96 fotogramas WebP del loop de ADN).
+// Hero de prueba: secuencia de imágenes ligada al scroll (64 fotogramas WebP del loop de ADN).
 (function () {
   var container = document.getElementById('gvScroll');
   var canvas = document.getElementById('gvCanvas');
@@ -9,7 +9,7 @@
   var ctx = canvas.getContext('2d', { alpha: false });
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var FRAME_COUNT = 96, W = 1280, H = 720, LERP_TAU = 8, SNAP = 0.01;
+  var FRAME_COUNT = 64, W = 1024, H = 576, LERP_TAU = 8, SNAP = 0.01;
   var PATH = 'assets/video/hero-frames/f';
   canvas.width = W; canvas.height = H;
 
