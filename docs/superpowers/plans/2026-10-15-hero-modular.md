@@ -858,8 +858,7 @@ pkill -f "http.server 4640"
 git add assets/hero/README.md docs/superpowers/specs/2026-10-15-hero-modular-design.md
 git commit -m "hero: guía de uso y ajuste de la spec"
 git push -u origin HEAD
-gh pr create --base main --title "Sistema modular de hero (editorial, cinematic, conceptual)" --body-file /tmp/pr-hero.md
+gh pr create --base main --title "Sistema modular de hero (editorial, cinematic, conceptual)" --body "Interruptor central en assets/hero/config.js (activeHero). editorial es el predeterminado y deja la web idéntica. El diagnóstico de marca no se modifica. Variantes: cinematic (de #11, parametrizada) y conceptual (ejemplo inactivo). Guía en assets/hero/README.md. Pendiente: medir PageSpeed de cinematic, imagen real para conceptual, traducciones en y fr de Claude."
 gh pr close 11 --comment "Sustituida por el sistema modular de hero: la variante cinematic es esta prueba, parametrizada."
 ```
 
-El cuerpo de la propuesta resume: interruptor en `assets/hero/config.js`, `editorial` predeterminada, diagnóstico sin cambios, verificación hecha, pendientes (medir PageSpeed de `cinematic`, imagen real para `conceptual`, traducciones en y fr de Claude).
