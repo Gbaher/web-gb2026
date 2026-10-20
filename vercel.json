@@ -2,6 +2,14 @@
   "outputDirectory": ".",
   "rewrites": [
     {
+      "source": "/brand-diagnosis",
+      "destination": "/brand-diagnosis.html"
+    },
+    {
+      "source": "/brand-diagnosis-gracias",
+      "destination": "/brand-diagnosis-gracias.html"
+    },
+    {
       "source": "/case-sofia",
       "destination": "/case-sofia.html"
     },
