@@ -1,0 +1,88 @@
+{
+  "slug": "marca-se-ve-bien",
+  "title": "Tu marca se ve bien. Ese es el problema.",
+  "subtitle_em": "Ese es el problema.",
+  "meta_description": "Una marca puede verse impecable y aun así no conectar. Por qué pasa, un caso real y la pregunta que le hago a quien siente que nadie le escribe.",
+  "keywords": "marca que no conecta, branding, identidad de marca, Feeling Doing Thinking, Germán Baher",
+  "category_tag": "Identidad",
+  "read_minutes": 4,
+  "breadcrumb_label": "Tu marca se ve bien",
+  "lead": "Muchas veces un cliente llega convencido de que el problema es su logo. Me dice que su logo no comunica con su audiencia.",
+  "quote": "Una emoción puede llamar la atención, pero necesita argumentos para transformarse en confianza.",
+  "sections": [
+    {
+      "type": "text",
+      "h2": "¿Y eso qué tiene que ver con el logo?",
+      "h2_em": "con el logo?",
+      "paragraphs": [
+        "Yo le pregunto cuál es la personalidad de su marca. Qué atributos emocionales comunica. Y casi siempre me responde con otra pregunta. \"¿Y eso qué tiene que ver con el logo?\"",
+        "Ahí me doy cuenta rápidamente de que su marca no conecta con su audiencia. Y un logo nuevo no lo va a arreglar."
+      ]
+    },
+    {
+      "type": "text",
+      "h2": "Una marca que quedó muy bien",
+      "h2_em": "muy bien",
+      "paragraphs": [
+        "Te pongo un caso mío. Hice el <a href=\"https://germanbaher.myportfolio.com/branding-unagro\" target=\"_blank\" rel=\"noopener\">branding de Unagro</a>, una corporación agroenergética de Santa Cruz. La marca quedó muy bien. Pero no conectó con la gente.",
+        "Hubo dos razones. La empresa no tenía madurez digital, y además vende un commodity. Cuando lo que vendes se parece a lo que vende tu competencia, la estética hace que te miren. Para que te elijan hace falta bastante más."
+      ]
+    },
+    {
+      "type": "text",
+      "h2": "Me gusta o no me gusta",
+      "h2_em": "no me gusta",
+      "paragraphs": [
+        "Hay otro problema muy grande. Algunos ejecutivos responsables de las decisiones de branding no están preparados para tomar decisiones estratégicas.",
+        "El patrón se repite. Frente a una idea, responden \"me gusta\" o \"no me gusta\". Se nota que no están preparados para argumentar de manera estratégica, y es ahí donde todo se pierde."
+      ]
+    },
+    {
+      "type": "text",
+      "h2": "Llamar la atención y crear una relación",
+      "h2_em": "crear una relación",
+      "paragraphs": [
+        "Si tuviera que explicarle a un dueño de pyme la diferencia, le explicaría mi metodología, <a href=\"/metodologia\">Feeling • Doing • Thinking™</a>. Parte de una premisa simple. Una marca se construye desde lo que las personas sienten, lo que piensan y lo que finalmente hacen, y no únicamente desde su identidad visual o su comunicación.",
+        "<strong>Feeling</strong> es lo que queremos que las personas sientan. Una marca tiene que enamorar y generar lazos emocionales con sus clientes. Es lo que hace que alguien se detenga a mirarte.",
+        "<strong>Thinking</strong> es lo que queremos que piensen. Una emoción puede llamar la atención, pero necesita argumentos para transformarse en confianza. Aquí construimos el posicionamiento, la diferenciación y las razones por las cuales una persona debería elegir tu marca.",
+        "<strong>Doing</strong> es lo que queremos que hagan. Podemos generar emociones positivas y construir una percepción favorable, pero hay que facilitar el siguiente paso. Una estrategia de marca tiene que traducirse en comportamientos concretos.",
+        "Una marca que solo se ve bien se queda en el primer paso. Llama la atención y ahí termina."
+      ]
+    },
+    {
+      "type": "text",
+      "h2": "La pregunta que te dejo",
+      "h2_em": "te dejo",
+      "paragraphs": [
+        "Si sientes que tu marca está linda pero nadie te escribe, te hago la misma pregunta que le hago a mis clientes.",
+        "<strong>Si mañana alguien descubre tu marca por primera vez, ¿qué razón concreta le estás dando para que te escriba?</strong>"
+      ]
+    }
+  ],
+  "takeaways": [
+    {
+      "bold": "El logo casi nunca es el problema →",
+      "text": "si no sabes qué personalidad tiene tu marca, cambiar el logo no lo arregla."
+    },
+    {
+      "bold": "Me gusta o no me gusta →",
+      "text": "cuando las decisiones de marca se toman así, falta estrategia y todo se pierde."
+    },
+    {
+      "bold": "Sentir, pensar, hacer →",
+      "text": "una marca que conecta hace sentir, da argumentos para confiar y facilita el siguiente paso."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Por qué una marca bien diseñada no conecta?",
+      "answer": "Porque el diseño resuelve cómo se ve la marca, pero no qué hace sentir, qué hace pensar ni qué hace hacer. Si la marca no tiene una personalidad clara, o vende un commodity sin madurez digital, la estética sola no alcanza."
+    },
+    {
+      "question": "¿Qué es Feeling • Doing • Thinking™?",
+      "answer": "Es la metodología de Germán Baher. Parte de una premisa simple. Una marca se construye desde lo que las personas sienten, lo que piensan y lo que finalmente hacen."
+    }
+  ],
+  "closing_paragraph": "Si te cuesta responderla, conversemos. Hacemos un <a href=\"/brand-diagnosis?fuente=articulo\" style=\"color:var(--red);font-weight:600;\">Brand Diagnosis →</a> y lo vemos juntos.",
+  "sources": []
+}
