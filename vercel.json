@@ -42,6 +42,10 @@
       "destination": "/bi-002-broken-brand.html"
     },
     {
+      "source": "/bi-002-marque-brisee",
+      "destination": "/bi-002-marque-brisee.html"
+    },
+    {
       "source": "/bi-003-marca-no-vende",
       "destination": "/bi-003-marca-no-vende.html"
     },
@@ -214,6 +218,11 @@
     {
       "source": "/bi-002-broken-brand.html",
       "destination": "/bi-002-broken-brand",
+      "permanent": true
+    },
+    {
+      "source": "/bi-002-marque-brisee.html",
+      "destination": "/bi-002-marque-brisee",
       "permanent": true
     },
     {
