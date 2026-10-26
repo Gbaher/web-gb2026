@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gracias | Brand Diagnosis</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="assets/brand/icon-red.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --red: #ed2450; --black: #080808; --black3: #141414; --white: #ffffff; --border: rgba(255,255,255,0.07); }
+    body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; }
+    nav { display: flex; align-items: center; padding: 1.2rem 5vw; border-bottom: 1px solid var(--border); }
+    nav img { height: 30px; display: block; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 4rem 5vw 5rem; }
+    .tag { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); border: 1px solid rgba(237,36,80,0.4); padding: 0.3rem 0.75rem; border-radius: 2px; margin-bottom: 1.6rem; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+    h1 em { font-style: normal; color: var(--red); }
+    h2 { font-size: 1.35rem; font-weight: 800; margin: 3rem 0 1rem; }
+    h2 span { color: var(--red); margin-right: 0.5rem; }
+    p { font-size: 1.02rem; line-height: 1.8; color: rgba(255,255,255,0.72); margin-bottom: 1.2rem; }
+    .embed { background: var(--white); border-radius: 10px; overflow: hidden; }
+    .embed iframe { width: 100%; border: 0; display: block; }
+    .pendiente { background: var(--black3); border-left: 3px solid var(--red); border-radius: 10px; padding: 1.4rem 1.6rem; }
+    .pendiente p { margin: 0; }
+    .pendiente a { color: var(--red); font-weight: 600; text-decoration: none; }
+    footer { padding: 2.5rem 5vw; border-top: 1px solid var(--border); text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav><a href="/"><img src="assets/brand/logo-full.svg" alt="Germán Baher Growth Brands" /></a></nav>
+
+<main class="wrap">
+  <span class="tag">Brand Diagnosis</span>
+  <h1>Listo. <em>Ahora cuéntame de tu marca.</em></h1>
+  <p>Gracias por confiar en mí. Responde estas preguntas con calma y con tus palabras. No hay respuestas correctas. Mientras más honesto seas, más útil va a ser la sesión.</p>
+  <p>Al final eliges el día de tu diagnóstico. Antes de vernos voy a leer tus respuestas y revisar tu marca, así llego con trabajo hecho.</p>
+
+  <h2><span>1</span>El cuestionario</h2>
+  <div id="cuestionario"></div>
+
+  <h2><span>2</span>Elige tu fecha</h2>
+  <div id="calendario"></div>
+</main>
+
+<footer>
+  <p>¿Dudas? Escríbeme a <a href="mailto:contacto@germanbaher.com">contacto@germanbaher.com</a></p>
+</footer>
+
+<script>
+  // Enlaces de GHL para incrustar. Se copian desde GHL:
+  // el formulario en Sites > Forms > Integrate, y el calendario en Calendars > Share > Permanent link.
+  const ENLACE_CUESTIONARIO = '';
+  const ENLACE_CALENDARIO = '';
+
+  function incrustar(id, enlace, alto, mensaje) {
+    const caja = document.getElementById(id);
+    if (enlace) {
+      caja.className = 'embed';
+      caja.innerHTML = '<iframe src="' + enlace + '" style="height:' + alto + 'px" loading="lazy" title="' + id + '"></iframe>';
+    } else {
+      caja.className = 'pendiente';
+      caja.innerHTML = '<p>' + mensaje + '</p>';
+    }
+  }
+
+  incrustar('cuestionario', ENLACE_CUESTIONARIO, 1400,
+    'En menos de 24 horas te escribo con el cuestionario. Si no te llega, búscame en <a href="mailto:contacto@germanbaher.com">contacto@germanbaher.com</a>.');
+  incrustar('calendario', ENLACE_CALENDARIO, 900,
+    'Junto con el cuestionario te mando los horarios disponibles para que elijas el tuyo.');
+</script>
+</body>
+</html>
