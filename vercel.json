@@ -136,6 +136,10 @@
     {
       "source": "/bi-010-empresa-lista-para-la-ia",
       "destination": "/bi-010-empresa-lista-para-la-ia.html"
+    },
+    {
+      "source": "/bi-011-marca-se-ve-bien",
+      "destination": "/bi-011-marca-se-ve-bien.html"
     }
   ],
   "redirects": [
@@ -327,6 +331,11 @@
     {
       "source": "/blog/-por-qu-es-importante-invertir-en-marca-pa-s-",
       "destination": "/metodologia",
+      "permanent": true
+    },
+    {
+      "source": "/bi-011-marca-se-ve-bien.html",
+      "destination": "/bi-011-marca-se-ve-bien",
       "permanent": true
     }
   ],
