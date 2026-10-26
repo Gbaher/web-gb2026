@@ -108,12 +108,12 @@ Si mañana alguien descubre tu marca por primera vez, ¿qué razón concreta le 
 
 ## Notas y fuentes
 
-- Pendiente de Germán: el artículo nombra a Unagro como una marca que no conectó. Confirmar que está cómodo diciéndolo en público. Si no, se cambia por "una corporación agroenergética de Santa Cruz" sin nombre.
 - En la respuesta, el texto de Feeling quedó igual al de Thinking, probablemente por un error al copiar desde la página de metodología. Para Feeling se usaron sus palabras de la nota de voz sobre marca agéntica: enamorar y generar lazos emocionales.
 - Frases agregadas por Claude para enlazar: "Cuando lo que vendes se parece a lo que vende tu competencia, la estética hace que te miren. Para que te elijan hace falta bastante más." y "Una marca que solo se ve bien se queda en el primer paso. Llama la atención y ahí termina."
 - La pregunta 5 (qué hace sentir, hacer y pensar una marca que solo se ve bien) no tuvo respuesta.
 - Germán escribe "FTD" (sentir, pensar, hacer) y la marca registrada es Feeling • Doing • Thinking™. Conviene decidir un solo nombre y un solo orden en todos los canales.
-- La invitación final enlaza a /#contacto porque la página /brand-diagnosis todavía no está publicada (propuesta #13).
+- La invitación final enlaza a /brand-diagnosis?fuente=articulo. Germán aprobó publicar el artículo junto con la página del Brand Diagnosis.
+- Germán confirmó dejar el nombre de Unagro con el enlace a su portafolio.
 
 ## Reutilización
 
