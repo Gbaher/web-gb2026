@@ -148,6 +148,10 @@
     {
       "source": "/bi-011-marca-se-ve-bien",
       "destination": "/bi-011-marca-se-ve-bien.html"
+    },
+    {
+      "source": "/bi-012-marcas-como-personas",
+      "destination": "/bi-012-marcas-como-personas.html"
     }
   ],
   "redirects": [
@@ -344,6 +348,11 @@
     {
       "source": "/bi-011-marca-se-ve-bien.html",
       "destination": "/bi-011-marca-se-ve-bien",
+      "permanent": true
+    },
+    {
+      "source": "/bi-012-marcas-como-personas.html",
+      "destination": "/bi-012-marcas-como-personas",
       "permanent": true
     }
   ],
