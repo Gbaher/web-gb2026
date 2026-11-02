@@ -336,6 +336,12 @@ function renderArticleHtml({ a, num, slug, canonicalPath, publishedDate, prev })
   const quoteBlock = `    <div class="bi-quote reveal">\n      <p>${escapeHtml(a.quote)}</p>\n    </div>`;
   const keywordsTags = a.keywords.split(',').slice(0, 4)
     .map(k => `  <meta property="article:tag" content="${escapeHtml(k.trim())}" />`).join('\n');
+  // Carátula 16:9 de la publicación: titular en DM Sans y retrato de Germán (campo opcional "portada").
+  const ogParams = new URLSearchParams({ title: a.title, num: `BI-${String(num).padStart(3, '0')}` });
+  if (a.subtitle_em) ogParams.set('em', a.subtitle_em);
+  if (a.portada) ogParams.set('img', a.portada);
+  const ogImageUrl = `${SITE}/api/og?${ogParams.toString()}`;
+  const ogImage = escapeHtml(ogImageUrl);
   const h1 = a.subtitle_em
     ? escapeHtml(a.title).replace(escapeHtml(a.subtitle_em), `<em>${escapeHtml(a.subtitle_em)}</em>`)
     : escapeHtml(a.title);
@@ -360,9 +366,9 @@ function renderArticleHtml({ a, num, slug, canonicalPath, publishedDate, prev })
   <meta property="og:title" content="${escapeHtml(a.title)}" />
   <meta property="og:description" content="${escapeHtml(a.meta_description)}" />
   <meta property="og:url" content="${url}" />
-  <meta property="og:image" content="${SITE}/assets/images/og-cover-v4.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image" content="${ogImage}" />
+  <meta property="og:image:width" content="1280" />
+  <meta property="og:image:height" content="720" />
   <meta property="og:image:alt" content="${escapeHtml(a.title)} — Brand Intelligence por Germán Baher" />
   <meta property="og:type" content="article" />
   <meta property="article:published_time" content="${publishedDate}T00:00:00-04:00" />
@@ -374,7 +380,7 @@ ${keywordsTags}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(a.title)}" />
   <meta name="twitter:description" content="${escapeHtml(a.meta_description)}" />
-  <meta name="twitter:image" content="${SITE}/assets/images/og-cover-v4.jpg" />
+  <meta name="twitter:image" content="${ogImage}" />
 
   <script type="application/ld+json">
   [
@@ -383,7 +389,7 @@ ${keywordsTags}
       "@type": "Article",
       "headline": ${JSON.stringify(a.title)},
       "description": ${JSON.stringify(a.meta_description)},
-      "image": "${SITE}/assets/images/og-cover-v4.jpg",
+      "image": ${JSON.stringify(ogImageUrl)},
       "datePublished": "${publishedDate}",
       "dateModified": "${publishedDate}",
       "author": { "@type": "Person", "name": "Germán Baher", "url": "${SITE}", "jobTitle": "Brand Strategist" },
