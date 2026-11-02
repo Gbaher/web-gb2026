@@ -27,7 +27,7 @@ url: "https://www.germanbaher.com/bi-012-marcas-como-personas"
 
 **Doing.** Preguntarse qué tan humana es su marca y pedir un Brand Diagnosis.
 
-**Thinking.** Que hoy primero sentimos, después pensamos y al final hacemos, y que vender es una consecuencia.
+**Thinking.** Que hoy lo primero es lo que una marca hace sentir, y que vender es una consecuencia.
 
 **Por qué Germán.** El paso de agencia a planner, lo que vio en el mercado de Santa Cruz y la cultura de Yanbal vista desde adentro.
 
@@ -68,7 +68,7 @@ Ahora hagamos la analogía con una marca. Yo uso Apple y jamás tocaré una PC. 
 
 Una marca que se comporta como empresa tiene muchos problemas internos. Los directivos se matan unos a otros y el ambiente es caótico. Una marca que no tiene claridad en su propósito tampoco tiene claridad en su negocio, porque eso afecta directamente a la empresa, a la marca y a su organización interna.
 
-Mi esposa trabajó durante muchos años en Yanbal. Me acuerdo de la primera vez que me comentó: "No trabajo en una empresa, trabajo en una secta". Cantaban su himno cada mañana, y estaba estipulado por contrato. Pude ver desde adentro cómo ese propósito se llevaba en la sangre. La cultura yanbalizada, le decían.
+Mi esposa trabajó durante muchos años en Yanbal. Me acuerdo de la primera vez que me comentó que no sentía que trabajaba en una empresa, sino en algo mucho más grande. Cantaban su himno cada mañana, y estaba estipulado por contrato. Pude ver desde adentro cómo ese propósito se llevaba en la sangre. La cultura yanbalizada, le decían.
 
 Siempre uso este caso en mis consultorías, porque esa transformación es un cúmulo de atributos emocionales y de procesos de una compañía.
 
@@ -80,11 +80,11 @@ La primera es escuchar, en todo aspecto. En la escucha social, en el día a día
 
 Conectar no es fácil. Requiere definiciones y procesos claros para que todo fluya.
 
-## Primero sentir, después pensar, al final hacer
+## Primero sentir
 
-Mi metodología se llama FTD, por Feeling, Thinking, Doing. Sentir, pensar, hacer. Ese orden está basado en cómo reaccionamos hoy en el mundo digital, y viene de los millennials y los centennials, que son nativos digitales y consumen contenido todo el día.
+Mi metodología se llama Feeling • Doing • Thinking™, y empieza por lo que una marca hace sentir. Eso está basado en cómo reaccionamos hoy en el mundo digital, y viene de los millennials y los centennials, que son nativos digitales y consumen contenido todo el día.
 
-Antes de las redes sociales y del scroll teníamos un orden distinto. Pensábamos, decíamos y hacíamos. Hoy ese rol mutó. Nuestro cerebro cambió.
+Antes de las redes sociales y del scroll teníamos un orden distinto. Pensábamos, decíamos y hacíamos. Hoy ese rol mutó. Nuestro cerebro cambió, y lo primero es lo que sentimos.
 
 El producto dejó atrás las fórmulas y los atributos, que eran los principales elementos de comunicación. Hoy prima lo que te hace sentir, qué te soluciona, cuál es su propósito y por qué deberías comprarlo. Y nada de eso funciona sin tener claro a quién le hablamos, qué le decimos y en qué momento.
 
@@ -115,7 +115,7 @@ Si eres parte de una marca y solo hablas de tus méritos, eres una marca que hab
 
 Una marca tiene valores, tono de voz, personalidad. Conecta con su comunicación y construye lazos con su experiencia. ¿Qué la hace distinta de una persona? Prácticamente nada.
 
-Escribí sobre por qué las marcas deberían comportarse como personas. Con Apple, con la cultura de Yanbal que vi desde adentro y con el orden en que hoy decidimos: primero sentimos, después pensamos y al final hacemos.
+Escribí sobre por qué las marcas deberían comportarse como personas. Con Apple, con la cultura de Yanbal que vi desde adentro y con algo que cambió en cómo decidimos. Hoy primero sentimos.
 
 ¿Qué tan humana es tu marca?
 
@@ -123,8 +123,8 @@ Escribí sobre por qué las marcas deberían comportarse como personas. Con Appl
 
 ## Notas y fuentes
 
-- Yanbal: el artículo cuenta que la esposa de Germán decía "no trabajo en una empresa, trabajo en una secta" y que el himno estaba estipulado por contrato. Es una marca real y la palabra "secta" puede leerse mal. Germán tiene que confirmar que está cómodo publicándolo así.
-- Orden del método: Germán explica que el orden es FTD, Feeling, Thinking, Doing (sentir, pensar, hacer). Su marca registrada y la página de metodología dicen Feeling • Doing • Thinking™. El artículo usa FTD porque es lo que él respondió. Hay que alinear el resto de los canales o ajustar el artículo antes de publicar.
+- Yanbal: por decisión de Germán, queda con el nombre pero sin la palabra "secta". La frase quedó "no sentía que trabajaba en una empresa, sino en algo mucho más grande".
+- Método: Germán decidió que el nombre oficial es Feeling • Doing • Thinking™. El artículo ya no habla de FTD ni de un orden sentir, pensar, hacer. Conserva la idea de que hoy lo primero es sentir.
 - Corregido: "Ray Kursweil" por Ray Kurzweil y "el Davinci del siglo 21" por "el Da Vinci del siglo XXI".
 - Frase agregada por Claude: "La cultura yanbalizada, le decían." (Germán escribió solo "La cultura yanbalizada"). Y el título de sección "Confiamos en marcas como confiamos en personas".
 - La pregunta 4 (un cliente al que ayudó a hablar como persona) no tuvo respuesta.
