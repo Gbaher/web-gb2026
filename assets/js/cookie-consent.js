@@ -209,6 +209,21 @@
     document.dispatchEvent(new CustomEvent('gb:consent', { detail: prefs }));
   }
 
+  // ── Google Tag Manager: solo se carga con consentimiento de analítica ──
+  var GTM_ID = 'GTM-M438W4K9';
+  function loadGTM() {
+    if (window.__gbGtmLoaded) return;
+    window.__gbGtmLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    var first = document.getElementsByTagName('script')[0];
+    if (first && first.parentNode) first.parentNode.insertBefore(s, first);
+    else document.head.appendChild(s);
+  }
+
   function applyConsent(prefs) {
     // Google Analytics — enable only if analytics accepted
     if (prefs.analytics && typeof window.gtag === 'function') {
@@ -216,6 +231,8 @@
     } else {
       window['ga-disable-G-XXXXXXXX'] = true;
     }
+    // Google Tag Manager — requiere consentimiento explícito de analítica
+    if (prefs.analytics) loadGTM();
     // Extend here for other scripts
   }
 
