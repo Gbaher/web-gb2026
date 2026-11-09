@@ -17,6 +17,15 @@
       "canonical_path": "/bi-012-marcas-como-personas",
       "generated_at": "2026-11-02T18:16:08.720Z",
       "simulated": false
+    },
+    {
+      "id": "bi-013",
+      "week": "2026-W46",
+      "slug": "publicar-todos-los-dias",
+      "file": "bi-013-publicar-todos-los-dias.html",
+      "canonical_path": "/bi-013-publicar-todos-los-dias",
+      "generated_at": "2026-11-09T13:37:48.575Z",
+      "simulated": false
     }
   ]
 }

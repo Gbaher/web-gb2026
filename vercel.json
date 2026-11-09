@@ -152,6 +152,10 @@
     {
       "source": "/bi-012-marcas-como-personas",
       "destination": "/bi-012-marcas-como-personas.html"
+    },
+    {
+      "source": "/bi-013-publicar-todos-los-dias",
+      "destination": "/bi-013-publicar-todos-los-dias.html"
     }
   ],
   "redirects": [
@@ -353,6 +357,11 @@
     {
       "source": "/bi-012-marcas-como-personas.html",
       "destination": "/bi-012-marcas-como-personas",
+      "permanent": true
+    },
+    {
+      "source": "/bi-013-publicar-todos-los-dias.html",
+      "destination": "/bi-013-publicar-todos-los-dias",
       "permanent": true
     }
   ],
