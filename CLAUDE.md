@@ -17,3 +17,7 @@ Los artículos de Brand Intelligence se trabajan en `articulos/`.
 ## Automatización semanal
 
 Las rutinas del viernes, el lunes y LinkedIn siguen los archivos de `articulos/automatizacion/`. Nunca se publica nada sin que Germán fusione la propuesta de cambio.
+
+## Arnés
+
+El flujo de trabajo, los roles y la verificación están en `AGENTS.md`. Antes de cerrar cualquier tarea, `bash harness/verify.sh`. Los reportes van en `progress/` y las auditorías en `audits/`.
