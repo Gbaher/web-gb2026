@@ -21,11 +21,6 @@ Archivo: `02-en-desarrollo/2026-09-marca-agentica.md`
 
 Estas cinco forman el primer bloque. Presentan la metodología y el sistema, y todos los artículos que vengan después van a enlazar a ellas.
 
-### La IA no te va a dar una voz. Te va a amplificar la que tienes.
-IA · Pilar · Consultores, coaches y pymes
-Tesis: si tu marca no tiene claridad, la IA solo va a producir ruido más rápido. Primero hay que saber quién eres.
-Ángulo propio: cómo Germán usa IA en su propio trabajo sin perder humanidad.
-
 ### De donantes a personas: lo que aprendí rediseñando una marca con propósito
 Detrás del trabajo · Pilar · Organizaciones
 Tesis: las fundaciones suelen hablarle a las instituciones y olvidan a las personas. Cambiar eso cambia todo.
@@ -86,6 +81,7 @@ Tesis: en una categoría commoditizada, la diferencia no está en el producto si
 - 2026-10-26 · Tu marca se ve bien. Ese es el problema. · https://www.germanbaher.com/bi-011-marca-se-ve-bien
 - 2026-11-02 · Las marcas deberían comportarse como personas · https://www.germanbaher.com/bi-012-marcas-como-personas
 - 2026-11-09 · Publicar todos los días no es una estrategia · https://www.germanbaher.com/bi-013-publicar-todos-los-dias
+- 2026-11-16 · La IA no te va a dar una voz. Te va a amplificar la que tienes. · https://www.germanbaher.com/bi-014-ia-amplifica-tu-voz
 
 ## Descartadas
 

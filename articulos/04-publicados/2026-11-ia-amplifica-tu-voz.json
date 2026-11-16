@@ -1,0 +1,94 @@
+{
+  "slug": "ia-amplifica-tu-voz",
+  "title": "La IA no te va a dar una voz. Te va a amplificar la que tienes.",
+  "subtitle_em": "Te va a amplificar la que tienes.",
+  "meta_description": "La IA no le da una voz a tu marca. Amplifica la que ya tiene. Cómo la uso en una semana normal, cómo se nota un texto escrito por IA y por dónde empezar.",
+  "keywords": "inteligencia artificial y marca, IA para marcas, tono de voz, arnés agéntico, Germán Baher",
+  "category_tag": "IA",
+  "read_minutes": 5,
+  "breadcrumb_label": "La IA y tu voz",
+  "lead": "Le enseñé a un cliente a usar ChatGPT para analizar su correo y optimizar su tiempo.",
+  "quote": "Sé que suena raro, pero una IA bien utilizada puede humanizar tu marca.",
+  "sections": [
+    {
+      "type": "text",
+      "h2": "El cliente que dejó de leer",
+      "h2_em": "dejó de leer",
+      "paragraphs": [
+        "Después de un tiempo de conversaciones en el chat, empecé a notar que su tono de voz había cambiado. Sus correos eran mucho más largos y mucho más formales.",
+        "Luego noté que los correos que yo le enviaba no eran revisados. Más bien eran calificados por alguien que no era él. Poco a poco fue perdiendo el contexto de las cosas que pasaban y no aprobaba las acciones que yo le pedía. Yo esperaba su feedback y me decía \"sí, está bien, solo que yo le cambiaría esto\".",
+        "Su respuesta era muy robótica. Se notaba que no leía lo que estaba haciendo, porque no contextualizaba lo que respondía. Ahí me di cuenta de que había perdido ese cliente para siempre."
+      ]
+    },
+    {
+      "type": "text",
+      "h2": "Cómo la uso yo en una semana normal",
+      "h2_em": "semana normal",
+      "paragraphs": [
+        "Cada semana uso dos IA más que nada. La primera es ChatGPT, y con ella también trabajo con Codex, porque tengo algunas automatizaciones en marcha. La otra es Claude, con la que estoy trabajando las automatizaciones de mi marca personal y un arnés agéntico.",
+        "Cuando me llega una orden de trabajo, que muchas veces viene desordenada, lo primero que hago es pegarla en un chat. Me ayuda a organizar y estructurar mejor el requerimiento, y eso me ahorra mucho tiempo.",
+        "Para cosas puntuales uso otras. Notion graba mis reuniones y me da un resumen. Cuando quiero investigar uso Perplexity, que está enfocada en eso. Cuando quiero estudiar uso NotebookLM, donde armo mis cuadernos y puedo escuchar un podcast de un tema específico o trabajar preguntas para responderlas. Y cuando quiero pensar una página web uso Z.ai para armar un primer esquema y entender cómo quedaría y cómo podría funcionar mejor su navegación."
+      ]
+    },
+    {
+      "type": "text",
+      "h2": "Saber usarla",
+      "h2_em": "usarla",
+      "paragraphs": [
+        "Cuando alguien me dice que la IA le escribe todo y le ahorra un montón de tiempo, me doy cuenta inmediatamente de que no sabe usarla de manera profesional ni sacarle el mayor provecho. Muchas de estas personas usan la versión gratuita, que generalmente no te da lo que te da una de pago.",
+        "Con una de pago puedes trabajar de manera mucho más profesional. Por ejemplo, Claude usa skills que se van cargando en el fondo. Puedes crear tu propia skill a tu medida, para que la IA entienda mejor tu trabajo. Cuáles son tus procesos, qué te gusta hacer, cómo te gusta escribir, etcétera. Y esas habilidades se van planteando día a día."
+      ]
+    },
+    {
+      "type": "text",
+      "h2": "Cómo se nota un texto escrito por IA",
+      "h2_em": "escrito por IA",
+      "paragraphs": [
+        "Ya existen ciertos patrones de cómo se escribe con ella. Hay estructuras rígidas que se están repitiendo en conversaciones y en publicaciones, y eso no es bueno.",
+        "Yo la uso al revés. Le pido que corrija o suavice la forma en que respondo, porque a veces respondo sin pensar. Para mí la IA es un freno que me ayuda a suavizar la manera de responder. Me ayuda a trabajar mejor mi Feeling, mi Doing y mi Thinking al momento de responder."
+      ]
+    },
+    {
+      "type": "text",
+      "h2": "El cerebro de tu marca",
+      "h2_em": "cerebro",
+      "paragraphs": [
+        "Si alguien quiere usar IA sin perder su voz, le diría que empiece por un arnés agéntico. Es la mejor manera de esquematizar tu tono de voz. Cuando alimentas un arnés, que en el fondo es el cerebro de tu marca, todo queda estructurado y validado en tu forma de ser y de hablar. Esto es básico.",
+        "Hoy esto está cambiando todo. Las marcas tienen la oportunidad de crear su propio arnés y construir desde cero su forma de comunicarse y de contestar.",
+        "Yo les recomendaría entender cómo funciona un arnés agéntico y pensar cómo se vería en su empresa. Cómo pasar de ser una empresa digital a ser una empresa con una estructura de inteligencia artificial. Eso te va a ahorrar tiempo y procesos, y va a conectar mejor la marca con el consumidor.",
+        "Sé que suena raro, pero una IA bien utilizada puede humanizar tu marca."
+      ]
+    }
+  ],
+  "takeaways": [
+    {
+      "bold": "La IA no te da una voz →",
+      "text": "si no tienes clara la tuya, empiezas a sonar como otro y pierdes el contexto de lo que pasa."
+    },
+    {
+      "bold": "Saber usarla →",
+      "text": "la IA trabaja mejor cuando le enseñas tus procesos, cómo te gusta escribir y qué te gusta hacer."
+    },
+    {
+      "bold": "El cerebro de tu marca →",
+      "text": "un arnés agéntico es la mejor manera de esquematizar tu tono de voz."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿La IA puede escribir el contenido de mi marca?",
+      "answer": "Puede ayudarte, pero si la usas para que responda por ti sin leer, tu tono cambia y pierdes el contexto. Germán Baher vio a un cliente perder así una relación de trabajo."
+    },
+    {
+      "question": "¿Cómo se nota un texto escrito por IA?",
+      "answer": "Por estructuras rígidas que se repiten en conversaciones y publicaciones. Germán Baher la usa al revés, para que corrija o suavice cómo responde cuando contesta sin pensar."
+    },
+    {
+      "question": "¿Qué es un arnés agéntico?",
+      "answer": "Es, en el fondo, el cerebro de tu marca. Cuando lo alimentas, tu forma de ser y de hablar queda estructurada y validada, y la IA trabaja desde ahí."
+    }
+  ],
+  "closing_paragraph": "Si quieres saber qué tan clara está la voz de tu marca antes de dársela a una IA, conversemos. Hacemos un <a href=\"/brand-diagnosis?fuente=articulo\" style=\"color:var(--red);font-weight:600;\">Brand Diagnosis →</a> y lo vemos juntos.",
+  "sources": [],
+  "portada": "https://d8j0ntlcm91z4.cloudfront.net/user_31WpBfJcMqR6b7DQA9fubBKrQTs/hf_20261102_193323_3301695d-db11-4ec3-8303-5b4b570f620d.png"
+}

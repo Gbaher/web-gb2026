@@ -156,6 +156,10 @@
     {
       "source": "/bi-013-publicar-todos-los-dias",
       "destination": "/bi-013-publicar-todos-los-dias.html"
+    },
+    {
+      "source": "/bi-014-ia-amplifica-tu-voz",
+      "destination": "/bi-014-ia-amplifica-tu-voz.html"
     }
   ],
   "redirects": [
@@ -362,6 +366,11 @@
     {
       "source": "/bi-013-publicar-todos-los-dias.html",
       "destination": "/bi-013-publicar-todos-los-dias",
+      "permanent": true
+    },
+    {
+      "source": "/bi-014-ia-amplifica-tu-voz.html",
+      "destination": "/bi-014-ia-amplifica-tu-voz",
       "permanent": true
     }
   ],
