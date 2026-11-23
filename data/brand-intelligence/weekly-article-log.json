@@ -35,6 +35,15 @@
       "canonical_path": "/bi-014-ia-amplifica-tu-voz",
       "generated_at": "2026-11-16T10:49:53.622Z",
       "simulated": false
+    },
+    {
+      "id": "bi-015",
+      "week": "2026-W48",
+      "slug": "donantes-a-personas",
+      "file": "bi-015-donantes-a-personas.html",
+      "canonical_path": "/bi-015-donantes-a-personas",
+      "generated_at": "2026-11-23T10:49:39.962Z",
+      "simulated": false
     }
   ]
 }
