@@ -160,6 +160,10 @@
     {
       "source": "/bi-014-ia-amplifica-tu-voz",
       "destination": "/bi-014-ia-amplifica-tu-voz.html"
+    },
+    {
+      "source": "/bi-015-donantes-a-personas",
+      "destination": "/bi-015-donantes-a-personas.html"
     }
   ],
   "redirects": [
@@ -371,6 +375,11 @@
     {
       "source": "/bi-014-ia-amplifica-tu-voz.html",
       "destination": "/bi-014-ia-amplifica-tu-voz",
+      "permanent": true
+    },
+    {
+      "source": "/bi-015-donantes-a-personas.html",
+      "destination": "/bi-015-donantes-a-personas",
       "permanent": true
     }
   ],
