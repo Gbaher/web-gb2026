@@ -26,6 +26,15 @@
       "canonical_path": "/bi-013-publicar-todos-los-dias",
       "generated_at": "2026-11-09T13:37:48.575Z",
       "simulated": false
+    },
+    {
+      "id": "bi-014",
+      "week": "2026-W47",
+      "slug": "ia-amplifica-tu-voz",
+      "file": "bi-014-ia-amplifica-tu-voz.html",
+      "canonical_path": "/bi-014-ia-amplifica-tu-voz",
+      "generated_at": "2026-11-16T10:49:53.622Z",
+      "simulated": false
     }
   ]
 }
