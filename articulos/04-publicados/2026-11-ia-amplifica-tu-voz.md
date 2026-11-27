@@ -114,20 +114,23 @@ Si quieres saber qué tan clara está la voz de tu marca antes de dársela a una
 
 ## LinkedIn
 
-Le enseñé a un cliente a usar ChatGPT para ordenar su correo.
+Le enseñé a un cliente a usar ChatGPT para analizar su correo y optimizar su tiempo.
 
-Al tiempo, sus correos se volvieron más largos y más formales. A mis propuestas respondía "sí, está bien, solo que yo le cambiaría esto". Se notaba que no leía lo que yo le enviaba.
+Después de un tiempo de conversaciones en el chat, empecé a notar que su tono de voz había cambiado. Sus correos eran mucho más largos y mucho más formales.
+
+Luego noté que los correos que yo le enviaba no eran revisados. Más bien eran calificados por alguien que no era él. Poco a poco fue perdiendo el contexto de las cosas que pasaban y no aprobaba las acciones que yo le pedía. Yo esperaba su feedback y me decía "sí, está bien, solo que yo le cambiaría esto".
+
+Su respuesta era muy robótica. Se notaba que no leía lo que estaba haciendo, porque no contextualizaba lo que respondía.
 
 Ahí me di cuenta de que había perdido ese cliente para siempre.
 
-La IA no te va a dar una voz. Si no tienes clara la tuya, la reemplaza.
+La IA no te va a dar una voz. Te va a amplificar la que tienes.
 
-Yo la uso todos los días, y una de las cosas que más le pido es que me frene. Que suavice cómo respondo cuando contesto sin pensar.
+Yo la uso todos los días. Cuando me llega una orden de trabajo desordenada, lo primero que hago es pegarla en un chat para estructurar el requerimiento. Y le pido que corrija o suavice la forma en que respondo, porque a veces respondo sin pensar. Para mí la IA es un freno.
 
-Escribí sobre cómo la uso en una semana normal, cómo se nota un texto escrito por IA y por dónde empezaría alguien que quiere usarla sin perder su voz.
+En el artículo completo cuento cómo la uso en una semana normal, herramienta por herramienta, cómo se nota un texto escrito por IA y por dónde empezaría alguien que quiere usarla sin perder su voz.
 
-¿Tu marca habla con su voz o con la de la IA?
-
+Sigue leyendo en mi web:
 {url}
 
 ## Notas y fuentes
@@ -137,7 +140,8 @@ Escribí sobre cómo la uso en una semana normal, cómo se nota un texto escrito
 - La pregunta 3 (qué nunca le dejaría a una IA) quedó sin respuesta.
 - El ejemplo de patrón de IA ("no hagas esto, haz esto otro") se resumió como "estructuras rígidas" porque la frase dictada quedó confusa.
 - Cambios menores: "desarrollo mis cuadernos" quedó "armo mis cuadernos".
-- Frases agregadas por Claude: "Yo la uso al revés." y, en LinkedIn, "Si no tienes clara la tuya, la reemplaza."
+- Frases agregadas por Claude: "Yo la uso al revés." en el artículo. En LinkedIn, "Para mí la IA es un freno.", "herramienta por herramienta" y "Sigue leyendo en mi web".
+- El post de LinkedIn es un adelanto del artículo con sus mismas palabras y termina con el enlace para seguir leyendo, como pidió Germán.
 - Se recortaron dos enumeraciones de tres ("tu forma de ser, de comunicar y de hablar" y "de comunicación, de pensar y de contestar") a dos elementos para que no suenen a IA.
 - El artículo nombra ChatGPT, Codex, Claude, Notion, Perplexity, NotebookLM y Z.ai, y compara la versión gratuita con la de pago. Es opinión de Germán.
 - Conecta con el borrador de marca agéntica en `02-en-desarrollo`, que todavía no se publica.
