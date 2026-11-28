@@ -156,6 +156,10 @@
     {
       "source": "/bi-013-publicar-todos-los-dias",
       "destination": "/bi-013-publicar-todos-los-dias.html"
+    },
+    {
+      "source": "/bi-016-veinte-anos-growth-brand",
+      "destination": "/bi-016-veinte-anos-growth-brand.html"
     }
   ],
   "redirects": [
@@ -362,6 +366,11 @@
     {
       "source": "/bi-013-publicar-todos-los-dias.html",
       "destination": "/bi-013-publicar-todos-los-dias",
+      "permanent": true
+    },
+    {
+      "source": "/bi-016-veinte-anos-growth-brand.html",
+      "destination": "/bi-016-veinte-anos-growth-brand",
       "permanent": true
     }
   ],

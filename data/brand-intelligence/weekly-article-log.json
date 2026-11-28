@@ -26,6 +26,15 @@
       "canonical_path": "/bi-013-publicar-todos-los-dias",
       "generated_at": "2026-11-09T13:37:48.575Z",
       "simulated": false
+    },
+    {
+      "id": "bi-016",
+      "week": "2026-W49",
+      "slug": "veinte-anos-growth-brand",
+      "file": "bi-016-veinte-anos-growth-brand.html",
+      "canonical_path": "/bi-016-veinte-anos-growth-brand",
+      "generated_at": "2026-11-28T15:37:38.337Z",
+      "simulated": false
     }
   ]
 }
