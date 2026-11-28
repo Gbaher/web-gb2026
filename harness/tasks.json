@@ -1,0 +1,165 @@
+{
+  "project": "web_gb2026",
+  "active_task": "T-0004",
+  "tasks": [
+    {
+      "id": "T-0001",
+      "title": "Instalar arnés agéntico mínimo",
+      "status": "done",
+      "priority": "high",
+      "owner_agent": "orchestrator",
+      "description": "Estructura base, scripts init/verify, roles y memoria externa.",
+      "acceptance_criteria": [
+        "Existe AGENTS.md corto que apunta a docs/ y harness/",
+        "init.sh corre sin errores",
+        "verify.sh corre y reporta estado real del repo",
+        "Existe reporte en progress/0000-bootstrap.md"
+      ],
+      "related_files": [
+        "AGENTS.md",
+        "docs/PRD.md",
+        "harness/init.sh",
+        "harness/verify.sh"
+      ],
+      "verification_commands": [
+        "bash harness/init.sh",
+        "bash harness/verify.sh"
+      ],
+      "progress_report": "progress/0000-bootstrap.md"
+    },
+    {
+      "id": "T-0002",
+      "title": "Revisar cambios locales e integrar mejoras móviles",
+      "status": "done",
+      "priority": "high",
+      "description": "Conservar los cambios previos; integrar solo la mejora móvil revisada en PR #6, sin publicación.",
+      "related_files": [
+        "index.html",
+        "assets/js/cookie-consent.js"
+      ],
+      "acceptance_criteria": [
+        "Cambios anteriores conservados",
+        "Mejoras integradas en rama de revisión",
+        "Verificación y pendientes documentados"
+      ],
+      "progress_report": "progress/2026-10-09-T-0002.md",
+      "review": "Aprobado con observaciones; Lighthouse público pendiente antes de publicar."
+    },
+    {
+      "id": "T-0003",
+      "title": "Optimizar Core Web Vitals (FCP/TBT/LCP)",
+      "status": "done",
+      "priority": "high",
+      "owner_agent": "implementer",
+      "description": "Reducir TBT 8.18s → 2s, FCP 2.9s → 2.2s con defer de resources no-críticos.",
+      "acceptance_criteria": [
+        "Google Fonts carga async (media=print + onload)",
+        "WebGL canvas en requestIdleCallback",
+        "Cal.com embed diferido",
+        "Cookie consent con defer",
+        "verify.sh pasa"
+      ],
+      "related_files": [
+        "index.html"
+      ],
+      "progress_report": "audits/pagespeed-optimization-2026-10-09.md",
+      "verification_commands": [
+        "bash harness/verify.sh",
+        "git diff index.html | grep -E 'preconnect|requestIdleCallback'"
+      ]
+    },
+    {
+      "id": "T-0004",
+      "title": "Completar arnés agéntico (AGENTS.md, roles, bootstrap)",
+      "status": "done",
+      "priority": "high",
+      "owner_agent": "orchestrator",
+      "description": "AGENTS.md detallado con flujo, reglas, roles y checklist. Bootstrap report.",
+      "acceptance_criteria": [
+        "AGENTS.md describe flujo completo",
+        "agents/orchestrator|implementer|reviewer.md revisados",
+        "progress/0000-bootstrap-harness.md creado",
+        "tasks.json actualizado",
+        "verify.sh pasa"
+      ],
+      "related_files": [
+        "AGENTS.md",
+        "agents/orchestrator.md",
+        "agents/implementer.md",
+        "agents/reviewer.md",
+        "progress/0000-bootstrap-harness.md"
+      ],
+      "progress_report": "progress/0000-bootstrap-harness.md",
+      "review": "Listo para usar. Flujo claro, roles definidos, verificación funciona."
+    },
+    {
+      "id": "T-0005",
+      "title": "Comprimir imágenes (3.5MB ahorro)",
+      "status": "pending",
+      "priority": "high",
+      "owner_agent": "implementer",
+      "description": "Optimizar assets/images/ y assets/cases/ con compresión WebP y responsivos.",
+      "acceptance_criteria": [
+        "Todas las imágenes en WebP",
+        "Srcset actualizado para 480w, 960w, 1440w",
+        "3+ MB de ahorro comprobable",
+        "verify.sh pasa",
+        "Móvil y escritorio sin cambios visuales"
+      ],
+      "related_files": [
+        "assets/images/",
+        "assets/cases/",
+        "index.html"
+      ]
+    },
+    {
+      "id": "T-0006",
+      "title": "Minificar CSS inline",
+      "status": "pending",
+      "priority": "medium",
+      "owner_agent": "implementer",
+      "description": "Minificar CSS inline en <style> (2KB ahorro, bajo riesgo).",
+      "acceptance_criteria": [
+        "CSS minificado pero legible en revisión",
+        "Todos los media queries preservados",
+        "verify.sh pasa",
+        "Visual test OK"
+      ],
+      "related_files": [
+        "index.html"
+      ]
+    },
+    {
+      "id": "T-0007",
+      "title": "Agregar preload para LCP images",
+      "status": "pending",
+      "priority": "medium",
+      "owner_agent": "implementer",
+      "description": "Preload de hero-02.webp y german-portrait-main.webp.",
+      "acceptance_criteria": [
+        "<link rel=preload> en <head>",
+        "Solo para LCP images",
+        "LCP metric down <2.5s en PageSpeed"
+      ],
+      "related_files": [
+        "index.html"
+      ]
+    },
+    {
+      "id": "T-0008",
+      "title": "Desactivar WebGL en conexiones lentas",
+      "status": "pending",
+      "priority": "low",
+      "owner_agent": "implementer",
+      "description": "Detectar saveData o 4g slow; mostrar degraded solo en slow connections.",
+      "acceptance_criteria": [
+        "navigator.connection.saveData → canvas off",
+        "Fallback visual OK (color or static)",
+        "verify.sh pasa"
+      ],
+      "related_files": [
+        "index.html"
+      ]
+    }
+  ]
+}
